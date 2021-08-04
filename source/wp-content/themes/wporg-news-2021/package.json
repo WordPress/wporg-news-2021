@@ -1,0 +1,35 @@
+{
+	"name": "wporg-news-2021",
+	"version": "1.0.0",
+	"description": "",
+	"author": "WordPress.org",
+	"license": "GPL-2.0-or-later",
+	"private": true,
+	"dependencies": {},
+	"devDependencies": {
+		"@wordpress/browserslist-config": "^4.1.0",
+		"@wordpress/scripts": "^17.0.0"
+	},
+	"scripts": {
+		"build": "echo \"Nothing to build.\"",
+		"start": "echo \"Nothing to build.\"",
+		"lint:css": "echo \"No CSS.\"",
+		"lint:js": "echo \"No JS.\""
+	},
+	"browserslist": [
+		"extends @wordpress/browserslist-config"
+	],
+	"rtlcssConfig": {
+		"options": {
+			"autoRename": false,
+			"autoRenameStrict": false,
+			"blacklist": {},
+			"clean": true,
+			"greedy": false,
+			"processUrls": false,
+			"stringMap": []
+		},
+		"plugins": [],
+		"map": false
+	}
+}

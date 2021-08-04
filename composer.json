@@ -1,0 +1,51 @@
+{
+	"name": "wporg/wporg-news-2021",
+	"description": "",
+	"homepage": "https://wordpress.org",
+	"license": "GPL-2.0-or-later",
+	"support": {
+		"issues": "https://github.com/WordPress/wporg-news-2021/issues"
+	},
+	"config": {
+		"platform": {
+			"php": "7.4"
+		}
+	},
+	"extra": {
+		"installer-paths": {
+			"source/wp-content/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
+			"source/wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
+			"source/wp-content/themes/pub/{$name}/": ["type:wordpress-theme"]
+		}
+	},
+	"repositories": [
+		{
+			"type": "composer",
+			"url": "https://wpackagist.org/"
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/WordPress/wporg-repo-tools"
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/WordPress/wporg-parent-2021"
+		}
+	],
+	"require": {},
+	"require-dev": {
+		"composer/installers": "~1.0",
+		"wpackagist-plugin/wordpress-importer": "*",
+		"wporg/wporg-repo-tools": "dev-trunk",
+		"wporg/wporg-parent-2021": "dev-trunk",
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+		"wp-coding-standards/wpcs": "2.*",
+		"phpcompatibility/phpcompatibility-wp": "*",
+		"wp-phpunit/wp-phpunit": "^5.4",
+		"phpunit/phpunit": "^7.5.20"
+	},
+	"scripts": {
+		"format": "phpcbf -p",
+		"lint": "phpcs"
+	}
+}
