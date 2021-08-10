@@ -25,11 +25,11 @@
 		},
 		{
 			"type": "vcs",
-			"url": "https://github.com/WordPress/wporg-repo-tools"
+			"url": "git@github.com:WordPress/wporg-repo-tools.git"
 		},
 		{
 			"type": "vcs",
-			"url": "https://github.com/WordPress/wporg-parent-2021"
+			"url": "git@github.com:WordPress/wporg-parent-2021.git"
 		}
 	],
 	"require": {},

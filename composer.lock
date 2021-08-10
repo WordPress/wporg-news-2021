@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bcac3dbeffda64e819228f6fcc8c0320",
+    "content-hash": "4225cca07d61d65fc759c0fd8c64b2ed",
     "packages": [],
     "packages-dev": [
         {
@@ -2270,12 +2270,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/WordPress/wporg-parent-2021.git",
-                "reference": "7ea767fb0d514ab45a18ca33ce9baadbed5daf0b"
+                "reference": "4586dc46a6d11a41bc233114db460d4fc4857843"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WordPress/wporg-parent-2021/zipball/7ea767fb0d514ab45a18ca33ce9baadbed5daf0b",
-                "reference": "7ea767fb0d514ab45a18ca33ce9baadbed5daf0b",
+                "url": "https://api.github.com/repos/WordPress/wporg-parent-2021/zipball/4586dc46a6d11a41bc233114db460d4fc4857843",
+                "reference": "4586dc46a6d11a41bc233114db460d4fc4857843",
                 "shasum": ""
             },
             "require-dev": {
@@ -2285,12 +2285,11 @@
                 "phpunit/phpunit": "^7.5.20",
                 "wp-coding-standards/wpcs": "2.*",
                 "wp-phpunit/wp-phpunit": "^5.4",
-                "wpackagist-plugin/gutenberg": "*",
                 "wpackagist-plugin/wordpress-importer": "*",
                 "wporg/wporg-repo-tools": "dev-trunk"
             },
             "default-branch": true,
-            "type": "wordpress-theme",
+            "type": "library",
             "extra": {
                 "installer-paths": {
                     "source/wp-content/mu-plugins/{$name}/": [
@@ -2320,7 +2319,7 @@
                 "issues": "https://github.com/WordPress/wporg-parent-2021/issues",
                 "source": "https://github.com/WordPress/wporg-parent-2021/tree/trunk"
             },
-            "time": "2021-08-04T21:28:56+00:00"
+            "time": "2021-08-10T18:01:43+00:00"
         },
         {
             "name": "wporg/wporg-repo-tools",
