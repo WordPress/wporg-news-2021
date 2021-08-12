@@ -1,0 +1,8 @@
+@import '~@wordpress/base-styles/breakpoints';
+@import '~@wordpress/base-styles/mixins';
+
+@mixin break-small-only() {
+	@media (max-width: #{ ($break-small - 1) }) {
+		@content;
+	}
+}

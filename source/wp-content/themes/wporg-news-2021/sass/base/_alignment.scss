@@ -1,0 +1,33 @@
+.wp-block-group.alignfull,
+*[class*="wp-container-"] //Anything that inherits layout (container)
+{
+	//give it some padding
+	padding-left: var(--wp--custom--post-content--padding--left);
+	padding-right: var(--wp--custom--post-content--padding--right);
+
+	//Any nested containers, and anything that is alignfull
+	*[class*="wp-container-"], // Any nested containers
+	> .alignfull { // Any direct descendant that is alignfull
+		// bust out of the container's padding
+		margin-left: calc(-1 * var(--wp--custom--post-content--padding--left)) !important;
+		margin-right: calc(-1 * var(--wp--custom--post-content--padding--right)) !important;
+		width: calc( 100% + var(--wp--custom--post-content--padding--left) + var(--wp--custom--post-content--padding--right) ) !important;
+	}
+}
+
+@include break-mobile {
+	// limit size of any element that is aligned left/right
+	.wp-block[data-align="left"], // This is for the editor
+	.wp-block[data-align="right"], // This is for the editor
+	.wp-site-blocks .alignleft,
+	.wp-site-blocks .alignright {
+		max-width: var(--wp--custom--alignment--aligned-max-width);
+	}
+}
+
+// This was added for the 'site-logo' block which centers with an 'align:center' attribute
+// instead of 'textAlign' center which sets an .aligncenter class instead of a has-text-align-center
+// class which would do this for us.  I'm not sure why but this centers things appropriately.
+.aligncenter {
+	text-align: center;
+}

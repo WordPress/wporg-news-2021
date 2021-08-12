@@ -6,12 +6,12 @@
 		"FS_METHOD": "direct",
 		"WP_ENVIRONMENT_TYPE": "local"
 	},
-	"core": "WordPress/WordPress#master",
+	"core": "WordPress/WordPress#5.8",
 	"plugins": [
+		"./source/wp-content/plugins/gutenberg",
 		"./source/wp-content/plugins/wordpress-importer"
 	],
 	"themes": [
-		"./source/wp-content/themes/wporg-news-2021",
-		"./vendor/wporg/wporg-parent-2021/source/wp-content/themes/wporg-parent-2021"
+		"./source/wp-content/themes/wporg-news-2021"
 	]
 }

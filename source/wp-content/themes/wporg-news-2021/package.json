@@ -7,13 +7,18 @@
 	"private": true,
 	"dependencies": {},
 	"devDependencies": {
+		"@wordpress/base-styles": "^3.6.0",
 		"@wordpress/browserslist-config": "^4.1.0",
-		"@wordpress/scripts": "^17.0.0"
+		"@wordpress/scripts": "^17.0.0",
+		"chokidar-cli": "^3.0.0",
+		"node-sass": "^4.12.0",
+		"node-sass-package-importer": "^5.3.2",
+		"rtlcss": "^3.3.0"
 	},
 	"scripts": {
-		"build": "echo \"Nothing to build.\"",
-		"start": "echo \"Nothing to build.\"",
-		"lint:css": "echo \"No CSS.\"",
+		"build": "node build-styles.js",
+		"start": "chokidar \"sass/**/*.scss\" -c \"node build-styles.js\" --initial",
+		"lint:css": "wp-scripts lint-style sass",
 		"lint:js": "echo \"No JS.\""
 	},
 	"browserslist": [

@@ -26,18 +26,14 @@
 		{
 			"type": "vcs",
 			"url": "git@github.com:WordPress/wporg-repo-tools.git"
-		},
-		{
-			"type": "vcs",
-			"url": "git@github.com:WordPress/wporg-parent-2021.git"
 		}
 	],
 	"require": {},
 	"require-dev": {
 		"composer/installers": "~1.0",
+		"wpackagist-plugin/gutenberg": "*",
 		"wpackagist-plugin/wordpress-importer": "*",
 		"wporg/wporg-repo-tools": "dev-trunk",
-		"wporg/wporg-parent-2021": "dev-trunk",
 		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
 		"wp-coding-standards/wpcs": "2.*",
 		"phpcompatibility/phpcompatibility-wp": "*",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4225cca07d61d65fc759c0fd8c64b2ed",
+    "content-hash": "b92de0fa0a9e795deef4acf8fb3679ae",
     "packages": [],
     "packages-dev": [
         {
@@ -2247,6 +2247,24 @@
             "time": "2021-07-27T09:32:49+00:00"
         },
         {
+            "name": "wpackagist-plugin/gutenberg",
+            "version": "11.2.1",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/gutenberg/",
+                "reference": "tags/11.2.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/gutenberg.11.2.1.zip"
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/gutenberg/"
+        },
+        {
             "name": "wpackagist-plugin/wordpress-importer",
             "version": "0.7",
             "source": {
@@ -2263,63 +2281,6 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/wordpress-importer/"
-        },
-        {
-            "name": "wporg/wporg-parent-2021",
-            "version": "dev-trunk",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/WordPress/wporg-parent-2021.git",
-                "reference": "4586dc46a6d11a41bc233114db460d4fc4857843"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/WordPress/wporg-parent-2021/zipball/4586dc46a6d11a41bc233114db460d4fc4857843",
-                "reference": "4586dc46a6d11a41bc233114db460d4fc4857843",
-                "shasum": ""
-            },
-            "require-dev": {
-                "composer/installers": "~1.0",
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
-                "phpcompatibility/phpcompatibility-wp": "*",
-                "phpunit/phpunit": "^7.5.20",
-                "wp-coding-standards/wpcs": "2.*",
-                "wp-phpunit/wp-phpunit": "^5.4",
-                "wpackagist-plugin/wordpress-importer": "*",
-                "wporg/wporg-repo-tools": "dev-trunk"
-            },
-            "default-branch": true,
-            "type": "library",
-            "extra": {
-                "installer-paths": {
-                    "source/wp-content/mu-plugins/{$name}/": [
-                        "type:wordpress-muplugin"
-                    ],
-                    "source/wp-content/plugins/{$name}/": [
-                        "type:wordpress-plugin"
-                    ],
-                    "source/wp-content/themes/pub/{$name}/": [
-                        "type:wordpress-theme"
-                    ]
-                }
-            },
-            "scripts": {
-                "format": [
-                    "phpcbf -p"
-                ],
-                "lint": [
-                    "phpcs"
-                ]
-            },
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "homepage": "https://wordpress.org",
-            "support": {
-                "issues": "https://github.com/WordPress/wporg-parent-2021/issues",
-                "source": "https://github.com/WordPress/wporg-parent-2021/tree/trunk"
-            },
-            "time": "2021-08-10T18:01:43+00:00"
         },
         {
             "name": "wporg/wporg-repo-tools",
@@ -2355,8 +2316,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "wporg/wporg-repo-tools": 20,
-        "wporg/wporg-parent-2021": 20
+        "wporg/wporg-repo-tools": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
