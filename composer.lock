@@ -2284,15 +2284,15 @@
         },
         {
             "name": "wpackagist-plugin/seriously-simple-podcasting",
-            "version": "2.7.3",
+            "version": "2.8.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/seriously-simple-podcasting/",
-                "reference": "tags/2.7.3"
+                "reference": "trunk"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/seriously-simple-podcasting.2.7.3.zip"
+                "url": "https://downloads.wordpress.org/plugin/seriously-simple-podcasting.zip?timestamp=1628868950"
             },
             "require": {
                 "composer/installers": "~1.0"
