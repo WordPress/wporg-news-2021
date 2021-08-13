@@ -15,6 +15,7 @@
 		"wp-env": "wp-env",
 		"env": "wp-env start",
 		"env:stop": "wp-env stop",
+		"env:cli": "wp-env run cli",
 		"env:setup": "wp-env start --update && yarn run env:reset && yarn run env:import && yarn run env:misc",
 		"env:reset": "wp-env clean all && wp-env run cli \"wp site empty --yes\"",
 		"env:import": "wp-env run cli \"bash env/import.sh\"",
