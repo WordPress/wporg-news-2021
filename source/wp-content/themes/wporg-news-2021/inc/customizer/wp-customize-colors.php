@@ -133,6 +133,11 @@ class GlobalStylesColorCustomizer {
 		$user_theme_json_post         = get_post( $user_custom_post_type_id );
 		$user_theme_json_post_content = json_decode( $user_theme_json_post->post_content );
 
+		// Set meta settings.
+		$user_theme_json_post_content->version                     = 1;
+		$user_theme_json_post_content->isGlobalStylesUserThemeJSON = true;
+
+		// Set palette settings.
 		$user_theme_json_post_content = set_settings_array(
 			$user_theme_json_post_content,
 			array( 'settings', 'color', 'palette' ),
@@ -146,7 +151,9 @@ class GlobalStylesColorCustomizer {
 
 		// Update the theme.json with the new settings.
 		$user_theme_json_post->post_content = json_encode( $user_theme_json_post_content );
-		return wp_update_post( $user_theme_json_post );
+		wp_update_post( $user_theme_json_post );
+		delete_transient( 'global_styles' );
+		delete_transient( 'gutenberg_global_styles' );
 	}
 
 	function check_if_colors_are_default() {
