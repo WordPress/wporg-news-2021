@@ -23,7 +23,7 @@
 	&.wp-block-search__button-inside .wp-block-search__inside-wrapper .wp-block-search__button,
 	.wp-block-search__button {
 		@include button-main-styles;
-		@include button-hover-styles;
+		@include button-color-styles;
 		&.has-icon {
 			line-height: 0;
 		}

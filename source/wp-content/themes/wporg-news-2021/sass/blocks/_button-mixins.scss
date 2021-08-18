@@ -10,9 +10,24 @@
 	opacity: 1;
 	color: var(--wp--custom--button--color--text);
 	background-color: var(--wp--custom--button--color--background);
-	border-color: currentColor;
+	border-color: var(--wp--custom--button--border--color);
 	svg {
 		fill: var(--wp--custom--button--color--text);
+	}
+	&:hover {
+		color: var(--wp--custom--button--hover--color--text);
+		background-color: var(--wp--custom--button--hover--color--background);
+		border-color: var(--wp--custom--button--hover--border--color);
+	}
+	&:active {
+		color: var(--wp--custom--button--active--color--text);
+		background-color: var(--wp--custom--button--active--color--background);
+		border-color: var(--wp--custom--button--active--border--color);
+	}
+	&:focus {
+		color: var(--wp--custom--button--focus--color--text);
+		background-color: var(--wp--custom--button--focus--color--background);
+		border-color: var(--wp--custom--button--focus--border--color);
 	}
 }
 
@@ -42,23 +57,4 @@
 	padding-bottom: var(--wp--custom--button--spacing--padding--bottom);
 	padding-left: var(--wp--custom--button--spacing--padding--left);
 	padding-right: var(--wp--custom--button--spacing--padding--right);
-}
-
-
-// NOTE: These remain for the hover styling of blocks.  This can be removed when the button block has configurable hover states.
-// The mechanism below ONLY CHANGES CSS VARIABLES that are already applied to properties (above)
-@mixin button-hover-styles {
-	//The following changes should ONLY be changed if the user has NOT set a custom color
-	&:not(.has-background):not(.has-text-color) {
-		&:hover,
-		&:focus,
-		&.has-focus {
-			//change the color variables to the hover equivalent
-			--wp--custom--button--color--text: var(--wp--custom--button--hover--color--text);
-			--wp--custom--button--color--background: var(--wp--custom--button--hover--color--background);
-			--wp--custom--button--border--color: var(--wp--custom--button--hover--border--color);
-			@include button-color-styles;
-			border-color: var(--wp--custom--button--border--color);
-		}
-	}
 }
