@@ -539,7 +539,9 @@
 				}
 			},
 			"link": {
-				"color": "var(--wp--preset--color--blue-1)"
+				"color": {
+					"text": "var(--wp--preset--color--blue-1)"
+				}
 			}
 		},
 		"typography": {
