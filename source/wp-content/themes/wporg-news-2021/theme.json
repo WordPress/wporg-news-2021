@@ -39,29 +39,79 @@
 			"gradients": [],
 			"palette": [
 				{
-					"slug": "primary",
-					"color": "#007cba",
-					"name": "Primary"
+					"slug": "black",
+					"color": "#1e1e1e",
+					"name": "Black"
 				},
 				{
-					"slug": "secondary",
-					"color": "#006ba1",
-					"name": "Secondary"
+					"slug": "darker-grey",
+					"color": "#1c2024",
+					"name": "Darker Grey"
 				},
 				{
-					"slug": "foreground",
-					"color": "#333333",
-					"name": "Foreground"
+					"slug": "dark-grey",
+					"color": "#23282d",
+					"name": "Dark Grey"
 				},
 				{
-					"slug": "background",
+					"slug": "dark-strokes-grey",
+					"color": "#2f363d",
+					"name": "Dark Strokes Grey"
+				},
+				{
+					"slug": "light-grey",
+					"color": "#d9d9d9",
+					"name": "Light Grey"
+				},
+				{
+					"slug": "beige",
+					"color": "#e4ddd4",
+					"name": "Beige"
+				},
+				{
+					"slug": "blue-1",
+					"color": "#3e58e1",
+					"name": "Blue 1"
+				},
+				{
+					"slug": "blue-2",
+					"color": "#213fd4",
+					"name": "Blue 2"
+				},
+				{
+					"slug": "blue-3",
+					"color": "#7b90ff",
+					"name": "Blue 3"
+				},
+				{
+					"slug": "blue-4",
+					"color": "#eff2ff",
+					"name": "Blue 4"
+				},
+				{
+					"slug": "off-white",
+					"color": "#f8f3ec",
+					"name": "Off White"
+				},
+				{
+					"slug": "light-salmon",
+					"color": "#ffe9de",
+					"name": "Light Salmon"
+				},
+				{
+					"slug": "green",
+					"color": "#72d1a7",
+					"name": "Green"
+				},
+				{
+					"slug": "coral-red",
+					"color": "#f86368",
+					"name": "Coral Red"
+				},
+				{
+					"slug": "white",
 					"color": "#ffffff",
-					"name": "Background"
-				},
-				{
-					"slug": "selection",
-					"color": "#c2c2c2",
-					"name": "Selection"
+					"name": "White"
 				}
 			]
 		},
