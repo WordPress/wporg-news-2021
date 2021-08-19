@@ -9,6 +9,13 @@ add_action( 'after_setup_theme', __NAMESPACE__ . '\theme_support', 9 );
 add_action( 'after_setup_theme', __NAMESPACE__ . '\editor_styles' );
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_assets' );
 
+
+define( 'REPO_TOOLS_DIR', dirname( ABSPATH ) . '/vendor/wporg/wporg-repo-tools' );
+
+add_action( 'init', function() {
+	require_once REPO_TOOLS_DIR . '/blocks/global-header/block.php';
+}, 8 ); // must run before global-header/block.php
+
 /**
  * Register theme support.
  */
