@@ -224,25 +224,19 @@ input[type=checkbox] + label {
 }
 
 @media (min-width: 480px) {
-	h1 {
-		font-size: var(--wp--custom--heading--breakpoint--mobile--h1--typography--font-size);
-		line-height: var(--wp--custom--heading--breakpoint--mobile--h1--typography--line-height);
-	}
-	h2 {
-		font-size: var(--wp--custom--heading--breakpoint--mobile--h2--typography--font-size);
-		line-height: var(--wp--custom--heading--breakpoint--mobile--h2--typography--line-height);
-	}
-	h3 {
-		font-size: var(--wp--custom--heading--breakpoint--mobile--h3--typography--font-size);
-		line-height: var(--wp--custom--heading--breakpoint--mobile--h3--typography--line-height);
-	}
-	h4 {
-		font-size: var(--wp--custom--heading--breakpoint--mobile--h4--typography--font-size);
-		line-height: var(--wp--custom--heading--breakpoint--mobile--h4--typography--line-height);
-	}
-	h5 {
-		font-size: var(--wp--custom--heading--breakpoint--mobile--h5--typography--font-size);
-		line-height: var(--wp--custom--heading--breakpoint--mobile--h5--typography--line-height);
+	/**
+	 * Changing the values of the CSS variables works better than redeclaring the attributes because
+	 * of some issues with precedence, especially in the block editor.
+	 */
+	body {
+		--wp--custom--h1--typography--font-size: var(--wp--custom--h1--breakpoint--mobile--typography--font-size);
+		--wp--custom--h1--typography--line-height: var(--wp--custom--h1--breakpoint--mobile--typography--line-height);
+		--wp--custom--h2--typography--font-size: var(--wp--custom--h2--breakpoint--mobile--typography--font-size);
+		--wp--custom--h3--typography--font-size: var(--wp--custom--h3--breakpoint--mobile--typography--font-size);
+		--wp--custom--h3--typography--line-height: var(--wp--custom--h3--breakpoint--mobile--typography--line-height);
+		--wp--custom--h4--typography--font-size: var(--wp--custom--h4--breakpoint--mobile--typography--font-size);
+		--wp--custom--h5--typography--font-size: var(--wp--custom--h5--breakpoint--mobile--typography--font-size);
+		--wp--custom--h5--typography--line-height: var(--wp--custom--h5--breakpoint--mobile--typography--line-height);
 	}
 }
 
