@@ -223,6 +223,13 @@ input[type=checkbox] + label {
 	line-height: 1em;
 }
 
+.editor-post-title .editor-post-title__input {
+	font-family: var(--wp--custom--heading--typography--font-family);
+	font-size: var(--wp--custom--h1--typography--font-size);
+	font-weight: var(--wp--custom--h1--typography--font-weight);
+	line-height: var(--wp--custom--h1--typography--line-height);
+}
+
 @media (min-width: 480px) {
 	/**
 	 * Changing the values of the CSS variables works better than redeclaring the attributes because
