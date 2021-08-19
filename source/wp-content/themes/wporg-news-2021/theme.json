@@ -131,10 +131,10 @@
 				},
 				"spacing": {
 					"padding": {
-						"top": "0.667em",
-						"bottom": "0.667em",
-						"left": "1.333em",
-						"right": "1.333em"
+						"top": "0.2em",
+						"bottom": "var(--wp--custom--button--spacing--padding--top)",
+						"left": "1em",
+						"right": "var(--wp--custom--button--spacing--padding--left)"
 					}
 				},
 				"typography": {
