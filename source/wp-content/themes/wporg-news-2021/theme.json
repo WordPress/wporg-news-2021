@@ -406,7 +406,10 @@
 		},
 		"typography": {
 			"customFontSize": true,
-			"customLineHeight": true,
+			"customFontWeight": false,
+			"customLineHeight": false,
+			"customTextDecorations": false,
+			"dropCap": false,
 			"fontFamilies": [
 				{
 					"fontFamily": "'EB Garamond', serif",
