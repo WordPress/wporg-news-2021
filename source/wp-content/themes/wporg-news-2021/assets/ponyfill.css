@@ -161,27 +161,6 @@ p, h1, h2, h3, h4, h5, h6 {
  * Elements
  * - Styles for basic HTML elemants
  */
-a {
-	cursor: pointer;
-	text-underline-offset: 0.15em;
-	text-decoration: none;
-}
-
-a:hover, a:focus {
-	text-decoration-line: underline;
-}
-
-.block-editor-block-list__layout a,
-.wp-block-post-content a {
-	text-decoration-line: underline;
-}
-
-.block-editor-block-list__layout a:hover, .block-editor-block-list__layout a:focus,
-.wp-block-post-content a:hover,
-.wp-block-post-content a:focus {
-	text-decoration: none;
-}
-
 input.wp-block-search__input,
 input[type="text"],
 input[type="email"],
@@ -242,6 +221,50 @@ input[type=checkbox] + label {
 	display: inline;
 	margin-left: 0.5em;
 	line-height: 1em;
+}
+
+@media (min-width: 480px) {
+	h1 {
+		font-size: var(--wp--custom--heading--breakpoint--mobile--h1--typography--font-size);
+		line-height: var(--wp--custom--heading--breakpoint--mobile--h1--typography--line-height);
+	}
+	h2 {
+		font-size: var(--wp--custom--heading--breakpoint--mobile--h2--typography--font-size);
+		line-height: var(--wp--custom--heading--breakpoint--mobile--h2--typography--line-height);
+	}
+	h3 {
+		font-size: var(--wp--custom--heading--breakpoint--mobile--h3--typography--font-size);
+		line-height: var(--wp--custom--heading--breakpoint--mobile--h3--typography--line-height);
+	}
+	h4 {
+		font-size: var(--wp--custom--heading--breakpoint--mobile--h4--typography--font-size);
+		line-height: var(--wp--custom--heading--breakpoint--mobile--h4--typography--line-height);
+	}
+	h5 {
+		font-size: var(--wp--custom--heading--breakpoint--mobile--h5--typography--font-size);
+		line-height: var(--wp--custom--heading--breakpoint--mobile--h5--typography--line-height);
+	}
+}
+
+a {
+	cursor: pointer;
+	text-underline-offset: 0.15em;
+	text-decoration: none;
+}
+
+a:hover, a:focus {
+	text-decoration-line: underline;
+}
+
+.block-editor-block-list__layout a,
+.wp-block-post-content a {
+	text-decoration-line: underline;
+}
+
+.block-editor-block-list__layout a:hover, .block-editor-block-list__layout a:focus,
+.wp-block-post-content a:hover,
+.wp-block-post-content a:focus {
+	text-decoration: none;
 }
 
 /**

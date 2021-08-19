@@ -213,6 +213,38 @@
 				}
 			},
 			"heading": {
+				"breakpoint": {
+					"mobile": {
+						"h1": {
+							"typography": {
+								"fontSize": "70px",
+								"lineHeight": "1.1"
+							}
+						},
+						"h2": {
+							"typography": {
+								"fontSize": "50px"
+							}
+						},
+						"h3": {
+							"typography": {
+								"fontSize": "36px",
+								"lineHeight": "1.35"
+							}
+						},
+						"h4": {
+							"typography": {
+								"fontSize": "30px"
+							}
+						},
+						"h5": {
+							"typography": {
+								"fontSize": "26px",
+								"lineHeight": "1.35"
+							}
+						}
+					}
+				},
 				"typography": {
 					"fontWeight": 400,
 					"lineHeight": 1.125
@@ -494,40 +526,40 @@
 				"typography": {
 					"fontFamily": "var(--wp--preset--font-family--eb-garamond)",
 					"fontWeight": "var(--wp--custom--heading--typography--font-weight)",
-					"lineHeight": "1.1",
-					"fontSize": "70px"
+					"fontSize": "38px",
+					"lineHeight": "1.3"
 				}
 			},
 			"h2": {
 				"typography": {
 					"fontFamily": "var(--wp--preset--font-family--eb-garamond)",
 					"fontWeight": "var(--wp--custom--heading--typography--font-weight)",
-					"lineHeight": "1.3",
-					"fontSize": "50px"
+					"fontSize": "30px",
+					"lineHeight": "1.3"
 				}
 			},
 			"h3": {
 				"typography": {
 					"fontFamily": "var(--wp--preset--font-family--eb-garamond)",
 					"fontWeight": "var(--wp--custom--heading--typography--font-weight)",
-					"lineHeight": "1.35",
-					"fontSize": "36px"
+					"fontSize": "26px",
+					"lineHeight": "1.3"
 				}
 			},
 			"h4": {
 				"typography": {
 					"fontFamily": "var(--wp--preset--font-family--eb-garamond)",
 					"fontWeight": "var(--wp--custom--heading--typography--font-weight)",
-					"lineHeight": "1.3",
-					"fontSize": "30px"
+					"fontSize": "20px",
+					"lineHeight": "1.3"
 				}
 			},
 			"h5": {
 				"typography": {
 					"fontFamily": "var(--wp--preset--font-family--eb-garamond)",
 					"fontWeight": "var(--wp--custom--heading--typography--font-weight)",
-					"lineHeight": "1.35",
-					"fontSize": "26px"
+					"fontSize": "20px",
+					"lineHeight": "1.3"
 				}
 			},
 			"h6": {
