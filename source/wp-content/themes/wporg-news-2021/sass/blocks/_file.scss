@@ -3,6 +3,6 @@
 // TODO: Remove when https://github.com/WordPress/gutenberg/issues/27760 is fixed
 .wp-block-file .wp-block-file__button {
 	@include button-main-styles;
-	@include button-hover-styles;
+	@include button-color-styles;
 	display: inline-block;
 }

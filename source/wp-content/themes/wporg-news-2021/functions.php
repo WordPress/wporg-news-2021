@@ -6,8 +6,8 @@ namespace WordPressdotorg\Theme\News;
  * Actions and filters.
  */
 add_action( 'after_setup_theme', __NAMESPACE__ . '\theme_support', 9 );
+add_action( 'after_setup_theme', __NAMESPACE__ . '\editor_styles' );
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_assets' );
-add_action( 'admin_init', __NAMESPACE__ . '\editor_styles' );
 
 /**
  * Register theme support.
@@ -45,15 +45,6 @@ function theme_support() {
 }
 
 /**
- * Enqueue scripts and styles.
- */
-function enqueue_assets() {
-	// Enqueue Google fonts
-	wp_enqueue_style( 'wporg-news-fonts', fonts_url(), array(), null );
-	wp_enqueue_style( 'wporg-news-ponyfill', get_template_directory_uri() . '/assets/ponyfill.css', array(), wp_get_theme()->get( 'Version' ) );
-}
-
-/**
  * Enqueue editor styles.
  */
 function editor_styles() {
@@ -61,9 +52,18 @@ function editor_styles() {
 	add_editor_style(
 		array(
 			fonts_url(),
-			'/assets/ponyfill.css'
+			'/assets/ponyfill.css',
 		)
 	);
+}
+
+/**
+ * Enqueue scripts and styles.
+ */
+function enqueue_assets() {
+	// Enqueue Google fonts
+	wp_enqueue_style( 'wporg-news-fonts', fonts_url(), array(), null );
+	wp_enqueue_style( 'wporg-news-ponyfill', get_template_directory_uri() . '/assets/ponyfill.css', array(), wp_get_theme()->get( 'Version' ) );
 }
 
 /**

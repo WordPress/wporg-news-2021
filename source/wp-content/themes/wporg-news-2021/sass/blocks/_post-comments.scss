@@ -5,10 +5,10 @@
 		font-size: var(--wp--custom--form--label--typography--font-size);
 	}
 
-	input[type="submit"], 
+	input[type="submit"],
 	.reply a {
 		@include button-main-styles;
-		@include button-hover-styles;
+		@include button-color-styles;
 	}
 
 	.reply {
