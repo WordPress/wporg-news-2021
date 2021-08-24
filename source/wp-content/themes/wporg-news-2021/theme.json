@@ -390,8 +390,8 @@
 			}
 		},
 		"layout": {
-			"contentSize": "620px",
-			"wideSize": "1000px"
+			"contentSize": "680px",
+			"wideSize": "1070px"
 		},
 		"spacing": {
 			"customPadding": true,
