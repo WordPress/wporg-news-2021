@@ -301,7 +301,8 @@
 				}
 			},
 			"layout": {
-				"contentSize": "620px"
+				"contentSize": "680px",
+				"wideSize": "1070px"
 			},
 			"list": {
 				"spacing": {
@@ -390,8 +391,8 @@
 			}
 		},
 		"layout": {
-			"contentSize": "680px",
-			"wideSize": "1070px"
+			"contentSize": "var(--wp--custom--layout--content-size)",
+			"wideSize": "var(--wp--custom--layout--wide-size)"
 		},
 		"spacing": {
 			"customPadding": true,

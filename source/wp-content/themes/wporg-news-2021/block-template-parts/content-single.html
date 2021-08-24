@@ -1,35 +1,39 @@
-<!-- wp:group {"tagName":"header","align":"wide"} -->
-<header class="wp-block-group alignwide">
-	<!-- wp:columns {"align":"full"} -->
-	<div class="wp-block-columns">
-		<!-- wp:column {"width":"33.33%"} -->
-		<div class="wp-block-column" style="flex-basis:33.33%">
-			<!-- wp:post-date /-->
+<!-- wp:group {"tagName":"article","layout":{"inherit":true}} -->
+<article class="wp-block-group">
+	<!-- wp:group {"tagName":"header","align":"wide"} -->
+	<header class="wp-block-group alignwide">
+		<!-- wp:columns {"align":"full"} -->
+		<div class="wp-block-columns">
+			<!-- wp:column {"width":"33.33%"} -->
+			<div class="wp-block-column" style="flex-basis:33.33%">
+				<!-- wp:post-date /-->
 
-			<!-- wp:post-author {"showAvatar":false,"byline":"By"} /-->
+				<!-- wp:post-author {"showAvatar":false,"byline":"By"} /-->
 
-			<!-- wp:post-terms {"term":"category"} /-->
+				<!-- wp:post-terms {"term":"category"} /-->
+			</div>
+			<!-- /wp:column -->
+
+			<!-- wp:column {"width":"63.55%"} -->
+			<div class="wp-block-column" style="flex-basis:63.55%">
+				<!-- wp:post-title /-->
+			</div>
+			<!-- /wp:column -->
 		</div>
-		<!-- /wp:column -->
+		<!-- /wp:columns -->
+	</header>
+	<!-- /wp:group -->
 
-		<!-- wp:column {"width":"66.66%"} -->
-		<div class="wp-block-column" style="flex-basis:66.66%">
-			<!-- wp:post-title /-->
-		</div>
-		<!-- /wp:column -->
-	</div>
-	<!-- /wp:columns -->
-</header>
-<!-- /wp:group -->
+	<!-- wp:group {"tagName":"section","align":"full"} -->
+	<section class="wp-block-group alignfull">
+		<!-- wp:post-content {"layout":{"inherit":true}} /-->
+	</section>
+	<!-- /wp:group -->
 
-<!-- wp:group {"tagName":"section"} -->
-<section class="wp-block-group">
-	<!-- wp:post-content {"layout":{"inherit":true}} /-->
-</section>
-<!-- /wp:group -->
-
-<!-- wp:group {"tagName":"footer"} -->
-<footer class="wp-block-group">
-	<!-- wp:post-comments /-->
-</footer>
+	<!-- wp:group {"tagName":"footer","align":"wide"} -->
+	<footer class="wp-block-group alignwide">
+		<!-- wp:post-comments /-->
+	</footer>
+	<!-- /wp:group -->
+</article>
 <!-- /wp:group -->

@@ -659,6 +659,22 @@ p.has-background {
 	margin-bottom: var(--wp--custom--margin--baseline);
 }
 
+.single .wp-block-post-content > * {
+	margin-left: calc(50% - (var(--wp--custom--layout--wide-size) / 2) + (var(--wp--custom--layout--wide-size) - var(--wp--custom--layout--content-size))) !important;
+}
+
+.single .wp-block-post-content > *.alignwide {
+	margin-left: auto !important;
+}
+
+.single .wp-block-post-content > *.alignfull {
+	margin-left: 0 !important;
+}
+
+.wp-block-post-title {
+	margin-top: 0;
+}
+
 .wp-block-pullquote.is-style-solid-color,
 .wp-block-pullquote {
 	text-align: var(--wp--custom--pullquote--typography--text-align);
