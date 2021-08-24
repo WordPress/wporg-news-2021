@@ -21,6 +21,8 @@ This is starting as a fork of [Blockbase](https://github.com/Automattic/themes/t
 
 ### Environment management
 
+These must be run in the project's root folder, _not_ in theme/plugin subfolders.
+
 * Stop the environment: `yarn run env:stop` or `yarn run wp-env stop`
 * Restart the environment: `yarn run env` or `yarn run wp-env start`
 * Reset the dev site's content: `yarn run env:reset && yarn run env:import`
