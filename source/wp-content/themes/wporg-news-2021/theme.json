@@ -654,6 +654,9 @@
 		{
 			"name": "footer",
 			"area": "footer"
+		},
+		{
+			"name": "content-single"
 		}
 	]
 }
