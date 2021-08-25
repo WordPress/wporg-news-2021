@@ -1040,4 +1040,13 @@ p.has-background {
 	mask-image: url(svg/post-tag.svg);
 }
 
+.single .post-navigation {
+	display: flex;
+	justify-content: space-between;
+}
+
+.single .post-navigation .wp-block-post-navigation-link {
+	display: inline-block;
+}
+
 /*# sourceMappingURL=ponyfill.css.map */

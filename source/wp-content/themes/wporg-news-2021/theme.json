@@ -658,6 +658,9 @@
 		},
 		{
 			"name": "content-single"
+		},
+		{
+			"name": "post-navigation"
 		}
 	]
 }

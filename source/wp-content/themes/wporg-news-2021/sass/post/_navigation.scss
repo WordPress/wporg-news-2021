@@ -1,0 +1,10 @@
+.post-navigation {
+	.single & {
+		display: flex;
+		justify-content: space-between;
+
+		.wp-block-post-navigation-link {
+			display: inline-block;
+		}
+	}
+}
