@@ -667,7 +667,7 @@ p.has-background {
 		margin-left: auto !important;
 	}
 	.single .wp-block-post-content > *.alignfull {
-		margin-left: 0 !important;
+		margin-left: inherit !important;
 	}
 }
 
