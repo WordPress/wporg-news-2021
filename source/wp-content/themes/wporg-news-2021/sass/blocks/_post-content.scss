@@ -1,6 +1,11 @@
-.wp-block-post-content {
-	.single & > * {
-		margin-left: calc(50% - (var(--wp--custom--layout--wide-size) / 2) + (var(--wp--custom--layout--wide-size) - var(--wp--custom--layout--content-size))) !important;
+@include break-medium {
+	.single .wp-block-post-content > * {
+		margin-left: calc(
+			min(
+				100% - var(--wp--custom--layout--content-size),
+				50% - (var(--wp--custom--layout--wide-size) / 2) + (var(--wp--custom--layout--wide-size) - var(--wp--custom--layout--content-size))
+			)
+		) !important;
 
 		&.alignwide {
 			margin-left: auto !important;
