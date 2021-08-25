@@ -307,7 +307,7 @@
 			"list": {
 				"spacing": {
 					"padding": {
-						"left": "calc( 2 * var(--wp--custom--margin--horizontal) )"
+						"left": "var(--wp--custom--margin--horizontal)"
 					}
 				}
 			},
