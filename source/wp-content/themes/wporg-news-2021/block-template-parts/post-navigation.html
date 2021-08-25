@@ -4,14 +4,14 @@
 
 <!-- wp:group {"tagName":"nav","align":"wide","className":"post-navigation"} -->
 <nav class="wp-block-group alignwide post-navigation">
-	<!-- wp:group -->
-	<div class="wp-block-group">
-		Previous &middot; <!-- wp:post-navigation-link {"type":"previous","showTitle":true} /-->
+	<!-- wp:group {"className":"post-navigation-previous"} -->
+	<div class="wp-block-group post-navigation-previous">
+		<!-- wp:post-navigation-link {"type":"previous","showTitle":true,"label":"Previous"} /-->
 	</div>
 	<!-- /wp:group -->
-	<!-- wp:group -->
-	<div class="wp-block-group">
-		<!-- wp:post-navigation-link {"type":"next","showTitle":true} /--> &middot; Next
+	<!-- wp:group {"className":"post-navigation-next"} -->
+	<div class="wp-block-group post-navigation-next">
+		<!-- wp:post-navigation-link {"type":"next","showTitle":true,"label":"Next"} /-->
 	</div>
 	<!-- /wp:group -->
 </nav>

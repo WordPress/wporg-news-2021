@@ -1040,13 +1040,27 @@ p.has-background {
 	mask-image: url(svg/post-tag.svg);
 }
 
-.single .post-navigation {
+.post-navigation {
 	display: flex;
 	justify-content: space-between;
 }
 
-.single .post-navigation .wp-block-post-navigation-link {
+.post-navigation .wp-block-post-navigation-link {
 	display: inline-block;
+}
+
+.post-navigation .wp-block-post-navigation-link.post-navigation-link-previous a:before {
+	content: "\00B7\0020";
+}
+
+.post-navigation .wp-block-post-navigation-link.post-navigation-link-next {
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+.post-navigation .wp-block-post-navigation-link.post-navigation-link-next a:after {
+	content: "\0020\00B7";
+	padding-right: 0.3em;
 }
 
 /*# sourceMappingURL=ponyfill.css.map */
