@@ -973,6 +973,15 @@ p.has-background {
 	margin-bottom: unset;
 }
 
+.entry-header .wp-block-post-date {
+	line-height: 3.4;
+}
+
+.entry-header .wp-block-post-author,
+.entry-header .wp-block-post-terms {
+	display: inline-block;
+}
+
 @media (min-width: 960px) {
 	.entry-header {
 		display: flex;
