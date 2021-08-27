@@ -1,0 +1,25 @@
+.entry-header {
+	.wp-block-post-date {
+		line-height: 3.4;
+	}
+
+	.wp-block-post-author,
+	.wp-block-post-terms {
+		display: inline-block;
+	}
+}
+
+@include break-large {
+	.entry-header {
+		display: flex;
+		justify-content: space-between;
+
+		.entry-meta {
+			max-width: calc(var(--wp--custom--layout--wide-size) - var(--wp--custom--layout--content-size) - 2em);
+		}
+
+		.wp-block-post-title {
+			width: var(--wp--custom--layout--content-size);
+		}
+	}
+}

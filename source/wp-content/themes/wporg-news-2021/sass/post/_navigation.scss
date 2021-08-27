@@ -1,0 +1,24 @@
+.post-navigation {
+	display: flex;
+	justify-content: space-between;
+
+	.wp-block-post-navigation-link {
+		display: inline-block;
+
+		&.post-navigation-link-previous {
+			a:before {
+				content: "\00B7\0020";
+			}
+		}
+
+		&.post-navigation-link-next {
+			display: flex;
+			flex-direction: row-reverse;
+
+			a:after {
+				content: "\0020\00B7";
+				padding-right: 0.3em;
+			}
+		}
+	}
+}

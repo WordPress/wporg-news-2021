@@ -659,6 +659,22 @@ p.has-background {
 	margin-bottom: var(--wp--custom--margin--baseline);
 }
 
+@media (min-width: 782px) {
+	.single .wp-block-post-content > * {
+		margin-left: calc( min( 100% - var(--wp--custom--layout--content-size), 50% - (var(--wp--custom--layout--wide-size) / 2) + (var(--wp--custom--layout--wide-size) - var(--wp--custom--layout--content-size)) )) !important;
+	}
+	.single .wp-block-post-content > *.alignwide {
+		margin-left: auto !important;
+	}
+	.single .wp-block-post-content > *.alignfull {
+		margin-left: inherit !important;
+	}
+}
+
+.wp-block-post-title {
+	margin-top: 0;
+}
+
 .wp-block-pullquote.is-style-solid-color,
 .wp-block-pullquote {
 	text-align: var(--wp--custom--pullquote--typography--text-align);
@@ -854,6 +870,10 @@ p.has-background {
 	opacity: var(--wp--custom--separator--opacity);
 }
 
+.wp-block-separator.is-style-wide {
+	border-top-width: 0;
+}
+
 .wp-block-separator:not(.is-style-wide) {
 	width: var(--wp--custom--separator--width);
 }
@@ -953,6 +973,28 @@ p.has-background {
 	margin-bottom: unset;
 }
 
+.entry-header .wp-block-post-date {
+	line-height: 3.4;
+}
+
+.entry-header .wp-block-post-author,
+.entry-header .wp-block-post-terms {
+	display: inline-block;
+}
+
+@media (min-width: 960px) {
+	.entry-header {
+		display: flex;
+		justify-content: space-between;
+	}
+	.entry-header .entry-meta {
+		max-width: calc(var(--wp--custom--layout--wide-size) - var(--wp--custom--layout--content-size) - 2em);
+	}
+	.entry-header .wp-block-post-title {
+		width: var(--wp--custom--layout--content-size);
+	}
+}
+
 .post-meta {
 	display: flex;
 }
@@ -996,6 +1038,29 @@ p.has-background {
 .post-meta .wp-block-post-tags:before {
 	-webkit-mask-image: url(svg/post-tag.svg);
 	mask-image: url(svg/post-tag.svg);
+}
+
+.post-navigation {
+	display: flex;
+	justify-content: space-between;
+}
+
+.post-navigation .wp-block-post-navigation-link {
+	display: inline-block;
+}
+
+.post-navigation .wp-block-post-navigation-link.post-navigation-link-previous a:before {
+	content: "\00B7\0020";
+}
+
+.post-navigation .wp-block-post-navigation-link.post-navigation-link-next {
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+.post-navigation .wp-block-post-navigation-link.post-navigation-link-next a:after {
+	content: "\0020\00B7";
+	padding-right: 0.3em;
 }
 
 /*# sourceMappingURL=ponyfill.css.map */

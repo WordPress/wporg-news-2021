@@ -1,0 +1,24 @@
+@include break-medium {
+	// Use a dynamic margin to ensure that the content column is responsively aligned on the right side, instead of
+	// centered, while still allowing individual blocks with "wide" or "full" alignment to expand appropriately.
+	//
+	// In this case, Flexbox doesn't work because it breaks the layout for things like a left- or right-aligned image
+	// with paragraph text wrapping around it.
+	.single .wp-block-post-content > * {
+		// The first line in min is for when the viewport is narrower than the max wide layout.
+		// The second line in min is for when the viewport is wider than the max wide layout.
+		margin-left: calc(
+			min(
+				100% - var(--wp--custom--layout--content-size),
+				50% - (var(--wp--custom--layout--wide-size) / 2) + (var(--wp--custom--layout--wide-size) - var(--wp--custom--layout--content-size))
+			)
+		) !important;
+
+		&.alignwide {
+			margin-left: auto !important;
+		}
+		&.alignfull {
+			margin-left: inherit !important;
+		}
+	}
+}
