@@ -26,6 +26,7 @@ These must be run in the project's root folder, _not_ in theme/plugin subfolders
 * Stop the environment: `yarn run env:stop` or `yarn run wp-env stop`
 * Restart the environment: `yarn run env` or `yarn run wp-env start`
 * Reset the dev site's content: `yarn run env:reset && yarn run env:import`
+* SSH into docker container: `docker exec -it {container ID} /bin/bash`. You can get the ID from `docker ps`.
 
 ### Asset management
 

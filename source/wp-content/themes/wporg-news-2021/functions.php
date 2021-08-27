@@ -2,8 +2,6 @@
 
 namespace WordPressdotorg\Theme\News_2021;
 
-require_once WPORG_GIT_MUPLUGINS_DIR . '/mu-plugins/blocks/global-header-footer/blocks.php';
-
 /**
  * Actions and filters.
  */
