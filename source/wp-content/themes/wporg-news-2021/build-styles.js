@@ -3,7 +3,7 @@
  * the node-sass-package-importer package.
  *
  * Original command:
- * node-sass --importer node_modules/node-sass-package-importer/dist/cli.js sass/ponyfill.scss assets/ponyfill.css --output-style expanded --indent-type tab --indent-width 1 --source-map true
+ * node-sass --importer node_modules/node-sass-package-importer/dist/cli.js sass/style.scss assets/style.css --output-style expanded --indent-type tab --indent-width 1 --source-map true
  */
 
 /**
@@ -14,8 +14,8 @@ const { resolve } = require( 'path' );
 const sass = require( 'node-sass' );
 const packageImporter = require( 'node-sass-package-importer' );
 
-const inputFile = resolve( 'sass/ponyfill.scss' );
-const outputFile = resolve( 'assets/ponyfill.css' );
+const inputFile = resolve( 'sass/style.scss' );
+const outputFile = resolve( 'assets/style.css' );
 
 sass.render( {
 	file: inputFile,

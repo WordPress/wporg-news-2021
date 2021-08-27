@@ -51,7 +51,7 @@ function editor_styles() {
 	add_editor_style(
 		array(
 			fonts_url(),
-			'/assets/ponyfill.css',
+			'/assets/style.css',
 		)
 	);
 }
@@ -62,7 +62,7 @@ function editor_styles() {
 function enqueue_assets() {
 	// Enqueue Google fonts
 	wp_enqueue_style( 'wporg-news-fonts', fonts_url(), array(), null );
-	wp_enqueue_style( 'wporg-news-ponyfill', get_template_directory_uri() . '/assets/ponyfill.css', array(), wp_get_theme()->get( 'Version' ) );
+	wp_enqueue_style( 'wporg-news-style', get_template_directory_uri() . '/assets/style.css', array(), wp_get_theme()->get( 'Version' ) );
 }
 
 /**
