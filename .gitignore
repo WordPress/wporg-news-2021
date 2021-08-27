@@ -9,7 +9,6 @@ wp-cli.yml
 
 # Allow local environment overrides.
 .wp-env.override.json
-.env/0-sandbox.php
 
 # Configs from wporg-repo-tools.
 .eslintrc.js
@@ -20,6 +19,9 @@ phpcs.xml.dist
 # Ignore everything in source...
 /source/wp-content/*
 /source/wp-content/themes/*
+
+# `.env/0-sandbox.php` is tracked, so these files can contain local tweaks that shouldn't be tracked.
+/source/wp-content/mu-plugins/sandbox-*.php
 
 # ...except the actual source of this project.
 !/source/wp-content/themes

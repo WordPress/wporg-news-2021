@@ -1,6 +1,6 @@
 <?php
 
-namespace WordPressdotorg\Theme\News;
+namespace WordPressdotorg\Theme\News_2021;
 
 /**
  * Actions and filters.
@@ -41,7 +41,6 @@ function theme_support() {
 			'primary' => __( 'Primary Navigation', 'wporg' ),
 		)
 	);
-
 }
 
 /**
@@ -69,7 +68,7 @@ function enqueue_assets() {
 /**
  * Add Google webfonts.
  *
- * @return $fonts_url
+ * @return string $fonts_url
  */
 function fonts_url() {
 	if ( ! class_exists( '\WP_Theme_JSON_Resolver_Gutenberg' ) ) {
