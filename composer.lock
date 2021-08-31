@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4bfb39d48721f7eace9b07a70bac5729",
+    "content-hash": "78f4585cb681713075b0b3361d64ee8a",
     "packages": [],
     "packages-dev": [
         {
@@ -2337,6 +2337,46 @@
             "homepage": "https://wordpress.org/plugins/wordpress-importer/"
         },
         {
+            "name": "wporg/wporg-mu-plugins",
+            "version": "dev-trunk",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WordPress/wporg-mu-plugins.git",
+                "reference": "422e41fa97ee36fe786345a752325fd9ace4b8fc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WordPress/wporg-mu-plugins/zipball/422e41fa97ee36fe786345a752325fd9ace4b8fc",
+                "reference": "422e41fa97ee36fe786345a752325fd9ace4b8fc",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "require-dev": {
+                "wporg/wporg-repo-tools": "dev-trunk"
+            },
+            "default-branch": true,
+            "type": "wordpress-muplugin",
+            "extra": {
+                "sync-svn": {
+                    "main-branch": "trunk",
+                    "paths": {
+                        "mu-plugins/": "https://dotorg.svn.wordpress.org/wordpress/website/wp-content/mu-plugins/git-sync/  -- todo: come up with name this better, but probably want a subfolder in mu-plugins/ so can cleanly sync"
+                    }
+                }
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "`mu-plugins` for the WordPress.org network",
+            "support": {
+                "source": "https://github.com/WordPress/wporg-mu-plugins/tree/trunk",
+                "issues": "https://github.com/WordPress/wporg-mu-plugins/issues"
+            },
+            "time": "2021-08-31T17:20:45+00:00"
+        },
+        {
             "name": "wporg/wporg-repo-tools",
             "version": "dev-trunk",
             "source": {
@@ -2370,7 +2410,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "wporg/wporg-repo-tools": 20
+        "wporg/wporg-repo-tools": 20,
+        "wporg/wporg-mu-plugins": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

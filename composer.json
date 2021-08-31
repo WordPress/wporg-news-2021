@@ -41,7 +41,7 @@
 		"wpackagist-plugin/syntaxhighlighter": "*",
 		"wpackagist-plugin/wordpress-importer": "*",
 		"wporg/wporg-repo-tools": "dev-trunk",
-		"wordpress/wporg-mu-plugins": "dev-trunk",
+		"wporg/wporg-mu-plugins": "dev-trunk",
 		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
 		"wp-coding-standards/wpcs": "2.*",
 		"phpcompatibility/phpcompatibility-wp": "*",
