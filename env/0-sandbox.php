@@ -8,4 +8,4 @@ namespace WordPress_org\News_2021\Stubs;
 
 defined( 'WPINC' ) || die();
 
-require_once WPORG_GIT_MUPLUGINS_DIR . '/blocks/global-header-footer/blocks.php';
+require_once WPMU_PLUGIN_DIR . '/wporg-mu-plugins/mu-plugins/blocks/global-header-footer/blocks.php';

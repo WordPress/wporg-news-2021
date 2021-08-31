@@ -6,8 +6,7 @@
 		"FS_METHOD": "direct",
 		"WP_ENVIRONMENT_TYPE": "local",
 		"JETPACK_DEV_DEBUG": true,
-		"WPORG_SANDBOXED": true,
-		"WPORG_GIT_MUPLUGINS_DIR": "/var/www/html/vendor/wporg/wporg-mu-plugins/mu-plugins"
+		"WPORG_SANDBOXED": true
 	},
 	"core": "WordPress/WordPress#5.8",
 	"plugins": [
