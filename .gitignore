@@ -16,6 +16,9 @@ wp-cli.yml
 .stylelintrc
 phpcs.xml.dist
 
+# Production-only files
+README-svn.txt
+
 # Ignore everything in source...
 /source/wp-content/*
 /source/wp-content/themes/*
