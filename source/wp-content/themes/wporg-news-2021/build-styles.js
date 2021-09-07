@@ -15,7 +15,7 @@ const sass = require( 'node-sass' );
 const packageImporter = require( 'node-sass-package-importer' );
 
 const inputFile = resolve( 'sass/style.scss' );
-const outputFile = resolve( 'assets/style.css' );
+const outputFile = resolve( './style.css' );
 
 sass.render( {
 	file: inputFile,

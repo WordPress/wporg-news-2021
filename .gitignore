@@ -26,6 +26,9 @@ README-svn.txt
 # `.env/0-sandbox.php` is tracked, so these files can contain local tweaks that shouldn't be tracked.
 /source/wp-content/mu-plugins/sandbox-*.php
 
-# ...except the actual source of this project.
+# Explicitly track the actual source of this project.
 !/source/wp-content/themes
 !/source/wp-content/themes/wporg-news-2021
+
+# Ignore built files in source directories.
+/source/wp-content/themes/wporg-news-2021/style.css
