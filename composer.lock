@@ -1855,6 +1855,7 @@
                     "type": "github"
                 }
             ],
+            "abandoned": true,
             "time": "2020-11-30T07:30:19+00:00"
         },
         {
@@ -2248,43 +2249,43 @@
         },
         {
             "name": "wpackagist-plugin/gutenberg",
-            "version": "11.3.0",
+            "version": "11.4.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/gutenberg/",
-                "reference": "tags/11.3.0"
+                "reference": "tags/11.4.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/gutenberg.11.3.0.zip"
+                "url": "https://downloads.wordpress.org/plugin/gutenberg.11.4.1.zip"
             },
             "require": {
-                "composer/installers": "~1.0"
+                "composer/installers": "~1.0 || ~2.0"
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/gutenberg/"
         },
         {
             "name": "wpackagist-plugin/jetpack",
-            "version": "10.0",
+            "version": "10.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/jetpack/",
-                "reference": "tags/10.0"
+                "reference": "tags/10.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/jetpack.10.0.zip"
+                "url": "https://downloads.wordpress.org/plugin/jetpack.10.1.zip"
             },
             "require": {
-                "composer/installers": "~1.0"
+                "composer/installers": "~1.0 || ~2.0"
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/jetpack/"
         },
         {
             "name": "wpackagist-plugin/seriously-simple-podcasting",
-            "version": "2.8.1",
+            "version": "2.8.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/seriously-simple-podcasting/",
@@ -2292,10 +2293,10 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/seriously-simple-podcasting.zip?timestamp=1628868950"
+                "url": "https://downloads.wordpress.org/plugin/seriously-simple-podcasting.zip?timestamp=1630498726"
             },
             "require": {
-                "composer/installers": "~1.0"
+                "composer/installers": "~1.0 || ~2.0"
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/seriously-simple-podcasting/"
@@ -2313,7 +2314,7 @@
                 "url": "https://downloads.wordpress.org/plugin/syntaxhighlighter.3.6.0.zip"
             },
             "require": {
-                "composer/installers": "~1.0"
+                "composer/installers": "~1.0 || ~2.0"
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/syntaxhighlighter/"
@@ -2331,7 +2332,7 @@
                 "url": "https://downloads.wordpress.org/plugin/wordpress-importer.0.7.zip"
             },
             "require": {
-                "composer/installers": "~1.0"
+                "composer/installers": "~1.0 || ~2.0"
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/wordpress-importer/"
@@ -2342,12 +2343,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/WordPress/wporg-mu-plugins.git",
-                "reference": "422e41fa97ee36fe786345a752325fd9ace4b8fc"
+                "reference": "d71a4420d27b58a994eeee8b6774ce8ce03215b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WordPress/wporg-mu-plugins/zipball/422e41fa97ee36fe786345a752325fd9ace4b8fc",
-                "reference": "422e41fa97ee36fe786345a752325fd9ace4b8fc",
+                "url": "https://api.github.com/repos/WordPress/wporg-mu-plugins/zipball/d71a4420d27b58a994eeee8b6774ce8ce03215b1",
+                "reference": "d71a4420d27b58a994eeee8b6774ce8ce03215b1",
                 "shasum": ""
             },
             "require": {
@@ -2362,7 +2363,7 @@
                 "sync-svn": {
                     "main-branch": "trunk",
                     "paths": {
-                        "mu-plugins/": "https://dotorg.svn.wordpress.org/wordpress/website/wp-content/mu-plugins/git-sync/  -- todo: come up with name this better, but probably want a subfolder in mu-plugins/ so can cleanly sync"
+                        "mu-plugins/": "https://dotorg.svn.wordpress.org/wordpress/website/wp-content/mu-plugins/pub-sync/"
                     }
                 }
             },
@@ -2374,7 +2375,7 @@
                 "source": "https://github.com/WordPress/wporg-mu-plugins/tree/trunk",
                 "issues": "https://github.com/WordPress/wporg-mu-plugins/issues"
             },
-            "time": "2021-08-31T17:20:45+00:00"
+            "time": "2021-09-02T18:21:17+00:00"
         },
         {
             "name": "wporg/wporg-repo-tools",
