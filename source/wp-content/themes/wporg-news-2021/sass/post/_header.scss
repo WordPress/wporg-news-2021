@@ -6,12 +6,14 @@
 	.wp-block-post-author,
 	.wp-block-post-terms {
 		display: inline-block;
+		margin-top: 0 !important; // TODO this might be fixable via the blockGap prop in theme.json.
 	}
 }
 
 @include break-large {
 	.entry-header {
 		display: flex;
+		align-items: flex-start !important; // TODO eventually this might be a layout setting.
 		justify-content: space-between;
 
 		.entry-meta {
