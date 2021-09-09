@@ -6,12 +6,17 @@
 	.wp-block-post-author,
 	.wp-block-post-terms {
 		display: inline-block;
+
+		[class*="wp-container-"] & {
+			margin-top: 0;
+		}
 	}
 }
 
 @include break-large {
 	.entry-header {
 		display: flex;
+		align-items: flex-start !important; // TODO eventually this might be a layout setting.
 		justify-content: space-between;
 
 		.entry-meta {

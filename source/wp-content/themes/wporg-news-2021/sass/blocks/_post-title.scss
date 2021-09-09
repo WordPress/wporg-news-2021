@@ -1,3 +1,5 @@
 .wp-block-post-title {
-	margin-top: 0;
+	.single [class*="wp-container-"] & {
+		margin-top: 0;
+	}
 }
