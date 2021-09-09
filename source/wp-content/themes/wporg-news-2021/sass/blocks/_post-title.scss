@@ -1,3 +1,5 @@
 .wp-block-post-title {
-	margin-top: 0 !important; // TODO this might be fixable via the blockGap prop in theme.json.
+	.single [class*="wp-container-"] & {
+		margin-top: 0;
+	}
 }

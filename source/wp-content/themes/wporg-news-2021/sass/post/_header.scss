@@ -6,7 +6,10 @@
 	.wp-block-post-author,
 	.wp-block-post-terms {
 		display: inline-block;
-		margin-top: 0 !important; // TODO this might be fixable via the blockGap prop in theme.json.
+
+		[class*="wp-container-"] & {
+			margin-top: 0;
+		}
 	}
 }
 
