@@ -42,7 +42,7 @@ GNU General Public License for more details.
 @import "blocks/paragraph";
 @import "blocks/post-author";
 @import "blocks/post-comments";
-@import "blocks/post-content";
+@import "blocks/post-excerpt";
 @import "blocks/post-title";
 @import "blocks/pullquote";
 @import "blocks/query-pagination";
@@ -53,6 +53,7 @@ GNU General Public License for more details.
 @import "blocks/table";
 @import "blocks/video";
 @import "blocks/columns";
+@import "post/content";
 @import "post/header";
 @import "post/meta";
 @import "post/navigation";

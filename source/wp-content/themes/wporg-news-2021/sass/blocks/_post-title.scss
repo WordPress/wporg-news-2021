@@ -1,5 +1,10 @@
 .wp-block-post-title {
-	.single [class*="wp-container-"] & {
-		margin-top: 0;
+	a {
+		color: inherit;
+
+		&:hover,
+		&:focus {
+			color: var(--wp--preset--color--blue-1);
+		}
 	}
 }
