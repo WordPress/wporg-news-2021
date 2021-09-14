@@ -1,21 +1,39 @@
 .entry-header {
-	.wp-block-post-date {
-		line-height: 3.4;
+	&[class*="wp-container-"] * + * {
+		margin-top: 0;
 	}
 
-	.wp-block-post-author,
-	.wp-block-post-terms {
-		display: inline-block;
+	.home &,
+	.blog &,
+	.archive & {
+		.wp-block-post-terms,
+		.wp-block-post-date {
+			display: inline-block;
+		}
 
-		[class*="wp-container-"] & {
-			margin-top: 0;
+		.wp-block-post-terms {
+			text-transform: uppercase;
+		}
+
+		.wp-block-post-terms:after {
+			content: "\0020\00B7";
+		}
+	}
+
+	.single & {
+		.wp-block-post-date {
+			line-height: 3.4;
+		}
+
+		.wp-block-post-author,
+		.wp-block-post-terms {
+			display: inline-block;
 		}
 	}
 }
 
 @include break-large {
-	.entry-header {
-		display: flex;
+	.single .entry-header {
 		align-items: flex-start !important; // TODO eventually this might be a layout setting.
 		justify-content: space-between;
 
