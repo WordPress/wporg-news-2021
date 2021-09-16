@@ -7,7 +7,8 @@
 	"private": true,
 	"dependencies": {},
 	"devDependencies": {
-		"@wordpress/env": "^4.1.0"
+		"@wordpress/env": "^4.1.0",
+		"browser-sync": "^2.27.5"
 	},
 	"scripts": {
 		"initial-setup": "yarn && composer install && yarn run update-configs",
@@ -19,7 +20,8 @@
 		"env:setup": "wp-env start --update && yarn run env:reset && yarn run env:import && yarn run env:misc",
 		"env:reset": "wp-env clean all && wp-env run cli \"wp site empty --yes\"",
 		"env:import": "wp-env run cli \"bash env/import.sh\"",
-		"env:misc": "wp-env run cli \"bash env/misc.sh\""
+		"env:misc": "wp-env run cli \"bash env/misc.sh\"",
+		"sync": "browser-sync start --config bs-config.js"
 	},
 	"workspaces": [
 		"source/wp-content/themes/wporg-news-2021"
