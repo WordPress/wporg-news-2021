@@ -6,3 +6,22 @@
 		@content;
 	}
 }
+
+// Custom breakpoints should be synced with `global-header-footer` in `wporg-mu-plugins`.
+@mixin break-tablet() {
+	@media (min-width: 876px) {
+		@content;
+	}
+}
+
+@mixin break-desktop() {
+	@media (min-width: 1152px) {
+		@content;
+	}
+}
+
+@mixin break-desktop-wide() {
+	@media (min-width: 1320px) {
+		@content;
+	}
+}

@@ -1,3 +1,19 @@
+[class*="wp-container-"] > .post-navigation {
+	padding-top: 0;
+	padding-right: var(--wp--custom--post-content--padding--right);
+	padding-bottom: 19px;
+	padding-left: var(--wp--custom--post-content--padding--left);
+}
+
+@include break-tablet {
+	[class*="wp-container-"] > .post-navigation {
+		padding-top: 0;
+		padding-right: 88px;
+		padding-bottom: 26px;
+		padding-left: var(--wp--custom--post-content--breakpoint--tablet--padding--left);
+	}
+}
+
 .post-navigation {
 	display: flex;
 	justify-content: space-between;

@@ -1,7 +1,7 @@
 {
-	"name": "wporg-news-2021",
+	"name": "wporg-news-2021-theme",
 	"version": "1.0.0",
-	"description": "",
+	"description": "A Full Site Editing theme for w.org/news, with a jazz-inspired design.",
 	"author": "WordPress.org",
 	"license": "GPL-2.0-or-later",
 	"private": true,
