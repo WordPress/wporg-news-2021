@@ -6,10 +6,12 @@
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
-}
 
-.site-footer-container {
-	margin-top: auto;
+	/*
+	 * Make sure the footer is always at the bottom of the viewport, even on pages with little content.
+	 * Otherwise there'd be empty space below the footer
+	 */
+	justify-content: space-between;
 }
 
 body.admin-bar {

@@ -32,3 +32,4 @@ These must be run in the project's root folder, _not_ in theme/plugin subfolders
 
 * Build all assets once: `yarn workspaces run build`
 * Rebuild all assets on change: `yarn workspaces run start`
+* Reload browser when files change: `npm run sync`

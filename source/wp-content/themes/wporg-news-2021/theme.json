@@ -1,4 +1,6 @@
 {
+	"//README": "Comments should be added to document important things. Use the `//{property}` format. See https://github.com/WordPress/gutenberg/issues/35099.",
+	"$schema": "https://json.schemastore.org/theme-v1.json",
 	"version": 1,
 	"settings": {
 		"border": {
@@ -338,8 +340,20 @@
 			},
 			"post-content": {
 				"padding": {
-					"left": "20px",
-					"right": "20px"
+					"top": "32px",
+					"bottom": "70px",
+					"left": "var(--wp--style--block-gap)",
+					"right": "var(--wp--style--block-gap)"
+				},
+				"breakpoint": {
+					 "tablet": {
+						"padding": {
+							"top": "80px",
+							"bottom": "80px",
+							"left": "80px",
+							"right": "180px"
+						}
+					 }
 				}
 			},
 			"pullquote": {
@@ -395,6 +409,8 @@
 			"wideSize": "var(--wp--custom--layout--wide-size)"
 		},
 		"spacing": {
+			"//blockGap": "The design calls for a 24px gap. Coincidentally, that's the default value that Gutenberg defines. The default could change in the future, though, so this should be explicitly set.",
+			"blockGap": "24px",
 			"customPadding": true,
 			"units": [
 				"%",

@@ -25,11 +25,6 @@ module.exports = {
 		paths.globalHeaderFooter + watchedFilesPattern
 	],
 
-	"ignore": [
-		paths.theme + '/sass/**/*.*',
-		paths.globalHeaderFooter + '/postcss/**/*.*'
-	],
-
 	"open": false,
 	"reloadOnRestart": true,
 	"notify": false,

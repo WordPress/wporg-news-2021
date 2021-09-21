@@ -1,7 +1,7 @@
 {
 	"name": "wporg-news-2021-project",
 	"version": "1.0.0",
-	"description": "",
+	"description": "The codebase and development environment for w.org/news.",
 	"author": "WordPress.org",
 	"license": "GPL-2.0-or-later",
 	"private": true,
@@ -24,6 +24,7 @@
 		"sync": "browser-sync start --config bs-config.js"
 	},
 	"workspaces": [
-		"source/wp-content/themes/wporg-news-2021"
+		"source/wp-content/themes/wporg-news-2021",
+		"source/wp-content/mu-plugins/wporg-mu-plugins"
 	]
 }
