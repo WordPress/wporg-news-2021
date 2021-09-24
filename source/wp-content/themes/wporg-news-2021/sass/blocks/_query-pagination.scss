@@ -1,31 +1,43 @@
+.query-navigation-container {
+	padding: 2em 0;
+}
+
 .wp-block-query-pagination {
-	padding-top: 1.5em;
-	justify-content: space-between;
-	display: grid;
-	grid-template-areas: "prev numbers next";
-	grid-template-columns: 1fr 2fr 1fr;
+	display: inline-block;
+	line-height: 7em;
+	background-image: url("assets/svg/brush-stroke-short-blue-4.svg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	color: var(--wp--preset--color--blue-1);
 
-	@include break-small-only(){
-		grid-template-areas: "prev next";
-		grid-template-columns: 1fr 1fr;
+	> .wp-block-query-pagination-previous,
+	> .wp-block-query-pagination-numbers,
+	> .wp-block-query-pagination-next {
+		margin-bottom: 0;
+		margin-right: 0;
 	}
 
-	.wp-block-query-pagination-previous {
-		justify-self: start;
-		grid-area: prev;
-	}
+	.wp-block-query-pagination-numbers {
+		&:before {
+			content: "\00B7\0020";
+			padding-left: 2px;
+		}
 
-	.wp-block-query-pagination-next {
-		justify-self: end;
-		grid-area: next;
-	}
-	
-	.wp-block-query-pagination-numbers{
-		grid-area: numbers;
-		justify-self: center;
+		&:after {
+			content: "\0020\00B7";
+			padding-right: 2px;
+		}
+
+		> * {
+			display: inline-block;
+			padding: 0 2px;
+		}
+
 		.current {
 			text-decoration: underline;
 		}
+
 		@include break-small-only(){
 			display: none;
 		}
