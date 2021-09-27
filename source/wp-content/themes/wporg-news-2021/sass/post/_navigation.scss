@@ -3,6 +3,10 @@
 	padding-right: var(--wp--custom--post-content--padding--right);
 	padding-bottom: 19px;
 	padding-left: var(--wp--custom--post-content--padding--left);
+
+	& * {
+		margin-top: 0;
+	}
 }
 
 @include break-tablet {
