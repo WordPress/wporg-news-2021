@@ -6,6 +6,23 @@
 		align-items: stretch !important;
 		border-top: 1px solid var(--wp--preset--color--light-grey);
 	}
+
+	.wp-briefing {
+		p {
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+
+		.podcast-link {
+			line-height: 2.4;
+			margin-top: 1.1em;
+			padding: 0 1em 1.1em;
+			background-image: url("assets/svg/brush-stroke-short-2-blue-4.svg");
+			background-position: bottom right;
+			background-repeat: no-repeat;
+			background-size: contain;
+		}
+	}
 }
 
 @include break-medium {
