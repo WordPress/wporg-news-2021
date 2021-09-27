@@ -1,0 +1,38 @@
+.footer-archive {
+	display: none;
+
+	&-row {
+		justify-content: center;
+		align-items: stretch !important;
+		border-top: 1px solid var(--wp--preset--color--light-grey);
+	}
+}
+
+@include break-medium {
+	.footer-archive {
+		display: block;
+
+		&-row > * {
+			--horz-padding: calc( var(--wp--custom--margin--horizontal) * 2 );
+
+			// The first line in min is for when the viewport is narrower than the max wide layout.
+			// The second line in min is for when the viewport is wider than the max wide layout.
+			max-width: calc(
+				min(
+					50% - var(--wp--custom--margin--horizontal) - 1px,
+					( var(--wp--custom--layout--wide-size) / 2 ) - var(--horz-padding) - 1px
+				)
+			);
+			padding: var(--wp--custom--margin--vertical) 0;
+
+			&:nth-child(odd) {
+				border-right: 1px solid var(--wp--preset--color--light-grey);
+				padding-right: var(--horz-padding);
+			}
+
+			&:nth-child(even) {
+				padding-left: var(--horz-padding);
+			}
+		}
+	}
+}
