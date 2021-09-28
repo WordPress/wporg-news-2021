@@ -42,17 +42,23 @@ GNU General Public License for more details.
 @import "blocks/paragraph";
 @import "blocks/post-author";
 @import "blocks/post-comments";
-@import "blocks/post-content";
+@import "blocks/post-excerpt";
 @import "blocks/post-title";
 @import "blocks/pullquote";
 @import "blocks/query-pagination";
 @import "blocks/quote";
 @import "blocks/search";
 @import "blocks/separator";
+@import "blocks/social-links";
 @import "blocks/file";
 @import "blocks/table";
 @import "blocks/video";
 @import "blocks/columns";
+
+// Posts
+// - Styles for post areas
+@import "post/content";
+@import "post/footer";
 @import "post/header";
 @import "post/meta";
 @import "post/navigation";
