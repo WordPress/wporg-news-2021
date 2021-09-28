@@ -1,3 +1,14 @@
+.header-archive {
+	h1 {
+		font-size: 7.5rem;
+	}
+
+	&-all-posts {
+		color: var(--wp--preset--color--white);
+		background-color: var(--wp--preset--color--blue-1);
+	}
+}
+
 .entry-header {
 	&[class*="wp-container-"] * + * {
 		margin-top: 0;
