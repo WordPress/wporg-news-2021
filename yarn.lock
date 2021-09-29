@@ -10005,7 +10005,7 @@ postcss@^8.2.15, postcss@^8.2.4:
     nanoid "^3.1.23"
     source-map-js "^0.6.2"
 
-postcss@^8.3.6:
+postcss@^8.3.7:
   version "8.3.8"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.3.8.tgz#9ebe2a127396b4b4570ae9f7770e7fb83db2bac1"
   integrity sha512-GT5bTjjZnwDifajzczOC+r3FI3Cu+PgPvrsjhQdRqa2kTJ4968/X9CUce9xttIB0xOs5c6xf0TCWZo/y9lF6bA==
