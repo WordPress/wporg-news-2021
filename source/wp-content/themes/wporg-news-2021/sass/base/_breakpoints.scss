@@ -13,15 +13,3 @@
 		@content;
 	}
 }
-
-@mixin break-desktop() {
-	@media (min-width: 1152px) {
-		@content;
-	}
-}
-
-@mixin break-desktop-wide() {
-	@media (min-width: 1320px) {
-		@content;
-	}
-}
