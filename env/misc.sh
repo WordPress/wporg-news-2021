@@ -3,3 +3,4 @@
 wp theme activate wporg-news-2021
 
 wp rewrite structure '/%year%/%monthnum%/%postname%/'
+wp rewrite flush
