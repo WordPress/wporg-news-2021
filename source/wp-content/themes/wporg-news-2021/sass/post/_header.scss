@@ -1,14 +1,21 @@
-.site-header-container {
-	position: fixed;
-	width: 100%;
-}
+.site-header {
+	&-container {
+		position: fixed;
+		width: 100%;
+	}
 
-.site-header-offset {
-	visibility: hidden; // This removes the element and descendents from the accessibility tree.
+	&-offset {
+		visibility: hidden; // This removes the element and descendents from the accessibility tree.
+	}
 }
 
 .site-navigation {
 	justify-content: space-between;
+	position: relative;
+
+	[class*="wp-container-"] & {
+		align-items: flex-start;
+	}
 
 	&-container {
 		min-height: 56px;
@@ -43,6 +50,76 @@
 
 		.wp-block-navigation {
 			display: inline-block;
+		}
+	}
+
+	&-categories {
+		// This selector overcomes the overly generic `input[type=checkbox] + label` rule in the reset.
+		label#{&}-label {
+			display: block;
+			line-height: 50px;
+			color: var(--wp--preset--color--white);
+			margin: 0;
+
+			span {
+				padding: 0 3px;
+			}
+
+			svg {
+				vertical-align: middle;
+			}
+		}
+
+		&-toggle {
+			opacity: 0;
+			width: 0;
+			height: 0;
+			appearance: none;
+			position: fixed;
+
+			&:checked {
+				& + label {
+					height: calc( 1rem * var(--wp--custom--body--typography--line-height) * 4 + 125px );
+
+					svg {
+						transform: rotate( 180deg );
+					}
+				}
+
+				& ~ ul {
+					display: flex;
+				}
+			}
+		}
+
+		.wp-block-categories {
+			display: none;
+			flex-direction: column;
+			flex-wrap: wrap;
+			position: absolute;
+			left: 0;
+			top: 75px;
+			width: var(--wp--custom--layout--wide-size);
+			max-height: calc( 1rem * var(--wp--custom--body--typography--line-height) * 4 );
+			color: var(--wp--preset--color--white);
+			list-style: none;
+			padding-left: 0;
+
+			[class*="wp-container-"] & {
+				margin-top: 0;
+			}
+
+			.current-cat {
+				font-weight: 700;
+
+				&:before {
+					content: "\0020\00B7\0020";
+				}
+			}
+
+			a {
+				color: var(--wp--preset--color--white);
+			}
 		}
 	}
 }

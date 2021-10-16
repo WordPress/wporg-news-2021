@@ -11,9 +11,17 @@
 
 	<!-- wp:group {"className":"site-navigation-categories"} -->
 	<div class="wp-block-group site-navigation-categories">
-		<!-- wp:button -->
-		<div class="wp-block-button"><a class="wp-block-button__link">Categories</a></div>
-		<!-- /wp:button -->
+		<!-- wp:html -->
+		<input type="checkbox" id="site-navigation-categories-toggle" class="site-navigation-categories-toggle" aria-label="Open categories list" />
+		<label for="site-navigation-categories-toggle" class="site-navigation-categories-label">
+			Categories
+			<span>
+				<svg width="10" height="7" viewBox="0 0 10 7" fill="none" stroke="white" stroke-width="1.2" xmlns="http://www.w3.org/2000/svg">
+					<path d="M0.416667 1.33325L5 5.49992L9.58331 1.33325" />
+				</svg>
+			</span>
+		</label>
+		<!-- /wp:html -->
 		<!-- wp:categories /-->
 	</div>
 	<!-- /wp:group -->
