@@ -1,7 +1,11 @@
 .site-header {
 	&-container {
-		position: fixed;
 		width: 100%;
+
+		// Matches the breakpoint for the admin bar.
+		@include break-small {
+			position: fixed;
+		}
 	}
 
 	&-offset {
@@ -10,17 +14,26 @@
 }
 
 .site-navigation {
-	justify-content: space-between;
 	position: relative;
 
-	[class*="wp-container-"] & {
+	@include break-mobile {
+		display: flex;
 		align-items: flex-start;
+		justify-content: space-between;
+	}
+
+	[class*="wp-container-"] & {
+		padding: 0 0.5em;
+
+		@include break-xlarge {
+			padding: 0;
+		}
 	}
 
 	&-container {
 		min-height: 56px;
 		background-image: url("assets/svg/brush-stroke-nav-bar-blue-1.svg"),
-		url("data:image/svg+xml,%3Csvg height='500' width='1' version='1.1' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='0' height='500' width='1' r='0' rx='0' ry='0' fill='%233e58e1'%3E%3C/rect%3E%3C/svg%3E");
+		url("data:image/svg+xml,%3Csvg height='1000' width='1' version='1.1' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='0' height='1000' width='1' r='0' rx='0' ry='0' fill='%233e58e1'%3E%3C/rect%3E%3C/svg%3E");
 		background-position: 75% bottom, left calc( 100% - 56px );
 		background-repeat: repeat-x;
 
@@ -54,12 +67,27 @@
 	}
 
 	&-categories {
+		--flex-items-per-column: 8;
+
+		@include break-medium {
+			--flex-items-per-column: 4;
+		}
+
+		[class*="wp-container-"] & {
+			margin-top: 0;
+		}
+
 		// This selector overcomes the overly generic `input[type=checkbox] + label` rule in the reset.
 		label#{&}-label {
 			display: block;
 			line-height: 50px;
 			color: var(--wp--preset--color--white);
 			margin: 0;
+			cursor: pointer;
+
+			@include break-mobile {
+				text-align: right;
+			}
 
 			span {
 				padding: 0 3px;
@@ -79,7 +107,10 @@
 
 			&:checked {
 				& + label {
-					height: calc( 1rem * var(--wp--custom--body--typography--line-height) * 4 + 125px );
+
+					@include break-mobile {
+						height: calc( 1rem * var(--wp--custom--body--typography--line-height) * var(--flex-items-per-column) + 125px );
+					}
 
 					svg {
 						transform: rotate( 180deg );
@@ -96,17 +127,21 @@
 			display: none;
 			flex-direction: column;
 			flex-wrap: wrap;
-			position: absolute;
-			left: 0;
-			top: 75px;
-			width: var(--wp--custom--layout--wide-size);
-			max-height: calc( 1rem * var(--wp--custom--body--typography--line-height) * 4 );
+			width: calc( min( 100%, var(--wp--custom--layout--wide-size) ) );
 			color: var(--wp--preset--color--white);
 			list-style: none;
-			padding-left: 0;
+			padding: 0 0 2em 0;
 
 			[class*="wp-container-"] & {
 				margin-top: 0;
+			}
+
+			@include break-mobile {
+				padding: 0 0.5em 0;
+				position: absolute;
+				left: 0;
+				top: 75px;
+				max-height: calc( 1rem * var(--wp--custom--body--typography--line-height) * var(--flex-items-per-column) );
 			}
 
 			.current-cat {
