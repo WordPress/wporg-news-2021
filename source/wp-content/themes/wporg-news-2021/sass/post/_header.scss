@@ -9,7 +9,12 @@
 	}
 
 	&-offset {
-		visibility: hidden; // This removes the element and descendents from the accessibility tree.
+		display: none;
+
+		@include break-small {
+			display: block;
+			visibility: hidden; // This removes the element and descendents from the accessibility tree.
+		}
 	}
 }
 
@@ -23,7 +28,11 @@
 	}
 
 	[class*="wp-container-"] & {
-		padding: 0 0.5em;
+		padding: 15px 0.5em;
+
+		@include break-mobile {
+			padding: 0 0.5em;
+		}
 
 		@include break-xlarge {
 			padding: 0;
@@ -81,8 +90,11 @@
 	}
 
 	&-breadcrumb {
-		line-height: 50px;
 		color: var(--bar-text-color);
+
+		@include break-mobile {
+			line-height: 50px;
+		}
 
 		&-current {
 			display: inline-block;
@@ -122,17 +134,19 @@
 		// This selector overcomes the overly generic `input[type=checkbox] + label` rule in the reset.
 		label#{&}-label {
 			display: block;
-			line-height: 50px;
 			color: var(--bar-text-color);
 			margin: 0;
+			padding: 15px 0;
 			cursor: pointer;
 
 			@include break-mobile {
+				line-height: 50px;
+				padding: 0;
 				text-align: right;
 			}
 
 			span {
-				padding: 0 3px;
+				padding: 0 3px 0 0;
 			}
 
 			svg {
@@ -149,9 +163,12 @@
 
 			&:checked {
 				& + label {
-
 					@include break-mobile {
 						height: calc( 1rem * var(--wp--custom--body--typography--line-height) * var(--flex-items-per-column) + 125px );
+					}
+
+					span {
+						text-decoration: underline;
 					}
 
 					svg {
@@ -159,14 +176,30 @@
 					}
 				}
 
-				& ~ ul {
+				& ~ .wp-block-categories {
 					display: flex;
+					opacity: 1;
+					animation-duration: 400ms;
+					animation-name: categories-fade-in;
+
+					@at-root {
+						@keyframes categories-fade-in {
+							from {
+								opacity: 0;
+							}
+
+							to {
+								opacity: 1;
+							}
+						}
+					}
 				}
 			}
 		}
 
 		.wp-block-categories {
 			display: none;
+			opacity: 0;
 			flex-direction: column;
 			flex-wrap: wrap;
 			width: calc( min( 100%, var(--wp--custom--layout--wide-size) ) );
