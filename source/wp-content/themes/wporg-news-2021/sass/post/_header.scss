@@ -33,7 +33,7 @@
 	}
 }
 
-@include break-large {
+@include break-wide {
 	.single .entry-header {
 		align-items: flex-start !important; // TODO eventually this might be a layout setting.
 		justify-content: space-between;
