@@ -1,0 +1,10 @@
+/* For workarounds like the Home Link block in `404.html`. */
+ul.is-inline {
+	display: inline;
+	margin: 0;
+	padding: 0;
+
+	li {
+		display: inline;
+	}
+}
