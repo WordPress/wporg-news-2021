@@ -20,7 +20,8 @@
 		}
 	}
 
-	.single & {
+	.single &,
+	.page & {
 		.wp-block-post-date {
 			line-height: 3.4;
 		}

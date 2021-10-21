@@ -8,6 +8,7 @@
 	.blog .wp-block-post > article > *,
 	.archive .wp-block-post > article > *,
 	.single .wp-block-post-content > *,
+	.page .wp-block-post-content > *,
 	.query-navigation-container[class*="wp-container-"] > * {
 		// The first line in min is for when the viewport is narrower than the max wide layout.
 		// The second line in min is for when the viewport is wider than the max wide layout.
