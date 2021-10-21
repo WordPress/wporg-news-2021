@@ -304,7 +304,8 @@
 			},
 			"layout": {
 				"contentSize": "680px",
-				"wideSize": "1070px"
+				"wideSize": "1070px",
+				"contentMetaSize": "calc( var(--wp--custom--layout--wide-size) - var(--wp--custom--layout--content-size) )"
 			},
 			"list": {
 				"spacing": {
