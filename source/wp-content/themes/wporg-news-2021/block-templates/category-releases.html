@@ -1,0 +1,17 @@
+<!-- wp:template-part {"slug":"header","align":"full","className":"site-header-container"} /-->
+<!-- This is a hack to ensure content isn't covered by the fixed header -->
+<!-- wp:template-part {"slug":"header","align":"full","className":"site-header-offset"} /-->
+
+<!-- wp:query {"tagName":"main","className":"site-content-container content-category"} -->
+<main class="wp-block-query site-content-container content-category">
+	<!-- wp:post-template -->
+		<!-- wp:template-part {"slug":"content-category-releases","tagName":"article","layout":{"inherit":true}} /-->
+	<!-- /wp:post-template -->
+
+	<!-- wp:template-part {"slug":"query-navigation","className":"query-navigation-container","layout":{"inherit":true}} /-->
+</main>
+<!-- /wp:query -->
+
+<!-- wp:template-part {"tagName":"footer","slug":"footer-archive","className":"footer-archive","layout":{"inherit":true}} /-->
+
+<!-- wp:wporg/global-footer /-->

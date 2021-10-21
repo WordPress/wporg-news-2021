@@ -1,0 +1,26 @@
+<!-- wp:template-part {"slug":"header","align":"full","className":"site-header-container"} /-->
+<!-- This is a hack to ensure content isn't covered by the fixed header -->
+<!-- wp:template-part {"slug":"header","align":"full","className":"site-header-offset"} /-->
+
+<!-- wp:group {"tagName":"header","className":"header-home","layout":{"inherit":true}} -->
+<header class="wp-block-group header-home">
+	<!-- wp:heading {"level":1,"align":"wide"} -->
+	<h1 class="alignwide">News</h1>
+	<!-- /wp:heading -->
+</header>
+<!-- /wp:group -->
+
+<!-- wp:query {"tagName":"main","className":"site-content-container content-home"} -->
+<main class="wp-block-query site-content-container content-home">
+	<h3>TODO</h3>
+	<ul>
+		<li>latest release query loop limit 1</li>
+		<li>latest posts - probably via query block since posts shown on homepage, but maybe via latest posts widget block</li>
+		<li>people of wp query loop limit 5</li>
+	</ul>
+</main>
+<!-- /wp:query -->
+
+<!-- wp:template-part {"tagName":"footer","slug":"footer-archive","className":"footer-archive","layout":{"inherit":true}} /-->
+
+<!-- wp:wporg/global-footer /-->

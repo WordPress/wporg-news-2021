@@ -3,17 +3,26 @@
 <!-- wp:template-part {"slug":"header","align":"full","className":"site-header-offset"} /-->
 
 <!-- wp:group {"layout":{"inherit":true},"tagName":"main"} -->
-<main class="wp-block-group">
+<main class="wp-block-group site-content-container content-404">
 
 <!-- wp:heading {"level":1,"fontSize":"large"} -->
-<h1 class="has-large-font-size">Oops! That page can’t be found.</h1>
+<h1 class="has-large-font-size">This page doesn't exist.</h1>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph -->
-<p>It looks like nothing was found at this location. Maybe try a search?</p>
-<!-- /wp:paragraph -->
+<!--
+  -- Right now, this is the least-bad way to get a dynamic link to the homepage (rather than hardcoding the URL).
+  -- @link https://github.com/WordPress/gutenberg/issues/35926
+  -- @link https://github.com/WordPress/gutenberg/issues/32939
+  -->
+<!-- wp:html -->
+<div>
+	Go to
+	<ul class="is-inline"><!-- wp:home-link {"label":"the homepage","tagName":"div"} /--></ul>,
+	or try searching from the field below.
+</div>
+<!-- /wp:html -->
 
-<!-- wp:search {"label":"","buttonText":"Search"} /-->
+<!-- wp:search {"label":"","placeholder":"Search...","buttonText":"Search"} /-->
 </main>
 <!-- /wp:group -->
 
