@@ -15,7 +15,7 @@
 		margin-left: calc(
 			min(
 				100% - var(--wp--custom--layout--content-size),
-				50% - (var(--wp--custom--layout--wide-size) / 2) + (var(--wp--custom--layout--wide-size) - var(--wp--custom--layout--content-size))
+				50% - (var(--wp--custom--layout--wide-size) / 2) + var(--wp--custom--layout--content-meta-size )
 			)
 		) !important;
 

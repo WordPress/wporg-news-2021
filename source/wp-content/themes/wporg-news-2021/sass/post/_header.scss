@@ -39,7 +39,7 @@
 		justify-content: space-between;
 
 		.entry-meta {
-			max-width: calc(var(--wp--custom--layout--wide-size) - var(--wp--custom--layout--content-size) - 2em);
+			max-width: calc( var(--wp--custom--layout--content-meta-size) - 2em);
 		}
 
 		.wp-block-post-title {
