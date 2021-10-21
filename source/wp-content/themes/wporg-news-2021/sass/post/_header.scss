@@ -2,6 +2,7 @@
 	&-container {
 		width: 100%;
 
+		// Don't fix the header on mobile, because screen real estate is limited.
 		// Matches the breakpoint for the admin bar.
 		@include break-small {
 			position: fixed;
