@@ -129,6 +129,9 @@
 	&__categories {
 		--flex-items-per-column: 8;
 
+		/* The scrollbar covers up part of the edge padding, so this offsets that. */
+		padding-right: var(--wp--custom--alignment--scroll-bar-width);
+
 		@include break-medium {
 			--flex-items-per-column: 4;
 		}

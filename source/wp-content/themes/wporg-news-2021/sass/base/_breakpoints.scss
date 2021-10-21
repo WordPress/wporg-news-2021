@@ -1,15 +1,13 @@
 @import '~@wordpress/base-styles/breakpoints';
 @import '~@wordpress/base-styles/mixins';
 
+/*
+ * Custom breakpoints
+ *
+ * Try to use the standard ones from `base-styles` when possible.
+ */
 @mixin break-small-only() {
 	@media (max-width: #{ ($break-small - 1) }) {
-		@content;
-	}
-}
-
-// Custom breakpoints should be synced with `global-header-footer` in `wporg-mu-plugins`.
-@mixin break-tablet() {
-	@media (min-width: 890px) {
 		@content;
 	}
 }
