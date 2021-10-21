@@ -1,53 +1,47 @@
 //FRONTEND
-.site-content-container {
+// The global header and global footer are excluded here because they set their own styles.
+.wp-site-blocks > *:not( .site-header-container ):not( .global-footer ),
+.wp-site-blocks .local-header {
 	// In this situation we want to introduce a standardized gap between content and the edge of the screen.
-	padding-top: var(--wp--custom--post-content--padding--top);
-	padding-right: var(--wp--custom--post-content--padding--right);
-	padding-bottom: var(--wp--custom--post-content--padding--bottom);
-	padding-left: var(--wp--custom--post-content--padding--left);
+	padding-left: var(--wp--custom--alignment--edge-spacing);
+	padding-right: var(--wp--custom--alignment--edge-spacing);
 
 	.alignfull {
 		// These elements we want to "bust out" of the gap created above
-		margin-left: calc(-1 * var(--wp--custom--post-content--padding--left)) !important;
-		margin-right: calc(-1 * var(--wp--custom--post-content--padding--right)) !important;
+		margin-left: calc(-1 * var(--wp--custom--alignment--edge-spacing)) !important;
+		margin-right: calc(-1 * var(--wp--custom--alignment--edge-spacing)) !important;
 		width: unset;
 
 		// However any containers that "bust out" should re-apply that gap but this time using padding instead of margins.
 		&.wp-block-template-part,
 		&.wp-block-columns,
 		&.wp-block-group {
-			padding-left: var(--wp--custom--post-content--padding--left);
-			padding-right: var(--wp--custom--post-content--padding--right);
+			padding-left: var(--wp--custom--alignment--edge-spacing);
+			padding-right: var(--wp--custom--alignment--edge-spacing);
+
+			&.has-background {
+				padding-top: var( --wp--style--block-gap );
+				padding-bottom: var( --wp--style--block-gap );
+			}
 		}
 	}
 }
 
-@include break-tablet {
-	.site-content-container {
-		padding-top: var(--wp--custom--post-content--breakpoint--tablet--padding--top);
-		padding-right: var(--wp--custom--post-content--breakpoint--tablet--padding--right);
-		padding-bottom: var(--wp--custom--post-content--breakpoint--tablet--padding--bottom);
-		padding-left: var(--wp--custom--post-content--breakpoint--tablet--padding--left);
-
-		.alignfull {
-			margin-left: calc(-1 * var(--wp--custom--post-content--breakpoint--tablet--padding--left)) !important;
-			margin-right: calc(-1 * var(--wp--custom--post-content--breakpoint--tablet--padding--right)) !important;
-		}
-	}
-}
 
 // EDITOR (NOTE: It PROBABLY would be OK to bring these together to "simplify" the stylesheet.  However the selectors are quite different
 // and it's a lot easier to understand and ensure intent separated in this way.
 .is-root-container { // Top level of the editor.
-	padding-left: var(--wp--custom--post-content--padding--left);
-	padding-right: var(--wp--custom--post-content--padding--right);
+	padding-left: var(--wp--custom--alignment--edge-spacing);
+	padding-right: var(--wp--custom--alignment--edge-spacing);
+
 	.wp-block[data-align="full"] { // Blocks configured to be "align full" in "editorspeak".
-		margin-left: calc(-1 * var(--wp--custom--post-content--padding--left)) !important;
-		margin-right: calc(-1 * var(--wp--custom--post-content--padding--right)) !important;
+		margin-left: calc(-1 * var(--wp--custom--alignment--edge-spacing)) !important;
+		margin-right: calc(-1 * var(--wp--custom--alignment--edge-spacing)) !important;
 		width: unset;
+
 		>.wp-block-group {
-			padding-left: var(--wp--custom--post-content--padding--left);
-			padding-right: var(--wp--custom--post-content--padding--right);
+			padding-left: var(--wp--custom--alignment--edge-spacing);
+			padding-right: var(--wp--custom--alignment--edge-spacing);
 		}
 	}
 }

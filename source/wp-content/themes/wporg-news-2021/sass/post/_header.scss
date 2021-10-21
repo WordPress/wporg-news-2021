@@ -33,17 +33,36 @@
 	}
 }
 
-@include break-wide {
-	.single .entry-header {
+.single .entry-header.alignfull > *,
+.page .entry-header.alignfull > * {
+	width: 100%;
+	max-width: var(--wp--custom--layout--content-size);
+	margin-left: auto;
+	margin-right: auto;
+
+	@include break-wide {
+		width: inherit;
+		max-width: inherit;
+		margin-left: 0;
+		margin-right: auto;
+	}
+}
+
+
+.single .entry-header,
+.page .entry-header {
+	@include break-wide {
 		align-items: flex-start !important; // TODO eventually this might be a layout setting.
 		justify-content: space-between;
 
 		.entry-meta {
+			width: calc( var(--wp--custom--layout--content-meta-size) - 2em);
 			max-width: calc( var(--wp--custom--layout--content-meta-size) - 2em);
 		}
 
 		.wp-block-post-title {
 			width: var(--wp--custom--layout--content-size);
+			max-width: var(--wp--custom--layout--content-size);
 		}
 	}
 }

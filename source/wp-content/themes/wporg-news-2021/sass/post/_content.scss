@@ -1,9 +1,14 @@
+.wp-block-post-content {
+	padding-bottom: var(--wp--style--block-gap);
+}
+
 @include break-wide {
 	// Use a dynamic margin to ensure that the content column is responsively aligned on the right side, instead of
-	// centered, while still allowing individual blocks with "wide" or "full" alignment to expand appropriately.
+	// centered. This makes sure that post content aligns with the post title.
 	//
 	// In this case, Flexbox doesn't work because it breaks the layout for things like a left- or right-aligned image
-	// with paragraph text wrapping around it.
+	// with paragraph text wrapping around it. A grid for `.site-content-container` wouldn't work because we'd need
+	// subgrid support.
 	.home .wp-block-post > article > *,
 	.blog .wp-block-post > article > *,
 	.archive .wp-block-post > article > *,
@@ -18,12 +23,5 @@
 				50% - (var(--wp--custom--layout--wide-size) / 2) + var(--wp--custom--layout--content-meta-size )
 			)
 		) !important;
-
-		&.alignwide {
-			margin-left: auto !important;
-		}
-		&.alignfull {
-			margin-left: inherit !important;
-		}
 	}
 }

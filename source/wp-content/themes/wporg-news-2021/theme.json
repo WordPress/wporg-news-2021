@@ -91,7 +91,10 @@
 		},
 		"custom": {
 			"alignment": {
-				"alignedMaxWidth": "50%"
+				"alignedMaxWidth": "50%",
+				"//edge-spacing": "The min and max values represent the mobile and desktop spacing; the calc() value is for tablets.",
+				"edge-spacing": "clamp( 24px, calc( 100vw / 18 ), 80px )",
+				"scroll-bar-width": "8px"
 			},
 			"button": {
 				"color": {
@@ -337,24 +340,6 @@
 				"typography": {
 					"fontSize": "var(--wp--preset--font-size--normal)",
 					"lineHeight": "var(--wp--custom--body--typography--line-height)"
-				}
-			},
-			"post-content": {
-				"padding": {
-					"top": "32px",
-					"bottom": "70px",
-					"left": "var(--wp--style--block-gap)",
-					"right": "var(--wp--style--block-gap)"
-				},
-				"breakpoint": {
-					 "tablet": {
-						"padding": {
-							"top": "80px",
-							"bottom": "80px",
-							"left": "80px",
-							"right": "180px"
-						}
-					 }
 				}
 			},
 			"pullquote": {
