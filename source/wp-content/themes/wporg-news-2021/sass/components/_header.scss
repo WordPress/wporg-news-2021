@@ -11,6 +11,7 @@
 
 	// Since the site header has a dynamic height, depending on the viewport width, this allows us to
 	// offset the content by the same amount so it isn't covered by the visible fixed header.
+	// See https://stackoverflow.com/a/59853252
 	&-offset {
 		display: none;
 

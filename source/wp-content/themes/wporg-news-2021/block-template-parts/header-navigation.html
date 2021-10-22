@@ -11,8 +11,13 @@
 
 	<!-- wp:group {"className":"local-header__categories"} -->
 	<div class="wp-block-group local-header__categories">
+		<!--
+			The checkbox allows us to have a toggleable state for the categories dropdown that will persist when
+			not in focus. This way we can manage the dropdown with CSS only, and not have to bring in JS.
+			Inspired by https://codepen.io/Sidstumple/pen/RwNZYBe
+		-->
 		<!-- wp:html -->
-		<input type="checkbox" id="local-header__categories-toggle" class="local-header__categories-toggle" aria-label="Open categories list" />
+		<input type="checkbox" id="local-header__categories-toggle" class="local-header__categories-toggle" aria-label="Show categories list" />
 		<label for="local-header__categories-toggle" class="local-header__categories-label">
 			<span>Categories</span>
 			<svg width="10" height="7" viewBox="0 0 10 7" fill="none" stroke="white" stroke-width="1.2" xmlns="http://www.w3.org/2000/svg">
