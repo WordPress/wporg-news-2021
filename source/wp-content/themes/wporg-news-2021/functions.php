@@ -11,6 +11,7 @@ defined( 'WPINC' ) || die();
 add_action( 'after_setup_theme', __NAMESPACE__ . '\theme_support', 9 );
 add_action( 'after_setup_theme', __NAMESPACE__ . '\editor_styles' );
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_assets' );
+add_action( 'get_the_archive_title_prefix', __NAMESPACE__ . '\modify_archive_title_prefix' );
 
 /**
  * Register theme support.
@@ -104,4 +105,15 @@ function fonts_url() {
 
 	// Make a single request for the theme fonts.
 	return esc_url_raw( 'https://fonts.googleapis.com/css2?' . implode( '&', $font_families ) );
+}
+
+/**
+ * Blank out the archive title prefix.
+ *
+ * TODO This filter can be removed if/when this issue is resolved: https://github.com/WordPress/gutenberg/issues/30519
+ *
+ * @return string
+ */
+function modify_archive_title_prefix() {
+	return '';
 }

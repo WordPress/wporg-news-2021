@@ -1,12 +1,6 @@
-<!-- wp:wporg/global-header /-->
-
-<!-- wp:group {"tagName":"header","className":"header-archive header-archive-all-posts","layout":{"inherit":true}} -->
-<header class="wp-block-group header-archive header-archive-all-posts">
-	<!-- wp:heading {"level":1,"align":"wide"} -->
-	<h1 class="alignwide">All Posts</h1>
-	<!-- /wp:heading -->
-</header>
-<!-- /wp:group -->
+<!-- wp:template-part {"slug":"header","align":"full","className":"site-header-container"} /-->
+<!-- This is a hack to ensure content isn't covered by the fixed header -->
+<!-- wp:template-part {"slug":"header","align":"full","className":"site-header-offset"} /-->
 
 <!-- wp:query {"tagName":"main","className":"site-content-container content-archive"} -->
 <main class="wp-block-query site-content-container content-archive">

@@ -29,6 +29,10 @@ GNU General Public License for more details.
 // - Styles for basic HTML elemants
 @import "elements/style";
 
+// Components
+// - Styles for site components
+@import "components/style";
+
 // Blocks
 // - These styles replace key Gutenberg Block styles for fonts, colors, and
 //   spacing with CSS-variables overrides
