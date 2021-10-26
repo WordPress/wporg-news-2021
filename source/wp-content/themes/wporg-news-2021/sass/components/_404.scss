@@ -1,0 +1,11 @@
+.site-content-container.content-404 {
+	/*
+	 * calc() is only necessary here to work around legacy SCSS.
+	 *
+	 * @link https://stackoverflow.com/questions/54090345/sass-incompatible-units-vw-and-px
+	 * @link https://github.com/WordPress/wporg-news-2021/issues/34
+	 */
+	margin-top: calc( max( 100px, 15vh ) );
+	margin-bottom: calc( min( 100px, 15vh ) );
+	text-align: center;
+}
