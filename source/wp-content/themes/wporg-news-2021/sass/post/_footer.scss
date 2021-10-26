@@ -1,10 +1,32 @@
-.footer-archive {
-	display: none;
+.footer-archive .footer-archive-row[class*="wp-container-"] {
+	justify-content: space-between;
+	align-items: stretch !important;
+	margin-top: 0;
+	gap: 0;
 
-	&-row {
-		justify-content: center;
-		align-items: stretch !important;
-		border-top: 1px solid var(--wp--preset--color--light-grey);
+	& > * {
+		padding-top: 50px;
+		padding-bottom: 50px;
+		border-bottom: 1px solid var(--wp--preset--color--light-grey);
+
+		@include break-medium {
+			flex-basis: 50%;
+			flex-shrink: 0;
+			flex-grow: 0;
+			padding-top: 60px;
+			padding-bottom: 60px;
+			border-top: 1px solid var(--wp--preset--color--light-grey);
+			border-bottom: none;
+
+			&:nth-child(odd) {
+				border-right: 1px solid var(--wp--preset--color--light-grey);
+				padding-right: var( --wp--custom--alignment--edge-spacing );
+			}
+
+			&:nth-child(even) {
+				padding-left: var( --wp--custom--alignment--edge-spacing );
+			}
+		}
 	}
 
 	.wp-briefing {
@@ -21,35 +43,6 @@
 			background-position: bottom right;
 			background-repeat: no-repeat;
 			background-size: contain;
-		}
-	}
-}
-
-@include break-medium {
-	.footer-archive {
-		display: block;
-
-		&-row > * {
-			--horz-padding: calc( var(--wp--custom--margin--horizontal) * 2 );
-
-			// The first line in min is for when the viewport is narrower than the max wide layout.
-			// The second line in min is for when the viewport is wider than the max wide layout.
-			max-width: calc(
-				min(
-					50% - var(--wp--custom--margin--horizontal) - 1px,
-					( var(--wp--custom--layout--wide-size) / 2 ) - var(--horz-padding) - 1px
-				)
-			);
-			padding: var(--wp--custom--margin--vertical) 0;
-
-			&:nth-child(odd) {
-				border-right: 1px solid var(--wp--preset--color--light-grey);
-				padding-right: var(--horz-padding);
-			}
-
-			&:nth-child(even) {
-				padding-left: var(--horz-padding);
-			}
 		}
 	}
 }
