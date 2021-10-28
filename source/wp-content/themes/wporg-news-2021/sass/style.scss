@@ -42,12 +42,6 @@ GNU General Public License for more details.
 @import "elements/lists";
 
 
-// Components
-// These style generic/custom components like the site header, footer archive, local navigation, etc.
-@import "components/header";
-@import "components/404";
-
-
 // Blocks
 // Override the default styles that a block has from Core, it's plugin, etc.
 @import "blocks/button";
@@ -72,6 +66,12 @@ GNU General Public License for more details.
 @import "blocks/table";
 @import "blocks/video";
 @import "blocks/columns";
+
+
+// Components
+// These style generic/custom components like the site header, footer archive, local navigation, etc.
+@import "components/header";
+@import "components/404";
 
 
 // Posts
