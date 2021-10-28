@@ -70,13 +70,14 @@ GNU General Public License for more details.
 
 // Components
 // These style generic/custom components like the site header, footer archive, local navigation, etc.
-@import "components/header";
+@import "components/site-header";
+@import "components/local-header";
+@import "components/footer-archive";
 @import "components/404";
 
 
 // Posts
 // - Styles for post areas
 @import "post/content";
-@import "post/footer";
 @import "post/header";
 @import "post/navigation";
