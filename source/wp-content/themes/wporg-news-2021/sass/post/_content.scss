@@ -9,11 +9,11 @@
 	// In this case, Flexbox doesn't work because it breaks the layout for things like a left- or right-aligned image
 	// with paragraph text wrapping around it. A grid for `.site-content-container` wouldn't work because we'd need
 	// subgrid support.
-	.home .wp-block-post > article > *,
-	.blog .wp-block-post > article > *,
-	.archive .wp-block-post > article > *,
-	.single .wp-block-post-content > *,
-	.page .wp-block-post-content > *,
+	body.home .wp-block-post > article > *,
+	body.blog .wp-block-post > article > *,
+	body.archive .wp-block-post > article > *,
+	body.single .wp-block-post-content > *,
+	body.page .wp-block-post-content > *,
 	.query-navigation-container[class*="wp-container-"] > * {
 		// The first line in min is for when the viewport is narrower than the max wide layout.
 		// The second line in min is for when the viewport is wider than the max wide layout.
