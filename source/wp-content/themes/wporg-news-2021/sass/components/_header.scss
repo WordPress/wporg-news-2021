@@ -217,7 +217,7 @@
 			padding: 0 0 2em 0;
 
 			@include break-mobile {
-				padding: 0 0.5em 0;
+				padding: 0 var(--wp--custom--alignment--edge-spacing);
 				position: absolute;
 				left: 0;
 				top: 75px;
