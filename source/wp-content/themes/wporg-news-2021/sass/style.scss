@@ -22,20 +22,34 @@ GNU General Public License for more details.
 */
 
 // Base
-// - Reset the browser
-@import "base/style";
+// Foundational styles like browser normalization, mixins, layout, z-index.
+@import "base/mixins";
+@import "base/normalize";
+@import "base/breakpoints";
+@import "base/alignment";
+@import "base/headings";
+@import "base/layout";
+@import "base/text";
+@import "base/utility";
+@import "base/z-index";
+
 
 // Elements
-// - Styles for basic HTML elements
-@import "elements/style";
+// Foundational styles that apply to primitive HTML elements.
+@import "elements/forms";
+@import "elements/headings";
+@import "elements/links";
+@import "elements/lists";
+
 
 // Components
-// - Styles for site components
-@import "components/style";
+// These style generic/custom components like the site header, footer archive, local navigation, etc.
+@import "components/header";
+@import "components/404";
+
 
 // Blocks
-// - These styles replace key Gutenberg Block styles for fonts, colors, and
-//   spacing with CSS-variables overrides
+// Override the default styles that a block has from Core, it's plugin, etc.
 @import "blocks/button";
 @import "blocks/code";
 @import "blocks/gallery";
@@ -58,6 +72,7 @@ GNU General Public License for more details.
 @import "blocks/table";
 @import "blocks/video";
 @import "blocks/columns";
+
 
 // Posts
 // - Styles for post areas
