@@ -1,0 +1,49 @@
+/*
+ * Styles for the default category archives, and its variations.
+ */
+
+body.category-events,
+body.category-community {
+	& .wp-site-blocks {
+		background-color: var( --wp--preset--color--off-white );
+
+		& .local-header {
+			--bar-background-color: var(--wp--preset--color--white);
+			--bar-text-color: var(--wp--preset--color--black);
+			--bar-link-color: var(--wp--preset--color--blue-1);
+		}
+	}
+}
+
+body.category-month-in-wordpress .wp-site-blocks {
+	background-color: var( --wp--preset--color--darker-grey );
+
+	& .local-header {
+		--bar-background-color: var( --wp--preset--color--dark-grey );
+	}
+
+	& .site-content-container {
+		color: var( --wp--preset--color--blue-4 );
+	}
+
+	& .footer-archive .footer-archive-row[class*="wp-container-"] {
+		background-color: var( --wp--preset--color--dark-grey );
+		color: var(--wp--preset--color--white);
+	}
+}
+
+body.category-development {
+	& .local-header {
+		--bar-text-color: var(--wp--preset--color--black);
+		--bar-link-color: var(--wp--preset--color--black);
+		--bar-background-color: var( --wp--preset--color--green );
+	}
+}
+
+body.category-security {
+	& .local-header {
+		--bar-text-color: var(--wp--preset--color--black);
+		--bar-link-color: var(--wp--preset--color--black);
+		--bar-background-color: var( --wp--preset--color--coral-red );
+	}
+}
