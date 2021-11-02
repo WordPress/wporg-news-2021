@@ -63,6 +63,11 @@
 					"name": "Blue 4"
 				},
 				{
+					"slug": "blue-5",
+					"color": "#2541D6",
+					"name": "Blue 5"
+				},
+				{
 					"slug": "off-white",
 					"color": "#f8f3ec",
 					"name": "Off White"
