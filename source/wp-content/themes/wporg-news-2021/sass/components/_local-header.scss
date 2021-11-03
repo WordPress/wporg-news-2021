@@ -1,7 +1,8 @@
+// Default/light version.
 .local-header {
 	--bar-text-color: var(--wp--preset--color--white);
 	--bar-link-color: var(--wp--preset--color--white);
-	--bar-background-color: var(--wp--preset--color--blue-5);
+	--bar-background-color: var(--wp--preset--color--blue-1);
 
 	min-height: 56px;
 	background-color: var( --bar-background-color );
@@ -186,6 +187,38 @@
 					content: "\0020\00B7\0020";
 				}
 			}
+		}
+	}
+}
+
+// Alternate off-white version.
+%local-header-off-white {
+	.wp-site-blocks {
+		background-color: var(--wp--preset--color--off-white);
+
+		.local-header {
+			--bar-background-color: var(--wp--preset--color--white);
+			--bar-text-color: var(--wp--preset--color--black);
+			--bar-link-color: var(--wp--preset--color--blue-1);
+		}
+	}
+}
+
+// Alternate version with a color light enough to need dark text. e.g., Security category.
+%local-header-lightish {
+	.local-header {
+		--bar-text-color: var(--wp--preset--color--black);
+		--bar-link-color: var(--wp--preset--color--black);
+	}
+}
+
+// Alternate dark version.
+%local-header-dark {
+	.wp-site-blocks {
+		background-color: var(--wp--preset--color--darker-grey);
+
+		.local-header {
+			--bar-background-color: var( --wp--preset--color--dark-grey );
 		}
 	}
 }

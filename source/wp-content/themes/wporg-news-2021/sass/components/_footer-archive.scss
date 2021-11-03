@@ -1,3 +1,4 @@
+// Default/light version.
 .footer-archive .footer-archive-row[class*="wp-container-"] {
 	justify-content: space-between;
 	align-items: stretch !important;
@@ -44,6 +45,18 @@
 			background-position: bottom right;
 			background-repeat: no-repeat;
 			background-size: contain;
+		}
+	}
+}
+
+// Alternate dark version.
+%footer-archive-dark {
+	.footer-archive .footer-archive-row[class*="wp-container-"] {
+		background-color: var(--wp--preset--color--dark-grey);
+		color: var(--wp--preset--color--white);
+
+		& > * {
+			border-color: #1C2024;
 		}
 	}
 }

@@ -1,9 +1,5 @@
 body.error404 {
-	background-color: var( --wp--preset--color--darker-grey );
-
-	& .local-header {
-		--bar-background-color: var( --wp--preset--color--dark-grey );
-	}
+	@extend %local-header-dark;
 
 	& .site-content-container {
 		color: var(--wp--preset--color--blue-4);
@@ -19,8 +15,5 @@ body.error404 {
 		margin-bottom: calc(min(100px, 15vh));
 	}
 
-	& .footer-archive .footer-archive-row[class*="wp-container-"] {
-		background-color: var( --wp--preset--color--dark-grey );
-		color: var(--wp--preset--color--white);
-	}
+	@extend %footer-archive-dark;
 }
