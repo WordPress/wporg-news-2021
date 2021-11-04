@@ -108,12 +108,18 @@ function fonts_url() {
 }
 
 /**
- * Blank out the archive title prefix.
+ * Blank out the archive title prefix sometimes.
+ *
+ * We want the prefix when it's used in `query-title-banner`, but not in `local-header`.
  *
  * TODO This filter can be removed if/when this issue is resolved: https://github.com/WordPress/gutenberg/issues/30519
  *
  * @return string
  */
-function modify_archive_title_prefix() {
-	return '';
+function modify_archive_title_prefix( $prefix ) {
+	if ( is_category() ) {
+		$prefix = '';
+	}
+
+	return $prefix;
 }
