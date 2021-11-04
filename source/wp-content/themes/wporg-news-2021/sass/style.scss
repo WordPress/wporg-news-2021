@@ -70,10 +70,14 @@ GNU General Public License for more details.
 
 // Components
 // These style generic/custom components like the site header, footer archive, local navigation, etc.
+// Global components are listed first, to apply default styles.
 @import "components/site-header";
 @import "components/local-header";
-@import "components/categories";
 @import "components/footer-archive";
+@import "components/query-title-banner";
+// Specific templates are after global components, so they can override default styles.
+@import "components/home";
+@import "components/categories";
 @import "components/404";
 
 

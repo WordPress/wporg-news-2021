@@ -1,0 +1,8 @@
+body.home {
+	&:not(.paged) {
+		.wp-block-home-link__content {
+			font-size: 8em;
+			line-height: 3;
+		}
+	}
+}

@@ -1,0 +1,21 @@
+.query-title-banner {
+	background-color: var(--wp--preset--color--blue-1);
+	margin-top: 0;
+
+	.wp-block-query-title {
+		/*
+		 * Hide all of them by default because there are 3 of them, but only one should be shown at a time.
+		 * See `query-title-banner.html` for details.
+		 */
+		display: none;
+
+		font-size: 7.5rem;
+		color: var(--wp--preset--color--white);
+	}
+}
+
+body.archive .query-title-banner__title,
+body.home.paged .query-title-banner__title-all-posts,
+body.search .query-title-banner__title-search-results {
+	display: block;
+}
