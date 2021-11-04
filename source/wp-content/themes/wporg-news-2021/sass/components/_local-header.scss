@@ -51,7 +51,12 @@
 		}
 
 		&-current {
-			display: inline-block;
+			display: none;
+
+			body.category & {
+				display: inline-block;
+			}
+
 			font-family: var(--wp--preset--font-family--inter);
 			font-size: 1rem;
 			font-weight: 700;
