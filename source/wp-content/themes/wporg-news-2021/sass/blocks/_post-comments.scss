@@ -73,17 +73,21 @@
 
 		.comment-form-cookies-consent {
 			input[type="checkbox"] {
-				@include hide-accesibly;
+				@include hide-accessibly;
+
 				margin-left: 0;
+
 				& + label {
 					margin-left: 0;
 					padding-left: 3em;
 					position: relative;
 				}
+
 				& + label::before,
 				& + label::after {
 					box-sizing: border-box;
 				}
+
 				& + ::before {
 					content: var(--wp--custom--form--checkbox--unchecked--content);
 					position: absolute;
@@ -93,6 +97,7 @@
 					height: var(--wp--custom--form--checkbox--unchecked--sizing--height);
 					border: var(--wp--custom--form--border--width) var(--wp--custom--form--border--style) var(--wp--custom--form--border--color);
 				}
+
 				&:checked + ::after {
 					content: var(--wp--custom--form--checkbox--checked--content);;
 					position: absolute;
