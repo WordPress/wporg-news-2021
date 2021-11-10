@@ -15,6 +15,19 @@ body.category-releases {
 		background-color: var(--wp--preset--color--blue-1);
 	}
 
+	.site-content-container {
+		color: var( --wp--preset--color--white );
+
+		a,
+		.wp-block-query-pagination {
+			color: var( --wp--preset--color--white );
+		}
+
+		.wp-block-post-title {
+			--post-title-hover-color: var( --wp--preset--color--white );
+		}
+	}
+
 	& .local-header {
 		--bar-background-color: var(--wp--preset--color--blue-5);
 	}
