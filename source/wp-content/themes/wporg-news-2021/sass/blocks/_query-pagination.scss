@@ -37,9 +37,5 @@
 		.current {
 			text-decoration: underline;
 		}
-
-		@include break-small-only(){
-			display: none;
-		}
 	}
 }
