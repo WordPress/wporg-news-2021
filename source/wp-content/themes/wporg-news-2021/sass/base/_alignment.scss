@@ -1,23 +1,30 @@
+%edge-spacing-padding {
+	padding-left: var(--wp--custom--alignment--edge-spacing);
+	padding-right: var(--wp--custom--alignment--edge-spacing);
+}
+
+%edge-spacing-negative-margin {
+	margin-left: calc(-1 * var(--wp--custom--alignment--edge-spacing)) !important;
+	margin-right: calc(-1 * var(--wp--custom--alignment--edge-spacing)) !important;
+}
+
 //FRONTEND
 // The global header and global footer are excluded here because they set their own styles.
 .wp-site-blocks > *:not( .site-header-container ):not( .global-footer ),
 .wp-site-blocks .local-header {
 	// In this situation we want to introduce a standardized gap between content and the edge of the screen.
-	padding-left: var(--wp--custom--alignment--edge-spacing);
-	padding-right: var(--wp--custom--alignment--edge-spacing);
+	@extend %edge-spacing-padding;
 
 	.alignfull {
 		// These elements we want to "bust out" of the gap created above
-		margin-left: calc(-1 * var(--wp--custom--alignment--edge-spacing)) !important;
-		margin-right: calc(-1 * var(--wp--custom--alignment--edge-spacing)) !important;
+		@extend %edge-spacing-negative-margin;
 		width: unset;
 
 		// However any containers that "bust out" should re-apply that gap but this time using padding instead of margins.
 		&.wp-block-template-part,
 		&.wp-block-columns,
 		&.wp-block-group {
-			padding-left: var(--wp--custom--alignment--edge-spacing);
-			padding-right: var(--wp--custom--alignment--edge-spacing);
+			@extend %edge-spacing-padding;
 
 			&.has-background {
 				padding-top: var( --wp--style--block-gap );
