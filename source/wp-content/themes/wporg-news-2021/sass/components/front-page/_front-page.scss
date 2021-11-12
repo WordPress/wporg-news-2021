@@ -1,0 +1,37 @@
+body.news-front-page {
+	.local-header {
+		/* Remove mask so this element blends into `front__latest-release`. */
+		mask-image: none;
+	}
+
+	.wp-block-home-link__content {
+		/* Hide because `.front__site-title` will show it instead. */
+		display: none;
+	}
+
+	.front__site-title {
+		margin-top: 0;
+		background-color: var( --wp--preset--color--blue-1 );
+		color: var( --wp--preset--color--white );
+		font-size: clamp( 100px, 25vw, 160px );
+		line-height: 3;
+	}
+
+	.site-content-container {
+		margin-top: 0;
+
+		> .wp-block-template-part > section {
+			padding-top: var(--wp--custom--alignment--edge-spacing);
+			padding-bottom: var(--wp--custom--alignment--edge-spacing);
+		}
+	}
+
+	.front__latest-release,
+	.front__latest-posts {
+		h2 {
+			@include break-small() {
+				border-right: 1px solid var(--wp--preset--color--blue-2);
+			}
+		}
+	}
+}

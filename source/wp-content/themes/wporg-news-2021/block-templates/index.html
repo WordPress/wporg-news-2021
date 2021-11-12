@@ -1,13 +1,18 @@
+<!--
+  -- This covers the posts index -- e.g., w.org/news/page/{n} -- instead of `front-page.html`.
+  -- @see override_front_page_template()
+-->
+
 <!-- wp:template-part {"slug":"header","align":"full","className":"site-header-container"} /-->
 <!-- This is a hack to ensure content isn't covered by the fixed header -->
 <!-- wp:template-part {"slug":"header","align":"full","className":"site-header-offset"} /-->
 
 <!-- wp:template-part {"slug":"query-title-banner","tagName":"header","align":"full","className":"query-title-banner"} /-->
 
-<!-- wp:query {"tagName":"main","className":"site-content-container content-index"} -->
-<main class="wp-block-query site-content-container content-index">
+<!-- wp:query {"tagName":"main","className":"site-content-container"} -->
+<main class="wp-block-query site-content-container">
 	<!-- wp:post-template -->
-		<!-- wp:template-part {"slug":"content-archive","tagName":"article","layout":{"inherit":true}} /-->
+		<!-- wp:template-part {"slug":"content-posts-index","tagName":"article","layout":{"inherit":true}} /-->
 	<!-- /wp:post-template -->
 
 	<!-- wp:template-part {"slug":"query-navigation","className":"query-navigation-container","layout":{"inherit":true}} /-->

@@ -1,0 +1,52 @@
+body.news-front-page .front__people-of-wordpress {
+	background-color: var( --wp--preset--color--off-white );
+
+	>:not( .wp-block-post-template ) {
+		@extend %edge-spacing-padding;
+	}
+
+	ul.wp-block-post-template {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		gap: 0;
+		margin-bottom: var(--wp--style--block-gap);
+
+		li {
+			flex-basis: 200px;
+			flex-grow: 1;
+			margin-top: 0;
+
+			.wp-block-post-featured-image {
+				margin: 0;
+
+				img {
+					filter: grayscale(100%);
+
+					&:hover {
+						filter: grayscale(0%);
+					}
+				}
+			}
+
+			&.has-post-thumbnail .wp-block-post-title {
+				display: none;
+			}
+
+			&:not(.has-post-thumbnail) {
+				@extend %edge-spacing-padding;
+
+				@include break-medium() {
+					padding: 0;
+				}
+
+				h3 {
+					@include break-medium() {
+						margin: 0 5px;
+					}
+				}
+			}
+		}
+	}
+}

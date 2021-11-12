@@ -1,0 +1,23 @@
+<!--
+ -- This only covers the front page at w.org/news/, not the posts index at w.org/news/page/{n}
+ -- @see override_front_page_template()
+ -->
+
+<!-- wp:template-part {"slug":"header","align":"full","className":"site-header-container"} /-->
+<!-- This is a hack to ensure content isn't covered by the fixed header -->
+<!-- wp:template-part {"slug":"header","align":"full","className":"site-header-offset"} /-->
+
+<!-- wp:heading {"level":1,"className":"front__site-title"} -->
+<h1 class="front__site-title">News</h1>
+<!-- /wp:heading -->
+
+<!-- wp:group {"tagName":"main","className":"site-content-container","layout":{"inherit":true}} -->
+<main class="wp-block-query site-content-container">
+	<!-- wp:template-part {"slug":"front-page/latest-release","align":"full","layout":{"inherit":true}} /-->
+	<!-- wp:template-part {"slug":"front-page/latest-posts","align":"full","layout":{"inherit":true}} /-->
+	<!-- wp:template-part {"slug":"front-page/people-of-wordpress","align":"full","layout":{"inherit":true}} /-->
+</main>
+
+<!-- wp:template-part {"tagName":"footer","slug":"footer-archive","className":"footer-archive","layout":{"inherit":true}} /-->
+
+<!-- wp:wporg/global-footer /-->

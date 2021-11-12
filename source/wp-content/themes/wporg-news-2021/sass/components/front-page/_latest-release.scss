@@ -1,0 +1,33 @@
+body.news-front-page .front__latest-release {
+	@extend %edge-spacing-padding;
+
+	background-color: var( --wp--preset--color--blue-1 );
+	color: var( --wp--preset--color--white );
+	border-top: 1px solid var(--wp--preset--color--blue-2);
+
+	a {
+		color: var( --wp--preset--color--white );
+
+		&.front__see-all-releases {
+			text-decoration: underline;
+		}
+	}
+
+	.wp-block-post-title {
+		--header-size: clamp( var( --wp--preset--font-size--huge ), 8vw, 130px );
+
+		font-size: var( --header-size );
+
+		a::after {
+			/* The empty content is necessary for the pseudo-element to exist in the DOM. */
+			display: inline-block;
+			content: "";
+			background-image: url("assets/svg/right-arrow.svg");
+			background-size: 75% 75%;
+			background-repeat: no-repeat;
+			background-position: left bottom;
+			width: var( --header-size );
+			height: var( --header-size );
+		}
+	}
+}

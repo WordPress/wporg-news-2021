@@ -1,0 +1,6 @@
+body.news-posts-index {
+	.local-header {
+		/* Remove mask so this element blends into `query-title-banner`. */
+		mask-image: none;
+	}
+}

@@ -9,8 +9,8 @@
 	// In this case, Flexbox doesn't work because it breaks the layout for things like a left- or right-aligned image
 	// with paragraph text wrapping around it. A grid for `.site-content-container` wouldn't work because we'd need
 	// subgrid support.
-	body.home .wp-block-post > article > *,
-	body.blog .wp-block-post > article > *,
+	body.news-front-page .wp-block-post > article > *,
+	body.news-posts-index .wp-block-post > article > *,
 	body.archive .wp-block-post > article > *,
 	body.single .wp-block-post-content > *,
 	body.page .wp-block-post-content > *,
