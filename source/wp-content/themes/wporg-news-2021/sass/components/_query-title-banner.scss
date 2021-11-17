@@ -19,3 +19,17 @@ body.news-posts-index .query-title-banner__title-all-posts,
 body.search .query-title-banner__title-search-results {
 	display: block;
 }
+
+body.news-front-page,
+body.news-posts-index,
+body.search,
+body.archive:not(.category) {
+	.local-header {
+		/* Remove mask so this element blends into `query-title-banner`. */
+		mask-image: none;
+	}
+
+	.query-title-banner {
+		@extend %bottom-mask;
+	}
+}

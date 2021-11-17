@@ -1,9 +1,4 @@
 body.news-front-page {
-	.local-header {
-		/* Remove mask so this element blends into `front__latest-release`. */
-		mask-image: none;
-	}
-
 	.wp-block-home-link__content {
 		/* Hide because `.front__site-title` will show it instead. */
 		display: none;

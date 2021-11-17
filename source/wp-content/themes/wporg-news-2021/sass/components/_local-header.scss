@@ -1,3 +1,14 @@
+%bottom-mask {
+	mask-image: url('assets/svg/local-nav-mask.svg');
+	mask-repeat: no-repeat;
+	mask-position: -200px -1px;
+	mask-size: cover;
+
+	@include break-small {
+		mask-position-x: -20px;
+	}
+}
+
 // Default/light version.
 .local-header {
 	--bar-text-color: var(--wp--preset--color--white);
@@ -8,14 +19,7 @@
 	background-color: var( --bar-background-color );
 	color: var(--bar-text-color);
 
-	mask-image: url('assets/svg/local-nav-mask.svg');
-	mask-repeat: no-repeat;
-	mask-position: -200px -1px;
-	mask-size: cover;
-
-	@include break-small  {
-		mask-position-x: -20px;
-	}
+	@extend %bottom-mask;
 
 	.wp-site-blocks & {
 		margin-top: 0;
