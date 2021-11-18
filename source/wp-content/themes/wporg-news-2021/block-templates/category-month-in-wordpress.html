@@ -1,0 +1,16 @@
+<!-- wp:template-part {"slug":"header","align":"full","className":"site-header-container"} /-->
+<!-- This is a hack to ensure content isn't covered by the fixed header -->
+<!-- wp:template-part {"slug":"header","align":"full","className":"site-header-offset"} /-->
+
+<!-- wp:query {"tagName":"main","className":"site-content-container","displayLayout":{"type":"flex","columns":4},"query":{"perPage":"10000","inherit":false}} -->
+<main class="wp-block-query site-content-container">
+	<!-- wp:post-template -->
+		<!-- wp:template-part {"slug":"content-category-month-in-wordpress","tagName":"article","layout":{"inherit":true}} /-->
+	<!-- /wp:post-template -->
+
+</main>
+<!-- /wp:query -->
+
+<!-- wp:template-part {"tagName":"footer","slug":"footer-archive","className":"footer-archive","layout":{"inherit":true}} /-->
+
+<!-- wp:wporg/global-footer /-->
