@@ -78,6 +78,7 @@ GNU General Public License for more details.
 // Specific templates are after global components, so they can override default styles.
 @import "components/front-page/front-page";
 @import "components/front-page/latest-release";
+@import "components/front-page/latest-posts";
 @import "components/front-page/people-of-wordpress";
 @import "components/categories";
 @import "components/404";

@@ -23,3 +23,27 @@ body.admin-bar {
 		min-height: calc( 100vh - var(--wpadmin-bar--height) );
 	}
 }
+
+%two-column-grid-container {
+	@include break-wide() {
+		display: grid;
+		grid-template-columns:
+			calc( var(--wp--custom--layout--content-meta-size) - 32px )
+			auto
+		;
+
+		/*
+		 * This defines the minimum horizontal gap. An additional implicit gap is created because the right column
+		 * contents have a `max-width` and are justified in the center.
+		 */
+		grid-gap: 0 var( --wp--style--block-gap );
+	}
+}
+
+%two-column-grid-right-column {
+	@include break-wide() {
+		justify-self: center;
+		width: var(--wp--custom--layout--content-size);
+		max-width: var(--wp--custom--layout--content-size);
+	}
+}
