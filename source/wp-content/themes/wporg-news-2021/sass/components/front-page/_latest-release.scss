@@ -1,33 +1,71 @@
 body.news-front-page .front__latest-release {
+	@extend %two-column-grid-container;
 	@extend %edge-spacing-padding;
 
 	background-color: var( --wp--preset--color--blue-1 );
 	color: var( --wp--preset--color--white );
 	border-top: 1px solid var(--wp--preset--color--blue-2);
 
+	@include break-wide() {
+		grid-template-areas:
+			"latest-release     post-title"
+			"see-all-releases   post-title"
+		;
+	}
+
 	a {
 		color: var( --wp--preset--color--white );
+	}
 
-		&.front__see-all-releases {
-			text-decoration: underline;
+	.front__latest-release-heading {
+		padding-top: var(--wp--custom--alignment--edge-spacing);
+
+		@include break-wide() {
+			grid-area: latest-release;
+			border-right: 1px solid var(--wp--preset--color--blue-2);
 		}
 	}
 
-	.wp-block-post-title {
-		--header-size: clamp( var( --wp--preset--font-size--huge ), 8vw, 130px );
+	.wp-block-post-template {
+		@extend %two-column-grid-right-column;
 
-		font-size: var( --header-size );
+		@include break-wide() {
+			grid-area: post-title;
+			margin-top: 0;
+			padding-top: var(--wp--custom--alignment--edge-spacing);
+			padding-bottom: var(--wp--custom--alignment--edge-spacing);
+		}
 
-		a::after {
-			/* The empty content is necessary for the pseudo-element to exist in the DOM. */
-			display: inline-block;
-			content: "";
-			background-image: url("images/right-arrow.svg");
-			background-size: 75% 75%;
-			background-repeat: no-repeat;
-			background-position: left bottom;
-			width: var( --header-size );
-			height: var( --header-size );
+		.wp-block-post-title {
+			--header-size: clamp( var( --wp--preset--font-size--huge ), 8vw, 130px);
+
+			font-size: var( --header-size );
+
+			a::after {
+				/* The empty content is necessary for the pseudo-element to exist in the DOM. */
+				display: inline-block;
+				content: "";
+				background-image: url("images/right-arrow.svg");
+				background-size: 75% 75%;
+				background-repeat: no-repeat;
+				background-position: left bottom;
+				width: var( --header-size );
+				height: var( --header-size );
+			}
+		}
+	}
+
+	.wp-block-query-pagination {
+		margin-top: 0;
+
+		@include break-wide() {
+			grid-area: see-all-releases;
+			padding-bottom: var(--wp--custom--alignment--edge-spacing);
+			border-right: 1px solid var(--wp--preset--color--blue-2);
+		}
+
+		a {
+			text-decoration: underline;
 		}
 	}
 }
