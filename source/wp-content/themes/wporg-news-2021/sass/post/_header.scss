@@ -33,36 +33,25 @@
 	}
 }
 
-.single .entry-header.alignfull > *,
-.page .entry-header.alignfull > * {
-	width: 100%;
-	max-width: var(--wp--custom--layout--content-size);
-	margin-left: auto;
-	margin-right: auto;
-
-	@include break-wide {
-		width: inherit;
-		max-width: inherit;
-		margin-left: 0;
-		margin-right: auto;
-	}
-}
-
-
 .single .entry-header,
 .page .entry-header {
-	@include break-wide {
-		align-items: flex-start !important; // TODO eventually this might be a layout setting.
-		justify-content: space-between;
+	@extend %two-column-grid-container;
 
-		.entry-meta {
-			width: calc( var(--wp--custom--layout--content-meta-size) - 2em);
-			max-width: calc( var(--wp--custom--layout--content-meta-size) - 2em);
+	@include break-wide() {
+		grid-template-areas: "entry-meta post-title";
+	}
+
+	.entry-meta {
+		@include break-wide() {
+			grid-area: entry-meta
 		}
+	}
 
-		.wp-block-post-title {
-			width: var(--wp--custom--layout--content-size);
-			max-width: var(--wp--custom--layout--content-size);
+	.wp-block-post-title {
+		@extend %two-column-grid-right-column;
+
+		@include break-wide() {
+			grid-area: post-title;
 		}
 	}
 }

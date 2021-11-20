@@ -47,3 +47,35 @@ body.admin-bar {
 		max-width: var(--wp--custom--layout--content-size);
 	}
 }
+
+%two-column-grid-container-dynamic-rows {
+	@extend %two-column-grid-container;
+
+	> * {
+		@include break-wide() {
+			grid-row: auto;
+		}
+
+		&:not(.alignfull):not(.alignwide) {
+			@extend %two-column-grid-right-column;
+
+			@include break-wide() {
+				grid-column: 2;
+			}
+		}
+
+		&.alignfull,
+		&.alignwide {
+			@include break-wide() {
+				grid-column: 1 / 3;
+			}
+		}
+
+		&.alignwide {
+			@include break-wide() {
+				width: 100%;
+				max-width: 100%;
+			}
+		}
+	}
+}
