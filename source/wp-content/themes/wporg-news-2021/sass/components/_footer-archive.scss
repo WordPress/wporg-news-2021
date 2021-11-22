@@ -46,6 +46,33 @@
 			background-repeat: no-repeat;
 			background-size: contain;
 		}
+
+		.wp-social-link-chain {
+			a {
+				background-size: 28px;
+				background-repeat: no-repeat;
+			}
+
+			svg {
+				visibility: hidden;
+			}
+		}
+
+		.wp-briefing__apple-podcasts a {
+			background-image: url("images/podcast-services/apple-podcasts.svg");
+		}
+
+		.wp-briefing__google-podcasts a {
+			background-image: url("images/podcast-services/google-podcasts.svg");
+		}
+
+		.wp-briefing__pocket-casts a {
+			background-image: url("images/podcast-services/pocket-casts.svg");
+		}
+
+		.wp-briefing__stitcher a {
+			background-image: url("images/podcast-services/stitcher.svg");
+		}
 	}
 }
 
