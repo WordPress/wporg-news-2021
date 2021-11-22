@@ -19,4 +19,12 @@ body.news-front-page {
 			margin-top: 0;
 		}
 	}
+
+	.footer-archive {
+		margin-top: 0;
+
+		.footer-archive-row:first-of-type > * {
+			border-top: none;
+		}
+	}
 }
