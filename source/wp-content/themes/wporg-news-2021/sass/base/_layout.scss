@@ -1,29 +1,3 @@
-:root {
-	--wpadmin-bar--height: 46px;
-}
-
-.wp-site-blocks {
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-
-	/*
-	 * Make sure the footer is always at the bottom of the viewport, even on pages with little content.
-	 * Otherwise there'd be empty space below the footer
-	 */
-	justify-content: space-between;
-}
-
-body.admin-bar {
-	@include break-small() {
-		--wpadmin-bar--height: 32px;
-	}
-
-	.wp-site-blocks {
-		min-height: calc( 100vh - var(--wpadmin-bar--height) );
-	}
-}
-
 %two-column-grid-container {
 	@include break-wide() {
 		display: grid;
@@ -77,5 +51,31 @@ body.admin-bar {
 				max-width: 100%;
 			}
 		}
+	}
+}
+
+:root {
+	--wpadmin-bar--height: 46px;
+}
+
+.wp-site-blocks {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+
+	/*
+	 * Make sure the footer is always at the bottom of the viewport, even on pages with little content.
+	 * Otherwise there'd be empty space below the footer
+	 */
+	justify-content: space-between;
+}
+
+body.admin-bar {
+	@include break-small() {
+		--wpadmin-bar--height: 32px;
+	}
+
+	.wp-site-blocks {
+		min-height: calc( 100vh - var(--wpadmin-bar--height) );
 	}
 }
