@@ -1,3 +1,48 @@
+%front-latest-items-grid {
+	@extend %two-column-grid-container;
+
+	@include break-wide() {
+		grid-template-areas:
+			"heading    content"
+			"more-link  content"
+		;
+	}
+
+	> h2 {
+		padding-top: var(--wp--custom--alignment--edge-spacing);
+
+		@include break-wide() {
+			grid-area: heading;
+			border-right: 1px solid var(--wp--preset--color--light-grey);
+		}
+	}
+
+	> .wp-block-post-template {
+		@extend %two-column-grid-right-column;
+
+		@include break-wide() {
+			grid-area: content;
+			margin-top: 0;
+			padding-top: var(--wp--custom--alignment--edge-spacing);
+			padding-bottom: var(--wp--custom--alignment--edge-spacing);
+		}
+	}
+
+	> .wp-block-query-pagination {
+		margin-top: 0;
+
+		@include break-wide() {
+			grid-area: more-link;
+			padding-bottom: var(--wp--custom--alignment--edge-spacing);
+			border-right: 1px solid var(--wp--preset--color--light-grey);
+
+			a {
+				align-self: end;
+			}
+		}
+	}
+}
+
 body.news-front-page {
 	.wp-block-home-link__content {
 		/* Hide because `.front__site-title` will show it instead. */
