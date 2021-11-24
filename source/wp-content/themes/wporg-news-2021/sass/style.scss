@@ -73,7 +73,9 @@ GNU General Public License for more details.
 // Global components are listed first, to apply default styles.
 @import "components/site-header";
 @import "components/local-header";
-@import "components/footer-archive";
+@import "components/footer-archive/footer-archive";
+@import "components/footer-archive/subscribe-wp-news";
+@import "components/footer-archive/wp-briefing";
 @import "components/query-title-banner";
 // Specific templates are after global components, so they can override default styles.
 @import "components/front-page/front-page";
