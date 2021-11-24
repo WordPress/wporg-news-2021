@@ -83,6 +83,11 @@
 					"name": "Green"
 				},
 				{
+					"slug": "success-green",
+					"color": "#00a32a",
+					"name": "Success Green"
+				},
+				{
 					"slug": "coral-red",
 					"color": "#f86368",
 					"name": "Coral Red"

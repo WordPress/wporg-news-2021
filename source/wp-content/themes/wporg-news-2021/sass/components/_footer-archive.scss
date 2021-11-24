@@ -31,6 +31,57 @@
 		}
 	}
 
+	.subscribe-wp-news {
+		.jetpack_subscription_widget {
+			form {
+				display: grid;
+				grid-template-columns: 1fr auto;
+
+				grid-template-areas:
+					"count count"
+					"email submit"
+				;
+
+				.jetpack-subscribe-count {
+					grid-area: count;
+
+					p {
+						margin-top: 0;
+						margin-bottom: 0;
+					}
+				}
+
+				#subscribe-email {
+					grid-area: email;
+
+					input {
+						width: 100%;
+						height: 42px;
+						border: 1px solid var(--wp--preset--color--black);
+						border-radius: 2px 0 0 2px;
+					}
+				}
+
+				#subscribe-submit {
+					grid-area: submit;
+
+					.wp-block-button__link {
+						height: 42px;
+						border-radius: 0 2px 2px 0;
+					}
+				}
+			}
+
+			.success {
+				color: var(--wp--preset--color--success-green);
+			}
+
+			.error {
+				color: var(--wp--preset--color--vivid-red);
+			}
+		}
+	}
+
 	.wp-briefing {
 		p {
 			margin-top: 0;
