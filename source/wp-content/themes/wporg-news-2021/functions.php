@@ -16,6 +16,13 @@ add_filter( 'get_the_archive_title_prefix', __NAMESPACE__ . '\modify_archive_tit
 add_filter( 'template_include', __NAMESPACE__ . '\override_front_page_template' );
 add_action( 'pre_get_posts', __NAMESPACE__ . '\offset_paginated_index_posts' );
 add_filter( 'body_class', __NAMESPACE__ . '\clarify_body_classes' );
+add_filter( 'post_class', __NAMESPACE__ . '\specify_post_classes', 10, 3 );
+add_filter( 'loop_start', __NAMESPACE__ . '\reset_loop_data' );
+add_filter( 'theme_file_path', __NAMESPACE__ . '\conditional_template_part', 10, 2 );
+#add_filter( 'block_type_metadata_settings', __NAMESPACE__ . '\block_type_metadata_settings', 10, 2 );
+#add_filter( 'register_block_type_args', __NAMESPACE__ . '\register_block_type_args', 10, 2 );
+add_filter( 'render_block_data', __NAMESPACE__ . '\custom_query_block_attributes' );
+#add_filter( 'render_block_context', __NAMESPACE__ . '\render_block_context', 10, 3);
 
 /**
  * Register theme support.
@@ -230,4 +237,103 @@ function clarify_body_classes( $classes ) {
 	}
 
 	return $classes;
+}
+
+/**
+ * Add post classes to help make possible some design elements such as spacers between groups of posts.
+ *
+ * @param array $classes
+ *
+ * @return array
+ */
+function specify_post_classes( $classes, $extra_classes, $post_id ) {
+	$classes[] = 'post-year-' . get_the_date('Y');
+	#var_dump( $classes );
+
+	return $classes;
+}
+
+function reset_loop_data( $query ) {
+	#global $wporg_news_theme_prev
+}
+
+function conditional_template_part( $path, $file ) {
+	// Crudely simulate the $name parameter to get_template_part() for the wp:template-part block
+	// Example: <!-- wp:template-part {"slug":"foo-bar{-test}"} -->
+	// will attempt to use "foo-bar-test", and fall back to "foo-bar" if that template file does not exist
+	if ( false !== strpos( $path, '{' ) && !file_exists( $path ) ) {
+		if ( preg_match( '/[{]([-\w]+)[}]/', $path, $matches ) ) {
+			$name = $matches[1];
+			// Try "foo-bar-test"
+			$new_path = str_replace( '{' . $name . '}', $name, $path );
+			if ( file_exists( $new_path ) ) {
+				$path = $new_path;
+			} else {
+				// If that doesn't exist, try "foo-bar"
+				$new_path = str_replace( '{' . $name . '}', '', $path );
+				if ( file_exists( $new_path ) ) {
+					$path = $new_path;
+				}
+			}
+		}
+
+	}
+
+	return $path;
+}
+
+function block_type_metadata_settings( $metadata, $settings ) {
+	if ( 'core/query' === $settings['name'] ) {
+		echo '<pre>';
+		#var_dump( 'metadata', $metadata, 'settings', $settings );
+		var_dump( 'meta q', $metadata['attributes']['query'] );
+		var_dump( 'settings q', $settings['attributes']['query'] );
+		echo '</pre>';
+	}
+	return $metadata;
+}
+
+function register_block_type_args( $args, $name ) {
+	if ( 'core/query' === $name ) {
+		echo '<pre>';
+		var_dump( __FUNCTION__, $name, $args );
+		echo '</pre>';
+	}
+
+	return $args;
+}
+
+/**
+ * Support some additional pseudo-attributes for the wp:query block; notably category slugs.
+ *
+ * This could be removed if https://github.com/WordPress/gutenberg/issues/36785 is resolved.
+ *
+ * @param array         $parsed_block The block being rendered.
+ *
+ * @return array
+ */
+
+function custom_query_block_attributes( $parsed_block ) {
+	if ( 'core/query' === $parsed_block['blockName'] ) {
+		// If the block has a `category` attribute, then find the corresponding cat ID and set the `categoryIds` attribute.
+		// TODO: support multiple?
+		if ( isset( $parsed_block[ 'attrs' ][ 'query' ][ 'category' ] ) ) {
+			$category = get_category_by_slug( $parsed_block[ 'attrs' ][ 'query' ][ 'category' ] );
+			if ( $category ) {
+				$parsed_block[ 'attrs' ][ 'query' ][ 'categoryIds' ] = [ $category->term_id ];
+			}
+		}
+	}
+
+	return $parsed_block;
+}
+
+function render_block_context( $context, $parsed_block, $parent_block ) {
+	if ( 'core/query' === $parsed_block['blockName'] ) {
+		echo '<pre>';
+		var_dump( __FUNCTION__, $context );
+		echo '</pre>';
+	}
+
+	return $context;
 }
