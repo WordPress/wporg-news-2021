@@ -225,7 +225,7 @@
 %bottom-mask {
 	position: relative;
 	background-color: transparent;
-    background: linear-gradient(to top, transparent 58px, var( --bar-background-color ) 58px 100%);
+    background: linear-gradient(to top, transparent 56px, var( --bar-background-color ) 56px 100%);
 
 	&:after {
 		content: "";
