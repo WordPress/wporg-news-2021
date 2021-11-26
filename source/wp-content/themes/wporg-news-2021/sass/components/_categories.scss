@@ -66,7 +66,14 @@ body.category-community {
 	@extend %local-header-lightish;
 
 	li.post {
-		margin: 1px;
+		//margin: 1px;
+
+
+	}
+
+	.wp-block-post-title,
+	.wp-block-post-date {
+		font-size: var( --wp--preset--font--size--tiny);
 	}
 
 	// Alternating blue-1 and blue-2 for non-thumbnail posts
