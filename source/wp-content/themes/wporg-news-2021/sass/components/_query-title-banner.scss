@@ -26,7 +26,10 @@ body.search,
 body.archive:not(.category) {
 	.local-header {
 		/* Remove mask so this element blends into `query-title-banner`. */
-		mask-image: none;
+		background-color: var( --bar-background-color );
+		&:after {
+			content: none;
+		}
 	}
 
 	.query-title-banner {

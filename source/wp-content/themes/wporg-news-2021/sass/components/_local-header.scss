@@ -1,14 +1,3 @@
-%bottom-mask {
-	mask-image: url('images/local-nav-mask.svg');
-	mask-repeat: no-repeat;
-	mask-position: -200px -1px;
-	mask-size: cover;
-
-	@include break-small {
-		mask-position-x: -20px;
-	}
-}
-
 // Default/light version.
 .local-header {
 	--bar-text-color: var(--wp--preset--color--white);
@@ -228,6 +217,32 @@
 
 		.local-header {
 			--bar-background-color: var( --wp--preset--color--dark-grey );
+		}
+	}
+}
+
+//We need this at the bottom of the file for proper cascading
+%bottom-mask {
+	position: relative;
+	background-color: transparent;
+    background: linear-gradient(to top, transparent 58px, var( --bar-background-color ) 58px 100%);
+
+	&:after {
+		content: "";
+		height: 58px;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: -1;
+		mask-image: url('images/local-nav-mask.svg');
+		mask-repeat: no-repeat;
+		mask-position: -200px -1px;
+		mask-size: cover;
+		background-color: var( --bar-background-color );
+
+		@include break-small {
+			mask-position-x: -20px;
 		}
 	}
 }
