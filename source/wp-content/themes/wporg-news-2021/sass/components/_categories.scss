@@ -60,3 +60,36 @@ body.category-security {
 		--bar-background-color: var( --wp--preset--color--coral-red );
 	}
 }
+
+
+body.category-community {
+	@extend %local-header-lightish;
+
+	li.post {
+		margin: 1px;
+	}
+
+	// Alternating blue-1 and blue-2 for non-thumbnail posts
+	li.post:not(.has-post-thumbnail):nth-of-type(even) {
+		background-color: var(--wp--preset--color--blue-1);
+		color: var(--wp--preset--color--white);
+		vertical-align: bottom;
+	}
+	li.post:not(.has-post-thumbnail):nth-of-type(odd) {
+		background-color: var(--wp--preset--color--blue-2);
+		color: var(--wp--preset--color--white);
+		vertical-align: bottom;
+	}
+
+	// Featured image only for posts that have one
+	li.post.has-post-thumbnail .wp-block-post-title,
+	li.post.has-post-thumbnail .entry-meta {
+		display: none;
+	}
+
+	// B&W featured image
+	li.post.has-post-thumbnail .wp-block-post-featured-image {
+		filter: grayscale(100%);
+		object-fit: cover;
+	}
+}
