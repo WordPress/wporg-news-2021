@@ -17,12 +17,8 @@ add_filter( 'template_include', __NAMESPACE__ . '\override_front_page_template' 
 add_action( 'pre_get_posts', __NAMESPACE__ . '\offset_paginated_index_posts' );
 add_filter( 'body_class', __NAMESPACE__ . '\clarify_body_classes' );
 add_filter( 'post_class', __NAMESPACE__ . '\specify_post_classes', 10, 3 );
-add_filter( 'loop_start', __NAMESPACE__ . '\reset_loop_data' );
 add_filter( 'theme_file_path', __NAMESPACE__ . '\conditional_template_part', 10, 2 );
-#add_filter( 'block_type_metadata_settings', __NAMESPACE__ . '\block_type_metadata_settings', 10, 2 );
-#add_filter( 'register_block_type_args', __NAMESPACE__ . '\register_block_type_args', 10, 2 );
 add_filter( 'render_block_data', __NAMESPACE__ . '\custom_query_block_attributes' );
-#add_filter( 'render_block_context', __NAMESPACE__ . '\render_block_context', 10, 3);
 
 /**
  * Register theme support.
@@ -248,13 +244,37 @@ function clarify_body_classes( $classes ) {
  */
 function specify_post_classes( $classes, $extra_classes, $post_id ) {
 	$classes[] = 'post-year-' . get_the_date('Y');
-	#var_dump( $classes );
+
+	global $wp_query;
+
+	// Add first-in-year and last-in-year to help put design elements in between year groups in the Month In WordPress category
+	if ( is_object( $wp_query ) && $wp_query->post_count > 1 ) {
+		// Seems like the wp:query loop block doesn't count as "in the loop" so we'll do this the hard way:
+		$current_post = null;
+		for ( $i=0; $i < count ( $wp_query->posts ); $i++ ) {
+			if ( $wp_query->posts[ $i ]->ID === $post_id ) {
+				$current_post = $i;
+			}
+		}
+		if ( !is_null( $current_post ) ) {
+			if ( $current_post == 0 ) {
+				// First in the query
+				$classes[] = 'first-in-year';
+			} elseif ( $current_post >= $wp_query->post_count - 1 ) {
+				// Last in the query
+				$classes[] = 'last-in-year';
+			} else {
+				if ( get_the_date( 'Y' ) !== get_the_date( 'Y', $wp_query->posts[ $current_post - 1 ] ) ) {
+					$classes[] = 'first-in-year';
+				}
+				if ( get_the_date( 'Y' ) !== get_the_date( 'Y', $wp_query->posts[ $current_post + 1 ] ) ) {
+					$classes[] = 'last-in-year';
+				}
+			}
+		}
+	}
 
 	return $classes;
-}
-
-function reset_loop_data( $query ) {
-	#global $wporg_news_theme_prev
 }
 
 function conditional_template_part( $path, $file ) {
@@ -282,27 +302,6 @@ function conditional_template_part( $path, $file ) {
 	return $path;
 }
 
-function block_type_metadata_settings( $metadata, $settings ) {
-	if ( 'core/query' === $settings['name'] ) {
-		echo '<pre>';
-		#var_dump( 'metadata', $metadata, 'settings', $settings );
-		var_dump( 'meta q', $metadata['attributes']['query'] );
-		var_dump( 'settings q', $settings['attributes']['query'] );
-		echo '</pre>';
-	}
-	return $metadata;
-}
-
-function register_block_type_args( $args, $name ) {
-	if ( 'core/query' === $name ) {
-		echo '<pre>';
-		var_dump( __FUNCTION__, $name, $args );
-		echo '</pre>';
-	}
-
-	return $args;
-}
-
 /**
  * Support some additional pseudo-attributes for the wp:query block; notably category slugs.
  *
@@ -326,14 +325,4 @@ function custom_query_block_attributes( $parsed_block ) {
 	}
 
 	return $parsed_block;
-}
-
-function render_block_context( $context, $parsed_block, $parent_block ) {
-	if ( 'core/query' === $parsed_block['blockName'] ) {
-		echo '<pre>';
-		var_dump( __FUNCTION__, $context );
-		echo '</pre>';
-	}
-
-	return $context;
 }
