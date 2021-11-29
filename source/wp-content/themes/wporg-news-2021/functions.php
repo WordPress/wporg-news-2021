@@ -256,6 +256,7 @@ function specify_post_classes( $classes, $extra_classes, $post_id ) {
 				$current_post = $i;
 			}
 		}
+		// TODO: first/last-in-year may not be needed. Remove this for launch if it's unnecessary.
 		if ( !is_null( $current_post ) ) {
 			if ( $current_post == 0 ) {
 				// First in the query
