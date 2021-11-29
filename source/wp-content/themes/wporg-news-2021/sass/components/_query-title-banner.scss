@@ -24,11 +24,17 @@ body.news-front-page,
 body.news-posts-index,
 body.search,
 body.archive:not(.category) {
+	--bar-background-color: var(--wp--preset--color--blue-1);
 	.local-header {
-		/* Remove mask so this element blends into `query-title-banner`. */
-		background-color: var( --bar-background-color );
-		&:after {
-			content: none;
+		/* Add a background to hide the mask when menu is not open so it blends with `query-title-banner`. */
+		&:before {
+			content: "";
+			position: absolute;
+			height: 56px;
+			top: 0;
+			left: 0;
+			right: 0;
+			background-color: var( --bar-background-color );
 		}
 	}
 
