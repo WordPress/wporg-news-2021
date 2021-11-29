@@ -56,6 +56,10 @@
 
 %four-column-grid-container {
 	@include break-wide() {
+		justify-self: center;
+		width: var(--wp--custom--layout--wide-size);
+		max-width: var(--wp--custom--layout--wide-size);
+
 		display: grid;
 		grid-template-columns: repeat( 4, 1fr );
 
