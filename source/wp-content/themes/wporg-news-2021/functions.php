@@ -16,6 +16,9 @@ add_filter( 'get_the_archive_title_prefix', __NAMESPACE__ . '\modify_archive_tit
 add_filter( 'template_include', __NAMESPACE__ . '\override_front_page_template' );
 add_action( 'pre_get_posts', __NAMESPACE__ . '\offset_paginated_index_posts' );
 add_filter( 'body_class', __NAMESPACE__ . '\clarify_body_classes' );
+add_filter( 'post_class', __NAMESPACE__ . '\specify_post_classes', 10, 3 );
+add_filter( 'theme_file_path', __NAMESPACE__ . '\conditional_template_part', 10, 2 );
+add_filter( 'render_block_data', __NAMESPACE__ . '\custom_query_block_attributes' );
 
 /**
  * Register theme support.
@@ -230,4 +233,97 @@ function clarify_body_classes( $classes ) {
 	}
 
 	return $classes;
+}
+
+/**
+ * Add post classes to help make possible some design elements such as spacers between groups of posts.
+ *
+ * @param array $classes
+ *
+ * @return array
+ */
+function specify_post_classes( $classes, $extra_classes, $post_id ) {
+	$classes[] = 'post-year-' . get_the_date('Y');
+
+	global $wp_query;
+
+	// Add first-in-year and last-in-year to help put design elements in between year groups in the Month In WordPress category
+	if ( is_object( $wp_query ) && $wp_query->post_count > 1 ) {
+		// Seems like the wp:query loop block doesn't count as "in the loop" so we'll do this the hard way:
+		$current_post = null;
+		for ( $i=0; $i < count ( $wp_query->posts ); $i++ ) {
+			if ( $wp_query->posts[ $i ]->ID === $post_id ) {
+				$current_post = $i;
+			}
+		}
+		// TODO: first/last-in-year may not be needed. Remove this for launch if it's unnecessary.
+		if ( !is_null( $current_post ) ) {
+			if ( $current_post == 0 ) {
+				// First in the query
+				$classes[] = 'first-in-year';
+			} elseif ( $current_post >= $wp_query->post_count - 1 ) {
+				// Last in the query
+				$classes[] = 'last-in-year';
+			} else {
+				if ( get_the_date( 'Y' ) !== get_the_date( 'Y', $wp_query->posts[ $current_post - 1 ] ) ) {
+					$classes[] = 'first-in-year';
+				}
+				if ( get_the_date( 'Y' ) !== get_the_date( 'Y', $wp_query->posts[ $current_post + 1 ] ) ) {
+					$classes[] = 'last-in-year';
+				}
+			}
+		}
+	}
+
+	return $classes;
+}
+
+function conditional_template_part( $path, $file ) {
+	// Crudely simulate the $name parameter to get_template_part() for the wp:template-part block
+	// Example: <!-- wp:template-part {"slug":"foo-bar{-test}"} -->
+	// will attempt to use "foo-bar-test", and fall back to "foo-bar" if that template file does not exist
+	if ( false !== strpos( $path, '{' ) && !file_exists( $path ) ) {
+		if ( preg_match( '/[{]([-\w]+)[}]/', $path, $matches ) ) {
+			$name = $matches[1];
+			// Try "foo-bar-test"
+			$new_path = str_replace( '{' . $name . '}', $name, $path );
+			if ( file_exists( $new_path ) ) {
+				$path = $new_path;
+			} else {
+				// If that doesn't exist, try "foo-bar"
+				$new_path = str_replace( '{' . $name . '}', '', $path );
+				if ( file_exists( $new_path ) ) {
+					$path = $new_path;
+				}
+			}
+		}
+
+	}
+
+	return $path;
+}
+
+/**
+ * Support some additional pseudo-attributes for the wp:query block; notably category slugs.
+ *
+ * This could be removed if https://github.com/WordPress/gutenberg/issues/36785 is resolved.
+ *
+ * @param array         $parsed_block The block being rendered.
+ *
+ * @return array
+ */
+
+function custom_query_block_attributes( $parsed_block ) {
+	if ( 'core/query' === $parsed_block['blockName'] ) {
+		// If the block has a `category` attribute, then find the corresponding cat ID and set the `categoryIds` attribute.
+		// TODO: support multiple?
+		if ( isset( $parsed_block[ 'attrs' ][ 'query' ][ 'category' ] ) ) {
+			$category = get_category_by_slug( $parsed_block[ 'attrs' ][ 'query' ][ 'category' ] );
+			if ( $category ) {
+				$parsed_block[ 'attrs' ][ 'query' ][ 'categoryIds' ] = [ $category->term_id ];
+			}
+		}
+	}
+
+	return $parsed_block;
 }

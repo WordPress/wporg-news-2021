@@ -54,6 +54,24 @@
 	}
 }
 
+%four-column-grid-container {
+	@include break-wide() {
+		justify-self: center;
+		width: var(--wp--custom--layout--wide-size);
+		max-width: var(--wp--custom--layout--wide-size);
+
+		display: grid;
+		grid-template-columns: repeat( 4, 1fr );
+
+		/*
+		 * This defines the minimum horizontal gap. An additional implicit gap is created because the right column
+		 * contents have a `max-width` and are justified in the center.
+		 */
+		grid-gap: 0 var( --wp--style--block-gap );
+	}
+}
+
+
 :root {
 	--wpadmin-bar--height: 46px;
 }
