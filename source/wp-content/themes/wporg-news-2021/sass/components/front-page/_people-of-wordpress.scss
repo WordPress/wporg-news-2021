@@ -72,6 +72,10 @@ body.news-front-page .front__people-of-wordpress {
 	.wp-block-query-pagination {
 		margin-top: 0;
 
+		&:after {
+			background-color: white;
+		}
+
 		@include break-medium() {
 			grid-area: all-people;
 			align-self: center;
