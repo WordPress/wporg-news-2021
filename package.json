@@ -11,7 +11,7 @@
 		"browser-sync": "^2.27.5"
 	},
 	"scripts": {
-		"initial-setup": "yarn && composer install && yarn run update-configs",
+		"initial-setup": "composer install && yarn && yarn run update-configs",
 		"update-configs": "TEXTDOMAIN=wporg composer exec update-configs",
 		"wp-env": "wp-env",
 		"env": "wp-env start",
