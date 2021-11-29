@@ -13,15 +13,3 @@ body.page .site-content-container .wp-block-post-content {
 body.category-community .site-content-container {
 	@extend %four-column-grid-container;
 }
-
-body.category-community {
-	li.post {
-		margin: 1px;
-	}
-	li.post:not(.has-post-thumbnail):nth-of-type(even) {
-		background-color: var(--wp--preset--color--blue-1);
-	}
-	li.post:not(.has-post-thumbnail):nth-of-type(odd) {
-		background-color: var(--wp--preset--color--blue-2);
-	}
-}
