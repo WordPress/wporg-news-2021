@@ -40,6 +40,10 @@ body.news-front-page .front__latest-release {
 			border-right: 1px solid var(--wp--preset--color--blue-2);
 		}
 
+		&:after {
+			background-color: var(--wp--preset--color--blue-2);
+		}
+
 		a {
 			text-decoration: underline;
 		}
