@@ -50,11 +50,33 @@ body.news-front-page {
 	}
 
 	.front__site-title {
+		position: relative;
+		z-index: 1;
 		margin-top: 0;
 		background-color: var( --wp--preset--color--blue-1 );
 		color: var( --wp--preset--color--white );
 		font-size: clamp( 100px, 25vw, 160px );
 		line-height: 3;
+		&:after {
+			content: "";
+			position: absolute;
+			transform: translateY(-80%);
+			top: 50%;
+			bottom: 50%;
+			right: 0;
+			left: 15vw;
+			height: 33%;
+			z-index: -1;
+			background-color: var(--wp--preset--color--blue-2);
+			mask-image: url("images/brush-stroke-big.svg");
+			mask-position: left center;
+			mask-repeat: no-repeat;
+			mask-size: cover;
+			@include break-wide() {
+				mask-position: right center;
+				mask-size: contain;
+			}
+		}
 	}
 
 	.site-content-container {

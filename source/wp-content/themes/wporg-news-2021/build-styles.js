@@ -13,6 +13,8 @@ const fs = require( 'fs' );
 const { resolve } = require( 'path' );
 const sass = require( 'node-sass' );
 const packageImporter = require( 'node-sass-package-importer' );
+const autoprefixer = require('autoprefixer');
+const postcss = require('postcss');
 
 const inputFile = resolve( 'sass/style.scss' );
 const outputFile = resolve( './style.css' );
@@ -29,14 +31,22 @@ sass.render( {
 	if ( error ) {
 		console.log( error.message );
 	} else {
-		fs.writeFile(
-			outputFile,
-			result.css,
-			( err ) => {
-				if ( err ) {
-					console.log( err );
+		let css = result.css;
+		postcss([ autoprefixer ]).process(css, { from: outputFile }).then(res => {
+			res.warnings().forEach(warn => {
+				console.warn(warn.toString());
+			})
+			fs.writeFile(
+				outputFile,
+				res.css,
+				( err ) => {
+					if ( err ) {
+						console.log( err );
+					}
 				}
-			}
-		);
+			);
+		});
 	}
 } );
+
+
