@@ -19,6 +19,7 @@ add_filter( 'body_class', __NAMESPACE__ . '\clarify_body_classes' );
 add_filter( 'post_class', __NAMESPACE__ . '\specify_post_classes', 10, 3 );
 add_filter( 'theme_file_path', __NAMESPACE__ . '\conditional_template_part', 10, 2 );
 add_filter( 'render_block_data', __NAMESPACE__ . '\custom_query_block_attributes' );
+add_filter( 'template_redirect', __NAMESPACE__ . '\jetpack_likes_workaround' );
 
 /**
  * Register theme support.
@@ -326,4 +327,18 @@ function custom_query_block_attributes( $parsed_block ) {
 	}
 
 	return $parsed_block;
+}
+
+/**
+ * A Workaround to make Jetpack Likes work with FSE themes.
+ *
+ * This is only needed until Jetpack Likes is updated to work properly with FSE themes,
+ * or https://core.trac.wordpress.org/ticket/54529 is merged to Core.
+ */
+
+function jetpack_likes_workaround() {
+	$jetpack_likes = class_exists( '\Jetpack_Likes' ) ? \Jetpack_Likes::init() : false;
+	if ( is_callable( [ $jetpack_likes, 'load_styles_register_scripts' ] ) ) {
+		$jetpack_likes->load_styles_register_scripts();
+	}
 }
