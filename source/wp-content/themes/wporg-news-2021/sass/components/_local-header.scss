@@ -150,8 +150,9 @@
 					}
 				}
 			}
+
 			&:focus {
-				& ~ label {
+				~ label span {
 					outline: 1px dotted currentColor;
 				}
 
