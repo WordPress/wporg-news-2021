@@ -23,7 +23,7 @@
 	.single &,
 	.page & {
 		.wp-block-post-date {
-			line-height: 3.4;
+			margin: calc(var(--wp--custom--margin--vertical) / 2) 0;
 		}
 
 		.wp-block-post-author,
@@ -43,6 +43,7 @@
 	}
 
 	.entry-meta {
+		font-size: var(--wp--preset--font-size--small);
 
 		@include break-wide() {
 			grid-area: entry-meta;
