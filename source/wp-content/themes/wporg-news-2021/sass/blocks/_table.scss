@@ -5,9 +5,10 @@
 		text-align: center;
 	}
 
-	td, th {
+	td,
+	th {
 		border: 1px solid;
-		padding: calc(0.5*var(--wp--custom--margin--vertical)) calc(0.5*var(--wp--custom--margin--horizontal));
+		padding: calc(0.5 * var(--wp--custom--margin--vertical)) calc(0.5 * var(--wp--custom--margin--horizontal));
 	}
 
 	margin-bottom: 1em;

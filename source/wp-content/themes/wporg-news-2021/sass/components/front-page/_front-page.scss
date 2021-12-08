@@ -1,11 +1,11 @@
 %front-latest-items-grid {
+
 	@extend %two-column-grid-container;
 
 	@include break-wide() {
 		grid-template-areas:
 			"heading    content"
-			"more-link  content"
-		;
+			"more-link  content";
 	}
 
 	> h2 {
@@ -18,6 +18,7 @@
 	}
 
 	> .wp-block-post-template {
+
 		@extend %two-column-grid-right-column;
 
 		@include break-wide() {
@@ -45,6 +46,7 @@
 
 body.news-front-page {
 	.wp-block-home-link__content {
+
 		/* Hide because `.front__site-title` will show it instead. */
 		display: none;
 	}
@@ -53,11 +55,12 @@ body.news-front-page {
 		position: relative;
 		z-index: 1;
 		margin-top: 0;
-		background-color: var( --wp--preset--color--blue-1 );
-		color: var( --wp--preset--color--white );
-		font-size: clamp( 100px, 25vw, 160px );
+		background-color: var(--wp--preset--color--blue-1);
+		color: var(--wp--preset--color--white);
+		font-size: clamp(100px, 25vw, 160px);
 		line-height: 3;
-		&:after {
+
+		&::after {
 			content: "";
 			position: absolute;
 			transform: translateY(-80%);
@@ -68,10 +71,11 @@ body.news-front-page {
 			height: 33%;
 			z-index: -1;
 			background-color: var(--wp--preset--color--blue-2);
-			mask-image: url("images/brush-stroke-big.svg");
+			mask-image: url(images/brush-stroke-big.svg);
 			mask-position: left center;
 			mask-repeat: no-repeat;
 			mask-size: cover;
+
 			@include break-wide() {
 				mask-position: right center;
 				mask-size: contain;

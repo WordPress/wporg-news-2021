@@ -1,5 +1,5 @@
 body.news-front-page .front__people-of-wordpress {
-	background-color: var( --wp--preset--color--off-white );
+	background-color: var(--wp--preset--color--off-white);
 
 	@include break-medium() {
 		display: grid;
@@ -7,8 +7,7 @@ body.news-front-page .front__people-of-wordpress {
 
 		grid-template-areas:
 			"heading    all-people"
-			"thumbnails thumbnails"
-		;
+			"thumbnails thumbnails";
 	}
 
 	h2 {
@@ -41,6 +40,7 @@ body.news-front-page .front__people-of-wordpress {
 
 			.wp-block-post-featured-image {
 				margin: 0;
+
 				img {
 					filter: grayscale(100%);
 					aspect-ratio: 1 / 1;
@@ -53,9 +53,11 @@ body.news-front-page .front__people-of-wordpress {
 			}
 
 			&:not(.has-post-thumbnail) {
+
 				@extend %edge-spacing-padding;
 
 				.wp-block-post-title {
+
 					@include show-hidden-accessibly;
 				}
 
@@ -64,6 +66,7 @@ body.news-front-page .front__people-of-wordpress {
 				}
 
 				h3 {
+
 					@include break-medium() {
 						margin: 0 5px;
 					}
@@ -75,8 +78,8 @@ body.news-front-page .front__people-of-wordpress {
 	.wp-block-query-pagination {
 		margin-top: 0;
 
-		&:after {
-			background-color: white;
+		&::after {
+			background-color: var(--wp--preset--color--white);
 		}
 
 		@include break-medium() {

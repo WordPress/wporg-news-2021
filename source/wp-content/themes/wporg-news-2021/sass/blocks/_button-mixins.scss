@@ -1,5 +1,6 @@
 // NOTE: These remain for the styling of buttons that are NOT blocks and is used elsewhere.  This can be removed when those no longer exist.
 @mixin button-main-styles {
+
 	@include button-padding-styles;
 	@include button-typography-styles;
 	@include button-color-styles;
@@ -11,19 +12,23 @@
 	color: var(--wp--custom--button--color--text);
 	background-color: var(--wp--custom--button--color--background);
 	border-color: var(--wp--custom--button--border--color);
+
 	svg {
 		fill: var(--wp--custom--button--color--text);
 	}
+
 	&:hover {
 		color: var(--wp--custom--button--hover--color--text);
 		background-color: var(--wp--custom--button--hover--color--background);
 		border-color: var(--wp--custom--button--hover--border--color);
 	}
+
 	&:active {
 		color: var(--wp--custom--button--active--color--text);
 		background-color: var(--wp--custom--button--active--color--background);
 		border-color: var(--wp--custom--button--active--border--color);
 	}
+
 	&:focus {
 		color: var(--wp--custom--button--focus--color--text);
 		background-color: var(--wp--custom--button--focus--color--background);
@@ -35,10 +40,10 @@
 //standard and outline buttons are equal.
 @mixin button-padding-styles {
 	border-width: 0;
-	padding-top: calc( var(--wp--custom--button--spacing--padding--top) + var(--wp--custom--button--border--width) );
-	padding-bottom: calc( var(--wp--custom--button--spacing--padding--bottom) + var(--wp--custom--button--border--width) );
-	padding-left: calc( var(--wp--custom--button--spacing--padding--left) + var(--wp--custom--button--border--width) );
-	padding-right: calc( var(--wp--custom--button--spacing--padding--right) + var(--wp--custom--button--border--width) );
+	padding-top: calc(var(--wp--custom--button--spacing--padding--top) + var(--wp--custom--button--border--width));
+	padding-bottom: calc(var(--wp--custom--button--spacing--padding--bottom) + var(--wp--custom--button--border--width));
+	padding-left: calc(var(--wp--custom--button--spacing--padding--left) + var(--wp--custom--button--border--width));
+	padding-right: calc(var(--wp--custom--button--spacing--padding--right) + var(--wp--custom--button--border--width));
 }
 
 @mixin button-typography-styles {

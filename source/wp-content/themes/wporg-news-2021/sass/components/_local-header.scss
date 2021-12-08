@@ -5,7 +5,7 @@
 	--bar-background-color: var(--wp--preset--color--blue-1);
 
 	min-height: 56px;
-	background-color: var( --bar-background-color );
+	background-color: var(--bar-background-color);
 	color: var(--bar-text-color);
 
 	@extend %bottom-mask;
@@ -58,7 +58,7 @@
 				margin-top: 0;
 			}
 
-			&:before {
+			&::before {
 				content: "\0020\00B7\0020";
 			}
 		}
@@ -118,9 +118,10 @@
 			position: fixed;
 
 			&:checked {
-				& + label {
+				+ label {
+
 					@include break-mobile {
-						height: calc( 1rem * var(--wp--custom--body--typography--line-height) * var(--flex-items-per-column) + 125px );
+						height: calc(1rem * var(--wp--custom--body--typography--line-height) * var(--flex-items-per-column) + 125px);
 					}
 
 					span {
@@ -128,17 +129,18 @@
 					}
 
 					svg {
-						transform: rotate( 180deg );
+						transform: rotate(180deg);
 					}
 				}
 
-				& ~ .wp-block-categories {
+				~ .wp-block-categories {
 					display: flex;
 					opacity: 1;
 					animation-duration: 400ms;
 					animation-name: categories-fade-in;
 
 					@at-root {
+
 						@keyframes categories-fade-in {
 							from {
 								opacity: 0;
@@ -165,7 +167,7 @@
 			opacity: 0;
 			flex-direction: column;
 			flex-wrap: wrap;
-			width: calc( min( 100%, var(--wp--custom--layout--wide-size) ) );
+			width: calc(min(100%, var(--wp--custom--layout--wide-size)));
 			color: var(--bar-text-color);
 			list-style: none;
 			padding: 0 0 2em 0;
@@ -175,7 +177,7 @@
 				position: absolute;
 				left: 0;
 				top: 75px;
-				max-height: calc( 1rem * var(--wp--custom--body--typography--line-height) * var(--flex-items-per-column) );
+				max-height: calc(1rem * var(--wp--custom--body--typography--line-height) * var(--flex-items-per-column));
 			}
 
 			[class*="wp-container-"] & {
@@ -189,7 +191,7 @@
 			.current-cat {
 				font-weight: 700;
 
-				&:before {
+				&::before {
 					content: "\0020\00B7\0020";
 				}
 			}
@@ -224,7 +226,7 @@
 		background-color: var(--wp--preset--color--darker-grey);
 
 		.local-header {
-			--bar-background-color: var( --wp--preset--color--dark-grey );
+			--bar-background-color: var(--wp--preset--color--dark-grey);
 		}
 	}
 }
@@ -232,10 +234,10 @@
 //We need this at the bottom of the file for proper cascading
 %bottom-mask {
 	position: relative;
-	background-color: transparent;
-    background: linear-gradient(to top, transparent 56px, var( --bar-background-color ) 56px 100%);
+	background: transparent;
+	background: linear-gradient(to top, transparent 56px, var(--bar-background-color) 56px 100%);
 
-	&:after {
+	&::after {
 		content: "";
 		height: 58px;
 		position: absolute;
@@ -243,9 +245,9 @@
 		left: 0;
 		right: 0;
 		z-index: -1;
-		mask-image: url('images/local-nav-mask.svg');
+		mask-image: url(images/local-nav-mask.svg);
 		mask-repeat: no-repeat;
 		mask-size: cover;
-		background-color: var( --bar-background-color );
+		background-color: var(--bar-background-color);
 	}
 }

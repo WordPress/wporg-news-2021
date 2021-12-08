@@ -1,20 +1,21 @@
 %two-column-grid-container {
+
 	@include break-wide() {
 		display: grid;
 		grid-template-columns:
-			calc( var(--wp--custom--layout--content-meta-size) - 32px )
-			auto
-		;
+			calc(var(--wp--custom--layout--content-meta-size) - 32px)
+			auto;
 
 		/*
 		 * This defines the minimum horizontal gap. An additional implicit gap is created because the right column
 		 * contents have a `max-width` and are justified in the center.
 		 */
-		grid-gap: 0 var( --wp--style--block-gap );
+		grid-gap: 0 var(--wp--style--block-gap);
 	}
 }
 
 %two-column-grid-right-column {
+
 	@include break-wide() {
 		justify-self: center;
 		width: var(--wp--custom--layout--content-size);
@@ -23,14 +24,17 @@
 }
 
 %two-column-grid-container-dynamic-rows {
+
 	@extend %two-column-grid-container;
 
 	> * {
+
 		@include break-wide() {
 			grid-row: auto;
 		}
 
 		&:not(.alignfull):not(.alignwide) {
+
 			@extend %two-column-grid-right-column;
 
 			@include break-wide() {
@@ -40,12 +44,14 @@
 
 		&.alignfull,
 		&.alignwide {
+
 			@include break-wide() {
 				grid-column: 1 / 3;
 			}
 		}
 
 		&.alignwide {
+
 			@include break-wide() {
 				width: 100%;
 				max-width: 100%;
@@ -55,19 +61,20 @@
 }
 
 %four-column-grid-container {
+
 	@include break-wide() {
 		justify-self: center;
 		width: var(--wp--custom--layout--wide-size);
 		max-width: var(--wp--custom--layout--wide-size);
 
 		display: grid;
-		grid-template-columns: repeat( 4, 1fr );
+		grid-template-columns: repeat(4, 1fr);
 
 		/*
 		 * This defines the minimum horizontal gap. An additional implicit gap is created because the right column
 		 * contents have a `max-width` and are justified in the center.
 		 */
-		grid-gap: 0 var( --wp--style--block-gap );
+		grid-gap: 0 var(--wp--style--block-gap);
 	}
 }
 
@@ -89,11 +96,12 @@
 }
 
 body.admin-bar {
+
 	@include break-small() {
 		--wpadmin-bar--height: 32px;
 	}
 
 	.wp-site-blocks {
-		min-height: calc( 100vh - var(--wpadmin-bar--height) );
+		min-height: calc(100vh - var(--wpadmin-bar--height));
 	}
 }

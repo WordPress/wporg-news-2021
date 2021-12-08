@@ -3,6 +3,7 @@
 	margin-top: 0;
 
 	.wp-block-query-title {
+
 		/*
 		 * Hide all of them by default because there are 3 of them, but only one should be shown at a time.
 		 * See `query-title-banner.html` for details.
@@ -26,20 +27,23 @@ body.news-posts-index,
 body.search,
 body.archive:not(.category) {
 	--bar-background-color: var(--wp--preset--color--blue-1);
+
 	.local-header {
+
 		/* Add a background to hide the mask when menu is not open so it blends with `query-title-banner`. */
-		&:before {
+		&::before {
 			content: "";
 			position: absolute;
 			height: 56px;
 			top: 0;
 			left: 0;
 			right: 0;
-			background-color: var( --bar-background-color );
+			background-color: var(--bar-background-color);
 		}
 	}
 
 	.query-title-banner {
+
 		@extend %bottom-mask;
 	}
 }

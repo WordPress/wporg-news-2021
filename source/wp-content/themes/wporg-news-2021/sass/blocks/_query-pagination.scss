@@ -4,10 +4,11 @@
 
 .wp-block-query-pagination {
 	display: inline-block;
-	line-height: 7em;
+	line-height: 7em; // stylelint-disable-line declaration-property-unit-allowed-list
 	color: var(--wp--preset--color--blue-1);
 	position: relative;
-	&:after {
+
+	&::after {
 		content: "";
 		position: absolute;
 		top: 0;
@@ -15,7 +16,7 @@
 		right: 0;
 		left: 0;
 		background-color: var(--wp--preset--color--off-white-2);
-		mask-image: url("images/brush-stroke-short-blue-4.svg");
+		mask-image: url(images/brush-stroke-short-blue-4.svg);
 		mask-position: center;
 		mask-repeat: no-repeat;
 		mask-size: contain;
@@ -34,12 +35,12 @@
 	}
 
 	.wp-block-query-pagination-numbers {
-		&:before {
+		&::before {
 			content: "\00B7\0020";
 			padding-left: 2px;
 		}
 
-		&:after {
+		&::after {
 			content: "\0020\00B7";
 			padding-right: 2px;
 		}

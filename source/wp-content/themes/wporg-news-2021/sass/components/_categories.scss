@@ -3,10 +3,12 @@
  */
 
 body.category-community {
+
 	@extend %local-header-off-white;
 }
 
 body.category-events {
+
 	@extend %local-header-off-white;
 }
 
@@ -16,19 +18,19 @@ body.category-releases {
 	}
 
 	.site-content-container {
-		color: var( --wp--preset--color--white );
+		color: var(--wp--preset--color--white);
 
 		a,
 		.wp-block-query-pagination {
-			color: var( --wp--preset--color--white );
+			color: var(--wp--preset--color--white);
 		}
 
 		.wp-block-post-title {
-			--post-title-hover-color: var( --wp--preset--color--white );
+			--post-title-hover-color: var(--wp--preset--color--white);
 		}
 	}
 
-	& .local-header {
+	.local-header {
 		--bar-background-color: var(--wp--preset--color--blue-5);
 	}
 
@@ -36,44 +38,42 @@ body.category-releases {
 }
 
 body.category-month-in-wordpress {
+
 	@extend %local-header-dark;
 
 	.site-content-container {
-		color: var( --wp--preset--color--off-white-2 );
+		color: var(--wp--preset--color--off-white-2);
 	}
 
 	@extend %footer-archive-dark;
 }
 
 body.category-development {
+
 	@extend %local-header-lightish;
 
-	& .local-header {
-		--bar-background-color: var( --wp--preset--color--green );
+	.local-header {
+		--bar-background-color: var(--wp--preset--color--green);
 	}
 }
 
 body.category-security {
+
 	@extend %local-header-lightish;
 
-	& .local-header {
-		--bar-background-color: var( --wp--preset--color--coral-red );
+	.local-header {
+		--bar-background-color: var(--wp--preset--color--coral-red);
 	}
 }
 
 
 body.category-community {
+
 	@extend %local-header-lightish;
-
-	li.post {
-		//margin: 1px;
-
-
-	}
 
 	.wp-block-post-title,
 	.wp-block-post-date {
-		font-size: var( --wp--preset--font--size--tiny);
+		font-size: var(--wp--preset--font--size--tiny);
 	}
 
 	// Alternating blue-1 and blue-2 for non-thumbnail posts
@@ -82,6 +82,7 @@ body.category-community {
 		color: var(--wp--preset--color--white);
 		vertical-align: bottom;
 	}
+
 	li.post:not(.has-post-thumbnail):nth-of-type(odd) {
 		background-color: var(--wp--preset--color--blue-2);
 		color: var(--wp--preset--color--white);
