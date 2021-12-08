@@ -12,3 +12,17 @@
 	width: 1px;
 	word-wrap: normal !important;
 }
+
+// Unset the `screen-reader-text` styles to make an element visible.
+@mixin show-hidden-accessibly {
+	border: unset;
+	clip: unset;
+	clip-path: unset;
+	height: unset;
+	margin: unset;
+	overflow: unset;
+	padding: unset;
+	position: unset;
+	width: unset;
+	word-wrap: unset !important;
+}

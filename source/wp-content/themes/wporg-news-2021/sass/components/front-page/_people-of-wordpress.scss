@@ -52,12 +52,12 @@ body.news-front-page .front__people-of-wordpress {
 				}
 			}
 
-			&.has-post-thumbnail .wp-block-post-title {
-				display: none;
-			}
-
 			&:not(.has-post-thumbnail) {
 				@extend %edge-spacing-padding;
+
+				.wp-block-post-title {
+					@include show-hidden-accessibly;
+				}
 
 				@include break-medium() {
 					padding: 0;
