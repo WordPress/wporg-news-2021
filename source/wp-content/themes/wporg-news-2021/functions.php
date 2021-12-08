@@ -324,6 +324,13 @@ function custom_query_block_attributes( $parsed_block ) {
 				$parsed_block[ 'attrs' ][ 'query' ][ 'categoryIds' ] = [ $category->term_id ];
 			}
 		}
+		if ( isset( $parsed_block[ 'attrs' ][ 'query' ][ 'tag' ] ) ) {
+			$tag = get_term_by( 'slug', $parsed_block[ 'attrs' ][ 'query' ][ 'tag' ], 'post_tag' );
+			if ( $tag ) {
+				$parsed_block[ 'attrs' ][ 'query' ][ 'tagIds' ] = [ $tag->term_id ];
+			}
+
+		}
 	}
 
 	return $parsed_block;
