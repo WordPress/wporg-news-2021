@@ -1,10 +1,20 @@
-// Default/light version.
-.footer-archive .footer-archive-row[class*="wp-container-"] {
+// Default/light version.	
+.footer-archive-row[class*="wp-container-"] {
 	justify-content: space-between;
 	align-items: stretch !important;
 	margin-top: 0;
 	gap: 0;
 	background-color: var(--wp--preset--color--white);
+	line-height: 30px;
+
+	h3 {
+		font-size: 26px;
+		margin-bottom: var(--wp--custom--margin--baseline);
+	}
+
+	h3 + p {
+		margin-top: 0;
+	}
 
 	& > * {
 		padding-top: 50px;

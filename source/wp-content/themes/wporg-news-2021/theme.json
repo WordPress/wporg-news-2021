@@ -265,7 +265,7 @@
 				"breakpoint": {
 					"mobile": {
 						"typography": {
-							"fontSize": "36px",
+							"fontSize": "clamp(26px, 4vw, 36px)",
 							"lineHeight": "1.35"
 						}
 					}
