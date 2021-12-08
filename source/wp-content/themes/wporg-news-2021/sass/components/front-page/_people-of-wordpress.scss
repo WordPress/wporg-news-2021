@@ -22,26 +22,29 @@ body.news-front-page .front__people-of-wordpress {
 
 	ul.wp-block-post-template {
 		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		gap: 0;
+		flex-direction: column;
 		margin: 0;
 
 		@include break-medium() {
+			flex-direction: row;
 			grid-area: thumbnails;
+			gap: 2px;
 		}
 
 		li {
-			flex-basis: 200px;
-			flex-grow: 1;
+			flex-basis: 100%;
 			margin-top: 0;
+
+			@include break-small() {
+				flex-basis: 20%;
+			}
 
 			.wp-block-post-featured-image {
 				margin: 0;
-
 				img {
 					filter: grayscale(100%);
+					aspect-ratio: 1 / 1;
+					object-fit: cover;
 
 					&:hover {
 						filter: grayscale(0%);
