@@ -1,7 +1,8 @@
 body.error404 {
+
 	@extend %local-header-dark;
 
-	& .site-content-container {
+	.site-content-container {
 		color: var(--wp--preset--color--off-white-2);
 		text-align: center;
 

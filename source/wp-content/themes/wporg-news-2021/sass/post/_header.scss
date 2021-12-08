@@ -15,7 +15,7 @@
 			text-transform: uppercase;
 		}
 
-		.wp-block-post-terms:after {
+		.wp-block-post-terms::after {
 			content: "\0020\00B7";
 		}
 	}
@@ -35,6 +35,7 @@
 
 .single .entry-header,
 .page .entry-header {
+
 	@extend %two-column-grid-container;
 
 	@include break-wide() {
@@ -42,12 +43,14 @@
 	}
 
 	.entry-meta {
+
 		@include break-wide() {
-			grid-area: entry-meta
+			grid-area: entry-meta;
 		}
 	}
 
 	.wp-block-post-title {
+
 		@extend %two-column-grid-right-column;
 
 		@include break-wide() {

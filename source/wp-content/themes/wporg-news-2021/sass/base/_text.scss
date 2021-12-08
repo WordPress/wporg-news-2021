@@ -1,13 +1,19 @@
 // Text selection background color
-
 ::selection {
 	background-color: var(--wp--preset--color--coral-red);
 }
+
 ::-moz-selection {
 	background-color: var(--wp--preset--color--coral-red);
 }
 
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
 	margin-top: var(--wp--custom--margin--vertical);
 	margin-bottom: var(--wp--custom--margin--vertical);
 }

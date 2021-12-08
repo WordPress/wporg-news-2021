@@ -1,12 +1,14 @@
-@import 'button-mixins';
+@import "button-mixins";
 
 .wp-block-post-comments {
-	label, .comment-meta {
+	label,
+	.comment-meta {
 		font-size: var(--wp--custom--form--label--typography--font-size);
 	}
 
 	input[type="submit"],
 	.reply a {
+
 		@include button-main-styles;
 		@include button-color-styles;
 	}
@@ -32,7 +34,7 @@
 			"cookies-consent cookies-consent"
 			"form-submit form-submit";
 
-		input:not([type=submit]):not([type=checkbox]),
+		input:not([type="submit"]):not([type="checkbox"]),
 		textarea {
 			background: var(--wp--custom--color--background);
 			border: var(--wp--custom--form--border--width) var(--wp--custom--form--border--style) var(--wp--custom--form--border--color);
@@ -73,22 +75,23 @@
 
 		.comment-form-cookies-consent {
 			input[type="checkbox"] {
+
 				@include hide-accessibly;
 
 				margin-left: 0;
 
-				& + label {
+				+ label {
 					margin-left: 0;
 					padding-left: 3em;
 					position: relative;
 				}
 
-				& + label::before,
-				& + label::after {
+				+ label::before,
+				+ label::after {
 					box-sizing: border-box;
 				}
 
-				& + ::before {
+				+ ::before {
 					content: var(--wp--custom--form--checkbox--unchecked--content);
 					position: absolute;
 					top: var(--wp--custom--form--checkbox--unchecked--position--top);
@@ -99,7 +102,7 @@
 				}
 
 				&:checked + ::after {
-					content: var(--wp--custom--form--checkbox--checked--content);;
+					content: var(--wp--custom--form--checkbox--checked--content);
 					position: absolute;
 					top: var(--wp--custom--form--checkbox--checked--position--top);
 					left: var(--wp--custom--form--checkbox--checked--position--left);

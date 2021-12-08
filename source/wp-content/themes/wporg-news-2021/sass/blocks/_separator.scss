@@ -6,7 +6,7 @@
 		border-top-width: 0;
 	}
 
-	&:not(.is-style-wide){
+	&:not(.is-style-wide) {
 		width: var(--wp--custom--separator--width);
 	}
 }

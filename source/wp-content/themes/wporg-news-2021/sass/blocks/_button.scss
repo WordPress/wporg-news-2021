@@ -1,4 +1,4 @@
-@import 'button-mixins';
+@import "button-mixins";
 
 /**
  * Button
@@ -7,17 +7,21 @@
 /**
  * Block Options
  */
+
 .wp-block-button {
 	&.wp-block-button__link,
 	.wp-block-button__link {
+
 		@include button-color-styles;
 		@include button-main-styles;
 	}
+
 	&.is-style-outline {
 		&.wp-block-button__link,
 		.wp-block-button__link {
 			--wp--custom--button--color--text: var(--wp--custom--button--border--color);
 			--wp--custom--button--color--background: transparent;
+
 			@include button-border-styles;
 			@include button-color-styles;
 		}

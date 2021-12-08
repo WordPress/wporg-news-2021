@@ -6,10 +6,12 @@
 }
 
 @include break-mobile {
+
 	/**
 	 * Changing the values of the CSS variables works better than redeclaring the attributes because
 	 * of some issues with precedence, especially in the block editor.
 	 */
+
 	body {
 		--wp--custom--h1--typography--font-size: var(--wp--custom--h1--breakpoint--mobile--typography--font-size);
 		--wp--custom--h1--typography--line-height: var(--wp--custom--h1--breakpoint--mobile--typography--line-height);

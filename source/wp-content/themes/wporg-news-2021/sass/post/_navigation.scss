@@ -1,7 +1,7 @@
 [class*="wp-container-"] > .post-navigation {
 	padding-bottom: var(--wp--style--block-gap);
 
-	& * {
+	* {
 		margin-top: 0;
 	}
 }
@@ -9,13 +9,13 @@
 .post-navigation {
 	display: flex;
 	justify-content: space-between;
-	gap: calc( var( --wp--style--block-gap ) * 2 );
+	gap: calc(var(--wp--style--block-gap) * 2);
 
 	.wp-block-post-navigation-link {
 		display: inline-block;
 
 		&.post-navigation-link-previous {
-			a:before {
+			a::before {
 				content: "\00B7\0020";
 			}
 		}
@@ -24,7 +24,7 @@
 			display: flex;
 			flex-direction: row-reverse;
 
-			a:after {
+			a::after {
 				content: "\0020\00B7";
 				padding-right: 0.3em;
 			}
