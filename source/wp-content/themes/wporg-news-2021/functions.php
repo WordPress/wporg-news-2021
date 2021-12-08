@@ -19,6 +19,7 @@ add_filter( 'body_class', __NAMESPACE__ . '\clarify_body_classes' );
 add_filter( 'post_class', __NAMESPACE__ . '\specify_post_classes', 10, 3 );
 add_filter( 'theme_file_path', __NAMESPACE__ . '\conditional_template_part', 10, 2 );
 add_filter( 'render_block_data', __NAMESPACE__ . '\custom_query_block_attributes' );
+add_action( 'pre_get_posts', __NAMESPACE__ . '\custom_query_parameters' );
 add_filter( 'template_redirect', __NAMESPACE__ . '\jetpack_likes_workaround' );
 
 /**
@@ -324,9 +325,40 @@ function custom_query_block_attributes( $parsed_block ) {
 				$parsed_block[ 'attrs' ][ 'query' ][ 'categoryIds' ] = [ $category->term_id ];
 			}
 		}
+
+		if ( isset( $parsed_block[ 'attrs' ][ 'query' ][ 'hasThumbnail' ] ) ) {
+			// Use the search parameter as a hack for passing through extra context to the custom_query_parameters filter.
+			// There's probably a better way to do this in general. Ideally the query block would support a hasThumbnail parameter natively.
+			$parsed_block[ 'attrs' ][ 'query' ][ 'search' ] .= ':query-has-thumbnail';
+		}
 	}
 
 	return $parsed_block;
+}
+
+/**
+ * Support additional pseudo-parameters passed to WP_Query from the wp:query block via custom_query_block_attributes.
+ *
+ * This is the WP_Query side of the code that lets us create extra parameters needed in some templates.
+ *
+ * @param array         $query The WP_Query object.
+ *
+ * @return array
+ */
+function custom_query_parameters( $query ) {
+	// See https://wordpress.stackexchange.com/a/392915 for the idea
+	if ( $query->is_search() && false !== strpos( $query->get( 's' ), ':query-has-thumbnail' ) ) {
+		// Add a meta query to only include posts with thumbnails/featured images.
+		$query->set( 'meta_query', array(
+			array(
+				'key' => '_thumbnail_id',
+				'compare' => 'EXISTS',
+			)
+		) );
+
+		// Remove the special keyword from the search parameter.
+		$query->set( 's', str_replace( ':query-has-thumbnail', '', $query->get( 's' ) ) );
+	}
 }
 
 /**
