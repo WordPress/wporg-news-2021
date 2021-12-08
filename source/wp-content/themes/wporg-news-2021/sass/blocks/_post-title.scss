@@ -9,4 +9,8 @@
 			color: var(--post-title-hover-color);
 		}
 	}
+
+	.wp-block-query & {
+		font-size: var(--wp--custom--h2--typography--font-size);
+	}
 }
