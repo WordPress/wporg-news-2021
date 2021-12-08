@@ -151,6 +151,13 @@
 					}
 				}
 			}
+
+			&:focus {
+				~ label span {
+					outline: 1px dotted currentColor;
+				}
+
+			}
 		}
 
 		.wp-block-categories {
