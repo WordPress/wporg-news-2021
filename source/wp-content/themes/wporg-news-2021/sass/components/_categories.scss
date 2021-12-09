@@ -47,22 +47,22 @@ body.category-month-in-wordpress {
 	}
 
 	.wp-block-post-date a {
-		color: var( --wp--preset--color--off-white-2 );
+		color: var(--wp--preset--color--off-white-2);
 		text-transform: uppercase;
 	}
 
 	.last-in-year::after {
 		content: "-";
 		display: inline-block;
-		line-height: 7em;
+		line-height: calc(var(--wp--custom--margin--vertical) * 6);
 		width: 100%;
-		background-image: url("images/brush-stroke-short-blue-4.svg");
+		background-image: url(images/brush-stroke-short-blue-4.svg);
 		background-position: center;
 		background-repeat: no-repeat;
 		//background-size: fill;
 		color: var(--wp--preset--color--blue-1);
-
 	}
+
 	@extend %footer-archive-dark;
 }
 
