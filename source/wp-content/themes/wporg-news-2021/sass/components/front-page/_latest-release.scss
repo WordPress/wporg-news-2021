@@ -21,20 +21,15 @@ body.news-front-page .front__latest-release {
 		.wp-block-post-title {
 			--header-size: clamp(var(--wp--preset--font-size--huge), 8vw, 130px);
 
+			margin-bottom: var(--wp--custom--margin--vertical);
+			padding-right: var(--header-size);
+			background-image: url(images/right-arrow.svg);
+			background-size: var(--header-size);
+			background-repeat: no-repeat;
+			background-position: right center;
 			font-size: var(--header-size);
-
-			a::after {
-
-				/* The empty content is necessary for the pseudo-element to exist in the DOM. */
-				display: inline-block;
-				content: "";
-				background-image: url(images/right-arrow.svg);
-				background-size: 75% 75%;
-				background-repeat: no-repeat;
-				background-position: left bottom;
-				width: var(--header-size);
-				height: var(--header-size);
-			}
+			font-family: var(--wp--preset--font-family--inter);
+			font-weight: 200;
 		}
 	}
 
