@@ -37,9 +37,15 @@ body.category-releases {
 
 body.category-month-in-wordpress {
 	@extend %local-header-dark;
+	text-align: center;
 
 	.site-content-container {
 		color: var( --wp--preset--color--off-white-2 );
+	}
+
+	.wp-block-post-date a {
+		color: var( --wp--preset--color--off-white-2 );
+		text-transform: uppercase;
 	}
 
 	@extend %footer-archive-dark;
