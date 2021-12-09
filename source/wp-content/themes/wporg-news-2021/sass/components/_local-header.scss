@@ -16,19 +16,17 @@
 
 	&__navigation {
 		position: relative;
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		flex-direction: column;
 
 		@include break-mobile {
-			display: flex;
-			align-items: flex-start;
-			justify-content: space-between;
+			flex-direction: row;
 		}
 
 		[class*="wp-container-"] & {
-			padding: 15px 0.5em;
-
-			@include break-mobile {
-				padding: 0 0.5em;
-			}
+			padding: 0 0.5em;
 
 			@include break-xlarge {
 				padding: 0;
@@ -38,10 +36,7 @@
 
 	&__breadcrumb {
 		color: var(--bar-text-color);
-
-		@include break-mobile {
-			line-height: 50px;
-		}
+		line-height: 50px;
 
 		&-current {
 			display: none;
@@ -74,9 +69,14 @@
 
 	&__categories {
 		--flex-items-per-column: 8;
+		width: 100%;
 
-		/* The scrollbar covers up part of the edge padding, so this offsets that. */
-		padding-right: var(--wp--custom--alignment--scroll-bar-width);
+		@include break-mobile {
+
+			/* The scrollbar covers up part of the edge padding, so this offsets that. */
+			padding-right: var(--wp--custom--alignment--scroll-bar-width);
+			width: auto;
+		}
 
 		@include break-medium {
 			--flex-items-per-column: 4;
@@ -93,6 +93,7 @@
 			margin: 0;
 			padding: 15px 0;
 			cursor: pointer;
+			text-align: right;
 
 			@include break-mobile {
 				line-height: 50px;
@@ -165,35 +166,54 @@
 		.wp-block-categories {
 			display: none;
 			opacity: 0;
+			position: relative;
+			right: calc(var(--wp--custom--alignment--edge-spacing) * -1);
 			flex-direction: column;
 			flex-wrap: wrap;
 			width: calc(min(100%, var(--wp--custom--layout--wide-size)));
 			color: var(--bar-text-color);
 			list-style: none;
 			padding: 0 0 2em 0;
+			text-align: right;
 
 			@include break-mobile {
 				padding: 0 var(--wp--custom--alignment--edge-spacing);
 				position: absolute;
 				left: 0;
+				right: auto;
 				top: 75px;
 				max-height: calc(1rem * var(--wp--custom--body--typography--line-height) * var(--flex-items-per-column));
+				text-align: left;
 			}
 
 			[class*="wp-container-"] & {
 				margin-top: 0;
 			}
 
-			a {
-				color: var(--bar-link-color);
+			li {
+				padding: 0.25em calc(var(--wp--custom--alignment--edge-spacing) - 4px) 0.25em 0;
+				border-right: 4px solid transparent;
+
+				@include break-mobile {
+					padding: 0.25em 0;
+				}
 			}
 
 			.current-cat {
 				font-weight: 700;
+				border-right-color: currentColor;
 
-				&::before {
-					content: "\0020\00B7\0020";
+				@include break-mobile {
+					border: none;
+
+					&::before {
+						content: "\0020\00B7\0020";
+					}
 				}
+			}
+
+			a {
+				color: var(--bar-link-color);
 			}
 		}
 	}
