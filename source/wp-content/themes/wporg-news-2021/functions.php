@@ -260,10 +260,10 @@ function specify_post_classes( $classes, $extra_classes, $post_id ) {
 		if ( !is_null( $current_post ) ) {
 			if ( $current_post == 0 ) {
 				// First in the query
-				$classes[] = 'first-in-year';
-			} elseif ( $current_post >= $wp_query->post_count - 1 ) {
+				#$classes[] = 'first-in-year first-in-query';
+			} elseif ( $current_post >= count( $wp_query->posts ) - 1 ) {
 				// Last in the query
-				$classes[] = 'last-in-year';
+				#$classes[] = 'last-in-year last-in-query';
 			} else {
 				if ( get_the_date( 'Y' ) !== get_the_date( 'Y', $wp_query->posts[ $current_post - 1 ] ) ) {
 					$classes[] = 'first-in-year';
