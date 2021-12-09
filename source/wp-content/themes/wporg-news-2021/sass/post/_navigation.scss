@@ -1,32 +1,39 @@
-[class*="wp-container-"] > .post-navigation {
-	padding-bottom: var(--wp--style--block-gap);
-
-	* {
-		margin-top: 0;
-	}
-}
-
 .post-navigation {
+	padding-bottom: var(--wp--style--block-gap);
 	display: flex;
 	justify-content: space-between;
 	gap: calc(var(--wp--style--block-gap) * 2);
 
 	.wp-block-post-navigation-link {
-		display: inline-block;
+		display: flex;
+		flex-direction: column;
+		
+		@include break-medium() {
+			gap: 1ch;
+			flex-direction: row;
+		}
 
 		&.post-navigation-link-previous {
-			a::before {
-				content: "\00B7\0020";
+			span {
+				white-space: nowrap;
+			}
+
+			@include break-medium() {
+				span::after {
+					content: " \00B7\0020";
+				}
 			}
 		}
 
 		&.post-navigation-link-next {
-			display: flex;
-			flex-direction: row-reverse;
+			text-align: end;
 
-			a::after {
-				content: "\0020\00B7";
-				padding-right: 0.3em;
+			@include break-medium() {
+				flex-direction: row-reverse;
+				span::before {
+					content: " \0020\00B7";
+					padding-right: 0.3em;
+				}
 			}
 		}
 	}
