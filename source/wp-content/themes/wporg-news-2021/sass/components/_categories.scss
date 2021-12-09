@@ -48,6 +48,18 @@ body.category-month-in-wordpress {
 		text-transform: uppercase;
 	}
 
+	.last-in-year::after {
+		content: "-";
+		display: inline-block;
+		line-height: 7em;
+		width: 100%;
+		background-image: url("images/brush-stroke-short-blue-4.svg");
+		background-position: center;
+		background-repeat: no-repeat;
+		//background-size: fill;
+		color: var(--wp--preset--color--blue-1);
+
+	}
 	@extend %footer-archive-dark;
 }
 
