@@ -11,6 +11,9 @@
 		background-position: bottom right;
 		background-repeat: no-repeat;
 		background-size: contain;
+		a {
+			text-decoration: underline currentColor;
+		}
 	}
 
 	.wp-social-link-chain {
