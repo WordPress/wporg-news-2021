@@ -8,22 +8,22 @@
 	color: var(--wp--preset--color--blue-1);
 	position: relative;
 
+	.wp-block-query-pagination-next {
+		z-index: 2;
+	}
+
 	&::after {
 		content: "";
 		position: absolute;
 		top: 0;
-		bottom: 0;
+		bottom: 50px;
 		right: 0;
-		left: 0;
+		left: -50px;
 		background-color: var(--wp--preset--color--off-white-2);
 		mask-image: url(images/brush-stroke-short-blue-4.svg);
-		mask-position: center;
+		mask-position: bottom left;
 		mask-repeat: no-repeat;
 		mask-size: contain;
-	}
-
-	a {
-		position: relative;
 		z-index: 1;
 	}
 
