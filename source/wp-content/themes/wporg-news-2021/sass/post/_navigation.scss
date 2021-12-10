@@ -7,7 +7,7 @@
 	.wp-block-post-navigation-link {
 		display: flex;
 		flex-direction: column;
-		
+
 		@include break-medium() {
 			gap: 1ch;
 			flex-direction: row;
@@ -30,6 +30,7 @@
 
 			@include break-medium() {
 				flex-direction: row-reverse;
+
 				span::before {
 					content: " \0020\00B7";
 					padding-right: 0.3em;
