@@ -28,8 +28,20 @@
 			padding-bottom: var(--wp--custom--alignment--edge-spacing);
 		}
 
-		> .wp-block-post:not(:first-of-type) {
-			margin-top: 58px;
+		> .wp-block-post:not(:last-of-type) {
+			margin-bottom: 45px;
+
+			@include break-wide() {
+				margin-bottom: 58px;
+			}
+		}
+
+		.wp-block-post-title {
+			margin-bottom: 12px;
+
+			@include break-wide() {
+				margin-bottom: 20px;
+			}
 		}
 	}
 
