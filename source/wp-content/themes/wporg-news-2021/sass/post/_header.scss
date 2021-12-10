@@ -22,13 +22,24 @@
 
 	.single &,
 	.page & {
+		margin-top: 20px;
+
+		@include break-mobile() {
+			margin-top: 32px;
+		}
+
 		.wp-block-post-date {
-			margin: calc(var(--wp--custom--margin--vertical) / 2) 0;
+			margin: calc(var(--wp--custom--margin--vertical) / 2) 0 0;
 		}
 
 		.wp-block-post-author,
 		.wp-block-post-terms {
 			display: inline-block;
+		}
+
+		+ .wp-block-separator {
+			margin-top: 70px;
+			margin-bottom: 70px;
 		}
 	}
 }
