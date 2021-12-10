@@ -257,7 +257,7 @@
 					}
 				},
 				"typography": {
-					"fontSize": "30px",
+					"fontSize": "26px",
 					"lineHeight": "var(--wp--custom--heading--typography--line-height)"
 				}
 			},
