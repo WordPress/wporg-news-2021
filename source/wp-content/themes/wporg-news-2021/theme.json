@@ -434,7 +434,7 @@
 					"fontFamily": "'Inter', sans-serif",
 					"slug": "inter",
 					"name": "Inter",
-					"google": "family=Inter:wght@400;700"
+					"google": "family=Inter:wght@200..700"
 				}
 			],
 			"fontSizes": [
