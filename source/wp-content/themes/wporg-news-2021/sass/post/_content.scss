@@ -1,5 +1,11 @@
 .wp-block-post-content {
 	padding-bottom: var(--wp--style--block-gap);
+
+	.wp-block-gallery,
+	.wp-block-image {
+		margin-top: 70px;
+		margin-bottom: 70px;
+	}
 }
 
 body.news-posts-index .site-content-container,

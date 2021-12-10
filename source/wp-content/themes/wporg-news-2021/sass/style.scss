@@ -40,13 +40,13 @@ GNU General Public License for more details.
 @import "elements/headings";
 @import "elements/links";
 @import "elements/lists";
+@import "elements/captions";
 
 
 // Blocks
 // Override the default styles that a block has from Core, it's plugin, etc.
 @import "blocks/button";
 @import "blocks/code";
-@import "blocks/gallery";
 @import "blocks/html";
 @import "blocks/image";
 @import "blocks/latest-posts";
