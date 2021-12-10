@@ -5,12 +5,14 @@
 	gap: calc(var(--wp--style--block-gap) * 2);
 
 	.wp-block-post-navigation-link {
-		display: flex;
-		flex-direction: column;
+		a {
+			display: flex;
+			flex-direction: column;
 
-		@include break-medium() {
-			gap: 1ch;
-			flex-direction: row;
+			@include break-medium() {
+				gap: 1ch;
+				flex-direction: row;
+			}
 		}
 
 		&.post-navigation-link-previous {
@@ -19,7 +21,7 @@
 			}
 
 			@include break-medium() {
-				span::after {
+				.post-navigation-link__label::after {
 					content: " \00B7\0020";
 				}
 			}
@@ -29,13 +31,23 @@
 			text-align: end;
 
 			@include break-medium() {
-				flex-direction: row-reverse;
+				a {
+					flex-direction: row-reverse;
+				}
 
-				span::before {
+				.post-navigation-link__label::before {
 					content: " \0020\00B7";
 					padding-right: 0.3em;
 				}
 			}
+		}
+	}
+
+	.post-navigation-link__title {
+
+		@media (max-width: #{ ($break-medium - 1) }) {
+
+			@include hide-accessibly;
 		}
 	}
 }
