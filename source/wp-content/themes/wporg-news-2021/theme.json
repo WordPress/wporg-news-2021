@@ -355,7 +355,7 @@
 			"pullquote": {
 				"citation": {
 					"typography": {
-						"fontSize": "var(--wp--preset--font-size--tiny)",
+						"fontSize": "30px",
 						"fontFamily": "inherit",
 						"fontStyle": "italic"
 					},
@@ -526,21 +526,12 @@
 				}
 			},
 			"core/pullquote": {
-				"border": {
-					"style": "solid",
-					"width": "1px 0"
-				},
+				"border": "none",
 				"typography": {
-					"fontStyle": "italic",
-					"fontSize": "var(--wp--preset--font-size--huge)"
-				},
-				"spacing": {
-					"padding": {
-						"left": "var(--wp--custom--margin--horizontal)",
-						"right": "var(--wp--custom--margin--horizontal)",
-						"top": "var(--wp--custom--margin--horizontal)",
-						"bottom": "var(--wp--custom--margin--horizontal)"
-					}
+					"fontFamily": "var(--wp--preset--font-family--eb-garamond)",
+					"fontWeight": 400,
+					"lineHeight": 1.4,
+					"fontSize": "50px"
 				}
 			},
 			"core/separator": {

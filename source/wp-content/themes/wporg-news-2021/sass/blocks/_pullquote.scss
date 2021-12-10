@@ -1,6 +1,29 @@
+// Both selectors for increased specificity.
 .wp-block-pullquote.is-style-solid-color,
-.wp-block-pullquote {
+.wp-block-pullquote:not(.is-style-solid-color) {
+	min-height: 430px;
+	padding: 40px 0 0;
+	background-image: url(./images/quotemark.svg);
+	background-repeat: no-repeat;
+	background-position: top left;
+	background-size: contain;
+	font-size: 40px;
 	text-align: var(--wp--custom--pullquote--typography--text-align);
+
+	&.alignfull {
+		background-position: -45px 0;
+		padding-left: var(--wp--custom--margin--horizontal);
+		padding-right: var(--wp--custom--margin--horizontal);
+	}
+
+	@include break-medium {
+		padding: 115px 0 0 185px;
+		font-size: 50px;
+
+		&.alignfull {
+			padding: 115px var(--wp--custom--margin--horizontal) 0 185px;
+		}
+	}
 
 	blockquote {
 		padding: 0;
@@ -13,18 +36,20 @@
 			line-height: inherit;
 		}
 
-		.wp-block-pullquote__citation, // For the editor
 		cite {
 			display: block;
-			font-size: var(--wp--custom--pullquote--citation--typography--font-size);
+			font-size: 20px;
 			font-style: var(--wp--custom--pullquote--citation--typography--font-style);
-			font-weight: var(--wp--custom--pullquote--citation--typography--font-weight);
+			font-family: var(--wp--custom--pullquote--citation--typography--font-family);
 			margin-top: var(--wp--custom--pullquote--citation--spacing--margin--top);
-		}
-	}
 
-	&.is-style-solid-color {
-		background-color: var(--wp--custom--color--foreground);
-		color: var(--wp--custom--color--background);
+			&::before {
+				content: "—";
+			}
+
+			@include break-medium {
+				font-size: var(--wp--custom--pullquote--citation--typography--font-size);
+			}
+		}
 	}
 }
