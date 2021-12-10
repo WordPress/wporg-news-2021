@@ -27,6 +27,10 @@
 			padding-top: var(--wp--custom--alignment--edge-spacing);
 			padding-bottom: var(--wp--custom--alignment--edge-spacing);
 		}
+
+		> .wp-block-post:not(:first-of-type) {
+			margin-top: 75px;
+		}
 	}
 
 	> .wp-block-query-pagination {
