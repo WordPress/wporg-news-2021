@@ -60,6 +60,15 @@
 
 	.entry-meta {
 		margin-bottom: 25px;
+		font-size: 13px;
+
+		* {
+			font-size: inherit;
+		}
+
+		@include break-mobile() {
+			font-size: var(--wp--preset--font-size--small);
+		}
 
 		@include break-wide() {
 			grid-area: entry-meta;
