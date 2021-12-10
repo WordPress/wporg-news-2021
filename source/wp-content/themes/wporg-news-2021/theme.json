@@ -266,7 +266,7 @@
 					"mobile": {
 						"typography": {
 							"fontSize": "clamp(26px, 4vw, 36px)",
-							"lineHeight": "1.35"
+							"lineHeight": "1.3"
 						}
 					}
 				},
