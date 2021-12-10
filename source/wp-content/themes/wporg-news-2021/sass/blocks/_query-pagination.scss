@@ -16,15 +16,20 @@
 		content: "";
 		position: absolute;
 		top: 0;
-		bottom: 50px;
+		bottom: 0;
 		right: 0;
-		left: -50px;
+		left: 0;
 		background-color: var(--wp--preset--color--off-white-2);
 		mask-image: url(images/brush-stroke-short-blue-4.svg);
 		mask-position: bottom left;
 		mask-repeat: no-repeat;
 		mask-size: contain;
 		z-index: 1;
+
+		@include break-wide() {
+			bottom: 50px;
+			left: -50px;
+		}
 	}
 
 	> .wp-block-query-pagination-previous,
