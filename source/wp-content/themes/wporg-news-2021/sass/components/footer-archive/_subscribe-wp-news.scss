@@ -22,7 +22,6 @@
 
 				input {
 					width: 100%;
-					height: 42px;
 					border: 1px solid var(--wp--preset--color--black);
 					border-radius: 2px 0 0 2px;
 				}
@@ -32,8 +31,8 @@
 				grid-area: submit;
 
 				.wp-block-button__link {
-					height: 42px;
 					border-radius: 0 2px 2px 0;
+					line-height: 1.8;
 				}
 			}
 		}

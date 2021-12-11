@@ -257,7 +257,7 @@
 					}
 				},
 				"typography": {
-					"fontSize": "30px",
+					"fontSize": "26px",
 					"lineHeight": "var(--wp--custom--heading--typography--line-height)"
 				}
 			},
@@ -266,7 +266,7 @@
 					"mobile": {
 						"typography": {
 							"fontSize": "clamp(26px, 4vw, 36px)",
-							"lineHeight": "1.35"
+							"lineHeight": "1.3"
 						}
 					}
 				},

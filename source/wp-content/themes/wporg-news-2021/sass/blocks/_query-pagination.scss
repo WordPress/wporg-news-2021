@@ -8,6 +8,10 @@
 	color: var(--wp--preset--color--blue-1);
 	position: relative;
 
+	.wp-block-query-pagination-next {
+		z-index: 2;
+	}
+
 	&::after {
 		content: "";
 		position: absolute;
@@ -17,14 +21,15 @@
 		left: 0;
 		background-color: var(--wp--preset--color--off-white-2);
 		mask-image: url(images/brush-stroke-short-blue-4.svg);
-		mask-position: center;
+		mask-position: bottom left;
 		mask-repeat: no-repeat;
 		mask-size: contain;
-	}
-
-	a {
-		position: relative;
 		z-index: 1;
+
+		@include break-wide() {
+			bottom: 50px;
+			left: -50px;
+		}
 	}
 
 	> .wp-block-query-pagination-previous,
