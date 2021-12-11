@@ -22,13 +22,29 @@
 
 	.single &,
 	.page & {
-		.wp-block-post-date {
-			margin: calc(var(--wp--custom--margin--vertical) / 2) 0;
+		margin-top: 8px;
+
+		@include break-mobile() {
+			margin-top: 32px;
+
+			.wp-block-post-date {
+				margin: calc(var(--wp--custom--margin--vertical) / 2) 0 0;
+			}
 		}
 
 		.wp-block-post-author,
 		.wp-block-post-terms {
 			display: inline-block;
+		}
+
+		+ .wp-block-separator {
+			margin-top: 40px;
+			margin-bottom: 40px;
+
+			@include break-mobile() {
+				margin-top: 70px;
+				margin-bottom: 70px;
+			}
 		}
 	}
 }
@@ -43,10 +59,20 @@
 	}
 
 	.entry-meta {
-		font-size: var(--wp--preset--font-size--small);
+		margin-bottom: 25px;
+		font-size: 13px;
+
+		* {
+			font-size: inherit;
+		}
+
+		@include break-mobile() {
+			font-size: var(--wp--preset--font-size--small);
+		}
 
 		@include break-wide() {
 			grid-area: entry-meta;
+			margin-bottom: 0;
 		}
 	}
 

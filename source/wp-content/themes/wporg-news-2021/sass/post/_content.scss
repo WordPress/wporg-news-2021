@@ -1,5 +1,20 @@
 .wp-block-post-content {
 	padding-bottom: var(--wp--style--block-gap);
+
+	.wp-block-gallery,
+	.wp-block-image {
+		margin-top: 40px;
+		margin-bottom: 16px;
+
+		@include break-mobile() {
+			margin-top: 70px;
+			margin-bottom: 46px;
+		}
+
+		&:first-child {
+			margin-top: 0;
+		}
+	}
 }
 
 body.news-posts-index .site-content-container,
