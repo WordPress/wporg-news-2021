@@ -15,6 +15,7 @@ add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_assets' );
 add_filter( 'get_the_archive_title_prefix', __NAMESPACE__ . '\modify_archive_title_prefix' );
 add_filter( 'template_include', __NAMESPACE__ . '\override_front_page_template' );
 add_action( 'pre_get_posts', __NAMESPACE__ . '\offset_paginated_index_posts' );
+add_action( 'pre_get_posts', __NAMESPACE__ . '\category_posts_per_page' );
 add_filter( 'body_class', __NAMESPACE__ . '\clarify_body_classes' );
 add_filter( 'post_class', __NAMESPACE__ . '\specify_post_classes', 10, 3 );
 add_filter( 'theme_file_path', __NAMESPACE__ . '\conditional_template_part', 10, 2 );
@@ -211,6 +212,25 @@ function offset_paginated_index_posts( $query ) {
 	$default_offset      = ( $current_page - 2 ) * $posts_per_page;
 
 	$query->set( 'offset', $default_offset + $posts_on_front_page );
+}
+
+/**
+ * Adjust posts_per_page separately for certain categories.
+ *
+ * We have certain category templates designed for different numbers of posts per page. Unfortunately it's not possible to set this in the block temlates.
+ * (See https://github.com/WordPress/wporg-news-2021/issues/70#issuecomment-996460735)
+ *
+ * @param WP_Query $query
+ */
+function category_posts_per_page( $query ) {
+	if ( $query->is_category() ) {
+		if ( $query->is_category( 'month-in-wordpress' ) ) {
+			$query->set( 'posts_per_page', 600 );
+		}
+		if ( $query->is_category( 'community' ) ) {
+			$query->set( 'posts_per_page', 20 );
+		}
+	}
 }
 
 /**
