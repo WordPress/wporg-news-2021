@@ -2,7 +2,8 @@
 <!-- This is a hack to ensure content isn't covered by the fixed header -->
 <!-- wp:template-part {"slug":"header","align":"full","className":"site-header-offset"} /-->
 
-<!-- wp:query {"tagName":"main","className":"site-content-container","displayLayout":{"type":"flex","columns":4},"query":{"category":"month-in-wordpress","perPage":"10000","inherit":false}} -->
+<!-- Note: This query has filters, but they live in `category_posts_per_page()`. That's necessary to avoid a Gutenberg design flaw. -->
+<!-- wp:query {"tagName":"main","className":"site-content-container","displayLayout":{"type":"flex","columns":4},"query":{"inherit":true}} -->
 <main class="wp-block-query site-content-container">
 	<!-- wp:post-template -->
 		<!-- wp:template-part {"slug":"content-category-month-in-wordpress","tagName":"article","layout":{"inherit":true}} /-->
