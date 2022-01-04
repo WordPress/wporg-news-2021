@@ -4,7 +4,7 @@
 
 .wp-block-query-pagination {
 	display: inline-block;
-	line-height: 7em; // stylelint-disable-line declaration-property-unit-allowed-list
+	line-height: normal; // stylelint-disable-line declaration-property-unit-allowed-list
 	color: var(--wp--preset--color--blue-1);
 	position: relative;
 
@@ -27,7 +27,7 @@
 		z-index: 1;
 
 		@include break-wide() {
-			bottom: 50px;
+			bottom: 0;
 			left: -50px;
 		}
 	}
