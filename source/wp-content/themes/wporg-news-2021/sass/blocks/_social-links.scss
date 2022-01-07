@@ -1,5 +1,6 @@
 .footer-archive .wp-block-social-links.is-style-logos-only {
-	margin-right: var(--wp--custom--margin--horizontal);
+	gap: calc( 0.5 * var( --wp--style--block-gap, 0.5em ) );
+	flex-grow: 1;
 
 	.wp-block-social-link {
 		padding: 0;
