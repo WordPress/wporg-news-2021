@@ -223,6 +223,9 @@ function offset_paginated_index_posts( $query ) {
  * @param WP_Query $query
  */
 function override_category_query_args( $query ) {
+	if ( ! $query->get_queried_object() ) {
+		return;
+	}
 	if ( $query->is_category() ) {
 		if ( $query->is_category( 'month-in-wordpress' ) ) {
 			$query->set( 'posts_per_page', 600 );
