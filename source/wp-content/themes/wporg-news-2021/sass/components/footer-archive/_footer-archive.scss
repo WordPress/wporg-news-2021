@@ -1,3 +1,7 @@
+.footer-archive.wp-block-template-part {
+	margin-top: 0;
+}
+
 // Default/light version.
 .footer-archive-row[class*="wp-container-"] {
 	justify-content: space-between;
@@ -17,8 +21,8 @@
 	}
 
 	> * {
-		padding-top: 50px;
-		padding-bottom: 50px;
+		text-align: left;
+		padding: var(--wp--custom--alignment--edge-spacing);
 		border-bottom: 1px solid var(--wp--preset--color--light-grey);
 
 		@include break-medium {
@@ -50,8 +54,11 @@
 		border-bottom: 1px solid #1c2024;
 
 		> * {
-			padding: 50px;
 			border-color: #1c2024;
+
+			a {
+				color: var(--wp--preset--color--blue-3);
+			}
 		}
 	}
 }
