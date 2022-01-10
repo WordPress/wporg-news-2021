@@ -9,6 +9,7 @@
 	margin-top: 0;
 	gap: 0;
 	background-color: var(--wp--preset--color--white);
+	border-bottom: 1px solid var(--wp--preset--color--light-grey);
 	line-height: 30px;
 
 	h3 {
@@ -23,7 +24,6 @@
 	> * {
 		text-align: left;
 		padding: var(--wp--custom--alignment--edge-spacing);
-		border-bottom: 1px solid var(--wp--preset--color--light-grey);
 
 		@include break-medium {
 			flex-basis: 50%;
@@ -31,8 +31,6 @@
 			flex-grow: 0;
 			padding-top: 60px;
 			padding-bottom: 60px;
-			border-top: 1px solid var(--wp--preset--color--light-grey);
-			border-bottom: none;
 
 			&:nth-child(odd) {
 				border-right: 1px solid var(--wp--preset--color--light-grey);
