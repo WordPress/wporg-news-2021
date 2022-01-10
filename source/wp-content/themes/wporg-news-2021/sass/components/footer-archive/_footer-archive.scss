@@ -47,11 +47,10 @@
 
 // Alternate dark version.
 %footer-archive-dark {
-
 	.footer-archive.wp-block-template-part {
 		border-color: #1c2024;
 	}
-	
+
 	.footer-archive .footer-archive-row[class*="wp-container-"] {
 		background-color: var(--wp--preset--color--dark-grey);
 		color: var(--wp--preset--color--white);
