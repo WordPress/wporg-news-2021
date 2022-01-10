@@ -40,6 +40,11 @@
 			}
 		}
 	}
+
+	// Left-align footer navigation menus
+	.wp-block-group.global-footer .wp-block-navigation__container {
+		align-items: self-start;
+	}
 }
 
 // Alternate dark version.
