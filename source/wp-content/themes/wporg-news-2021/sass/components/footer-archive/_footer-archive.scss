@@ -1,5 +1,6 @@
 .footer-archive.wp-block-template-part {
 	margin-top: 0;
+	border-bottom: 1px solid var(--wp--preset--color--light-grey);
 }
 
 // Default/light version.
@@ -9,7 +10,6 @@
 	margin-top: 0;
 	gap: 0;
 	background-color: var(--wp--preset--color--white);
-	border-bottom: 1px solid var(--wp--preset--color--light-grey);
 	line-height: 30px;
 
 	h3 {
@@ -21,9 +21,10 @@
 		margin-top: 0;
 	}
 
-	> * {
+	> .wp-block-group {
 		text-align: left;
 		padding: var(--wp--custom--alignment--edge-spacing);
+		border-top: 1px solid var(--wp--preset--color--light-grey);
 
 		@include break-medium {
 			flex-basis: 50%;
@@ -46,10 +47,15 @@
 
 // Alternate dark version.
 %footer-archive-dark {
+
+	.footer-archive.wp-block-template-part {
+		border-color: #1c2024;
+	}
+	
 	.footer-archive .footer-archive-row[class*="wp-container-"] {
 		background-color: var(--wp--preset--color--dark-grey);
 		color: var(--wp--preset--color--white);
-		border-bottom: 1px solid #1c2024;
+		border-color: #1c2024;
 
 		> * {
 			border-color: #1c2024;
