@@ -11,10 +11,10 @@
  */
 const fs = require( 'fs' );
 const { resolve } = require( 'path' );
-const sass = require( 'node-sass' );
+const sass = require( 'sass' );
 const packageImporter = require( 'node-sass-package-importer' );
-const autoprefixer = require('autoprefixer');
-const postcss = require('postcss');
+const autoprefixer = require( 'autoprefixer' );
+const postcss = require( 'postcss' );
 
 const inputFile = resolve( 'sass/style.scss' );
 const outputFile = resolve( './style.css' );
