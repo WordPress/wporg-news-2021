@@ -45,6 +45,11 @@ body.news-front-page .front__latest-release {
 
 		a {
 			text-decoration: underline;
+
+			&:hover,
+			&:focus {
+				text-decoration: none;
+			}
 		}
 	}
 }
