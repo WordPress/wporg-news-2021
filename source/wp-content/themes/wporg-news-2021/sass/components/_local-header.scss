@@ -18,12 +18,11 @@
 		// toggle button.
 		position: relative;
 
-		// This overrides a left/right padding using
-		// the `--wp--custom--alignment--edge-spacing` variable.
-		//
-		// The !important is temporary and should  be accomplished
-		// with more specific selectors.
-		// padding: 0 !important;
+		padding: 0 0 0 24px;
+
+		@include break-small {
+			padding: 0 80px;
+		}
 	}
 
 	// Breadcrumbs show the lineage of pages based on the current
@@ -75,11 +74,15 @@
 			cursor: pointer;
 			user-select: none;
 			margin: 0;
-			padding: 0;
+			padding: 0 12px;
 			min-height: var( --bar-min-height );
 			position: absolute;
 			top: 0;
-			right: 80px;
+			right: 9px;
+
+			@include break-small {
+				right: 30px;
+			}
 
 			svg {
 				margin-left: 12px;
@@ -146,7 +149,7 @@
 			list-style: none;
 			padding: 20px 0 50px 0;
 			display: none;
-			flex-direction: row; // should change on mobile
+			flex-direction: column;
 			flex-wrap: wrap;
 
 			// Override the default margin applied to the block.
@@ -155,10 +158,33 @@
 			}
 
 			li {
-				width: 20%;
+				padding: 6px 40px 6px 24px;
+				text-align: right;
 
 				a {
 					display: block;
+				}
+			}
+
+			@include break-small {
+				flex-direction: row;
+
+				li {
+					width: 100%;
+					padding: 0;
+					text-align: left;
+				}
+			}
+
+			@include break-medium {
+				li {
+					width: 50%;
+				}
+			}
+
+			@include break-large {
+				li {
+					width: 20%;
 				}
 			}
 
@@ -170,34 +196,36 @@
 
 				// On small viewports the current category is highlighted
 				// using a right-side border.
-				// &::before {
-				// 	height: auto;
-				// 	width: 4px;
-				// 	content: '';
-				// 	background: var(--bar-link-color);
-				// 	position: absolute;
-				// 	top: 0;
-				// 	right: 0;
-				// 	bottom: 0;
-				// 	left: auto;
-				// }
-
-				// On large viewports the current category is highlighted
-				// using padding an a square.
-				padding-left: 16px;
-
 				&::before {
-					height: 4px;
+					height: auto;
 					width: 4px;
 					content: '';
 					background: var(--bar-link-color);
 					position: absolute;
-					top: calc( 50% - 2px );
-					right: auto;
+					top: 0;
+					right: 0;
 					bottom: 0;
-					left: 0;
+					left: auto;
 				}
 
+				@include break-small {
+					// On large viewports the current category is highlighted
+					// using padding an a square.
+					padding-right: 0;
+					padding-left: 16px;
+
+					&::before {
+						height: 4px;
+						width: 4px;
+						content: '';
+						background: var(--bar-link-color);
+						position: absolute;
+						top: calc( 50% - 2px );
+						right: auto;
+						bottom: 0;
+						left: 0;
+					}
+				}
 			}
 		}
 	}
@@ -269,6 +297,7 @@
 		mask-image: url(images/local-nav-mask.svg);
 		mask-repeat: no-repeat;
 		mask-size: cover;
+		mask-position: 80% 0;
 		background-color: var(--bar-background-color);
 	}
 }
