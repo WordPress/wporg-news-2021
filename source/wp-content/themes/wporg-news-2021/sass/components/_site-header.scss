@@ -2,12 +2,15 @@
 // allowing us to simplify the layout and "sticky" bar.
 .wp-site-blocks {
 	display: flex;
+	margin-top: -32px;
 
 	// The container for the site-specific (/news/) menu bar.
 	.site-header-container {
 		@include break-small {
 			position: sticky;
 			top: 0;
+
+			padding-top: var(--wpadmin-bar--height);
 		}
 	}
 }
