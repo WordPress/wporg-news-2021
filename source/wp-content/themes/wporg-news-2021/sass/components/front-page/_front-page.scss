@@ -108,22 +108,4 @@ body.news-front-page {
 			margin-top: 0;
 		}
 	}
-
-	.footer-archive {
-		margin-top: 0;
-
-		.footer-archive-row:first-of-type > * {
-			border-top: none;
-		}
-
-		.footer-archive-row:first-of-type > *,
-		.footer-archive-row:nth-child(3) > * {
-			padding-left: var(--wp--custom--alignment--edge-spacing);
-		}
-
-		.footer-archive-row:last-of-type > *,
-		.footer-archive-row:nth-child(2) > * {
-			padding-right: var(--wp--custom--alignment--edge-spacing);
-		}
-	}
 }
