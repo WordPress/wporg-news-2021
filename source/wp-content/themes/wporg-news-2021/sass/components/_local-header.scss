@@ -21,7 +21,7 @@
 		padding: 0 0 0 24px;
 
 		@include break-small {
-			padding: 0 80px;
+			padding: 0 var(--wp--custom--alignment--edge-spacing);
 		}
 	}
 
@@ -147,7 +147,7 @@
 		// on and off using the label+checkbox above.
 		.wp-block-categories {
 			list-style: none;
-			padding: 20px 0 50px 0;
+			padding: 0 0 30px 0;
 			display: none;
 			flex-direction: column;
 			flex-wrap: wrap;
@@ -171,7 +171,7 @@
 
 				li {
 					width: 100%;
-					padding: 0;
+					padding: 4px 0;
 					text-align: left;
 				}
 			}
@@ -183,6 +183,12 @@
 			}
 
 			@include break-large {
+				li {
+					width: 25%;
+				}
+			}
+
+			@include break-wide {
 				li {
 					width: 20%;
 				}
@@ -261,21 +267,15 @@
 	}
 }
 
-// Alternate dark version.
+// Alternate dark version. (Month in WordPress)
 %local-header-dark {
 	.wp-site-blocks {
 		background-color: var(--wp--preset--color--darker-grey);
 
 		.local-header {
 			--bar-background-color: var(--wp--preset--color--dark-grey);
-
-			a {
-				color: var(--off-white);
-
-				&:hover {
-					color: var( --off-white-2 );
-				}
-			}
+			--bar-link-color: var(--off-white);
+			--bar-link-hover-color: var(--off-white-2);
 		}
 	}
 }
