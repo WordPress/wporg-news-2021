@@ -10,7 +10,9 @@
 			position: sticky;
 			top: 0;
 
-			padding-top: var(--wpadmin-bar--height);
+			body.admin-bar & {
+				padding-top: var(--wpadmin-bar--height);
+			}
 		}
 	}
 }
