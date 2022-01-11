@@ -5,7 +5,9 @@
 
 	// The container for the site-specific (/news/) menu bar.
 	.site-header-container {
-		position: sticky;
-		top: 0;
+		@include break-small {
+			position: sticky;
+			top: 0;
+		}
 	}
 }
