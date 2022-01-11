@@ -78,6 +78,10 @@ body.news-front-page .front__people-of-wordpress {
 	.wp-block-query-pagination {
 		margin-top: 0;
 
+		a {
+			position: relative;
+		}
+
 		&::after {
 			background-color: var(--wp--preset--color--white);
 		}
