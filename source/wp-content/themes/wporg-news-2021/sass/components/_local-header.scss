@@ -7,7 +7,7 @@
 	--bar-background-color: var(--wp--preset--color--blue-1);
 	background-color: var(--bar-background-color);
 	color: var(--bar-text-color);
-	min-height: var( --bar-min-height );
+	min-height: var(--bar-min-height);
 
 	@extend %bottom-mask;
 
@@ -30,7 +30,7 @@
 	&__breadcrumb {
 		display: flex;
 		align-items: center;
-		min-height: var( --bar-min-height );
+		min-height: var(--bar-min-height);
 		color: var(--bar-text-color);
 
 		// The current item is highlighted.
@@ -51,7 +51,7 @@
 			&::before {
 				height: 4px;
 				width: 4px;
-				content: '';
+				content: "";
 				background: var(--bar-text-color);
 				display: inline-block;
 				margin: 0 12px;
@@ -75,7 +75,7 @@
 			user-select: none;
 			margin: 0;
 			padding: 0 12px;
-			min-height: var( --bar-min-height );
+			min-height: var(--bar-min-height);
 			position: absolute;
 			top: 0;
 			right: 9px;
@@ -91,7 +91,7 @@
 			}
 
 			&:hover {
-				color: var( --bar-link-hover-color );
+				color: var(--bar-link-hover-color);
 			}
 		}
 
@@ -113,7 +113,7 @@
 					height: 100vh;
 					opacity: 0;
 					pointer-events: none;
-					background-color: rgba(0,0,0,0.5);
+					background-color: rgba(0, 0, 0, 0.5);
 					z-index: -1;
 					transition: opacity 0.15s ease-in-out;
 				}
@@ -206,7 +206,7 @@
 				&::before {
 					height: auto;
 					width: 4px;
-					content: '';
+					content: "";
 					background: var(--bar-text-color);
 					position: absolute;
 					top: 0;
@@ -223,7 +223,7 @@
 
 					&::before {
 						height: 4px;
-						top: calc( 50% - 2px );
+						top: calc(50% - 2px);
 						right: auto;
 						left: 0;
 					}
@@ -236,7 +236,8 @@
 		color: var(--bar-link-color);
 
 		&:hover {
-			color: var( --bar-link-hover-color );
+			color: var(--bar-link-hover-color);
+			text-decoration: underline;
 		}
 	}
 }
@@ -260,6 +261,7 @@
 	.local-header {
 		--bar-text-color: var(--wp--preset--color--black);
 		--bar-link-color: var(--wp--preset--color--black);
+		--bar-link-hover-color: var(--wp--preset--color--dark-grey);
 	}
 }
 
@@ -284,7 +286,7 @@
 
 	&::after {
 		content: "";
-		min-height: var( --bar-min-height );
+		min-height: var(--bar-min-height);
 		position: absolute;
 		bottom: 0;
 		left: 0;
