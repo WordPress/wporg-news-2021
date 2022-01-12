@@ -10,10 +10,10 @@
 		@include break-small {
 			position: sticky;
 			top: 0;
+		}
 
-			body.admin-bar & {
-				padding-top: var(--wp-admin--admin-bar--height, 0);
-			}
+		body.admin-bar & {
+			padding-top: var(--wp-admin--admin-bar--height, 0);
 		}
 	}
 }
