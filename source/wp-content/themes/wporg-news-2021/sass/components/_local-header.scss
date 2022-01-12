@@ -52,7 +52,7 @@
 				height: 4px;
 				width: 4px;
 				content: '';
-				background: var(--bar-link-color);
+				background: var(--bar-text-color);
 				display: inline-block;
 				margin: 0 12px;
 			}
@@ -207,7 +207,7 @@
 					height: auto;
 					width: 4px;
 					content: '';
-					background: var(--bar-link-color);
+					background: var(--bar-text-color);
 					position: absolute;
 					top: 0;
 					right: 0;
@@ -223,13 +223,8 @@
 
 					&::before {
 						height: 4px;
-						width: 4px;
-						content: '';
-						background: var(--bar-link-color);
-						position: absolute;
 						top: calc( 50% - 2px );
 						right: auto;
-						bottom: 0;
 						left: 0;
 					}
 				}
@@ -298,7 +293,7 @@
 		mask-image: url(images/local-nav-mask.svg);
 		mask-repeat: no-repeat;
 		mask-size: cover;
-		mask-position: 80% 0;
+		mask-position: 0;
 		background-color: var(--bar-background-color);
 	}
 }
