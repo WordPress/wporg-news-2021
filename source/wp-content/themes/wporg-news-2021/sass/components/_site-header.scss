@@ -1,33 +1,19 @@
-// This is the regular header that users actually see and interact with.
-.site-header-container {
-	width: 100%;
+// Setup the main container to use a flex box-model
+// allowing us to simplify the layout and "sticky" bar.
+.wp-site-blocks {
+	display: flex;
+	margin-top: -(var(--wp-admin--admin-bar--height, 0));
 
-	// Don't fix the header on mobile, because screen real estate is limited.
-	// Matches the breakpoint for the admin bar.
-	@include break-small {
-		position: fixed;
-	}
-}
+	// The container for the site-specific (/news/) menu bar.
+	.site-header-container {
 
+		@include break-small {
+			position: sticky;
+			top: 0;
 
-// Since the site header has a dynamic height, depending on the viewport width, this allows us to
-// offset the content by the same amount so it isn't covered by the visible fixed header.
-// See https://stackoverflow.com/a/59853252
-.site-header-offset {
-	display: none;
-	margin-top: 0;
-
-	@include break-small {
-		display: block;
-		visibility: hidden; // This removes the element and descendents from the accessibility tree.
-	}
-
-	.global-header__navigation {
-
-		/*
-		 * For some reason this element is taller in the offset header than it is in the regular header. That adds
-		 * extra spacing after the header that we don't want.
-		 */
-		display: none;
+			body.admin-bar & {
+				padding-top: var(--wp-admin--admin-bar--height, 0);
+			}
+		}
 	}
 }

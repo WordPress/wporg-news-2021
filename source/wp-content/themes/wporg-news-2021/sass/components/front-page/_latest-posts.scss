@@ -1,4 +1,5 @@
 body.news-front-page .front__latest-posts {
+	background: var(--wp--preset--color--white);
 
 	@extend %front-latest-items-grid;
 }

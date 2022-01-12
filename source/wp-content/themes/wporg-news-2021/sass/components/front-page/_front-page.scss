@@ -61,6 +61,8 @@
 }
 
 body.news-front-page {
+	background: var(--wp--preset--color--blue-1);
+
 	.wp-block-home-link__content {
 
 		/* Hide because `.front__site-title` will show it instead. */

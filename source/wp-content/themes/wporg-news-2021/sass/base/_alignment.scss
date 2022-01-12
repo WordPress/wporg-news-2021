@@ -10,8 +10,7 @@
 
 //FRONTEND
 // The global header and global footer are excluded here because they set their own styles.
-.wp-site-blocks > *:not(.site-header-container):not(.global-footer):not(.footer-archive),
-.wp-site-blocks .local-header {
+.wp-site-blocks > *:not(.site-header-container):not(.local-header):not(.global-footer):not(.footer-archive) {
 	// In this situation we want to introduce a standardized gap between content and the edge of the screen.
 	@extend %edge-spacing-padding;
 
