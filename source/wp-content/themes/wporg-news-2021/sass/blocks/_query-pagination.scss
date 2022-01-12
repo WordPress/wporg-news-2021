@@ -9,9 +9,18 @@
 	position: relative;
 
 	body.archive & {
+		padding: 40px 0;
+
 		@include break-small-only() {
 			display: flex;
 			justify-content: center;
+			&::after {
+				mask-position: center;
+			}
+		}
+
+		&::after {
+			z-index: -1;
 		}
 	}
 
