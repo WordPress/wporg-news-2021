@@ -2,7 +2,7 @@
 // allowing us to simplify the layout and "sticky" bar.
 .wp-site-blocks {
 	display: flex;
-	margin-top: -32px;
+	margin-top: -(var(--wp-admin--admin-bar--height, 0));
 
 	// The container for the site-specific (/news/) menu bar.
 	.site-header-container {
@@ -12,7 +12,7 @@
 			top: 0;
 
 			body.admin-bar & {
-				padding-top: var(--wpadmin-bar--height);
+				padding-top: var(--wp-admin--admin-bar--height, 0);
 			}
 		}
 	}
