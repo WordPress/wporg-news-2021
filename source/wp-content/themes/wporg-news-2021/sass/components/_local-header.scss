@@ -254,6 +254,9 @@
 			--bar-link-hover-color: var(--wp--preset--color--blue-1);
 		}
 	}
+	.wp-block-query-pagination::after {
+		background-color: var(--wp--preset--color--white);
+	}
 }
 
 // Alternate version with a color light enough to need dark text. e.g., Security category.
