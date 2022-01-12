@@ -8,18 +8,26 @@
 	color: var(--wp--preset--color--blue-1);
 	position: relative;
 
+	body.archive & {
+		@include break-small-only() {
+			display: flex;
+			justify-content: center;
+		}
+	}
+
 	.wp-block-query-pagination-next {
 		z-index: 2;
 	}
 
 	&::after {
+		--stroke-color: var(--wp--preset--color--off-white-2); 
 		content: "";
 		position: absolute;
 		top: 0;
 		bottom: 0;
 		right: 0;
 		left: 0;
-		background-color: var(--wp--preset--color--off-white-2);
+		background-color: var(--stroke-color);
 		mask-image: url(images/brush-stroke-short-blue-4.svg);
 		mask-position: bottom left;
 		mask-repeat: no-repeat;

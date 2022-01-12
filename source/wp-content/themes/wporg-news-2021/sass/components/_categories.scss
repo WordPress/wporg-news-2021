@@ -13,6 +13,8 @@ body.category-events {
 }
 
 body.category-releases {
+	--contrast-color: var(--wp--preset--color--blue-5);
+
 	.wp-site-blocks {
 		background-color: var(--wp--preset--color--blue-1);
 	}
@@ -31,11 +33,11 @@ body.category-releases {
 	}
 
 	.local-header {
-		--bar-background-color: var(--wp--preset--color--blue-5);
+		--bar-background-color: var(--contrast-color);
 	}
 
 	.wp-block-query-pagination::after {
-		background-color: var(--wp--preset--color--blue-5);
+		--stroke-color: var(--contrast-color);
 	}
 
 	@extend %footer-archive-dark;
