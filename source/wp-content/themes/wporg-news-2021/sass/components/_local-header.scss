@@ -23,6 +23,11 @@
 		@include break-small {
 			padding: 0 var(--wp--custom--alignment--edge-spacing);
 		}
+
+		// Override core navigation block link color
+		.wp-block-navigation .wp-block-navigation-item__content {
+			color: var(--bar-link-color);
+		}
 	}
 
 	// Breadcrumbs show the lineage of pages based on the current
@@ -49,11 +54,8 @@
 			}
 
 			&::before {
-				height: 3px;
-				width: 3px;
-				border-radius: 100%;
-				content: "";
-				background: var(--bar-text-color);
+				content: "\2022";
+				font-size: 0.75rem;
 				display: inline-block;
 				margin: 0 12px;
 			}
