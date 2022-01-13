@@ -55,3 +55,13 @@
 		}
 	}
 }
+
+// Alternate dark version.
+%footer-archive-dark {
+	.footer-archive .footer-archive-row[class*="wp-container-"] .subscribe-wp-news {
+		#subscribe-email input {
+			background-color: var(--wp--preset--color--white);
+			border: none;
+		}
+	}
+}
