@@ -8,7 +8,7 @@
 	color: var(--wp--preset--color--blue-1);
 	position: relative;
 
-	body.archive & {
+	body:where(.archive, .blog.paged) & {
 		padding: 40px 0;
 
 		@include break-small-only() {
