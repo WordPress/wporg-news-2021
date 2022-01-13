@@ -14,6 +14,7 @@
 		@include break-small-only() {
 			display: flex;
 			justify-content: center;
+
 			&::after {
 				mask-position: center;
 			}
@@ -29,14 +30,13 @@
 	}
 
 	&::after {
-		--stroke-color: var(--wp--preset--color--off-white-2); 
 		content: "";
 		position: absolute;
 		top: 0;
 		bottom: 0;
 		right: 0;
 		left: 0;
-		background-color: var(--stroke-color);
+		background-color: var(--wp--preset--color--off-white-2);
 		mask-image: url(images/brush-stroke-short-blue-4.svg);
 		mask-position: bottom left;
 		mask-repeat: no-repeat;

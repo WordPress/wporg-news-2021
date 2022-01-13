@@ -37,7 +37,7 @@ body.category-releases {
 	}
 
 	.wp-block-query-pagination::after {
-		--stroke-color: var(--contrast-color);
+		background-color: var(--contrast-color);
 	}
 
 	@extend %footer-archive-dark;

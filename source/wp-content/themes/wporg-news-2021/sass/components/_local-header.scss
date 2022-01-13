@@ -256,8 +256,9 @@
 			--bar-link-hover-color: var(--wp--preset--color--blue-1);
 		}
 	}
+
 	.wp-block-query-pagination::after {
-		--stroke-color: var(--contrast-color);
+		background-color: var(--contrast-color);
 	}
 }
 
