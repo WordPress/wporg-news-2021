@@ -51,6 +51,7 @@
 			&::before {
 				height: 4px;
 				width: 4px;
+				border-radius: 100%;
 				content: "";
 				background: var(--bar-text-color);
 				display: inline-block;
