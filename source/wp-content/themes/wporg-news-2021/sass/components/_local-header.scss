@@ -54,10 +54,13 @@
 			}
 
 			&::before {
-				content: "\2022";
-				font-size: 0.5rem;
+				content: "";
+				height: 2px;
+				width: 2px;
+				background: var(--bar-text-color);
 				display: inline-block;
 				margin: 0 0.5rem;
+				border-radius: 2px;
 			}
 		}
 	}
