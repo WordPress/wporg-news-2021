@@ -272,28 +272,23 @@ function clarify_body_classes( $classes ) {
  * @return array
  */
 function specify_post_classes( $classes, $extra_classes, $post_id ) {
-	$classes[] = 'post-year-' . get_the_date('Y');
+	$classes[] = 'post-year-' . get_the_date( 'Y' );
 
 	global $wp_query;
 
 	// Add first-in-year and last-in-year to help put design elements in between year groups in the Month In WordPress category
-	if ( is_object( $wp_query ) && $wp_query->post_count > 1 ) {
+	if ( is_object( $wp_query ) && $wp_query->is_category( 'month-in-wordpress' ) && $wp_query->post_count > 1 ) {
 		// Seems like the wp:query loop block doesn't count as "in the loop" so we'll do this the hard way:
 		$current_post = null;
-		for ( $i=0; $i < count ( $wp_query->posts ); $i++ ) {
+		$count_posts = count( $wp_query->posts );
+		for ( $i = 0; $i < $count_posts; $i++ ) {
 			if ( $wp_query->posts[ $i ]->ID === $post_id ) {
 				$current_post = $i;
 			}
 		}
-		// TODO: first/last-in-year may not be needed. Remove this for launch if it's unnecessary.
-		if ( !is_null( $current_post ) ) {
-			if ( $current_post == 0 ) {
-				// First in the query
-				#$classes[] = 'first-in-year first-in-query';
-			} elseif ( $current_post >= count( $wp_query->posts ) - 1 ) {
-				// Last in the query
-				#$classes[] = 'last-in-year last-in-query';
-			} else {
+
+		if ( ! is_null( $current_post ) ) {
+			if ( 0 !== $current_post && $current_post < $count_posts - 1 ) {
 				if ( get_the_date( 'Y' ) !== get_the_date( 'Y', $wp_query->posts[ $current_post - 1 ] ) ) {
 					$classes[] = 'first-in-year';
 				}
