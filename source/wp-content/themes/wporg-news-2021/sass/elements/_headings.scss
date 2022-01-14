@@ -1,8 +1,8 @@
 .editor-post-title .editor-post-title__input {
 	font-family: var(--wp--custom--heading--typography--font-family);
-	font-size: var(--wp--custom--h-1--typography--font-size);
-	font-weight: var(--wp--custom--h-1--typography--font-weight);
-	line-height: var(--wp--custom--h-1--typography--line-height);
+	font-size: var(--wp--custom--h1--typography--font-size);
+	font-weight: var(--wp--custom--h1--typography--font-weight);
+	line-height: var(--wp--custom--h1--typography--line-height);
 }
 
 @include break-mobile {
@@ -13,13 +13,13 @@
 	 */
 
 	body {
-		--wp--custom--h-1--typography--font-size: var(--wp--custom--h-1--breakpoint--mobile--typography--font-size);
-		--wp--custom--h-1--typography--line-height: var(--wp--custom--h-1--breakpoint--mobile--typography--line-height);
-		--wp--custom--h-2--typography--font-size: var(--wp--custom--h-2--breakpoint--mobile--typography--font-size);
-		--wp--custom--h-3--typography--font-size: var(--wp--custom--h-3--breakpoint--mobile--typography--font-size);
-		--wp--custom--h-3--typography--line-height: var(--wp--custom--h-3--breakpoint--mobile--typography--line-height);
-		--wp--custom--h-4--typography--font-size: var(--wp--custom--h-4--breakpoint--mobile--typography--font-size);
-		--wp--custom--h-5--typography--font-size: var(--wp--custom--h-5--breakpoint--mobile--typography--font-size);
-		--wp--custom--h-5--typography--line-height: var(--wp--custom--h-5--breakpoint--mobile--typography--line-height);
+		--wp--custom--h1--typography--font-size: var(--wp--custom--h1--breakpoint--mobile--typography--font-size);
+		--wp--custom--h1--typography--line-height: var(--wp--custom--h1--breakpoint--mobile--typography--line-height);
+		--wp--custom--h2--typography--font-size: var(--wp--custom--h2--breakpoint--mobile--typography--font-size);
+		--wp--custom--h3--typography--font-size: var(--wp--custom--h3--breakpoint--mobile--typography--font-size);
+		--wp--custom--h3--typography--line-height: var(--wp--custom--h3--breakpoint--mobile--typography--line-height);
+		--wp--custom--h4--typography--font-size: var(--wp--custom--h4--breakpoint--mobile--typography--font-size);
+		--wp--custom--h5--typography--font-size: var(--wp--custom--h5--breakpoint--mobile--typography--font-size);
+		--wp--custom--h5--typography--line-height: var(--wp--custom--h5--breakpoint--mobile--typography--line-height);
 	}
 }
