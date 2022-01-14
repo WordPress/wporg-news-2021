@@ -23,6 +23,11 @@
 		@include break-small {
 			padding: 0 var(--wp--custom--alignment--edge-spacing);
 		}
+
+		// Override core navigation block link color
+		.wp-block-navigation .wp-block-navigation-item__content {
+			color: var(--bar-link-color);
+		}
 	}
 
 	// Breadcrumbs show the lineage of pages based on the current
@@ -49,12 +54,13 @@
 			}
 
 			&::before {
-				height: 4px;
-				width: 4px;
 				content: "";
+				height: 2px;
+				width: 2px;
 				background: var(--bar-text-color);
 				display: inline-block;
-				margin: 0 12px;
+				margin: 0 0.5rem;
+				border-radius: 2px;
 			}
 		}
 	}
