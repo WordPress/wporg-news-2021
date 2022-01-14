@@ -8,6 +8,23 @@
 	color: var(--wp--preset--color--blue-1);
 	position: relative;
 
+	body:where(.archive, .blog.paged) & {
+		padding: 40px 0;
+
+		@include break-small-only() {
+			display: flex;
+			justify-content: center;
+
+			&::after {
+				mask-position: center;
+			}
+		}
+
+		&::after {
+			z-index: -1;
+		}
+	}
+
 	.wp-block-query-pagination-next {
 		z-index: 2;
 	}
