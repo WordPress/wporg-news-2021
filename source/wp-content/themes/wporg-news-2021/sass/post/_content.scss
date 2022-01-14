@@ -25,8 +25,3 @@ body.page .site-content-container .wp-block-post-content {
 
 	@extend %two-column-grid-container-dynamic-rows;
 }
-
-body.category-community .site-content-container {
-
-	@extend %four-column-grid-container;
-}

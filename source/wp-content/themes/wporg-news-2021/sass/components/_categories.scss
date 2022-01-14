@@ -88,33 +88,68 @@ body.category-community {
 
 	@extend %local-header-lightish;
 
-	.wp-block-post-title,
+	.wp-block-post-template {
+		gap: 2px;
+	}
+
+	.wp-block-post-title{
+		font-size: var(--wp--preset--font-size--huge);
+		line-height: 1.3;
+
+		a:hover,
+		a:focus {
+			color: inherit;
+			text-decoration: none;
+		}
+	}
+
 	.wp-block-post-date {
-		font-size: var(--wp--preset--font--size--tiny);
+		font-size: var(--wp--preset--font-size--small);
 	}
 
-	// Alternating blue-1 and blue-2 for non-thumbnail posts
-	li.post:not(.has-post-thumbnail):nth-of-type(even) {
-		background-color: var(--wp--preset--color--blue-1);
-		color: var(--wp--preset--color--white);
-		vertical-align: bottom;
+	li.post {
+		aspect-ratio: 1 / 1;
+		margin: 0;
+
+		&.has-post-thumbnail {
+			.wp-block-template-part,
+			header,
+			figure,
+			figure a,
+			img {
+				height: 100%;
+			}
+			// B&W featured image
+			.wp-block-post-featured-image {
+				filter: grayscale(100%);
+				object-fit: cover;
+			}
+		}
+
+		
+		&:not(.has-post-thumbnail) {
+			padding: 24px;
+			display: flex;
+			align-items: flex-end;
+			
+			// Alternating blue-1 and blue-2 for non-thumbnail posts
+			&:nth-of-type(even) {
+				background-color: var(--wp--preset--color--blue-1);
+				color: var(--wp--preset--color--white);
+				vertical-align: bottom;
+			}
+
+			&:nth-of-type(odd) {
+				background-color: var(--wp--preset--color--blue-2);
+				color: var(--wp--preset--color--white);
+				vertical-align: bottom;
+			}
+		}
+		// Featured image only for posts that have one
+		&.has-post-thumbnail .wp-block-post-title,
+		&.has-post-thumbnail .entry-meta {
+			display: none;
+		}
 	}
 
-	li.post:not(.has-post-thumbnail):nth-of-type(odd) {
-		background-color: var(--wp--preset--color--blue-2);
-		color: var(--wp--preset--color--white);
-		vertical-align: bottom;
-	}
-
-	// Featured image only for posts that have one
-	li.post.has-post-thumbnail .wp-block-post-title,
-	li.post.has-post-thumbnail .entry-meta {
-		display: none;
-	}
-
-	// B&W featured image
-	li.post.has-post-thumbnail .wp-block-post-featured-image {
-		filter: grayscale(100%);
-		object-fit: cover;
-	}
 }
