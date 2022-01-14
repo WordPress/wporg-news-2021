@@ -66,16 +66,21 @@ body.category-month-in-wordpress {
 		}
 	}
 
-	.last-in-year::after {
-		content: none;//"-";Removing temporarily
-		display: inline-block;
-		line-height: calc(var(--wp--custom--margin--vertical) * 6);
-		width: 100%;
-		background-image: url(images/brush-stroke-short-blue-4.svg);
-		background-position: center;
-		background-repeat: no-repeat;
-		//background-size: fill;
-		color: var(--wp--preset--color--blue-1);
+	.last-in-year {
+		break-after: always;
+		&::after {
+			content: none;//"-";Removing temporarily
+			//display: inline-block;
+			line-height: calc(var(--wp--custom--margin--vertical) * 6);
+			width: 100%;
+			flex-grow: 1;
+			flex-basis: 100%;
+			background-image: url(images/brush-stroke-short-blue-4.svg);
+			background-position: center;
+			background-repeat: no-repeat;
+			//background-size: fill;
+			color: var(--wp--preset--color--blue-1);
+		}
 	}
 
 	h2 time {
