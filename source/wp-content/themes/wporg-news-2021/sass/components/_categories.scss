@@ -46,13 +46,13 @@ body.category-month-in-wordpress {
 	}
 
 	.wp-block-post-template {
-		margin-top: 60px;
-		margin-bottom: 60px;
+		margin-top: calc(var(--wp--custom--margin--vertical) * 2);
+		margin-bottom: calc(var(--wp--custom--margin--vertical) * 2);
 	}
 
 	.wp-block-post {
 		text-align: center;
-		margin-bottom: 40px;
+		margin-bottom: calc(var(--wp--custom--margin--vertical) * 1.333);
 		@include break-small-only() {
 			width: 50%;
 		}
@@ -67,19 +67,31 @@ body.category-month-in-wordpress {
 	}
 
 	.last-in-year {
+		/* We are removing this item from the grid so we can make the ::after element work as a child of the grid*/
+		display: contents;
+		position: relative;
 		break-after: always;
 		&::after {
-			content: none;//"-";Removing temporarily
-			//display: inline-block;
+			content: "-";
 			line-height: calc(var(--wp--custom--margin--vertical) * 6);
 			width: 100%;
-			flex-grow: 1;
-			flex-basis: 100%;
-			background-image: url(images/brush-stroke-short-blue-4.svg);
-			background-position: center;
-			background-repeat: no-repeat;
-			//background-size: fill;
-			color: var(--wp--preset--color--blue-1);
+			mask-image: url(images/brush-stroke-big.svg);
+			mask-position: center;
+			mask-repeat: no-repeat;
+			mask-size: 100% auto;
+			background-color: var(--wp--preset--color--blue-1);
+			transform: translateY(-25%);
+			@include break-small() {
+				mask-size: 280px auto;
+			}
+		}
+		article {
+			/* We are making the article look like it's a child of the grid container */
+			width: calc(33.33333% - .83333em);
+			margin-bottom: calc(var(--wp--custom--margin--vertical) * 2.5);
+			@include break-small-only() {
+				width: 50%;
+			}
 		}
 	}
 
