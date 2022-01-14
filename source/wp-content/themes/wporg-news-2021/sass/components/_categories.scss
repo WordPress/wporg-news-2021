@@ -53,6 +53,9 @@ body.category-month-in-wordpress {
 	.wp-block-post {
 		text-align: center;
 		margin-bottom: 40px;
+		@include break-small-only() {
+			width: 50%;
+		}
 	}
 
 	.wp-block-post-date {
@@ -76,7 +79,7 @@ body.category-month-in-wordpress {
 	}
 
 	h2 time {
-		font-size: 120px;
+		font-size: min(max(50px, 5vw), 120px);
 		line-height: 1;
 		a:hover,
 		a:focus {
