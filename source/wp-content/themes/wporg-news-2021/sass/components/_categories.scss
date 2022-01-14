@@ -45,13 +45,26 @@ body.category-month-in-wordpress {
 		color: var(--wp--preset--color--off-white-2);
 	}
 
-	.wp-block-post-date a {
-		color: var(--wp--preset--color--off-white-2);
-		text-transform: uppercase;
+	.wp-block-post-template {
+		margin-top: 60px;
+		margin-bottom: 60px;
+	}
+
+	.wp-block-post {
+		text-align: center;
+		margin-bottom: 40px;
+	}
+
+	.wp-block-post-date {
+		font-size: var(--wp--preset--font-size--normal);
+		a {
+			color: var(--wp--preset--color--off-white-2);
+			text-transform: uppercase;
+		}
 	}
 
 	.last-in-year::after {
-		content: "-";
+		content: none;//"-";Removing temporarily
 		display: inline-block;
 		line-height: calc(var(--wp--custom--margin--vertical) * 6);
 		width: 100%;
@@ -60,6 +73,15 @@ body.category-month-in-wordpress {
 		background-repeat: no-repeat;
 		//background-size: fill;
 		color: var(--wp--preset--color--blue-1);
+	}
+
+	h2 time {
+		font-size: 120px;
+		line-height: 1;
+		a:hover,
+		a:focus {
+			text-decoration: none;
+		}
 	}
 
 	@extend %footer-archive-dark;
