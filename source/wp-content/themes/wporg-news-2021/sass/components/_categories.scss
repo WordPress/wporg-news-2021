@@ -140,8 +140,11 @@ body.category-community {
 			}
 			// B&W featured image
 			.wp-block-post-featured-image {
-				filter: grayscale(100%);
 				object-fit: cover;
+
+				img {
+					filter: grayscale(100%);
+				}
 			}
 		}
 
@@ -153,6 +156,11 @@ body.category-community {
 
 			@include break-small() {
 				min-height: 0;
+				&:nth-of-type(even):hover,
+				&:nth-of-type(odd):hover {
+					transition: all 0.3s ease-in-out;
+					background-color: black;
+				}
 			}
 
 			// Alternating blue-1 and blue-2 for non-thumbnail posts
@@ -169,10 +177,40 @@ body.category-community {
 			}
 		}
 		// Featured image only for posts that have one
-		&.has-post-thumbnail .entry-meta {
+		&.has-post-thumbnail {
+			position: relative;
 
 			@include break-small() {
-				display: none;
+				&:hover {
+					
+					figure {
+						transition: all 0.3s ease-in-out;
+						background-color: var(--wp--preset--color--blue-1);
+					}
+	
+					img {
+						mix-blend-mode: multiply;
+					}
+
+					.entry-meta {
+						opacity: 1;
+						transition: opacity 0.3s ease-in-out;
+					}
+				}
+
+				.entry-meta {
+					opacity: 0;
+					color: white;
+					position: absolute;
+					top: 0;
+					left: 0;
+					right: 0;
+					bottom: 0;
+					z-index: 1;
+					display: flex;
+					flex-direction: column;
+					justify-content: flex-end;
+				}
 			}
 		}
 	}
