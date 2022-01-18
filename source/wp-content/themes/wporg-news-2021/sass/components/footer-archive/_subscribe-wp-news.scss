@@ -25,12 +25,9 @@
 					border: 1px solid var(--wp--preset--color--black);
 					border-right: none;
 					border-radius: 2px 0 0 2px;
+					font-size: var(--wp--custom--button--typography--font-size);
 					margin: 0;
 					height: 50px;
-
-					&::placeholder {
-						font-size: var(--wp--custom--button--typography--font-size);
-					}
 				}
 			}
 
@@ -61,6 +58,7 @@
 	.footer-archive .footer-archive-row[class*="wp-container-"] .subscribe-wp-news {
 		#subscribe-email input {
 			background-color: var(--wp--preset--color--white);
+			color: var(--wp--preset--color--black);
 			border: none;
 		}
 	}
