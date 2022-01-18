@@ -128,6 +128,8 @@ body.category-community {
 		}
 
 		&.has-post-thumbnail {
+			position: relative;
+
 			.wp-block-template-part,
 			header,
 			figure,
@@ -146,6 +148,39 @@ body.category-community {
 					filter: grayscale(100%);
 				}
 			}
+
+			@include break-small() {
+				&:hover,
+				&:focus-within {
+					figure {
+						transition: all 0.3s ease-in-out;
+						background-color: var(--wp--preset--color--blue-1);
+					}
+
+					img {
+						mix-blend-mode: multiply;
+					}
+
+					.entry-meta {
+						opacity: 1;
+						transition: opacity 0.3s ease-in-out;
+					}
+				}
+
+				.entry-meta {
+					opacity: 0;
+					color: var(--wp--preset--color--white);
+					position: absolute;
+					top: 0;
+					left: 0;
+					right: 0;
+					bottom: 0;
+					z-index: 1;
+					display: flex;
+					flex-direction: column;
+					justify-content: flex-end;
+				}
+			}
 		}
 
 
@@ -156,10 +191,11 @@ body.category-community {
 
 			@include break-small() {
 				min-height: 0;
+
 				&:nth-of-type(even):hover,
 				&:nth-of-type(odd):hover {
 					transition: all 0.3s ease-in-out;
-					background-color: black;
+					background-color: var(--wp--preset--color--black);
 				}
 			}
 
@@ -174,44 +210,6 @@ body.category-community {
 				background-color: var(--wp--preset--color--blue-2);
 				color: var(--wp--preset--color--white);
 				vertical-align: bottom;
-			}
-		}
-		// Featured image only for posts that have one
-		&.has-post-thumbnail {
-			position: relative;
-
-			@include break-small() {
-				&:hover,
-				&:focus-within {
-					
-					figure {
-						transition: all 0.3s ease-in-out;
-						background-color: var(--wp--preset--color--blue-1);
-					}
-	
-					img {
-						mix-blend-mode: multiply;
-					}
-
-					.entry-meta {
-						opacity: 1;
-						transition: opacity 0.3s ease-in-out;
-					}
-				}
-
-				.entry-meta {
-					opacity: 0;
-					color: white;
-					position: absolute;
-					top: 0;
-					left: 0;
-					right: 0;
-					bottom: 0;
-					z-index: 1;
-					display: flex;
-					flex-direction: column;
-					justify-content: flex-end;
-				}
 			}
 		}
 	}
