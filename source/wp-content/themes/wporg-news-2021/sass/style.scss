@@ -26,46 +26,46 @@ GNU General Public License for more details.
 @import "base/mixins";
 @import "base/normalize";
 @import "base/breakpoints";
-@import "base/alignment";
-@import "base/headings";
-@import "base/layout";
-@import "base/text";
-@import "base/utility";
-@import "base/z-index";
+// @import "base/alignment";
+// @import "base/headings";
+// @import "base/layout";
+// @import "base/text";
+// @import "base/utility";
+// @import "base/z-index";
 
 
 // Elements
 // Foundational styles that apply to primitive HTML elements.
-@import "elements/forms";
-@import "elements/headings";
+// @import "elements/forms";
+// @import "elements/headings";
 @import "elements/links";
-@import "elements/lists";
-@import "elements/captions";
+// @import "elements/lists";
+// @import "elements/captions";
 
 
 // Blocks
 // Override the default styles that a block has from Core, it's plugin, etc.
-@import "blocks/button";
-@import "blocks/code";
-@import "blocks/html";
-@import "blocks/image";
-@import "blocks/latest-posts";
-@import "blocks/list";
-@import "blocks/paragraph";
-@import "blocks/post-author";
-@import "blocks/post-comments";
-@import "blocks/post-excerpt";
-@import "blocks/post-title";
-@import "blocks/pullquote";
-@import "blocks/query-pagination";
-@import "blocks/quote";
-@import "blocks/search";
-@import "blocks/separator";
-@import "blocks/social-links";
-@import "blocks/file";
-@import "blocks/table";
-@import "blocks/video";
-@import "blocks/columns";
+// @import "blocks/button";
+// @import "blocks/code";
+// @import "blocks/html";
+// @import "blocks/image";
+// @import "blocks/latest-posts";
+// @import "blocks/list";
+// @import "blocks/paragraph";
+// @import "blocks/post-author";
+// @import "blocks/post-comments";
+// @import "blocks/post-excerpt";
+// @import "blocks/post-title";
+// @import "blocks/pullquote";
+// @import "blocks/query-pagination";
+// @import "blocks/quote";
+// @import "blocks/search";
+// @import "blocks/separator";
+// @import "blocks/social-links";
+// @import "blocks/file";
+// @import "blocks/table";
+// @import "blocks/video";
+// @import "blocks/columns";
 
 
 // Components
@@ -76,7 +76,7 @@ GNU General Public License for more details.
 @import "components/footer-archive/footer-archive";
 @import "components/footer-archive/subscribe-wp-news";
 @import "components/footer-archive/wp-briefing";
-@import "components/query-title-banner";
+// @import "components/query-title-banner";
 // Specific templates are after global components, so they can override default styles.
 @import "components/front-page/front-page";
 @import "components/front-page/latest-release";
@@ -88,6 +88,7 @@ GNU General Public License for more details.
 
 // Posts
 // - Styles for post areas
+@import "post/excerpt";
+@import "post/single";
 @import "post/content";
-@import "post/header";
 @import "post/navigation";
