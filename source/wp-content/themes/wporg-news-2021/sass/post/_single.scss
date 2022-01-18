@@ -1,0 +1,40 @@
+body.single {
+  .site-content-container {
+    margin-top: 0;
+  }
+
+  .entry-header {
+    display: flex;
+    flex-direction: row;
+    padding: var(--wp--custom--alignment--edge-spacing);
+    outline: 1px dotted green;
+
+    .entry-meta {
+      display: block;
+      min-width: var(--wp--custom--layout--content-meta-size);
+      flex-grow: 1;
+      outline: 1px dotted red;
+
+      .wp-block-post-terms {
+        text-transform: none;
+
+        &:after {
+          display: none;
+        }
+      }
+    }
+
+    .wp-block-post-title {
+      font-size: 70px;
+      max-width: var(--wp--custom--layout--content-size);
+      outline: 1px dotted purple;
+    }
+  }
+
+  .wp-block-post-content {
+    outline: 1px dotted blue;
+    width: 100%;
+    padding-left: var(--wp--custom--layout--content-meta-size);
+  	margin: var(--wp--custom--alignment--edge-spacing);
+  }
+}
