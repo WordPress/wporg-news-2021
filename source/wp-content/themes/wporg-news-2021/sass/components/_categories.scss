@@ -2,125 +2,118 @@
  * Styles for the default category archives, and its variations.
  */
 
-body.category-community {
+body.category .site-content-container {
+	padding-left: var(--wp--custom--layout--content-meta-size);
+	margin: var(--wp--custom--alignment--edge-spacing);
 
-	@extend %local-header-off-white;
+	// Some categories include a decorative drop-cap-like character.
+	&:before {
+		display: block;
+		width: 350px;
+		color: var(--wp--preset--color--black);
+		font-size: 420px;
+		font-family: var(--wp--custom--heading--typography--font-family);
+		text-align: center;
+		line-height: 1;
+		position: fixed;
+		top: 150px;
+		left: var(--wp--custom--alignment--edge-spacing);
+		z-index: -1;
+		pointer-events: none;
+	}
+}
+
+body.category-community {
+	background-color: var(--wp--preset--color--off-white);
+
+	.local-header {
+		--bar-background-color: var(--wp--preset--color--white);
+		--bar-text-color: var(--wp--preset--color--darker-grey);
+		--bar-link-color: var(--wp--preset--color--blue-1);
+		--bar-link-hover-color: var(--wp--preset--color--blue-5);
+	}
+
+	.site-content-container {
+		padding-left: 0;
+	}
+}
+
+body.category-development {
+	// Set the background color for the local-header
+	.local-header {
+		--bar-background-color: var(--wp--preset--color--green);
+		--bar-text-color: var(--wp--preset--color--black);
+		--bar-link-color: var(--wp--preset--color--black);
+		--bar-link-hover-color: var(--wp--preset--color--black);
+	}
+
+	// Set the category drop-cap
+	.site-content-container:before {
+		content: "D";
+		color: var(--wp--preset--color--green);
+	}
 }
 
 body.category-events {
 
-	@extend %local-header-off-white;
-}
-
-body.category-releases {
-	--contrast-color: var(--wp--preset--color--blue-5);
-
-	.wp-site-blocks {
-		background-color: var(--wp--preset--color--blue-1);
-	}
-
-	.site-content-container {
-		color: var(--wp--preset--color--white);
-
-		a,
-		.wp-block-query-pagination {
-			color: var(--wp--preset--color--white);
-		}
-
-		.wp-block-post-title {
-			--post-title-hover-color: var(--wp--preset--color--white);
-		}
-	}
-
-	.local-header {
-		--bar-background-color: var(--contrast-color);
-	}
-
-	.wp-block-query-pagination::after {
-		background-color: var(--contrast-color);
-	}
-
-	@extend %footer-archive-dark;
 }
 
 body.category-month-in-wordpress {
+	// Set the page background color to darker-grey
+	background-color: var(--wp--preset--color--darker-grey);
 
-	@extend %local-header-dark;
+	// Set the background color for the local-header
+	.local-header {
+		--bar-background-color: var(--wp--preset--color--dark-grey);
+		--bar-text-color: var(--wp--preset--color--white);
+		--bar-link-color: var(--wp--preset--color--off-white);
+		--bar-link-hover-color: var(--wp--preset--color--off-white-2);
+
+		// Since the bar is the same color as the W.org header, we
+		// add a border to help separate them.
+		border-top: 1px solid var(--wp--preset--color--darker-grey);
+	}
 
 	.site-content-container {
-		color: var(--wp--preset--color--off-white-2);
-	}
-
-	.wp-block-post-date a {
-		color: var(--wp--preset--color--off-white-2);
-		text-transform: uppercase;
-	}
-
-	.last-in-year::after {
-		content: "-";
-		display: inline-block;
-		line-height: calc(var(--wp--custom--margin--vertical) * 6);
-		width: 100%;
-		background-image: url(images/brush-stroke-short-blue-4.svg);
-		background-position: center;
-		background-repeat: no-repeat;
-		//background-size: fill;
-		color: var(--wp--preset--color--blue-1);
+		padding-left: 0;
 	}
 
 	@extend %footer-archive-dark;
 }
 
-body.category-development {
+body.category-releases {
+	// Set the background to blue-1.
+	background-color: var(--wp--preset--color--blue-1);
 
-	@extend %local-header-lightish;
-
+	// Use the darker blue for the local-header
 	.local-header {
-		--bar-background-color: var(--wp--preset--color--green);
+		--bar-background-color: var(--wp--preset--color--blue-5);
 	}
+
+	.site-content-container {
+		padding-left: 0;
+		color: white;
+
+		a,
+		a:hover {
+			color: white;
+		}
+	}
+
+	@extend %footer-archive-dark;
 }
 
 body.category-security {
-
-	@extend %local-header-lightish;
-
 	.local-header {
 		--bar-background-color: var(--wp--preset--color--coral-red);
-	}
-}
-
-
-body.category-community {
-
-	@extend %local-header-lightish;
-
-	.wp-block-post-title,
-	.wp-block-post-date {
-		font-size: var(--wp--preset--font--size--tiny);
+		--bar-text-color: var(--wp--preset--color--black);
+		--bar-link-color: var(--wp--preset--color--black);
+		--bar-link-hover-color: var(--wp--preset--color--darker-grey);
 	}
 
-	// Alternating blue-1 and blue-2 for non-thumbnail posts
-	li.post:not(.has-post-thumbnail):nth-of-type(even) {
-		background-color: var(--wp--preset--color--blue-1);
-		color: var(--wp--preset--color--white);
-		vertical-align: bottom;
-	}
-
-	li.post:not(.has-post-thumbnail):nth-of-type(odd) {
-		background-color: var(--wp--preset--color--blue-2);
-		color: var(--wp--preset--color--white);
-		vertical-align: bottom;
-	}
-
-	// Featured image only for posts that have one
-	li.post.has-post-thumbnail .wp-block-post-title,
-	li.post.has-post-thumbnail .entry-meta {
-		display: none;
-	}
-
-	// B&W featured image
-	li.post.has-post-thumbnail .wp-block-post-featured-image {
-		filter: grayscale(100%);
-		object-fit: cover;
+	// Set the category drop-cap
+	.site-content-container:before {
+		content: "S";
+		color: var(--wp--preset--color--coral-red);
 	}
 }
