@@ -18,8 +18,11 @@
 		<!-- /wp:group -->
 	<!-- /wp:post-template -->
 
-	<!-- wp:query-pagination -->
-		<!-- wp:query-pagination-next {"label":"See All Releases"} /-->
-	<!-- /wp:query-pagination -->
+	<!-- wp:html -->
+	<!-- See https://github.com/WordPress/wporg-news-2021/issues/70 -->
+	<div class="wp-block-query-pagination" style="display:flex;">
+		<a href="/category/releases/" class="wp-block-query-pagination-next">See All Releases</a>
+	</div>
+	<!-- /wp:html -->
 </section>
 <!-- /wp:query -->

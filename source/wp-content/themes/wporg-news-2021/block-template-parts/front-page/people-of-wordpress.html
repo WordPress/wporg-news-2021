@@ -10,8 +10,11 @@
 		<!-- wp:post-title {"level":3,"isLink":true,"className":"screen-reader-text"} /-->
 	<!-- /wp:post-template -->
 
-	<!-- wp:query-pagination {"layout":"inherit"} -->
-		<!-- wp:query-pagination-next {"label":"See all people"} /-->
-	<!-- /wp:query-pagination -->
+	<!-- wp:html -->
+	<!-- See https://github.com/WordPress/wporg-news-2021/issues/70 -->
+	<div class="wp-block-query-pagination" style="display:flex;">
+		<a href="/tag/people-of-wordpress/" class="wp-block-query-pagination-next">See All People</a>
+	</div>
+	<!-- /wp:html -->
 </section>
 <!-- /wp:query -->
