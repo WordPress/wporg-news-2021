@@ -11,6 +11,11 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+// Blocks, by default, have a top margin. This is annoying.
+.wp-site-blocks [class*="wp-container-"] * + * {
+	margin-top: 0;
+}
+
 // Needed until https://github.com/WordPress/gutenberg/pull/27518/ is merged.
 img {
 	height: auto;
