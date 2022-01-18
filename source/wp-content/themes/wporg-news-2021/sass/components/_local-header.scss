@@ -3,7 +3,7 @@
 	--bar-min-height: 58px;
 	--bar-text-color: var(--wp--preset--color--white);
 	--bar-link-color: var(--wp--preset--color--white);
-	--bar-link-hover-color: var(--wp--preset--color--light-salmon);
+	--bar-link-hover-color: var(--wp--preset--color--off-white-2);
 	--bar-background-color: var(--wp--preset--color--blue-1);
 	background-color: var(--bar-background-color);
 	color: var(--bar-text-color);
@@ -22,11 +22,6 @@
 
 		@include break-small {
 			padding: 0 var(--wp--custom--alignment--edge-spacing);
-		}
-
-		// Override core navigation block link color
-		.wp-block-navigation .wp-block-navigation-item__content {
-			color: var(--bar-link-color);
 		}
 	}
 
@@ -76,7 +71,7 @@
 			display: flex;
 			align-items: center;
 			text-align: right;
-			color: var(--bar-text-color);
+			color: var(--bar-link-color);
 			cursor: pointer;
 			user-select: none;
 			margin: 0;
@@ -87,7 +82,7 @@
 			right: 9px;
 
 			@include break-small {
-				right: 30px;
+				right: var(--wp--custom--alignment--edge-spacing);
 			}
 
 			svg {
@@ -239,75 +234,13 @@
 	}
 
 	a {
-		color: var(--bar-link-color);
+		// This important is needed to override the navigation
+		// block link color.
+		color: var(--bar-link-color) !important;
 
 		&:hover {
 			color: var(--bar-link-hover-color);
 			text-decoration: underline;
 		}
-	}
-}
-
-// Alternate off-white version.
-%local-header-off-white {
-	--contrast-color: var(--wp--preset--color--white);
-
-	.wp-site-blocks {
-		background-color: var(--wp--preset--color--off-white);
-
-		.local-header {
-			--bar-background-color: var(--contrast-color);
-			--bar-text-color: var(--wp--preset--color--black);
-			--bar-link-color: var(--wp--preset--color--blue-1);
-			--bar-link-hover-color: var(--wp--preset--color--blue-1);
-		}
-	}
-
-	.wp-block-query-pagination::after {
-		background-color: var(--contrast-color);
-	}
-}
-
-// Alternate version with a color light enough to need dark text. e.g., Security category.
-%local-header-lightish {
-	.local-header {
-		--bar-text-color: var(--wp--preset--color--black);
-		--bar-link-color: var(--wp--preset--color--black);
-		--bar-link-hover-color: var(--wp--preset--color--dark-grey);
-	}
-}
-
-// Alternate dark version. (Month in WordPress)
-%local-header-dark {
-	.wp-site-blocks {
-		background-color: var(--wp--preset--color--darker-grey);
-
-		.local-header {
-			--bar-background-color: var(--wp--preset--color--dark-grey);
-			--bar-link-color: var(--off-white);
-			--bar-link-hover-color: var(--off-white-2);
-		}
-	}
-}
-
-//We need this at the bottom of the file for proper cascading
-%bottom-mask {
-	position: relative;
-	background: transparent;
-	background: linear-gradient(to top, transparent 56px, var(--bar-background-color) 56px 100%);
-
-	&::after {
-		content: "";
-		min-height: var(--bar-min-height);
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		z-index: -1;
-		mask-image: url(images/local-nav-mask.svg);
-		mask-repeat: no-repeat;
-		mask-size: cover;
-		mask-position: 0;
-		background-color: var(--bar-background-color);
 	}
 }
