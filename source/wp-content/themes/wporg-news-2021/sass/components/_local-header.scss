@@ -244,3 +244,25 @@
 		}
 	}
 }
+
+//We need this at the bottom of the file for proper cascading
+%bottom-mask {
+	position: relative;
+	background: transparent;
+	background: linear-gradient(to top, transparent 56px, var(--bar-background-color) 56px 100%);
+
+	&::after {
+		content: "";
+		min-height: var(--bar-min-height);
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: -1;
+		mask-image: url(images/local-nav-mask.svg);
+		mask-repeat: no-repeat;
+		mask-size: cover;
+		mask-position: 0;
+		background-color: var(--bar-background-color);
+	}
+}
