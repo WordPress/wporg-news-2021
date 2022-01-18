@@ -23,10 +23,10 @@ body.search .site-content-container,
 body.single .site-content-container .wp-block-post-content,
 body.page .site-content-container .wp-block-post-content {
 
-	@extend %two-column-grid-container-dynamic-rows;
+	// @extend %two-column-grid-container-dynamic-rows;
 }
 
 body.category-community .site-content-container {
 
-	@extend %four-column-grid-container;
+	// @extend %four-column-grid-container;
 }
