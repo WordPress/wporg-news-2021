@@ -106,13 +106,16 @@ body.category-community {
 	.wp-block-post-template {
 		gap: 2px;
 
-		&.is-flex-container.columns-4 > li{
+		&.is-flex-container.columns-4 > li {
+
 			@include break-small() {
 				width: calc(50% - 2px);
 			}
+
 			@include break-medium() {
 				width: calc(33.333% - 2px);
 			}
+
 			@include break-large() {
 				width: calc(25% - 2px);
 			}
