@@ -1,6 +1,6 @@
 body.error404 {
 
-	@extend %local-header-dark;
+	// @extend %local-header-dark;
 
 	.site-content-container {
 		color: var(--wp--preset--color--off-white-2);
@@ -9,5 +9,5 @@ body.error404 {
 		margin-bottom: min(100px, 15vh);
 	}
 
-	@extend %footer-archive-dark;
+	// @extend %footer-archive-dark;
 }
