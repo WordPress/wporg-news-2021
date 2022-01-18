@@ -2,6 +2,7 @@
 // allowing us to simplify the layout and "sticky" bar.
 .wp-site-blocks {
 	display: flex;
+	flex-direction: column;
 	margin-top: -(var(--wp-admin--admin-bar--height, 0));
 
 	// The container for the site-specific (/news/) menu bar.
@@ -10,6 +11,7 @@
 		@include break-small {
 			position: sticky;
 			top: 0;
+			z-index: 10;
 		}
 
 		body.admin-bar & {
