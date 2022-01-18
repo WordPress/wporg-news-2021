@@ -181,7 +181,8 @@ body.category-community {
 			position: relative;
 
 			@include break-small() {
-				&:hover {
+				&:hover,
+				&:focus-within {
 					
 					figure {
 						transition: all 0.3s ease-in-out;
