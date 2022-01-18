@@ -9,8 +9,13 @@
 	align-items: stretch !important;
 	margin-top: 0;
 	gap: 0;
-	background-color: var(--wp--preset--color--white);
 	line-height: 30px;
+	background-color: white;
+
+	body.category & {
+		background-color: rgba(255,255,255,0.8);
+		backdrop-filter: blur(12px);
+	}
 
 	h3 {
 		font-size: 26px;
