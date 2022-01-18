@@ -25,6 +25,7 @@
 		text-align: left;
 		padding: var(--wp--custom--alignment--edge-spacing);
 		border-top: 1px solid var(--wp--preset--color--light-grey);
+		width: 100%;
 
 		@include break-medium {
 			flex-basis: 50%;

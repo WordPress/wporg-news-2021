@@ -23,7 +23,11 @@
 				input {
 					width: 100%;
 					border: 1px solid var(--wp--preset--color--black);
+					border-right: none;
 					border-radius: 2px 0 0 2px;
+					font-size: var(--wp--custom--button--typography--font-size);
+					margin: 0;
+					height: 50px;
 				}
 			}
 
@@ -32,7 +36,9 @@
 
 				.wp-block-button__link {
 					border-radius: 0 2px 2px 0;
-					line-height: 1.8;
+					margin: 0;
+					line-height: inherit;
+					height: 50px;
 				}
 			}
 		}
@@ -43,6 +49,17 @@
 
 		.error {
 			color: var(--wp--preset--color--vivid-red);
+		}
+	}
+}
+
+// Alternate dark version.
+%footer-archive-dark {
+	.footer-archive .footer-archive-row[class*="wp-container-"] .subscribe-wp-news {
+		#subscribe-email input {
+			background-color: var(--wp--preset--color--white);
+			color: var(--wp--preset--color--black);
+			border: none;
 		}
 	}
 }
