@@ -1,5 +1,5 @@
 .post-navigation {
-	padding-bottom: var(--wp--style--block-gap);
+	padding: 0 var(--wp--custom--alignment--edge-spacing);
 	display: flex;
 	justify-content: space-between;
 	gap: calc(var(--wp--style--block-gap) * 2);
