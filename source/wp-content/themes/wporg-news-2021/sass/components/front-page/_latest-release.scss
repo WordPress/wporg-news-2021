@@ -34,7 +34,7 @@ body.news-front-page .front__latest-release {
 		}
 	}
 
-	.wp-block-query-pagination {
+	.front__next-page {
 
 		@include break-wide() {
 			border-right: 1px solid var(--wp--preset--color--blue-2);
