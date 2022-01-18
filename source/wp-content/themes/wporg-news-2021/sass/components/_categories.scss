@@ -10,16 +10,22 @@ body.category .site-content-container {
 	&:before {
 		display: block;
 		width: 350px;
-		color: var(--wp--preset--color--black);
-		font-size: 420px;
+		color: var(--wp--preset--color--blue-1);
+		font-size: 380px;
 		font-family: var(--wp--custom--heading--typography--font-family);
 		text-align: center;
 		line-height: 1;
 		position: fixed;
-		top: 150px;
+		top: 180px;
 		left: var(--wp--custom--alignment--edge-spacing);
 		z-index: -1;
 		pointer-events: none;
+	}
+}
+
+body.category-awards {
+	.site-content-container:before {
+		content: "A";
 	}
 }
 
@@ -72,7 +78,7 @@ body.category-community {
 				height: 100%;
 				width: 100%;
 				object-fit: cover;
-				transition: all 0.25s linear;
+				transition: opacity 0.25s linear, transform 3s linear;
 			}
 		}
 
@@ -98,9 +104,8 @@ body.category-community {
 			}
 
 			&:hover .wp-block-post-featured-image img {
-				// filter: none;
 				opacity: 0.8;
-				transform: scale(1.05);
+				transform: scale(1.1);
 			}
 		}
 
@@ -147,7 +152,39 @@ body.category-development {
 }
 
 body.category-events {
+	.site-content-container:before {
+		content: "E";
+	}
+}
 
+body.category-features {
+	.site-content-container:before {
+		content: "F";
+	}
+}
+
+body.category-general {
+	.site-content-container:before {
+		content: "G";
+	}
+}
+
+body.category-heropress {
+	.site-content-container:before {
+		content: "h";
+	}
+}
+
+body.category-interviews {
+	.site-content-container:before {
+		content: "I";
+	}
+}
+
+body.category-meta {
+	.site-content-container:before {
+		content: "M";
+	}
 }
 
 body.category-month-in-wordpress {
@@ -207,5 +244,24 @@ body.category-security {
 	.site-content-container:before {
 		content: "S";
 		color: var(--wp--preset--color--coral-red);
+	}
+}
+
+body.category-themes {
+	.site-content-container:before {
+		content: "T";
+	}
+}
+
+body.category-uncategorized,
+body.category-updates {
+	.site-content-container:before {
+		content: "U";
+	}
+}
+
+body.category-wordcamp {
+	.site-content-container:before {
+		content: "W";
 	}
 }
