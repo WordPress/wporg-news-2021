@@ -1,7 +1,10 @@
 // Default link styles
 a {
 	cursor: pointer;
-	text-underline-offset: 0.15em;
+	// This helps a lot, but we need to find a way to
+	// avoid the !important.
+	text-decoration-thickness: 1px !important;
+	text-underline-offset: 2px !important;
 	text-decoration: none;
 
 	&:hover,
