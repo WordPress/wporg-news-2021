@@ -2290,7 +2290,7 @@
         },
         {
             "name": "wpackagist-plugin/seriously-simple-podcasting",
-            "version": "2.9.9",
+            "version": "2.10.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/seriously-simple-podcasting/",
@@ -2298,7 +2298,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/seriously-simple-podcasting.zip?timestamp=1639567371"
+                "url": "https://downloads.wordpress.org/plugin/seriously-simple-podcasting.zip?timestamp=1642435040"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -2348,12 +2348,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/WordPress/wporg-mu-plugins.git",
-                "reference": "587b08ba78ed4639e32f09d99d4fc473e6657c8f"
+                "reference": "0eada54496c28ba393016e54256510f6a6df94ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WordPress/wporg-mu-plugins/zipball/587b08ba78ed4639e32f09d99d4fc473e6657c8f",
-                "reference": "587b08ba78ed4639e32f09d99d4fc473e6657c8f",
+                "url": "https://api.github.com/repos/WordPress/wporg-mu-plugins/zipball/0eada54496c28ba393016e54256510f6a6df94ee",
+                "reference": "0eada54496c28ba393016e54256510f6a6df94ee",
                 "shasum": ""
             },
             "require": {
@@ -2380,7 +2380,7 @@
                 "source": "https://github.com/WordPress/wporg-mu-plugins/tree/trunk",
                 "issues": "https://github.com/WordPress/wporg-mu-plugins/issues"
             },
-            "time": "2022-01-10T20:19:00+00:00"
+            "time": "2022-01-18T21:44:27+00:00"
         },
         {
             "name": "wporg/wporg-repo-tools",
