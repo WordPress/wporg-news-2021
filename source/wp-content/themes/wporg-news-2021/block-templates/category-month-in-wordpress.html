@@ -1,9 +1,9 @@
 <!-- wp:template-part {"slug":"header","align":"full","className":"site-header-container"} /-->
 
 <!-- Note: This query has filters, but they live in `category_posts_per_page()`. That's necessary to avoid a Gutenberg design flaw. -->
-<!-- wp:query {"tagName":"main","className":"site-content-container","displayLayout":{"type":"flex","columns":4},"query":{"inherit":true}} -->
+<!-- wp:query {"tagName":"main","className":"site-content-container","displayLayout":{"type":"flex","columns":3},"query":{"inherit":true}} -->
 <main class="wp-block-query site-content-container">
-	<!-- wp:post-template -->
+	<!-- wp:post-template {"align":"wide"} -->
 		<!-- wp:template-part {"slug":"content-category-month-in-wordpress","tagName":"article","layout":{"inherit":true}} /-->
 	<!-- /wp:post-template -->
 
