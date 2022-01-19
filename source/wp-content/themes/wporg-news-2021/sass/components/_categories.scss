@@ -44,13 +44,19 @@ body.category-community {
 		margin: 0 4px;
 	}
 
-	.wp-block-post {
+	// The added specificity is to help override some of the
+	// default widths applied to .is-flex-container elements.
+	.wp-block-post.category-community.type-post {
 		position: relative;
 		aspect-ratio: 1 / 1;
 		padding: 0;
 		margin: 4px;
 		overflow: hidden;
-		width: calc(25% - 8px) !important;
+		width: calc(50% - 8px);
+
+		@include break-medium() {
+			width: calc(25% - 8px);
+		}
 
 		.wp-block-post-title {
 			font-size: var(--wp--preset--font-size--extra-large);
@@ -82,9 +88,8 @@ body.category-community {
 			}
 		}
 
-		.entry-meta {
-			// Override the padding from excerpt.scss
-			margin: 0 !important;
+		.wp-block-group.entry-meta {
+			margin: 0;
 			position: absolute;
 			right: 24px;
 			bottom: 24px;
