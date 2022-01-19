@@ -1,5 +1,5 @@
 .wp-block-post-title {
-  font-size: 50px;
+  font-size: var(--wp--preset--font-size--huge);
 
   a {
     color: var(--wp--preset--color--darker-grey);
@@ -11,7 +11,7 @@
 }
 
 .entry-meta {
-  font-size: 14px;
+  font-size: var(--wp--preset--font-size--small);
   display: flex;
   flex-direction: row;
 
