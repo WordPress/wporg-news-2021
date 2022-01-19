@@ -3,12 +3,12 @@ body.news-front-page .wp-site-blocks {
 	// blend the site-header with the title and
 	// the latest releases section.
 	background: var(--wp--preset--color--blue-1);
-}
 
-// Since we have the large "News" headline we don't
-// need to display the breadcrumb.
-.local-header__breadcrumb {
-	visibility: hidden;
+	// Since we have the large "News" headline we don't
+	// need to display the breadcrumb.
+	.local-header__breadcrumb {
+		visibility: hidden;
+	}
 }
 
 // The large "News" headline on the homepage.
