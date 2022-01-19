@@ -210,6 +210,70 @@ body.category-month-in-wordpress {
 
 	.site-content-container {
 		padding-left: 0;
+		color: var(--wp--preset--color--white);
+
+		a {
+			color: var(--wp--preset--color--white);
+		}
+	}
+
+	// The added specificity is to help override some of the
+	// default widths applied to .is-flex-container elements.
+	.wp-block-post.category-month-in-wordpress.type-post {
+		padding: 0;
+		margin: 4px;
+		width: calc(33.3% - 8px);
+	}
+
+	.wp-block-group.entry-header {
+		text-align: center;
+		position: relative;
+
+		h2 a {
+			font-size: 120px;
+			display: block;
+			padding-bottom: 24px;
+			text-transform: uppercase;
+		}
+
+		.wp-block-group.entry-meta .wp-block-post-date {
+			margin: 0;
+			text-align: center;
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			left: 0;
+		}
+	}
+
+	.last-in-year {
+	  display: contents;
+	  break-after: always;
+
+	  &::after {
+	    content: "-";
+	    line-height: calc(var(--wp--custom--margin--vertical) * 6);
+	    width: 100%;
+	    mask-image: url(images/brush-stroke-big.svg);
+	    mask-position: center;
+	    mask-repeat: no-repeat;
+	    mask-size: 100% auto;
+	    background-color: var(--wp--preset--color--blue-1);
+	    transform: translateY(-25%) scale(-1);
+
+	    @include break-small() {
+	      mask-size: 280px auto;
+	    }
+	  }
+
+		article {
+	    width: calc(33.3% - 8px);
+	    margin-bottom: calc(var(--wp--custom--margin--vertical) * 2.5);
+
+	    @include break-small-only() {
+	      width: 50%;
+	    }
+	  }
 	}
 
 	@extend %footer-archive-dark;
