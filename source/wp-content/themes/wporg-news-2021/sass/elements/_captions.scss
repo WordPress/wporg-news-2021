@@ -1,9 +1,0 @@
-.wp-block-gallery.wp-block-gallery, // Double class for increased specificity.
-[class*="wp-block-"] {
-	figcaption {
-		font-size: var(--wp--custom--gallery--caption--font-size);
-		text-align: right;
-		padding-left: var(--wp--style--block-gap);
-		padding-right: var(--wp--style--block-gap);
-	}
-}
