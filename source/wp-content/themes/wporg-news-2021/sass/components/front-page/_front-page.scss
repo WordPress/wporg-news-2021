@@ -3,45 +3,39 @@ body.news-front-page .wp-site-blocks {
 	// blend the site-header with the title and
 	// the latest releases section.
 	background: var(--wp--preset--color--blue-1);
+}
 
-	// Override the default block gap. This might not be
-	// needed, or there might be a better way to do it.
-	.front__site-title,
-	.wp-block-template-part,
-	.site-content-container {
-		margin-top: 0 !important;
-	}
+// Since we have the large "News" headline we don't
+// need to display the breadcrumb.
+.local-header__breadcrumb {
+	visibility: hidden;
+}
 
-	// Hide the breadcrumb in favor of the site title.
-	.wp-block-home-link__content {
-		display: none;
-	}
+// The large "News" headline on the homepage.
+.front__site-title {
+	position: relative;
+	z-index: 1;
+	background-color: var(--wp--preset--color--blue-1);
+	color: var(--wp--preset--color--white);
+	padding: var(--wp--custom--alignment--edge-spacing);
+	font-size: clamp(80px, 25vw, 160px);
 
-	.front__site-title {
-		position: relative;
-		z-index: 1;
-		background-color: var(--wp--preset--color--blue-1);
-		color: var(--wp--preset--color--white);
-		padding: var(--wp--custom--alignment--edge-spacing);
-		font-size: clamp(80px, 25vw, 160px);
+	// Ensure we don't cause a horizontal scrollbar
+	max-width: 100vw;
+	overflow: hidden;
 
-		// Ensure we don't cause a horizontal scrollbar
-		max-width: 100vw;
-		overflow: hidden;
-
-		&::after {
-			content: "";
-			position: absolute;
-			top: calc(35% - 65px);
-			left: 180px;
-			height: 130px;
-			width: 100vw;
-			z-index: -1;
-			background-color: var(--wp--preset--color--blue-2);
-			mask-image: url(images/brush-stroke-big.svg);
-			mask-position: left center;
-			mask-repeat: no-repeat;
-			mask-size: cover;
-		}
+	&::after {
+		content: "";
+		position: absolute;
+		top: calc(35% - 65px);
+		left: 180px;
+		height: 130px;
+		width: 100vw;
+		z-index: -1;
+		background-color: var(--wp--preset--color--blue-2);
+		mask-image: url(images/brush-stroke-big.svg);
+		mask-position: left center;
+		mask-repeat: no-repeat;
+		mask-size: cover;
 	}
 }
