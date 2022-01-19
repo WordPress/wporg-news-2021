@@ -1,14 +1,13 @@
-
-// Remove the margin in all browsers.
 body {
+	// Remove the margin in all browsers.
 	margin: 0;
 	padding: 0;
-}
 
-// Smooth out the fonts
-body {
+	// Smooth out the fonts
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+
+	font-size: var(--wp--preset--font-size--small);
 }
 
 // Blocks, by default, have a top margin. This is annoying.
