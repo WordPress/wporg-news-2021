@@ -17,23 +17,24 @@ body.news-front-page .front__latest-posts {
 			width: 25vw;
 			padding: var(--wp--custom--alignment--edge-spacing);
 			margin-bottom: 0;
-			border-right: 1px solid var(--wp--preset--color--off-white);
+			border-right: 1px solid var(--wp--preset--color--light-grey);
 		}
 	}
 
 	.wp-block-post-template {
 
 		@include break-medium() {
-			gap: 0;
 			padding: var(--wp--custom--alignment--edge-spacing);
 			flex-grow: 1;
 			max-width: 75vw;
 		}
 
 		& > li {
-			margin-bottom: calc(var(--wp--custom--alignment--edge-spacing) / 2);
+			margin-bottom: calc(var(--wp--custom--alignment--edge-spacing) * 2);
 
 			@include break-medium() {
+				margin-bottom: calc(var(--wp--custom--alignment--edge-spacing) / 2);
+
 				&:last-child {
 					margin-bottom: 0;
 				}
