@@ -21,7 +21,8 @@ add_filter( 'post_class', __NAMESPACE__ . '\specify_post_classes', 10, 3 );
 add_filter( 'theme_file_path', __NAMESPACE__ . '\conditional_template_part', 10, 2 );
 add_filter( 'render_block_data', __NAMESPACE__ . '\custom_query_block_attributes' );
 add_filter( 'template_redirect', __NAMESPACE__ . '\jetpack_likes_workaround' );
-add_filter( 'the_title', __NAMESPACE__ . '\update_the_title', 10, 2 );
+add_filter( 'the_title', __NAMESPACE__ . '\update_the_title_releases', 10, 2 );
+add_filter( 'the_title', __NAMESPACE__ . '\update_the_title_people', 10, 2 );
 
 /**
  * Register theme support.
@@ -380,11 +381,28 @@ function jetpack_likes_workaround() {
  * @param int    $id    The post ID.
  * @return string Filtered post title.
  */
-function update_the_title( $title, $id ) {
+function update_the_title_releases( $title, $id ) {
 	// Remove "WordPress" from the post title in the Latest Release section on the front page.
 	$category_slugs = wp_list_pluck( get_the_category( $id ), 'slug' );
 	if ( is_front_page() && in_array( 'releases', $category_slugs ) ) {
 		return str_replace( 'WordPress', '', $title );
+	}
+
+	return $title;
+}
+
+/**
+ * Remove "People of WordPress:" from the people post title.
+ *
+ * @param string $title The post title.
+ * @param int    $id    The post ID.
+ * @return string Filtered post title.
+ */
+function update_the_title_people( $title, $id ) {
+	// Remove "WordPress" from the post title in the Latest Release section on the front page.
+	$category_slugs = wp_list_pluck( get_the_category( $id ), 'slug' );
+	if ( is_front_page() ) {
+		return str_replace( 'People of WordPress:', '', $title );
 	}
 
 	return $title;
