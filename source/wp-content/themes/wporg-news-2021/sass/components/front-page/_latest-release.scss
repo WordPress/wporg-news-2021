@@ -23,10 +23,6 @@ body.news-front-page .front__latest-release {
 		padding: 0;
 	}
 
-	// Ensure we don't cause horizontal scrolling.
-	max-width: 100vw;
-	overflow: hidden;
-
 	// Since we have a blue backround our links need
 	// to be white.
 	a {
@@ -39,7 +35,7 @@ body.news-front-page .front__latest-release {
 		line-height: 1;
 
 		@include break-medium() {
-			width: 25%;
+			width: 25vw;
 			padding: calc(var(--wp--custom--alignment--edge-spacing) / 2)
 							 var(--wp--custom--alignment--edge-spacing)
 							 var(--wp--custom--alignment--edge-spacing)
@@ -107,6 +103,7 @@ body.news-front-page .front__latest-release {
 
 	// The releast post date
 	.wp-block-post-date {
+		font-size: var(--wp--preset--font-size--small);
 
 		@include break-medium() {
 			line-height: 1;
@@ -114,7 +111,7 @@ body.news-front-page .front__latest-release {
 			// Position the date to line-up with the "See All" link.
 			position: absolute;
 			bottom: calc(var(--wp--custom--alignment--edge-spacing) / 2);
-			left: calc(25% + var(--wp--custom--alignment--edge-spacing));
+			left: calc(25vw + var(--wp--custom--alignment--edge-spacing));
 
 			// Avoid interferring with the large anchor link.
 			pointer-events: none;
@@ -124,6 +121,7 @@ body.news-front-page .front__latest-release {
 	// The "See All Releases" link
 	.front__next-page {
 		position: relative;
+		font-size: var(--wp--preset--font-size--small);
 
 		@include break-medium() {
 			line-height: 1;
@@ -137,7 +135,7 @@ body.news-front-page .front__latest-release {
 			display: block;
 			height: 45px;
 			width: 116px;
-			background-image: url(images/brush-stroke-see-all.svg);
+			background-image: url(images/brush-stroke-see-all-releases.svg);
 			position: absolute;
 			top: calc(50% - (45px / 2));
 			left: calc(-116px / 2);
