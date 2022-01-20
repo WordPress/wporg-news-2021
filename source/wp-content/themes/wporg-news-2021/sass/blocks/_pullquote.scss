@@ -9,6 +9,8 @@
 	background-size: contain;
 	font-size: 40px;
 	text-align: var(--wp--custom--pullquote--typography--text-align);
+	margin-top: calc( var(--wp--custom--margin--vertical) * 1.333);
+	margin-bottom: calc( var(--wp--custom--margin--vertical) * 3);
 
 	&.alignfull {
 		background-position: -45px 0;

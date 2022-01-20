@@ -17,9 +17,9 @@
 	}
 
 	.wp-block-pullquote {
-		grid-column: 1 / span 2;
-		width: 100%;
-		max-width: 100%;
+		grid-column: 1 / span 2 !important;
+		width: 100% !important;
+		max-width: 100% !important;
 	}
 }
 
