@@ -1,24 +1,20 @@
-<!--
-  -- This covers the posts index -- e.g., w.org/news/page/{n} -- instead of `front-page.html`.
-  -- @see override_front_page_template()
--->
-
 <!-- wp:template-part {"slug":"header","align":"full","className":"site-header-container"} /-->
 
-<!-- wp:template-part {"slug":"query-title-banner","tagName":"header","align":"full","className":"query-title-banner"} /-->
+<!-- wp:template-part {"slug":"query-banner","tagName":"header","align":"full","className":"query-banner"} /-->
 
-<!-- wp:query {"tagName":"main","className":"site-content-container"} -->
-<main class="wp-block-query site-content-container">
+<!-- wp:query {"tagName":"main","className":"site-content-container site-index"} -->
+<main class="wp-block-query site-content-container site-index">
 	<!-- wp:post-template -->
 		<!-- wp:template-part {"slug":"content-posts-index","tagName":"article","layout":{"inherit":true}} /-->
 	<!-- /wp:post-template -->
 
 	<!-- wp:query-pagination -->
 		<!-- wp:query-pagination-previous {"label":"Newer Posts"} /-->
+
 		<!-- wp:query-pagination-numbers /-->
+
 		<!-- wp:query-pagination-next {"label":"Older Posts"} /-->
 	<!-- /wp:query-pagination -->
-
 </main>
 <!-- /wp:query -->
 
