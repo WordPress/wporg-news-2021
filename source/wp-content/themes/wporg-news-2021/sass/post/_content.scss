@@ -26,7 +26,8 @@
 body.news-posts-index .site-content-container,
 body.archive .site-content-container,
 body.search .site-content-container,
-body.single .site-content-container .wp-block-post-content,
+body.single:not(.single-podcast) .site-content-container .wp-block-post-content,
+body.single-podcast .site-content-container .podcast-wrapper,
 body.page .site-content-container .wp-block-post-content {
 
 	@extend %two-column-grid-container-dynamic-rows;

@@ -49,12 +49,19 @@
 			grid-row: auto;
 		}
 
-		&:not(.alignfull):not(.alignwide) {
+		&:not(.alignfull):not(.alignwide):not(.left-column) {
 
 			@extend %two-column-grid-right-column;
 
 			@include break-wide() {
 				grid-column: 2;
+			}
+		}
+
+		.left-column {
+
+			@include break-wide() {
+				grid-column: 1;
 			}
 		}
 
