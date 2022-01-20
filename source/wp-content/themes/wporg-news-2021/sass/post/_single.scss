@@ -1,19 +1,42 @@
 body.single {
-  .site-content-container {
-    margin-top: 0;
-  }
 
   .entry-header {
-    display: flex;
-    flex-direction: row;
     padding: var(--wp--custom--alignment--edge-spacing);
-    outline: 1px dotted green;
+
+    @include break-large() {
+      display: flex;
+      flex-direction: row-reverse;
+      gap: var(--wp--custom--alignment--edge-spacing);
+    }
 
     .entry-meta {
-      display: block;
-      min-width: var(--wp--custom--layout--content-meta-size);
-      flex-grow: 1;
-      outline: 1px dotted red;
+      padding: 18px 0;
+      flex-direction: row;
+      gap: 12px;
+
+      @include break-large() {
+        width: 33vw;
+        gap: 0;
+        flex-direction: column;
+      }
+
+      .wp-block-post-date {}
+
+      .author-and-terms {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+      }
+
+      .wp-block-post-author {
+        font-size: var(--wp--preset--font-size--small);
+
+        // Lets just pretend this markup doesn't exist...
+        .wp-block-post-author__content,
+        .wp-block-post-author__name {
+          display: contents;
+        }
+      }
 
       .wp-block-post-terms {
         text-transform: none;
@@ -25,16 +48,62 @@ body.single {
     }
 
     .wp-block-post-title {
-      font-size: 70px;
-      max-width: var(--wp--custom--layout--content-size);
-      outline: 1px dotted purple;
+      font-size: 60px;
+      line-height: 1.1;
+
+      @include break-large() {
+        font-size: 70px;
+        line-height: 1.3;
+        flex-grow: 1;
+        min-width: var(--wp--custom--layout--content-size);
+      }
     }
   }
 
+  // A container for the post-content block.
+  .wp-block-group.content-section {
+    display: flex;
+    flex-direction: column;
+    padding: var(--wp--custom--alignment--edge-spacing);
+
+    @include break-large() {
+      flex-direction: row;
+      gap: var(--wp--custom--alignment--edge-spacing);
+
+      // Create a psuedo-element to offest the post content on
+      // larger viewports.
+      &:before {
+        content: '';
+        display: block;
+        height: 100px;
+        width: 33vw;
+      }
+    }
+  }
+
+  // The _actual_ post-content block.
   .wp-block-post-content {
-    outline: 1px dotted blue;
-    width: 100%;
-    padding-left: var(--wp--custom--layout--content-meta-size);
-  	margin: var(--wp--custom--alignment--edge-spacing);
+
+    @include break-large() {
+      min-width: var(--wp--custom--layout--content-size);
+    }
+
+    // We removed the default block gap in the normalize.scss. This
+    // brings it back within the post-content area.
+    *[class*="wp-block-"],
+    p,
+    & > h1,
+    & > h2,
+    & > h3,
+    & > h4,
+    & > h5,
+    & > h6 {
+      margin-top: var(--wp--style--block-gap);
+
+      // Avoid adding margin to the first block.
+      &:first-child {
+        margin-top: 0;
+      }
+    }
   }
 }
