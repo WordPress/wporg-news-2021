@@ -125,19 +125,23 @@ body.category-month-in-wordpress {
 
 body.category-development {
 
+	--category-color: var(--wp--preset--color--green);
+
 	@extend %local-header-lightish;
 
 	.local-header {
-		--bar-background-color: var(--wp--preset--color--green);
+		--bar-background-color: var(--category-color);
 	}
 }
 
 body.category-security {
 
+	--category-color: var(--wp--preset--color--coral-red);
+
 	@extend %local-header-lightish;
 
 	.local-header {
-		--bar-background-color: var(--wp--preset--color--coral-red);
+		--bar-background-color: var(--category-color);
 	}
 }
 
@@ -288,4 +292,31 @@ body.category-community {
 		}
 	}
 
+}
+
+body {
+
+	--category-color: var(--wp--preset--color--blue-1);
+
+	.query-title-banner__title__dropcap {
+		grid-column: 1 !important;
+		width: calc(var(--wp--custom--layout--content-meta-size) - 32px) !important;
+
+		.wp-block-query-title {
+			color: var(--category-color); 
+			font-size: 0;
+			line-height: 0.7;
+			@include hide-accessibly;
+
+			@include break-wide() {
+				@include show-hidden-accessibly;
+				margin-top: var( --wp--style--block-gap );
+			}
+
+			&:first-letter {
+				font-size: 35vw;
+				text-transform: uppercase;
+			}
+		}
+	}
 }
