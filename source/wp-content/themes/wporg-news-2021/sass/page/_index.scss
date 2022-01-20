@@ -1,0 +1,52 @@
+.query-banner {
+  // background-color: var(--wp--preset--color--blue-1);
+  // color: var(--wp--preset--color--white);
+  padding: var(--wp--custom--alignment--edge-spacing);
+  color: var(--wp--preset--color--white);
+	position: relative;
+  z-index: -1;
+	background: linear-gradient(to top, transparent 58px, var(--wp--preset--color--blue-1) 58px 100%);
+  transform: translateY(-80px);
+
+	&::after {
+		content: "";
+		min-height: 58px;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: -1;
+		mask-image: url(images/local-nav-mask.svg);
+		mask-repeat: no-repeat;
+		mask-size: cover;
+		mask-position: 0;
+		background-color: var(--wp--preset--color--blue-1);
+	}
+
+  .wp-block-query-title {
+    font-size: clamp(20px, calc( 100vw / 12 ), 120px);
+  }
+}
+
+// Hide the banner by default
+.query-banner__query-title,
+.query-banner__all-posts,
+.query-banner__search-results {
+	display: none;
+}
+
+// Show the relevant banner based on the body class.
+body.archive .query-banner__query-title,
+body.news-posts-index .query-banner__all-posts,
+body.search .query-banner__search-results {
+	display: block;
+}
+
+// Setup the basic two-column layout;
+.site-index {
+  margin: var(--wp--custom--alignment--edge-spacing);
+
+  @include break-large() {
+    padding-left: var(--wp--custom--layout--content-meta-size);
+  }
+}
