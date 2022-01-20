@@ -303,17 +303,19 @@ body {
 		width: calc(var(--wp--custom--layout--content-meta-size) - 32px) !important;
 
 		.wp-block-query-title {
-			color: var(--category-color); 
+			color: var(--category-color);
 			font-size: 0;
 			line-height: 0.7;
+
 			@include hide-accessibly;
 
 			@include break-wide() {
+
 				@include show-hidden-accessibly;
-				margin-top: var( --wp--style--block-gap );
+				margin-top: var(--wp--style--block-gap);
 			}
 
-			&:first-letter {
+			&::first-letter {
 				font-size: 35vw;
 				text-transform: uppercase;
 			}
