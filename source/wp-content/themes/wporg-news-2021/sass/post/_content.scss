@@ -15,6 +15,12 @@
 			margin-top: 0;
 		}
 	}
+
+	.wp-block-pullquote {
+		grid-column: 1 / span 2 !important;
+		width: 100% !important;
+		max-width: 100% !important;
+	}
 }
 
 body.news-posts-index .site-content-container,

@@ -6,9 +6,15 @@
 	background-image: url(./images/quotemark.svg);
 	background-repeat: no-repeat;
 	background-position: top left;
-	background-size: contain;
+	background-size: 200px auto;
 	font-size: 40px;
 	text-align: var(--wp--custom--pullquote--typography--text-align);
+	margin-top: calc(var(--wp--custom--margin--vertical) * 1.333);
+	margin-bottom: calc(var(--wp--custom--margin--vertical) * 3);
+
+	@include break-small {
+		background-size: contain;
+	}
 
 	&.alignfull {
 		background-position: -45px 0;
@@ -42,6 +48,7 @@
 			font-style: var(--wp--custom--pullquote--citation--typography--font-style);
 			font-family: var(--wp--custom--pullquote--citation--typography--font-family);
 			margin-top: var(--wp--custom--pullquote--citation--spacing--margin--top);
+			color: var(--wp--preset--color--blue-1);
 
 			&::before {
 				content: "—";
