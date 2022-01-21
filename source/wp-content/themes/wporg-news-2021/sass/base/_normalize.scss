@@ -7,6 +7,15 @@ body {
 	// Smooth out the fonts
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+
+	// Text selection background color
+	::selection {
+		background-color: var(--wp--preset--color--coral-red);
+	}
+
+	::-moz-selection {
+		background-color: var(--wp--preset--color--coral-red);
+	}
 }
 
 // Needed until https://github.com/WordPress/gutenberg/pull/27518/ is merged.
