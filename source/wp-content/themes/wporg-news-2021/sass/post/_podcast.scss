@@ -1,0 +1,23 @@
+.single-podcast {
+	.left-column {
+		position: relative;
+		line-height: 1.3;
+		&:after{
+			content: "";
+			position: absolute;
+			top: 0;
+			left: calc( var(--wp--custom--alignment--edge-spacing) * -1 );
+			right: calc( var(--wp--custom--alignment--edge-spacing) * -1 );
+			bottom: 0;
+			transform: translateY(-11%);
+			background-image: url(images/pink-blob.svg);
+			background-size: contain;
+			background-position: top center;
+			background-repeat: no-repeat;
+			z-index: -1;
+		}
+	}
+	.wp-block-social-links {
+		gap: calc( var(--wp--custom--margin--baseline) * 2 );
+	}
+}
