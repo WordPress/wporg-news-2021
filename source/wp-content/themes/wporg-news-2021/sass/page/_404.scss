@@ -1,6 +1,18 @@
 body.error404 {
+	// Set the page background color to darker-grey
+	background-color: var(--wp--preset--color--darker-grey);
 
-	@extend %local-header-dark;
+	// Set the background color for the local-header
+	.local-header {
+		--bar-background-color: var(--wp--preset--color--dark-grey);
+		--bar-text-color: var(--wp--preset--color--white);
+		--bar-link-color: var(--wp--preset--color--off-white);
+		--bar-link-hover-color: var(--wp--preset--color--off-white-2);
+
+		// Since the bar is the same color as the W.org header, we
+		// add a border to help separate them.
+		border-top: 1px solid var(--wp--preset--color--darker-grey);
+	}
 
 	.site-content-container {
 		color: var(--wp--preset--color--off-white-2);

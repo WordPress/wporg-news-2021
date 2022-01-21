@@ -1,19 +1,33 @@
-// Default/light version.
-.local-header {
+body .wp-site-blocks .local-header {
 	--bar-min-height: 58px;
 	--bar-text-color: var(--wp--preset--color--white);
 	--bar-link-color: var(--wp--preset--color--white);
-	--bar-link-hover-color: var(--wp--preset--color--light-salmon);
+	--bar-link-hover-color: var(--wp--preset--color--off-white-2);
 	--bar-background-color: var(--wp--preset--color--blue-1);
-	background-color: var(--bar-background-color);
+
 	color: var(--bar-text-color);
 	min-height: var(--bar-min-height);
+	position: relative;
+	background: linear-gradient(to top, transparent var(--bar-min-height), var(--bar-background-color) var(--bar-min-height) 100%);
 
-	@extend %bottom-mask;
+	&::after {
+		content: "";
+		min-height: var(--bar-min-height);
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: -1;
+		mask-image: url(images/local-nav-mask.svg);
+		mask-repeat: no-repeat;
+		mask-size: cover;
+		mask-position: 0;
+		background-color: var(--bar-background-color);
+	}
 
 	// A container with a paint stroke effect that holds both
 	// the breadcrumbs and category dropdown.
-	&__navigation {
+	.local-header__navigation {
 		// Allows for absolute positioning for the Categories
 		// toggle button.
 		position: relative;
@@ -23,16 +37,11 @@
 		@include break-small {
 			padding: 0 var(--wp--custom--alignment--edge-spacing);
 		}
-
-		// Override core navigation block link color
-		.wp-block-navigation .wp-block-navigation-item__content {
-			color: var(--bar-link-color);
-		}
 	}
 
 	// Breadcrumbs show the lineage of pages based on the current
 	// page. It contains a link for each parent.
-	&__breadcrumb {
+	.local-header__breadcrumb {
 		display: flex;
 		align-items: center;
 		min-height: var(--bar-min-height);
@@ -48,10 +57,7 @@
 			// is reliably centered.
 			display: flex;
 			align-items: center;
-
-			[class*="wp-container-"] & {
-				margin-top: 0;
-			}
+			margin-top: 0;
 
 			&::before {
 				content: "";
@@ -65,45 +71,13 @@
 		}
 	}
 
-	&__categories {
-		// Override the default margin applied to the block.
-		[class*="wp-container-"] & {
-			margin-top: 0;
-		}
-
-		// The "Categories" label itself
-		label#{&}-label {
-			display: flex;
-			align-items: center;
-			text-align: right;
-			color: var(--bar-text-color);
-			cursor: pointer;
-			user-select: none;
-			margin: 0;
-			padding: 0 12px;
-			min-height: var(--bar-min-height);
-			position: absolute;
-			top: 0;
-			right: 9px;
-
-			@include break-small {
-				right: 30px;
-			}
-
-			svg {
-				margin-left: 12px;
-				stroke: currentColor;
-				transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
-			}
-
-			&:hover {
-				color: var(--bar-link-hover-color);
-			}
-		}
+	// The Categories button toggles the display of the list
+	// over highlighted categories.
+	.local-header__categories {
 
 		// The (hidden) checkbox which allows
 		// for toggling the menu on and off.
-		&-toggle {
+		.local-header__categories-toggle {
 			display: none;
 
 			+ label {
@@ -147,6 +121,36 @@
 				~ .wp-block-categories {
 					display: flex;
 				}
+			}
+		}
+
+		// The "Categories" label itself
+		.local-header__categories-label {
+			display: flex;
+			align-items: center;
+			text-align: right;
+			color: var(--bar-link-color);
+			cursor: pointer;
+			user-select: none;
+			margin: 0;
+			padding: 0 12px;
+			min-height: var(--bar-min-height);
+			position: absolute;
+			top: 0;
+			right: 9px;
+
+			@include break-small {
+				right: var(--wp--custom--alignment--edge-spacing);
+			}
+
+			svg {
+				margin-left: 12px;
+				stroke: currentColor;
+				transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+			}
+
+			&:hover {
+				color: var(--bar-link-hover-color);
 			}
 		}
 
@@ -245,71 +249,5 @@
 			color: var(--bar-link-hover-color);
 			text-decoration: underline;
 		}
-	}
-}
-
-// Alternate off-white version.
-%local-header-off-white {
-	--contrast-color: var(--wp--preset--color--white);
-
-	.wp-site-blocks {
-		background-color: var(--wp--preset--color--off-white);
-
-		.local-header {
-			--bar-background-color: var(--contrast-color);
-			--bar-text-color: var(--wp--preset--color--black);
-			--bar-link-color: var(--wp--preset--color--blue-1);
-			--bar-link-hover-color: var(--wp--preset--color--blue-1);
-		}
-	}
-
-	.wp-block-query-pagination::after {
-		background-color: var(--contrast-color);
-	}
-}
-
-// Alternate version with a color light enough to need dark text. e.g., Security category.
-%local-header-lightish {
-	.local-header {
-		--bar-text-color: var(--wp--preset--color--black);
-		--bar-link-color: var(--wp--preset--color--black);
-		--bar-link-hover-color: var(--wp--preset--color--dark-grey);
-	}
-}
-
-// Alternate dark version. (Month in WordPress)
-%local-header-dark {
-	.wp-site-blocks {
-		background-color: var(--wp--preset--color--darker-grey);
-
-		.local-header {
-			--bar-background-color: var(--wp--preset--color--dark-grey);
-			--bar-link-color: var(--wp--preset--color--off-white);
-			--bar-link-hover-color: var(--wp--preset--color--off-white-2);
-
-			border-top: 1px solid var(--wp--preset--color--darker-grey);
-		}
-	}
-}
-
-//We need this at the bottom of the file for proper cascading
-%bottom-mask {
-	position: relative;
-	background: transparent;
-	background: linear-gradient(to top, transparent 56px, var(--bar-background-color) 56px 100%);
-
-	&::after {
-		content: "";
-		min-height: var(--bar-min-height);
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		z-index: -1;
-		mask-image: url(images/local-nav-mask.svg);
-		mask-repeat: no-repeat;
-		mask-size: cover;
-		mask-position: 0;
-		background-color: var(--bar-background-color);
 	}
 }
