@@ -77,13 +77,15 @@ GNU General Public License for more details.
 @import "components/footer-archive/subscribe-wp-news";
 @import "components/footer-archive/wp-briefing";
 @import "components/query-title-banner";
-// Specific templates are after global components, so they can override default styles.
-@import "components/front-page/front-page";
-@import "components/front-page/latest-release";
-@import "components/front-page/latest-posts";
-@import "components/front-page/people-of-wordpress";
-@import "components/categories";
-@import "components/404";
+
+
+// Pages
+@import "page/front-page/front-page";
+@import "page/front-page/latest-release";
+@import "page/front-page/latest-posts";
+@import "page/front-page/people-of-wordpress";
+@import "page/categories";
+@import "page/404";
 
 
 // Posts
