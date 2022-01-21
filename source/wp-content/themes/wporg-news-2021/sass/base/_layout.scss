@@ -1,3 +1,19 @@
+// Setup the main container to use a flex box-model
+// allowing us to simplify the layout and "sticky" bar.
+.wp-site-blocks {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	margin-top: -(var(--wp-admin--admin-bar--height, 0));
+
+	// Make sure the footer is always at the bottom of the viewport, even on pages with little content.
+	// Otherwise there'd be empty space below the footer
+	justify-content: space-between;
+}
+
+// The following "placeholder selectors" define many of the layout-related
+// styles for various sections of the site.
+// Read more here: https://sass-lang.com/documentation/style-rules/placeholder-selectors
 %two-column-grid-container {
 
 	@include break-wide() {
@@ -6,10 +22,8 @@
 			calc(var(--wp--custom--layout--content-meta-size) - 32px)
 			auto;
 
-		/*
-		 * This defines the minimum horizontal gap. An additional implicit gap is created because the right column
-		 * contents have a `max-width` and are justified in the center.
-		 */
+		// This defines the minimum horizontal gap. An additional implicit gap is created because the right column
+		// contents have a `max-width` and are justified in the center.
 		grid-gap: 0 var(--wp--style--block-gap);
 	}
 }
@@ -70,38 +84,8 @@
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
 
-		/*
-		 * This defines the minimum horizontal gap. An additional implicit gap is created because the right column
-		 * contents have a `max-width` and are justified in the center.
-		 */
+		// This defines the minimum horizontal gap. An additional implicit gap is created because the right column
+		// contents have a `max-width` and are justified in the center.
 		grid-gap: 0 var(--wp--style--block-gap);
-	}
-}
-
-
-:root {
-	--wpadmin-bar--height: 46px;
-}
-
-.wp-site-blocks {
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-
-	/*
-	 * Make sure the footer is always at the bottom of the viewport, even on pages with little content.
-	 * Otherwise there'd be empty space below the footer
-	 */
-	justify-content: space-between;
-}
-
-body.admin-bar {
-
-	@include break-small() {
-		--wpadmin-bar--height: 32px;
-	}
-
-	.wp-site-blocks {
-		min-height: calc(100vh - var(--wpadmin-bar--height));
 	}
 }

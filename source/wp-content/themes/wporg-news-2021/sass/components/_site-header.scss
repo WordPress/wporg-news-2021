@@ -1,19 +1,13 @@
-// Setup the main container to use a flex box-model
-// allowing us to simplify the layout and "sticky" bar.
-.wp-site-blocks {
-	display: flex;
-	margin-top: -(var(--wp-admin--admin-bar--height, 0));
+// The container for the site-specific (/news/) menu bar.
+.site-header-container {
 
-	// The container for the site-specific (/news/) menu bar.
-	.site-header-container {
+	@include break-small {
+		position: sticky;
+		top: 0;
+		z-index: 10;
+	}
 
-		@include break-small {
-			position: sticky;
-			top: 0;
-		}
-
-		body.admin-bar & {
-			padding-top: var(--wp-admin--admin-bar--height, 0);
-		}
+	body.admin-bar & {
+		padding-top: var(--wp-admin--admin-bar--height, 0);
 	}
 }
