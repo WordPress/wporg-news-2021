@@ -1,4 +1,6 @@
 .post-navigation {
+	padding-left: var(--wp--custom--alignment--edge-spacing);
+	padding-right: var(--wp--custom--alignment--edge-spacing);
 	padding-bottom: var(--wp--style--block-gap);
 	display: flex;
 	justify-content: space-between;
