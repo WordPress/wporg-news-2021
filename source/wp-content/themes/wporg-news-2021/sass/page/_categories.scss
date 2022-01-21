@@ -40,7 +40,7 @@ body.category-releases {
 		}
 	}
 
-	@extend %footer-archive-dark;
+	@extend %bottom-banner-dark;
 }
 
 body.category-month-in-wordpress {
@@ -134,7 +134,7 @@ body.category-month-in-wordpress {
 		}
 	}
 
-	@extend %footer-archive-dark;
+	@extend %bottom-banner-dark;
 }
 
 body.category-development {
@@ -169,7 +169,7 @@ body.category-community {
 		--bar-link-hover-color: var(--wp--preset--color--blue-5);
 	}
 
-	.wp-site-blocks > .site-content-container:not(.site-header-container):not(.local-header):not(.global-footer):not(.footer-archive) {
+	.wp-site-blocks > .site-content-container:not(.site-header-container):not(.local-header):not(.global-footer):not(.bottom-banner) {
 		padding: 0;
 		margin-top: 0;
 

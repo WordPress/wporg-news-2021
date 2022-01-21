@@ -1,4 +1,4 @@
-.footer-archive .footer-archive-row[class*="wp-container-"] .wp-briefing {
+.bottom-banner .bottom-banner-row[class*="wp-container-"] .wp-briefing {
 	p {
 		margin-top: 0;
 		margin-bottom: 0;
@@ -45,8 +45,8 @@
 	}
 }
 
-%footer-archive-dark {
-	.footer-archive .footer-archive-row[class*="wp-container-"] .wp-briefing {
+%bottom-banner-dark {
+	.bottom-banner .bottom-banner-row[class*="wp-container-"] .wp-briefing {
 		.podcast-link {
 			background-image: url(images/brush-stroke-short-2-dark-4.svg);
 		}
