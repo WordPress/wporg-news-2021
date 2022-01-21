@@ -21,5 +21,15 @@ body.error404 {
 		margin-bottom: min(100px, 15vh);
 	}
 
+	ul.is-inline {
+		display: inline;
+		margin: 0;
+		padding: 0;
+
+		li {
+			display: inline;
+		}
+	}
+
 	@extend %bottom-banner-dark;
 }
