@@ -1,4 +1,4 @@
-.footer-archive .footer-archive-row[class*="wp-container-"] .subscribe-wp-news {
+.bottom-banner .bottom-banner-row[class*="wp-container-"] .subscribe-wp-news {
 	.jetpack_subscription_widget {
 		form {
 			display: grid;
@@ -54,8 +54,8 @@
 }
 
 // Alternate dark version.
-%footer-archive-dark {
-	.footer-archive .footer-archive-row[class*="wp-container-"] .subscribe-wp-news {
+%bottom-banner-dark {
+	.bottom-banner .bottom-banner-row[class*="wp-container-"] .subscribe-wp-news {
 		#subscribe-email input {
 			background-color: var(--wp--preset--color--white);
 			color: var(--wp--preset--color--black);
