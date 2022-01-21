@@ -53,9 +53,6 @@ body.news-front-page .front__people-of-wordpress {
 			}
 
 			&:not(.has-post-thumbnail) {
-
-				@extend %edge-spacing-padding;
-
 				.wp-block-post-title {
 
 					@include show-hidden-accessibly;

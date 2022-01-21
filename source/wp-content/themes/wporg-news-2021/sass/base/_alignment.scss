@@ -1,58 +1,3 @@
-%edge-spacing-padding {
-	padding-left: var(--wp--custom--alignment--edge-spacing);
-	padding-right: var(--wp--custom--alignment--edge-spacing);
-}
-
-%edge-spacing-negative-margin {
-	margin-left: calc(-1 * var(--wp--custom--alignment--edge-spacing)) !important;
-	margin-right: calc(-1 * var(--wp--custom--alignment--edge-spacing)) !important;
-}
-
-//FRONTEND
-// The global header and global footer are excluded here because they set their own styles.
-.wp-site-blocks > *:not(.site-header-container):not(.local-header):not(.global-footer):not(.bottom-banner) {
-	// In this situation we want to introduce a standardized gap between content and the edge of the screen.
-	@extend %edge-spacing-padding;
-
-	.alignfull {
-		// These elements we want to "bust out" of the gap created above
-		@extend %edge-spacing-negative-margin;
-		width: unset;
-
-		// However any containers that "bust out" should re-apply that gap but this time using padding instead of margins.
-		&.wp-block-template-part,
-		&.wp-block-template-part > section,
-		&.wp-block-columns,
-		&.wp-block-group {
-
-			@extend %edge-spacing-padding;
-
-			&.has-background {
-				padding-top: var(--wp--style--block-gap);
-				padding-bottom: var(--wp--style--block-gap);
-			}
-		}
-	}
-}
-
-// EDITOR (NOTE: It PROBABLY would be OK to bring these together to "simplify" the stylesheet.  However the selectors are quite different
-// and it's a lot easier to understand and ensure intent separated in this way.
-.is-root-container { // Top level of the editor.
-	padding-left: var(--wp--custom--alignment--edge-spacing);
-	padding-right: var(--wp--custom--alignment--edge-spacing);
-
-	.wp-block[data-align="full"] { // Blocks configured to be "align full" in "editorspeak".
-		margin-left: calc(-1 * var(--wp--custom--alignment--edge-spacing)) !important;
-		margin-right: calc(-1 * var(--wp--custom--alignment--edge-spacing)) !important;
-		width: unset;
-
-		>.wp-block-group {
-			padding-left: var(--wp--custom--alignment--edge-spacing);
-			padding-right: var(--wp--custom--alignment--edge-spacing);
-		}
-	}
-}
-
 @include break-mobile {
 	// limit size of any element that is aligned left/right
 	.wp-block[data-align="left"], // This is for the editor
@@ -61,11 +6,4 @@
 	.wp-site-blocks .alignright {
 		max-width: var(--wp--custom--alignment--aligned-max-width);
 	}
-}
-
-// This was added for the 'site-logo' block which centers with an 'align:center' attribute
-// instead of 'textAlign' center which sets an .aligncenter class instead of a has-text-align-center
-// class which would do this for us.  I'm not sure why but this centers things appropriately.
-.aligncenter {
-	text-align: center;
 }

@@ -315,6 +315,11 @@ body.category-community {
 body {
 	--category-color: var(--wp--preset--color--blue-1);
 
+	&.category .site-content-container {
+		padding-left: var(--wp--custom--alignment--edge-spacing);
+		padding-right: var(--wp--custom--alignment--edge-spacing);
+	}
+
 	.query-title-banner__title__dropcap {
 		grid-column: 1 !important;
 		width: calc(var(--wp--custom--layout--content-meta-size) - 32px) !important;
