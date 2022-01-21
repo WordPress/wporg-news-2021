@@ -1,10 +1,10 @@
 .query-title-banner {
-  padding: var(--wp--custom--alignment--edge-spacing);
-  color: var(--wp--preset--color--white);
+	padding: var(--wp--custom--alignment--edge-spacing);
+	color: var(--wp--preset--color--white);
 	position: relative;
-  z-index: -1;
+	z-index: -1;
 	background: linear-gradient(to top, transparent 58px, var(--wp--preset--color--blue-1) 58px 100%);
-  transform: translateY(-80px);
+	transform: translateY(-80px);
 
 	&::after {
 		content: "";
@@ -21,9 +21,9 @@
 		background-color: var(--wp--preset--color--blue-1);
 	}
 
-  .wp-block-query-title {
-    font-size: clamp(20px, calc( 100vw / 12 ), 120px);
-  }
+	.wp-block-query-title {
+		font-size: clamp(20px, calc(100vw / 12), 120px);
+	}
 }
 
 // Hide the banner by default
@@ -42,9 +42,9 @@ body.search .query-title-banner__search-results {
 
 // Setup the basic two-column layout;
 .site-index {
-  margin: var(--wp--custom--alignment--edge-spacing);
+	margin: var(--wp--custom--alignment--edge-spacing);
 
-  @include break-large() {
-    padding-left: var(--wp--custom--layout--content-meta-size);
-  }
+	@include break-large() {
+		padding-left: var(--wp--custom--layout--content-meta-size);
+	}
 }
