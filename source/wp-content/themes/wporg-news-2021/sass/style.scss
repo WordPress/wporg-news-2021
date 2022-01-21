@@ -24,21 +24,11 @@ GNU General Public License for more details.
 // Base
 // Foundational styles like browser normalization, mixins, layout, z-index.
 @import "base/mixins";
-@import "base/normalize";
 @import "base/breakpoints";
+@import "base/normalize";
 @import "base/alignment";
-@import "base/headings";
 @import "base/layout";
-@import "base/utility";
-
-
-// Elements
-// Foundational styles that apply to primitive HTML elements.
-@import "elements/forms";
-@import "elements/headings";
-@import "elements/links";
-@import "elements/lists";
-@import "elements/captions";
+@import "base/elements";
 
 
 // Blocks
