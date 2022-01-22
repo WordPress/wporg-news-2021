@@ -1,23 +1,165 @@
+// The "Latest Release" section which displays the
+// latest post in the releases category.
 body.news-front-page .front__latest-release {
-
-	@extend %front-latest-items-grid;
-
-	background-color: var(--wp--preset--color--blue-1);
 	color: var(--wp--preset--color--white);
+	font-size: var(--wp--preset--font-size--small);
+	background-color: var(--wp--preset--color--blue-1);
 	border-top: 1px solid var(--wp--preset--color--blue-2);
 
+	// To allow for absolute positioning of children.
+	position: relative;
+
+	// Setup the basic layout
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	padding: var(--wp--custom--alignment--edge-spacing);
+
+	@include break-medium() {
+		// Display side-by-side when the viewport
+		// is big enough.
+		flex-direction: row;
+		gap: 0;
+		padding: 0;
+	}
+
+	// Since we have a blue backround our links need
+	// to be white.
 	a {
 		color: var(--wp--preset--color--white);
 	}
 
+	// The "Latest Release" headline
 	.front__latest-release-heading {
+		font-size: clamp(20px, calc( 100vw / 24 ), 45px);
+		line-height: 1;
+		width: calc(var(--wp--custom--layout--content-meta-size) - 32px);
 
-		@include break-wide() {
+		@include break-medium() {
+			margin-left: var(--wp--custom--alignment--edge-spacing);
+			min-width: calc(var(--wp--custom--layout--content-meta-size) - 32px);
+			padding: var(--wp--custom--alignment--edge-spacing)
+							 calc(var(--wp--custom--alignment--edge-spacing) * 2)
+							 calc(var(--wp--custom--alignment--edge-spacing) * 2)
+							 0;
 			border-right: 1px solid var(--wp--preset--color--blue-2);
 		}
 	}
 
+	// Reset the default block margin.
 	.wp-block-post-template {
+		margin-top: 0;
+	}
+
+	// This allows us to ignore some of the underlying markup
+	// in order to make our layout work.
+	.wp-block-post-template,
+	.wp-block-post-template .wp-block-post,
+	.wp-block-post-template .wp-block-group.entry-header {
+		display: contents;
+	}
+
+	// The release post title
+	.wp-block-post-title {
+		font-family: var(--wp--preset--font-family--inter);
+		font-size: 60px;
+		font-weight: 200;
+		line-height: 1.1;
+
+		@include break-medium() {
+			flex-grow: 1;
+			font-size: 90px;
+
+			a {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				z-index: 1;
+				height: 100%;
+				padding: calc(var(--wp--custom--alignment--edge-spacing) / 2)
+								 var(--wp--custom--alignment--edge-spacing)
+								 var(--wp--custom--alignment--edge-spacing)
+								 var(--wp--custom--alignment--edge-spacing);
+				transition: background-color 0.15s linear;
+
+				&:after {
+					content: '';
+					display: block;
+					height: 118px;
+					min-width: 130px;
+					flex-grow: 1;
+					margin-left: 40px;
+					transform: scale(0.9);
+					background-image: url(images/right-arrow.svg);
+					background-position: center right;
+					background-repeat: no-repeat;
+					pointer-events: none;
+					transition: all 0.15s linear;
+				}
+
+				&:hover {
+					background-color: rgba(0,0,0,0.1);
+
+					&:after {
+						transform: scale(0.9) translateX(10px);
+					}
+				}
+			}
+		}
+	}
+
+	// The releast post date
+	.wp-block-post-date {
+		font-size: var(--wp--preset--font-size--small);
+
+		@include break-medium() {
+			line-height: 1;
+
+			// Position the date to line-up with the "See All" link.
+			position: absolute;
+			bottom: var(--wp--custom--alignment--edge-spacing);
+			left: calc((var(--wp--custom--layout--content-meta-size) - 32px) + (var(--wp--custom--alignment--edge-spacing) * 2));
+
+			// Avoid interferring with the large anchor link.
+			pointer-events: none;
+		}
+	}
+
+	// The "See All Releases" link
+	.front__next-page {
+		position: relative;
+		font-size: var(--wp--preset--font-size--small);
+
+		@include break-medium() {
+			line-height: 1;
+			position: absolute;
+			bottom: var(--wp--custom--alignment--edge-spacing);
+			left: var(--wp--custom--alignment--edge-spacing);
+		}
+
+		&:before {
+			content: '';
+			display: block;
+			height: 45px;
+			width: 116px;
+			background-image: url(images/brush-stroke-see-all-releases.svg);
+			position: absolute;
+			top: calc(50% - (45px / 2));
+			left: calc(-116px / 2);
+		}
+
+		a {
+			text-decoration: underline;
+			position: relative;
+			z-index: 1;
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+
+	.old--wp-block-post-template {
 		.wp-block-post-title {
 			--header-size: clamp(var(--wp--preset--font-size--huge), 13vw, 130px);
 
@@ -34,9 +176,9 @@ body.news-front-page .front__latest-release {
 		}
 	}
 
-	.front__next-page {
+	.old--front__next-page {
 
-		@include break-wide() {
+		@include break-medium() {
 			border-right: 1px solid var(--wp--preset--color--blue-2);
 		}
 
