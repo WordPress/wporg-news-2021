@@ -9,17 +9,18 @@ body.news-front-page .front__latest-posts {
 	}
 
 	.front__latest-posts-heading {
-		font-size: clamp(20px, calc( 100vw / 24 ), 45px);
+		font-size: clamp(20px, calc(100vw / 24), 45px);
 		line-height: 1;
 		margin-bottom: var(--wp--custom--alignment--edge-spacing);
 		width: calc(var(--wp--custom--layout--content-meta-size) - 32px);
 
 		@include break-medium() {
 			min-width: calc(var(--wp--custom--layout--content-meta-size) - 32px);
-			padding: var(--wp--custom--alignment--edge-spacing)
-							 calc(var(--wp--custom--alignment--edge-spacing) * 3)
-							 calc(var(--wp--custom--alignment--edge-spacing) * 2)
-							 0;
+			padding:
+				var(--wp--custom--alignment--edge-spacing)
+				calc(var(--wp--custom--alignment--edge-spacing) * 3)
+				calc(var(--wp--custom--alignment--edge-spacing) * 2)
+				0;
 			margin-left: var(--wp--custom--alignment--edge-spacing);
 			margin-bottom: 0;
 			border-right: 1px solid var(--wp--preset--color--light-grey);
@@ -34,7 +35,7 @@ body.news-front-page .front__latest-posts {
 			max-width: 75vw;
 		}
 
-		& > li {
+		> li {
 			margin-bottom: calc(var(--wp--custom--alignment--edge-spacing) * 2);
 
 			@include break-medium() {
@@ -47,7 +48,7 @@ body.news-front-page .front__latest-posts {
 		}
 
 		h3 {
-			font-size: clamp(40px, calc( 100vw / 24 ), 60px);
+			font-size: clamp(40px, calc(100vw / 24), 60px);
 			margin-bottom: 15px;
 		}
 	}
@@ -60,8 +61,8 @@ body.news-front-page .front__latest-posts {
 			bottom: var(--wp--custom--alignment--edge-spacing);
 			left: var(--wp--custom--alignment--edge-spacing);
 
-			&:before {
-				content: '';
+			&::before {
+				content: "";
 				display: block;
 				height: 115px;
 				width: 233px;
