@@ -29,27 +29,29 @@ body.news-front-page .front__people-of-wordpress {
 				width: calc(25% - 2px);
 			}
 
-			.wp-block-post-featured-image {
-				img {
-					filter: grayscale(100%);
-					position: absolute;
-					top: 0;
-					left: 0;
-					height: 100%;
-					width: 100%;
-					object-fit: cover;
-					transition: filter 0.15s linear;
+			.wp-block-post-featured-image img {
+				filter: grayscale(100%);
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 100%;
+				object-fit: cover;
+				transition: filter 0.15s linear;
+			}
 
-					&:hover {
-						filter: grayscale(0%);
-					}
-				}
+			&:hover .wp-block-post-featured-image img,
+			&:focus-within .wp-block-post-featured-image img {
+				filter: grayscale(0%);
+			}
+
+			&:focus-within {
+				outline: 1px dotted currentColor;
 			}
 
 			.wp-block-post-title {
 				font-size: var(--wp--preset--font-size--extra-large);
 				line-height: 1.3;
-				visibility: hidden;
 
 				a {
 					color: var(--wp--preset--color--white);
@@ -65,16 +67,20 @@ body.news-front-page .front__people-of-wordpress {
 				}
 			}
 
+			&.has-post-thumbnail {
+				.wp-block-post-title {
+
+					@include hide-accessibly;
+				}
+			}
+
 			&:not(.has-post-thumbnail) {
 				background: var(--wp--preset--color--blue-1);
 				transition: background 0.15s linear;
 
-				&:hover {
+				&:hover,
+				&:focus-within {
 					background: var(--wp--preset--color--blue-2);
-				}
-
-				.wp-block-post-title {
-					visibility: visible;
 				}
 			}
 		}
