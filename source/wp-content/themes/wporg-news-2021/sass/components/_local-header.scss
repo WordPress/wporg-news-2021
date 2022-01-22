@@ -78,7 +78,8 @@ body .wp-site-blocks .local-header {
 		// The (hidden) checkbox which allows
 		// for toggling the menu on and off.
 		.local-header__categories-toggle {
-			display: none;
+
+			@include hide-accessibly;
 
 			+ label {
 				// The scrim that covers the content below
@@ -97,6 +98,11 @@ body .wp-site-blocks .local-header {
 					z-index: -1;
 					transition: opacity 0.15s ease-in-out;
 				}
+			}
+
+			// Add focus state around label when input is focused.
+			&:focus + label {
+				outline: 1px dotted currentColor;
 			}
 
 			// When toggled, underline the label, rotate the
