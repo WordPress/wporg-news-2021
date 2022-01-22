@@ -1,34 +1,14 @@
 // Setup the main container to use a flex box-model
 // allowing us to simplify the layout and "sticky" bar.
 .wp-site-blocks {
+	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
 	margin-top: -(var(--wp-admin--admin-bar--height, 0));
-}
 
-// Make sure the footer is always at the bottom of the viewport, even on pages with little content.
-// Otherwise there'd be empty space below the footer. This makes the content container grow, while
-// everything else remains the same. These are all interconnected.
-body {
-	height: 100vh;
-
-	.wp-site-blocks {
-		height: 100vh;
-	}
-
-	.site-header-container {
-		flex-shrink: 0;
-	}
-
-	.site-content-container {
-		flex-grow: 1;
-		flex-shrink: 0;
-		flex-basis: auto;
-	}
-
-	.global-footer {
-		flex-shrink: 0;
-	}
+	// Make sure the footer is always at the bottom of the viewport, even on pages with little content.
+	// Otherwise there'd be empty space below the footer
+	justify-content: space-between;
 }
 
 // The following "placeholder selectors" define many of the layout-related
