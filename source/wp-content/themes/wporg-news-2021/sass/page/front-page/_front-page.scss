@@ -61,92 +61,49 @@
 }
 
 body.news-front-page {
+	// The homepage uses a blue background to help
+	// blend the site-header with the title and
+	// the latest releases section.
 	background: var(--wp--preset--color--blue-1);
 
-	.wp-block-home-link__content {
-
-		/* Hide because `.front__site-title` will show it instead. */
-		display: none;
+	// Since we have the large "News" headline we don't
+	// need to display the breadcrumb.
+	.local-header__breadcrumb {
+		visibility: hidden;
 	}
 
+	// The large "News" headline on the homepage.
 	.front__site-title {
 		position: relative;
 		z-index: 1;
-		margin-top: 0;
 		background-color: var(--wp--preset--color--blue-1);
 		color: var(--wp--preset--color--white);
-		font-size: clamp(100px, 25vw, 160px);
-		line-height: 3;
+		padding: var(--wp--custom--alignment--edge-spacing);
+		font-size: clamp(80px, 25vw, 160px);
 
+		// Add and place the brush stroke
 		&::after {
 			content: "";
 			position: absolute;
-			transform: translateY(-80%);
-			top: 50%;
-			bottom: 50%;
-			right: 0;
-			left: 15vw;
-			height: 33%;
+			top: calc(35% - 65px);
+			left: 180px;
+			height: 130px;
+			width: 100vw;
 			z-index: -1;
 			background-color: var(--wp--preset--color--blue-2);
 			mask-image: url(images/brush-stroke-big.svg);
 			mask-position: left center;
 			mask-repeat: no-repeat;
 			mask-size: cover;
-
-			@include break-wide() {
-				mask-position: right center;
-				mask-size: contain;
-			}
 		}
 	}
 
+	// Remove the default block margin
 	.site-content-container {
 		margin-top: 0;
 
 		> .wp-block-template-part {
 			margin-top: 0;
-		}
-	}
-
-	.front__next-page {
-		display: flex;
-		color: var(--wp--preset--color--blue-1);
-		position: relative;
-		padding: 40px 0;
-		line-height: normal;
-
-		&::after {
-			content: "";
-			position: absolute;
-			top: 0;
-			bottom: 0;
-			right: 0;
-			left: 0;
-			z-index: 1;
-			background-color: var(--wp--preset--color--off-white-2);
-			mask-image: url(images/brush-stroke-short-blue-4.svg);
-			mask-position: bottom left;
-			mask-repeat: no-repeat;
-			mask-size: contain;
-
-			@include break-wide() {
-				bottom: 0;
-				left: -50px;
-			}
-		}
-
-		a {
-			z-index: 2;
-		}
-
-		@include break-small-only() {
-			display: flex;
-			justify-content: center;
-
-			&::after {
-				mask-position: center;
-			}
 		}
 	}
 }
