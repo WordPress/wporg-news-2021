@@ -71,6 +71,14 @@
 				max-width: 100%;
 			}
 		}
+
+		&.alignfull {
+			
+			width: auto;
+			max-width: none;
+			margin-left: calc( -1 * var(--wp--custom--alignment--edge-spacing) ) !important;
+			margin-right: calc( -1 * var(--wp--custom--alignment--edge-spacing) ) !important;
+		}
 	}
 }
 
