@@ -59,4 +59,10 @@
 			}
 		}
 	}
+
+	b,
+	strong {
+		// Quotes should never have bold text.
+		font-weight: 400;
+	}
 }
