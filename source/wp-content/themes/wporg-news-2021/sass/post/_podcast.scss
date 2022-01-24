@@ -1,4 +1,10 @@
 .single-podcast {
+
+	.podcast-wrapper {
+		padding-left: var(--wp--custom--alignment--edge-spacing);
+		padding-right: var(--wp--custom--alignment--edge-spacing);
+	}
+
 	.left-column {
 		position: relative;
 		line-height: 1.3;
@@ -8,15 +14,16 @@
 			top: 0;
 			left: calc( var(--wp--custom--alignment--edge-spacing) * -1 );
 			right: calc( var(--wp--custom--alignment--edge-spacing) * -1 );
-			bottom: 0;
-			transform: translateY(50%);
+			aspect-ratio: 1 / 1;
+			transform: translateY(-26%);
 			background-image: url(images/pink-blob.svg);
 			background-size: contain;
 			background-position: top center;
 			background-repeat: no-repeat;
 			z-index: -1;
+			
 			@include break-wide() {
-				transform: translateY(-11%);
+				transform: translateY(-30%);
 			}
 		}
 	}
