@@ -58,7 +58,7 @@
 			}
 		}
 
-		.left-column {
+		&.left-column {
 
 			@include break-wide() {
 				grid-column: 1;
