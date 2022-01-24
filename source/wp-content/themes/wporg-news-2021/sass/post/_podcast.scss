@@ -1,4 +1,5 @@
-body.single-podcast {
+body.single-podcast,
+body.post-type-archive-podcast {
 
 	.site-content-container {
 		margin-top: 0;
@@ -6,18 +7,14 @@ body.single-podcast {
 		padding-right: var(--wp--custom--alignment--edge-spacing);
 	}
 
-	.entry-header {
-		padding: 0;
-		margin-top: 0;
-		display: block;
+	.query-title-banner-podcast {
+		margin-top: calc( var(--wp--custom--margin--baseline) * -1 );
 		position: relative;
-		color: var(--wp--preset--color--white);
-		font-size: 150px;
-		word-break: break-all;
-		line-height: 1;
-		padding-bottom: 10vw;
+		padding-top: 80px;
+		padding-bottom: 160px;
 		padding-left: var(--wp--custom--alignment--edge-spacing);
 		padding-right: var(--wp--custom--alignment--edge-spacing);
+		color: var(--wp--preset--color--white);
 
 		&:after{
 			content: "";
@@ -27,10 +24,19 @@ body.single-podcast {
 			left: 0;
 			right: 0;
 			background-image: url(images/blue-blob.svg);
-			background-size: 100% auto;
+			background-size: cover;
 			background-position: bottom center;
 			background-repeat: no-repeat;
 			z-index: -1;
+		}
+
+		.wp-block-query-title {
+			font-size: clamp(38px, 12vw, 50px);
+			word-break: break-all;
+			line-height: 1;
+			span {
+				font-size: clamp(72px, 12vw, 150px);
+			}
 		}
 
 	}
@@ -42,7 +48,7 @@ body.single-podcast {
 			content: "";
 			position: absolute;
 			top: 0;
-			left: calc( var(--wp--custom--alignment--edge-spacing) * -1 );
+			left: calc( var(--wp--custom--alignment--edge-spacing) * -2 );
 			right: calc( var(--wp--custom--alignment--edge-spacing) * -1 );
 			aspect-ratio: 1 / 1;
 			transform: translateY(-26%);
@@ -53,13 +59,13 @@ body.single-podcast {
 			z-index: -2;
 
 			@include break-wide() {
-				transform: translateY(-30%);
+				transform: translateY(-41%);
 			}
 		}
 	}
 
 	.wp-block-post-content {
-		margin-top: calc( var(--wp--custom--margin--baseline) * 2 );
+		margin-top: calc( var(--wp--custom--margin--baseline) * 7 );
 	}
 
 	.wp-block-social-links {
