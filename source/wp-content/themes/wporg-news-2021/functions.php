@@ -89,11 +89,11 @@ function enqueue_assets() {
  * @return string $fonts_url
  */
 function fonts_url() {
-	if ( ! class_exists( '\WP_Theme_JSON_Resolver_Gutenberg' ) ) {
+	if ( ! class_exists( '\WP_Theme_JSON_Resolver' ) ) {
 		return '';
 	}
 
-	$theme_data = \WP_Theme_JSON_Resolver_Gutenberg::get_merged_data()->get_settings();
+	$theme_data = \WP_Theme_JSON_Resolver::get_merged_data()->get_settings();
 	if ( empty( $theme_data ) || empty( $theme_data['typography'] ) || empty( $theme_data['typography']['fontFamilies'] ) ) {
 		return '';
 	}
