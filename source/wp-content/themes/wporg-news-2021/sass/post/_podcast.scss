@@ -1,6 +1,5 @@
 body.single-podcast,
 body.post-type-archive-podcast {
-
 	.site-content-container {
 		margin-top: 0;
 		padding-left: var(--wp--custom--alignment--edge-spacing);
@@ -8,7 +7,7 @@ body.post-type-archive-podcast {
 	}
 
 	.query-title-banner-podcast {
-		margin-top: calc( var(--wp--custom--margin--baseline) * -1 );
+		margin-top: calc(var(--wp--custom--margin--baseline) * -1);
 		position: relative;
 		padding-top: 80px;
 		padding-bottom: 160px;
@@ -16,7 +15,7 @@ body.post-type-archive-podcast {
 		padding-right: var(--wp--custom--alignment--edge-spacing);
 		color: var(--wp--preset--color--white);
 
-		&:after{
+		&::after {
 			content: "";
 			position: absolute;
 			top: 0;
@@ -34,6 +33,7 @@ body.post-type-archive-podcast {
 			font-size: clamp(38px, 12vw, 50px);
 			word-break: break-all;
 			line-height: 1;
+
 			span {
 				font-size: clamp(72px, 12vw, 150px);
 			}
@@ -44,12 +44,13 @@ body.post-type-archive-podcast {
 	.left-column {
 		position: relative;
 		line-height: 1.3;
-		&:after{
+
+		&::after {
 			content: "";
 			position: absolute;
 			top: 0;
-			left: calc( var(--wp--custom--alignment--edge-spacing) * -2 );
-			right: calc( var(--wp--custom--alignment--edge-spacing) * -1 );
+			left: calc(var(--wp--custom--alignment--edge-spacing) * -2);
+			right: calc(var(--wp--custom--alignment--edge-spacing) * -1);
 			aspect-ratio: 1 / 1;
 			transform: translateY(-26%);
 			background-image: url(images/pink-blob.svg);
@@ -65,10 +66,10 @@ body.post-type-archive-podcast {
 	}
 
 	.wp-block-post-content {
-		margin-top: calc( var(--wp--custom--margin--baseline) * 7 );
+		margin-top: calc(var(--wp--custom--margin--baseline) * 7);
 	}
 
 	.wp-block-social-links {
-		gap: calc( var(--wp--custom--margin--baseline) * 2 );
+		gap: calc(var(--wp--custom--margin--baseline) * 2);
 	}
 }
