@@ -10,6 +10,7 @@
 
 	body:where(.archive, .blog.paged) & {
 		padding: 40px 0;
+		gap: 0;
 
 		@include break-small-only() {
 			display: flex;
@@ -57,14 +58,14 @@
 	}
 
 	.wp-block-query-pagination-numbers {
-		&::before {
-			content: "\00B7\0020";
-			padding-left: 2px;
+		body[class*="paged-"] &::before {
+			content: "\00B7";
+			padding: 0 8px;
 		}
 
 		&::after {
-			content: "\0020\00B7";
-			padding-right: 2px;
+			content: "\00B7";
+			padding: 0 8px;
 		}
 
 		> * {
