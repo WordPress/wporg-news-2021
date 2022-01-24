@@ -9,12 +9,15 @@
 			left: calc( var(--wp--custom--alignment--edge-spacing) * -1 );
 			right: calc( var(--wp--custom--alignment--edge-spacing) * -1 );
 			bottom: 0;
-			transform: translateY(-11%);
+			transform: translateY(50%);
 			background-image: url(images/pink-blob.svg);
 			background-size: contain;
 			background-position: top center;
 			background-repeat: no-repeat;
 			z-index: -1;
+			@include break-wide() {
+				transform: translateY(-11%);
+			}
 		}
 	}
 	.wp-block-social-links {
