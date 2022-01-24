@@ -27,6 +27,16 @@ body.category-releases {
 		a:hover {
 			color: var(--wp--preset--color--white);
 		}
+
+		// Make sure the pagination works with the category's
+		// blue background color.
+		.wp-block-query-pagination {
+			color: var(--wp--preset--color--white);
+
+			&:after {
+				background-color: var(--wp--preset--color--blue-5);
+			}
+		}
 	}
 
 	@extend %bottom-banner-dark;
