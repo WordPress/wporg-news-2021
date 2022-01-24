@@ -90,12 +90,13 @@ body.news-front-page .front__people-of-wordpress {
 	.front__next-page {
 		font-size: var(--wp--preset--font-size--small);
 		padding: var(--wp--custom--alignment--edge-spacing);
+		width: 192px;
 
 		@include break-medium() {
-			padding: 0;
+			padding: 0 var(--wp--custom--alignment--edge-spacing) 0 0;
 			position: absolute;
 			top: var(--wp--custom--alignment--edge-spacing);
-			right: var(--wp--custom--alignment--edge-spacing);
+			right: 0;
 
 			&::before {
 				content: "";
