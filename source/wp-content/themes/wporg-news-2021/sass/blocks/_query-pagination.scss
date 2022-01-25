@@ -10,6 +10,7 @@
 
 	body:where(.archive, .blog.paged) & {
 		padding: 40px 0;
+		gap: 0;
 
 		@include break-small-only() {
 			display: flex;
@@ -56,17 +57,21 @@
 		margin-right: 0;
 	}
 
-	.wp-block-query-pagination-numbers {
-		&::before {
-			content: "\00B7\0020";
-			padding-left: 2px;
-		}
-
+	.wp-block-query-pagination-previous {
 		&::after {
-			content: "\0020\00B7";
-			padding-right: 2px;
+			content: "\00B7";
+			padding: 0 8px;
 		}
+	}
 
+	.wp-block-query-pagination-next {
+		&::before {
+			content: "\00B7";
+			padding: 0 8px;
+		}
+	}
+
+	.wp-block-query-pagination-numbers {
 		> * {
 			display: inline-block;
 			padding: 0 2px;
