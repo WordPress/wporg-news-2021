@@ -407,7 +407,9 @@ function custom_default_album_art_cover( $album_art ) {
 }
 
 /**
- * Inserts the podcast player in a group block that has the 'podcast-player' class name
+ * Inserts the podcast player in a group block that has the 'podcast-player' or 'podcast-player-audio' class names
+ * 'podcast-player' inserts the HTML5 player with album art
+ * 'podcast-player-audio' inserts the standard compact player
  *
  * @param string $block_content The block content about to be appended.
  * @param array $block 			The full block, including name and attributes.
@@ -423,11 +425,18 @@ function customize_podcast_player_position (
 		!is_admin() &&
 		!wp_is_json_request()
 	) {
-		if( isset($block['attrs']['className']) && $block['attrs']['className'] == 'podcast-player' ) {
-			//$block_content = do_shortcode('[ss_player style="standard"]');
-			$block_content = do_blocks( '<!-- wp:seriously-simple-podcasting/castos-html-player {"episodeId":"'.get_the_ID().'"} /-->' );
-			//var_dump($test); die();
-			
+		if( isset($block['attrs']['className']) ) {
+			if( $block['attrs']['className'] == 'podcast-player' ) {
+				$block_content = do_blocks( '<!-- wp:seriously-simple-podcasting/castos-html-player {"episodeId":"'.get_the_ID().'"} /-->' );
+			}
+
+			if( $block['attrs']['className'] == 'podcast-player-audio' ) {
+				$podcast_url = '/podcast-player/'.get_the_ID().'/'.get_post_field( 'post_name', get_post() ).'.mp3';
+				$block_content = do_blocks( '<!-- wp:seriously-simple-podcasting/audio-player {"id":"'.get_the_ID().'"} -->
+				<p class="wp-block-seriously-simple-podcasting-audio-player"><span>
+				<audio class="wp-audio-shortcode" id="audio-0-1" style="width:100%" controls><source type="audio/mpeg" src="'.$podcast_url.'?_=1"/>'.$podcast_url.'</audio></span></p>
+				<!-- /wp:seriously-simple-podcasting/audio-player -->' );
+			}
 		}
 	}
 
