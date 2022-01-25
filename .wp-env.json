@@ -13,7 +13,7 @@
 		"./source/wp-content/plugins/gutenberg",
 		"./source/wp-content/plugins/jetpack",
 		"./source/wp-content/plugins/seriously-simple-podcasting",
-		"./source/wp-content/plugins/syntaxhighlighter",
+		"./source/wp-content/plugins/code-syntax-block",
 		"./source/wp-content/plugins/wordpress-importer"
 	],
 	"themes": [

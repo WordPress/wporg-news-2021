@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "78f4585cb681713075b0b3361d64ee8a",
+    "content-hash": "91def02eb5bac702114fa33cea02022c",
     "packages": [],
     "packages-dev": [
         {
@@ -2253,16 +2253,34 @@
             "time": "2021-11-10T19:49:29+00:00"
         },
         {
-            "name": "wpackagist-plugin/gutenberg",
-            "version": "12.3.2",
+            "name": "wpackagist-plugin/code-syntax-block",
+            "version": "2.2.0",
             "source": {
                 "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/gutenberg/",
-                "reference": "tags/12.3.2"
+                "url": "https://plugins.svn.wordpress.org/code-syntax-block/",
+                "reference": "tags/2.2.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/gutenberg.12.3.2.zip"
+                "url": "https://downloads.wordpress.org/plugin/code-syntax-block.2.2.0.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/code-syntax-block/"
+        },
+        {
+            "name": "wpackagist-plugin/gutenberg",
+            "version": "12.4.1",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/gutenberg/",
+                "reference": "tags/12.4.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/gutenberg.12.4.1.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -2272,15 +2290,15 @@
         },
         {
             "name": "wpackagist-plugin/jetpack",
-            "version": "10.5",
+            "version": "10.5.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/jetpack/",
-                "reference": "tags/10.5"
+                "reference": "tags/10.5.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/jetpack.10.5.zip"
+                "url": "https://downloads.wordpress.org/plugin/jetpack.10.5.1.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -2307,24 +2325,6 @@
             "homepage": "https://wordpress.org/plugins/seriously-simple-podcasting/"
         },
         {
-            "name": "wpackagist-plugin/syntaxhighlighter",
-            "version": "3.6.1",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/syntaxhighlighter/",
-                "reference": "tags/3.6.1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/syntaxhighlighter.3.6.1.zip"
-            },
-            "require": {
-                "composer/installers": "^1.0 || ^2.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/syntaxhighlighter/"
-        },
-        {
             "name": "wpackagist-plugin/wordpress-importer",
             "version": "0.7",
             "source": {
@@ -2348,12 +2348,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/WordPress/wporg-mu-plugins.git",
-                "reference": "0eada54496c28ba393016e54256510f6a6df94ee"
+                "reference": "12b5193b3bf3d45283d9f19e1a71f215a6a0325a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WordPress/wporg-mu-plugins/zipball/0eada54496c28ba393016e54256510f6a6df94ee",
-                "reference": "0eada54496c28ba393016e54256510f6a6df94ee",
+                "url": "https://api.github.com/repos/WordPress/wporg-mu-plugins/zipball/12b5193b3bf3d45283d9f19e1a71f215a6a0325a",
+                "reference": "12b5193b3bf3d45283d9f19e1a71f215a6a0325a",
                 "shasum": ""
             },
             "require": {
@@ -2380,7 +2380,7 @@
                 "source": "https://github.com/WordPress/wporg-mu-plugins/tree/trunk",
                 "issues": "https://github.com/WordPress/wporg-mu-plugins/issues"
             },
-            "time": "2022-01-18T21:44:27+00:00"
+            "time": "2022-01-24T21:43:06+00:00"
         },
         {
             "name": "wporg/wporg-repo-tools",

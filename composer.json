@@ -38,7 +38,7 @@
 		"wpackagist-plugin/gutenberg": "*",
 		"wpackagist-plugin/jetpack": "*",
 		"wpackagist-plugin/seriously-simple-podcasting": "*",
-		"wpackagist-plugin/syntaxhighlighter": "*",
+		"wpackagist-plugin/code-syntax-block": "*",
 		"wpackagist-plugin/wordpress-importer": "*",
 		"wporg/wporg-repo-tools": "dev-trunk",
 		"wporg/wporg-mu-plugins": "dev-trunk",
