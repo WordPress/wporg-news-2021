@@ -23,6 +23,7 @@ add_filter( 'render_block_data', __NAMESPACE__ . '\custom_query_block_attributes
 add_filter( 'template_redirect', __NAMESPACE__ . '\jetpack_likes_workaround' );
 add_filter( 'the_title', __NAMESPACE__ . '\update_the_title', 10, 2 );
 add_action( 'ssp_album_art_cover', __NAMESPACE__ . '\custom_default_album_art_cover', 10, 2 );
+add_filter('render_block', __NAMESPACE__ . '\customize_podcast_player_position', null, 2);
 
 /**
  * Register theme support.
@@ -403,4 +404,29 @@ function custom_default_album_art_cover( $album_art ) {
 	}
 	
 	return $album_art;
+}
+
+/**
+ * Inserts the podcast player in a group block that has the 'podcast-player' class name
+ *
+ * @param string $block_content The block content about to be appended.
+ * @param array $block 			The full block, including name and attributes.
+ * 
+ * @return string 				The block content about to be appended.
+ */
+function customize_podcast_player_position (
+	$block_content, 
+	$block
+) {
+	if (
+		$block['blockName'] === 'core/group' && 
+		!is_admin() &&
+		!wp_is_json_request()
+	) {
+		if( isset($block['attrs']['className']) && $block['attrs']['className'] == 'podcast-player' ) {
+			$block_content = do_shortcode('[ss_player style="standard"]');
+		}
+	}
+
+	return $block_content;
 }

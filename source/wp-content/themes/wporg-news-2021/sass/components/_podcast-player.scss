@@ -1,14 +1,16 @@
 .castos-player {
 	font-family: var(--wp--preset--font-family--inter);
+
 	&.dark-mode {
 		.player {
 			background: var(--wp--preset--color--off-white-2);
 		}
-		.episode-title, 
-		.currently-playing .show, 
-		.subscribe-icons a, 
-		.player-panel h3, 
-		.player-panel .player-panel-row .title, 
+
+		.episode-title,
+		.currently-playing .show,
+		.subscribe-icons a,
+		.player-panel h3,
+		.player-panel .player-panel-row .title,
 		.playback__timers,
 		.player-btn__speed {
 			color: var(--wp--preset--color--black);
@@ -20,10 +22,10 @@
 			font-family: var(--wp--preset--font-family--inter);
 		}
 
-		.subscribe-icons span, 
-		.share-icon span, 
-		.playback__controls .player-btn__volume, 
-		.playback__controls .player-btn__rwd, 
+		.subscribe-icons span,
+		.share-icon span,
+		.playback__controls .player-btn__volume,
+		.playback__controls .player-btn__rwd,
 		.playback__controls .player-btn__fwd {
 			background-color: var(--wp--preset--color--black);
 		}
@@ -32,26 +34,31 @@
 			border-color: var(--wp--preset--color--black);
 		}
 
-		.progress, 
+		.progress,
 		.ssp-progress {
 			height: 5px;
 			background-color: var(--wp--preset--color--white);
 		}
 	}
+
 	.player__main {
 		grid-gap: 25px;
 	}
+
 	.player__body {
 		padding: 25px 25px 25px 0;
 	}
+
 	.episode-title {
 		font-family: var(--wp--preset--font-family--inter);
 		font-weight: 700;
 		margin-top: 0;
 	}
+
 	.playback__timers {
 		font-size: 10px;
 	}
+
 	.player-panels-nav {
 		justify-self: flex-end;
 	}
@@ -70,5 +77,5 @@
 		background-image: url(images/podcast-player/pause.svg);
 		background-position: 8px;
 	}
-	
+
 }
