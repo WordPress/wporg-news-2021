@@ -22,6 +22,7 @@ add_filter( 'theme_file_path', __NAMESPACE__ . '\conditional_template_part', 10,
 add_filter( 'render_block_data', __NAMESPACE__ . '\custom_query_block_attributes' );
 add_filter( 'template_redirect', __NAMESPACE__ . '\jetpack_likes_workaround' );
 add_filter( 'the_title', __NAMESPACE__ . '\update_the_title', 10, 2 );
+add_action( 'ssp_album_art_cover', __NAMESPACE__ . '\custom_default_album_art_cover', 10, 2 );
 
 /**
  * Register theme support.
@@ -388,4 +389,18 @@ function update_the_title( $title, $id ) {
 	}
 
 	return $title;
+}
+
+/**
+ * Replaces the default artwork for the podcast player when none is defined
+ *
+ * @param string $album_art The url of the album image.
+ * @return string 			The updated url of the album image.
+ */
+function custom_default_album_art_cover( $album_art ) {
+	if( str_contains($album_art, 'seriously-simple-podcasting') ) {
+		$album_art = get_stylesheet_directory_uri() . '/images/podcast-player/default_artwork.jpg';
+	}
+	
+	return $album_art;
 }

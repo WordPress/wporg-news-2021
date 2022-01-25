@@ -66,6 +66,8 @@ body.post-type-archive-podcast {
 	}
 
 	.wp-block-post-content {
+		padding-left: 0;
+		padding-right: 0;
 		margin-top: calc(var(--wp--custom--margin--baseline) * 7);
 	}
 
