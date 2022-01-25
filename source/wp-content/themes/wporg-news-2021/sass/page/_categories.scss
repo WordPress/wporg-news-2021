@@ -33,7 +33,7 @@ body.category-releases {
 		.wp-block-query-pagination {
 			color: var(--wp--preset--color--white);
 
-			&:after {
+			&::after {
 				background-color: var(--wp--preset--color--blue-5);
 			}
 		}
