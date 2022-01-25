@@ -424,7 +424,10 @@ function customize_podcast_player_position (
 		!wp_is_json_request()
 	) {
 		if( isset($block['attrs']['className']) && $block['attrs']['className'] == 'podcast-player' ) {
-			$block_content = do_shortcode('[ss_player style="standard"]');
+			//$block_content = do_shortcode('[ss_player style="standard"]');
+			$block_content = do_blocks( '<!-- wp:seriously-simple-podcasting/castos-html-player {"episodeId":"'.get_the_ID().'"} /-->' );
+			//var_dump($test); die();
+			
 		}
 	}
 
