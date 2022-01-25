@@ -313,17 +313,17 @@ body {
 	.query-title-banner__title__dropcap {
 		grid-column: 1 !important;
 		width: calc(var(--wp--custom--layout--content-meta-size) - 32px) !important;
+		user-select: none;
 
 		.wp-block-query-title {
 			color: var(--category-color);
 			font-size: 0;
 			line-height: 0.7;
-
-			@include hide-accessibly;
+			display: none;
 
 			@include break-wide() {
 
-				@include show-hidden-accessibly;
+				display: block;
 				margin-top: var(--wp--style--block-gap);
 			}
 
