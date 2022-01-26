@@ -89,7 +89,8 @@
 		.player-btn__rwd,
 		.player-btn__fwd,
 		.player-btn__speed,
-		.ssp-loader {
+		.ssp-loader,
+		.player-panels {
 			display: none;
 		}
 
@@ -100,6 +101,10 @@
 
 		.player__main {
 			grid-template-columns: 1fr;
+
+			@media (max-width: 768px) {
+				height: auto;
+			}
 		}
 
 		.player__body {
@@ -115,7 +120,11 @@
 			grid-gap: 0;
 			align-items: center;
 
-			div:not(.play-pause-controls) {
+			@media (max-width: 768px) {
+				margin-left: 0;
+			}
+
+			> div:not(.play-pause-controls) {
 				display: flex;
 				align-items: center;
 			}
@@ -160,6 +169,17 @@
 			.player-btn__volume {
 				background-color: var(--wp--preset--color--white);
 				mask-image: url(images/podcast-player/sound.svg);
+
+				@media (max-width: 768px) {
+					display: block;
+				}
+			}
+		}
+
+		.playback {
+
+			@media (max-width: 768px) {
+				padding-top: 0;
 			}
 		}
 
