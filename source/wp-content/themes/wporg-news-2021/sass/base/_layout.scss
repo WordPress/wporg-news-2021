@@ -6,9 +6,11 @@
 	flex-direction: column;
 	margin-top: -(var(--wp-admin--admin-bar--height, 0));
 
-	// Make sure the footer is always at the bottom of the viewport, even on pages with little content.
-	// Otherwise there'd be empty space below the footer
-	justify-content: space-between;
+	> .site-content-container {
+		// Make the content area grow to fill any remaining space on the screen, so that the footer is pushed to
+		// the bottom.
+		margin-bottom: auto;
+	}
 }
 
 // The following "placeholder selectors" define many of the layout-related
@@ -73,7 +75,7 @@
 		}
 
 		&.alignfull {
-			
+
 			width: auto;
 			max-width: none;
 			margin-left: calc( -1 * var(--wp--custom--alignment--edge-spacing) ) !important;
