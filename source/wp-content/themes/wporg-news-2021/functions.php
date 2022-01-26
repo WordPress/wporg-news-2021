@@ -22,7 +22,7 @@ add_filter( 'theme_file_path', __NAMESPACE__ . '\conditional_template_part', 10,
 add_filter( 'render_block_data', __NAMESPACE__ . '\custom_query_block_attributes' );
 add_filter( 'template_redirect', __NAMESPACE__ . '\jetpack_likes_workaround' );
 add_filter( 'the_title', __NAMESPACE__ . '\update_the_title', 10, 2 );
-add_filter( 'get_terms', __NAMESPACE__ . '\filter_categories_for_menu', 10, 4 );
+add_filter( 'get_terms_args', __NAMESPACE__ . '\category_terms_args', 10, 2 );
 
 /**
  * Register theme support.
@@ -391,32 +391,20 @@ function update_the_title( $title, $id ) {
 	return $title;
 }
 
-/**
- * Filter and re-order categories for the menu.
- *
- * @param array $terms	The found terms.
- * @param array $taxonomies	The taxonomies.
- * @param array $args The query arguments.
- * @return array The filtered terms.
- */
-function filter_categories_for_menu( $terms, $taxonomies, $args ) {
-	if ( !is_admin() && ['category'] === $taxonomies ) {
-
-		// First sort the categories by post count descending.
-		usort( $terms, function ( $a, $b ) {
-			return $b->count <=> $a->count;
-		} );
-
-		// Now hide anything below a certain threshold of post counts, or that we explicitly don't want.
-		$hide_slugs = [
-			'uncategorized'
-		];
-		foreach ( $terms as $i => $term ) {
-			if ( $term->count < 5 || in_array( $term->slug, $hide_slugs, true ) ) {
-				unset( $terms[ $i ] );
-			}
-		}
+ /**
+  * Specify the category list arguments for the nav menu, since it's not possible to do this via block template parameters.
+  *
+  * @param array    $args       An array of get_terms() arguments.
+  * @param string[] $taxonomies An array of taxonomy names.
+  * @return array	The filtered args.
+  */
+function category_terms_args( $args, $taxonomies ) {
+	// Do we need more conditionals here to prevent this from affecting other things?
+	if ( !is_admin() && ['category'] === $taxonomies && empty( $args['object_ids'] ) ) {
+		$args[ 'exclude' ] = [ 1 ]; // Uncategorized is always term ID 1
+		$args[ 'orderby' ] = 'count';
+		$args[ 'order' ]   = 'DESC';
+		$args[ 'number' ]  = 20;
 	}
-
-	return $terms;
+	return $args;
 }
