@@ -75,3 +75,28 @@ body.post-type-archive-podcast {
 		gap: calc(var(--wp--custom--margin--baseline) * 2);
 	}
 }
+
+body.post-type-archive-podcast {
+	.wp-block-post-title {
+		margin-bottom: var(--wp--custom--margin--baseline);
+	}
+}
+
+body.single-podcast {
+	.entry-header {
+		grid-template-columns: calc(var(--wp--custom--layout--content-meta-size) - 32px) auto;
+	}
+
+	.podcast-title {
+
+		@extend %two-column-grid-right-column;
+	}
+
+	.wp-block-post-title {
+		margin-bottom: calc(var(--wp--custom--margin--baseline) * 3);
+
+		@include break-wide() {
+			margin-bottom: calc(var(--wp--custom--margin--baseline) * 7.7);
+		}
+	}
+}
