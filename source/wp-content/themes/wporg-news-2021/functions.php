@@ -429,14 +429,6 @@ function customize_podcast_player_position (
 			if( $block['attrs']['className'] == 'podcast-player' ) {
 				$block_content = do_blocks( '<!-- wp:seriously-simple-podcasting/castos-html-player {"episodeId":"'.get_the_ID().'"} /-->' );
 			}
-
-			if( $block['attrs']['className'] == 'podcast-player-audio' ) {
-				$podcast_url = '/podcast-player/'.get_the_ID().'/'.get_post_field( 'post_name', get_post() ).'.mp3';
-				$block_content = do_blocks( '<!-- wp:seriously-simple-podcasting/audio-player {"id":"'.get_the_ID().'"} -->
-				<p class="wp-block-seriously-simple-podcasting-audio-player"><span>
-				<audio class="wp-audio-shortcode" id="audio-0-1" style="width:100%" controls><source type="audio/mpeg" src="'.$podcast_url.'?_=1"/>'.$podcast_url.'</audio></span></p>
-				<!-- /wp:seriously-simple-podcasting/audio-player -->' );
-			}
 		}
 	}
 
