@@ -68,11 +68,11 @@ body.category-releases {
 			overflow: hidden;
 			font-size: 160px;
 			font-weight: 200;
-	    white-space: nowrap;
+	    	white-space: nowrap;
 			word-spacing: 2em;
-			text-indent: calc(-740px - 2em);
+			//text-indent: calc(-740px - 2em);
 			letter-spacing: -10px;
-	    line-height: 1;
+	    	line-height: 1;
 			color: var(--wp--preset--color--blue-5);
 
 			display: none;
