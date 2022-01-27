@@ -216,6 +216,14 @@
 		z-index: 9;
 	}
 
+	.player-panels .player-panel {
+		display: none;
+	}
+
+	.player-panels .player-panel.open {
+		display: block;
+	}
+
 }
 
 /* Reduced version of the player */
