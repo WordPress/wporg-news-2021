@@ -201,6 +201,11 @@
 	button.player-btn__speed {
 		border: 1px solid #4b4659 !important;
 	}
+
+	.share-icon:focus,
+	.player-panel .player-panel-row button:focus {
+		background-color: #df4e4f !important;
+	}
 }
 
 /* Reduced version of the player */
