@@ -1,0 +1,50 @@
+body .wp-site-blocks .local-header {
+	--bar-min-height: 58px;
+	--bar-text-color: var(--wp--preset--color--white);
+	--bar-link-color: var(--wp--preset--color--white);
+	--bar-link-hover-color: var(--wp--preset--color--off-white-2);
+	--bar-background-color: var(--wp--preset--color--blue-1);
+
+	color: var(--bar-text-color);
+	min-height: var(--bar-min-height);
+	position: relative;
+	background: linear-gradient(to top, transparent var(--bar-min-height), var(--bar-background-color) var(--bar-min-height) 100%);
+
+	&::after {
+		content: "";
+		min-height: var(--bar-min-height);
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: -1;
+		mask-image: url(images/local-nav-mask.svg);
+		mask-repeat: no-repeat;
+		mask-size: cover;
+		mask-position: 0;
+		background-color: var(--bar-background-color);
+	}
+
+	// A container with a paint stroke effect that holds both
+	// the breadcrumbs and category dropdown.
+	.local-header__navigation {
+		// Allows for absolute positioning for the Categories
+		// toggle button.
+		position: relative;
+
+		padding: 0 0 0 24px;
+
+		@include break-small {
+			padding: 0 var(--wp--custom--alignment--edge-spacing);
+		}
+	}
+
+	a {
+		color: var(--bar-link-color);
+
+		&:hover {
+			color: var(--bar-link-hover-color);
+			text-decoration: underline;
+		}
+	}
+}
