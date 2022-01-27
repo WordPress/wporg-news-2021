@@ -116,10 +116,14 @@
 		.currently-playing .show,
 		.subscribe-icons a,
 		.player-panel h3,
-		.player-panel .player-panel-row .title,
+		.player__podcast-title,
 		.playback__timers,
 		.player-btn__speed {
 			color: var(--wp--preset--color--black);
+		}
+
+		.player-panels {
+			color: var(--wp--preset--color--white);
 		}
 
 		.player-panels-nav button {
@@ -128,8 +132,6 @@
 			font-family: var(--wp--preset--font-family--inter);
 		}
 
-		.subscribe-icons span,
-		.share-icon span,
 		.playback__controls .player-btn__volume,
 		.playback__controls .player-btn__rwd,
 		.playback__controls .player-btn__fwd {
