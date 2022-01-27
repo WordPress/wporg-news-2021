@@ -206,6 +206,15 @@
 	.player-panel .player-panel-row button:focus {
 		background-color: #df4e4f !important;
 	}
+
+	.player-panels:focus-within .player-panel {
+		transform: translateY(0);
+	}
+
+	.player-panels .player-panel:focus-within {
+		z-index: 9;
+	}
+
 }
 
 /* Reduced version of the player */
