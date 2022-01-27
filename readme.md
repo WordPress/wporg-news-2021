@@ -2,6 +2,9 @@
 
 This is starting as a fork of [Blockbase](https://github.com/Automattic/themes/tree/trunk/blockbase).
 
+ℹ️ The header/footer live in [the mu-plugins repository](https://github.com/WordPress/wporg-mu-plugins/), but are
+automatically provisioned into this one. Changes to the header/footer should be made in the `mu-plugins` repo.
+
 ## Development
 
 ### Prerequisites
