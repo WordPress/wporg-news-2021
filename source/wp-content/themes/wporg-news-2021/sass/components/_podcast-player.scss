@@ -190,6 +190,14 @@
 		background-position: 8px;
 	}
 
+	button.play-btn:focus {
+		transform: scale(1.1);
+	}
+
+	button:focus {
+		opacity: 1;
+	}
+
 }
 
 /* Reduced version of the player */
