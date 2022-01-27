@@ -33,7 +33,7 @@ README-svn.txt
 
 # And this plugin.
 !/source/wp-content/plugins
-!/source/wp-content/plugins/wporg-post-title
+!/source/wp-content/plugins/wporg-release-version
 
 # Ignore built files in source directories.
 /source/wp-content/themes/wporg-news-2021/style.css

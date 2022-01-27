@@ -1,9 +1,9 @@
 {
 	"apiVersion": 2,
-	"name": "wporg/post-title",
-	"title": "WordPress.org Post Title",
+	"name": "wporg/release-version",
+	"title": "WordPress.org Release Version",
 	"category": "theme",
-	"description": "Extends the core Post Title block with additional attributes needed for WordPress.org themes.",
+	"description": "Displays the WordPress release version number associated with a News post.",
 	"textdomain": "default",
 	"usesContext": [ "postId", "postType", "queryId" ],
 	"attributes": {
@@ -13,23 +13,6 @@
 		"level": {
 			"type": "number",
 			"default": 2
-		},
-		"isLink": {
-			"type": "boolean",
-			"default": false
-		},
-		"rel": {
-			"type": "string",
-			"attribute": "rel",
-			"default": ""
-		},
-		"linkTarget": {
-			"type": "string",
-			"default": "_self"
-		},
-		"releaseVersion": {
-			"type": "boolean",
-			"default": false
 		}
 	},
 	"supports": {

@@ -15,7 +15,7 @@
 		"./source/wp-content/plugins/seriously-simple-podcasting",
 		"./source/wp-content/plugins/code-syntax-block",
 		"./source/wp-content/plugins/wordpress-importer",
-		"./source/wp-content/plugins/wporg-post-title"
+		"./source/wp-content/plugins/wporg-release-version"
 	],
 	"themes": [
 		"./source/wp-content/themes/wporg-news-2021"
