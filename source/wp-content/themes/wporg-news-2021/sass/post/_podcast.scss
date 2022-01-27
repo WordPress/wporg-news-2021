@@ -52,14 +52,19 @@ body.post-type-archive-podcast {
 			left: calc(var(--wp--custom--alignment--edge-spacing) * -2);
 			right: calc(var(--wp--custom--alignment--edge-spacing) * -1);
 			aspect-ratio: 1 / 1;
-			transform: translateY(-26%);
+			transform: translateY(-41%);
 			background-image: url(images/pink-blob.svg);
-			background-size: contain;
-			background-position: top center;
+			background-position: top left;
 			background-repeat: no-repeat;
 			z-index: -2;
 
+			@include break-medium() {
+				background-size: contain;
+				transform: translateX(-10%) translateY(-80%);
+			}
+
 			@include break-wide() {
+				background-size: contain;
 				transform: translateY(-41%);
 			}
 		}
