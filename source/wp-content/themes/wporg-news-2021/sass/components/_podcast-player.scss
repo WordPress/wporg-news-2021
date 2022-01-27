@@ -1,3 +1,109 @@
+@mixin minimal-player {
+	.player__artwork,
+	.currently-playing,
+	.player-panels-nav,
+	.player-btn__rwd,
+	.player-btn__fwd,
+	.player-btn__speed,
+	.ssp-loader,
+	.player-panels {
+		display: none;
+	}
+
+	.player {
+		height: auto;
+		background-color: var(--wp--preset--color--blue-2);
+	}
+
+	.player__main {
+		grid-template-columns: 1fr;
+		height: auto;
+	}
+
+	.player__body {
+		padding: 14px;
+	}
+
+	.ssp-progress {
+		height: 6px;
+		margin: 0 13px 0 0;
+	}
+
+	.play-progress {
+		grid-gap: 0;
+		align-items: center;
+		margin-left: 0 !important;
+		margin-top: 0;
+
+		> div:not(.play-pause-controls) {
+			display: flex;
+			align-items: center;
+		}
+
+		.play-pause-controls {
+			background: transparent;
+			border-radius: 0;
+			height: 20px;
+			width: 20px;
+
+			.play-btn,
+			.pause-btn {
+				border-radius: 0;
+				height: 20px;
+				width: 20px;
+				padding: 0;
+			}
+
+			.pause-btn {
+				background-size: contain;
+				background-color: transparent;
+				background-position: center center;
+			}
+
+			.play-btn {
+				background: var(--wp--preset--color--white);
+				mask-image: url(images/podcast-player/play.svg);
+				mask-size: contain;
+				mask-position: center center;
+				mask-repeat: no-repeat;
+			}
+		}
+	}
+
+	.playback__controls {
+		grid-gap: 0;
+
+		button {
+			opacity: 1;
+		}
+
+		.player-btn__volume {
+			background-color: var(--wp--preset--color--white);
+			mask-image: url(images/podcast-player/sound.svg);
+			display: block !important;
+		}
+	}
+
+	.playback {
+		padding-top: 0;
+	}
+
+	.playback__timers {
+		opacity: 1;
+		order: -1;
+		margin-right: 25px;
+		color: var(--wp--preset--color--white);
+		display: flex;
+		align-items: center;
+		font-size: var(--wp--preset--font-size--tiny);
+
+		span,
+		.ssp-timer {
+			display: none;
+		}
+	}
+}
+
 .castos-player {
 	font-family: var(--wp--preset--font-family--inter);
 
@@ -38,6 +144,10 @@
 		.ssp-progress {
 			height: 5px;
 			background-color: var(--wp--preset--color--white);
+		}
+
+		@media (max-width: 768px) {
+			@include minimal-player;
 		}
 	}
 
@@ -83,119 +193,6 @@
 /* Reduced version of the player */
 .podcast-title {
 	.castos-player {
-		.player__artwork,
-		.currently-playing,
-		.player-panels-nav,
-		.player-btn__rwd,
-		.player-btn__fwd,
-		.player-btn__speed,
-		.ssp-loader,
-		.player-panels {
-			display: none;
-		}
-
-		.player {
-			height: auto;
-			background-color: var(--wp--preset--color--blue-2);
-		}
-
-		.player__main {
-			grid-template-columns: 1fr;
-
-			@media (max-width: 768px) {
-				height: auto;
-			}
-		}
-
-		.player__body {
-			padding: 14px;
-		}
-
-		.ssp-progress {
-			height: 6px;
-			margin: 0 13px 0 0;
-		}
-
-		.play-progress {
-			grid-gap: 0;
-			align-items: center;
-
-			@media (max-width: 768px) {
-				margin-left: 0;
-			}
-
-			> div:not(.play-pause-controls) {
-				display: flex;
-				align-items: center;
-			}
-		}
-
-		.play-pause-controls {
-			background: transparent;
-			border-radius: 0;
-			height: 20px;
-			width: 20px;
-
-			.play-btn,
-			.pause-btn {
-				border-radius: 0;
-				height: 20px;
-				width: 20px;
-				padding: 0;
-			}
-
-			.pause-btn {
-				background-size: contain;
-				background-color: transparent;
-				background-position: center center;
-			}
-
-			.play-btn {
-				background: var(--wp--preset--color--white);
-				mask-image: url(images/podcast-player/play.svg);
-				mask-size: contain;
-				mask-position: center center;
-				mask-repeat: no-repeat;
-			}
-		}
-
-		.playback__controls {
-			grid-gap: 0;
-
-			button {
-				opacity: 1;
-			}
-
-			.player-btn__volume {
-				background-color: var(--wp--preset--color--white);
-				mask-image: url(images/podcast-player/sound.svg);
-
-				@media (max-width: 768px) {
-					display: block;
-				}
-			}
-		}
-
-		.playback {
-
-			@media (max-width: 768px) {
-				padding-top: 0;
-			}
-		}
-
-		.playback__timers {
-			opacity: 1;
-			order: -1;
-			margin-right: 25px;
-			color: var(--wp--preset--color--white);
-			display: flex;
-			align-items: center;
-			font-size: var(--wp--preset--font-size--tiny);
-
-			span,
-			.ssp-timer {
-				display: none;
-			}
-		}
+		@include minimal-player;
 	}
 }
