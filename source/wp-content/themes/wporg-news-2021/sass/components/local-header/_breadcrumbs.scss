@@ -8,7 +8,7 @@
         color: var(--bar-text-color);
 
         // The current item is highlighted.
-        &-current {
+        .local-header__breadcrumb-current {
             font-family: var(--wp--preset--font-family--inter);
             font-size: 1rem;
             font-weight: 700;
