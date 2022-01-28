@@ -176,6 +176,7 @@
 		}
 
 		@media (max-width: 768px) {
+
 			@include minimal-player;
 		}
 	}
@@ -266,13 +267,16 @@
 /* Reduced version of the player */
 .podcast-title {
 	.castos-player {
+
 		@include minimal-player;
 	}
 }
 
 body.post-type-archive-podcast {
 	.castos-player {
+
 		@media (max-width: 768px) {
+
 			@include light-player;
 		}
 	}
