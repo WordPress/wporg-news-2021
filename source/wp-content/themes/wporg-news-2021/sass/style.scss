@@ -59,7 +59,9 @@ GNU General Public License for more details.
 // These style generic/custom components like the site header, footer archive, local navigation, etc.
 // Global components are listed first, to apply default styles.
 @import "components/site-header";
-@import "components/local-header";
+@import "components/local-header/local-header";
+@import "components/local-header/breadcrumbs";
+@import "components/local-header/categories";
 @import "components/bottom-banner/bottom-banner";
 @import "components/bottom-banner/subscribe-wp-news";
 @import "components/bottom-banner/wp-briefing";

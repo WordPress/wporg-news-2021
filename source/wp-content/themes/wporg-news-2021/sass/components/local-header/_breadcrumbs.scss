@@ -1,0 +1,33 @@
+.local-header {
+	// Breadcrumbs show the lineage of pages based on the current
+	// page. It contains a link for each parent.
+	.local-header__breadcrumb {
+		display: flex;
+		align-items: center;
+		min-height: var(--bar-min-height);
+		color: var(--bar-text-color);
+
+		// The current item is highlighted.
+		.local-header__breadcrumb-current {
+			font-family: var(--wp--preset--font-family--inter);
+			font-size: 1rem;
+			font-weight: 700;
+
+			// This ensures that the square separator
+			// is reliably centered.
+			display: flex;
+			align-items: center;
+			margin-top: 0;
+
+			&::before {
+				content: "";
+				height: 2px;
+				width: 2px;
+				background: var(--bar-text-color);
+				display: inline-block;
+				margin: 0 0.5rem;
+				border-radius: 2px;
+			}
+		}
+	}
+}
