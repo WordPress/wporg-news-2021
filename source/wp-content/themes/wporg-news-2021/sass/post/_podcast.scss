@@ -42,29 +42,34 @@ body.post-type-archive-podcast {
 	}
 
 	.left-column {
-		position: relative;
 		line-height: 1.3;
+		padding-bottom: 100px;
+		position: relative;
+
+		p {
+			max-width: 500px;
+		}
 
 		&::after {
+			aspect-ratio: 1 / 1;
+			background-image: url(images/pink-blob.svg);
+			background-position: bottom left;
+			background-repeat: no-repeat;
 			content: "";
 			position: absolute;
-			top: 0;
+			bottom: 0;
 			left: calc(var(--wp--custom--alignment--edge-spacing) * -2);
 			right: calc(var(--wp--custom--alignment--edge-spacing) * -1);
-			aspect-ratio: 1 / 1;
-			transform: translateY(-41%);
-			background-image: url(images/pink-blob.svg);
-			background-position: top left;
-			background-repeat: no-repeat;
 			z-index: -2;
 
 			@include break-medium() {
 				background-size: contain;
-				transform: translateX(-10%) translateY(-80%);
+				transform: translateX(-20%);
 			}
 
 			@include break-wide() {
-				background-size: contain;
+				background-position: top left;
+				top: 0;
 				transform: translateY(-41%);
 			}
 		}
