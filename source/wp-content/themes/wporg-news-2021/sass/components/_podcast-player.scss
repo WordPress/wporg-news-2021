@@ -54,18 +54,20 @@
 				padding: 0;
 			}
 
+			.play-btn,
 			.pause-btn {
-				background-size: contain;
-				background-color: transparent;
-				background-position: center center;
-			}
-
-			.play-btn {
 				background: var(--wp--preset--color--white);
-				mask-image: url(images/podcast-player/play.svg);
 				mask-size: contain;
 				mask-position: center center;
 				mask-repeat: no-repeat;
+			}
+
+			.pause-btn {
+				mask-image: url(images/podcast-player/pause.svg);
+			}
+
+			.play-btn {
+				mask-image: url(images/podcast-player/play.svg);
 			}
 		}
 	}
@@ -190,6 +192,7 @@
 		background-position: 8px;
 	}
 
+	button.pause-btn:focus,
 	button.play-btn:focus {
 		transform: scale(1.1);
 	}
