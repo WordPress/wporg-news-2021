@@ -106,6 +106,31 @@
 	}
 }
 
+@mixin light-player {
+	.player {
+		background-color: var(--wp--preset--color--off-white-2);
+	}
+
+	.play-progress {
+		.play-pause-controls {
+			.play-btn,
+			.pause-btn {
+				background: var(--wp--preset--color--blue-2);
+			}
+		}
+	}
+
+	.playback__controls {
+		.player-btn__volume {
+			background-color: var(--wp--preset--color--blue-2);
+		}
+	}
+
+	.playback__timers {
+		color: var(--wp--preset--color--blue-2);
+	}
+}
+
 .castos-player {
 	font-family: var(--wp--preset--font-family--inter);
 
@@ -242,5 +267,13 @@
 .podcast-title {
 	.castos-player {
 		@include minimal-player;
+	}
+}
+
+body.post-type-archive-podcast {
+	.castos-player {
+		@media (max-width: 768px) {
+			@include light-player;
+		}
 	}
 }
