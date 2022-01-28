@@ -224,6 +224,15 @@
 		display: block;
 	}
 
+	.player:focus-within {
+		button.player-btn__volume {
+			opacity: 0.65;
+
+			&:focus {
+				opacity: 1;
+			}
+		}
+	}
 }
 
 /* Reduced version of the player */
