@@ -179,6 +179,19 @@
 
 			@include minimal-player;
 		}
+
+		.player:hover .player-panels-nav button {
+			opacity: 1;
+		}
+
+		.player-panels-nav button {
+			opacity: 1;
+		}
+
+		.player-panels-nav button:hover {
+			text-decoration: underline;
+		}
+
 	}
 
 	.player__main {
