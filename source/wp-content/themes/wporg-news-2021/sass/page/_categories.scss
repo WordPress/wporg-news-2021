@@ -20,83 +20,143 @@ body.category-releases {
 		--bar-background-color: var(--wp--preset--color--blue-5);
 	}
 
-	.site-content-container {
-		padding: 0 !important;
-		color: var(--wp--preset--color--white);
-		display: block;
-
-		a,
-		a:hover {
+	// This added specificity is needed to override the general
+	// layout styles for category templates.
+	.wp-site-blocks {
+		.site-content-container {
+			padding: 0;
 			color: var(--wp--preset--color--white);
-		}
+			display: block;
 
-		// Make sure the pagination works with the category's
-		// blue background color.
-		.wp-block-query-pagination {
-			color: var(--wp--preset--color--white);
-
-			&::after {
-				background-color: var(--wp--preset--color--blue-5);
+			a,
+			a:hover {
+				color: var(--wp--preset--color--white);
 			}
-		}
 
-		.wp-block-post-template {
-			max-width: 100% !important;
-			width: 100% !important;
+			// Make sure the pagination works with the category's
+			// blue background color.
+			.wp-block-query-pagination {
+				color: var(--wp--preset--color--white);
+
+				&::after {
+					background-color: var(--wp--preset--color--blue-5);
+				}
+			}
+
+			.wp-block-post-template {
+				max-width: 100%;
+				width: 100%;
+			}
 		}
 	}
 
 	.wp-block-post {
-		margin: 0 !important;
-		padding: calc(var(--wp--custom--alignment--edge-spacing) / 2) var(--wp--custom--alignment--edge-spacing);
+		margin: 0;
+		padding: var(--wp--custom--alignment--edge-spacing);
 		position: relative;
-		min-height: 170px;
 		border-bottom: 1px solid var(--wp--preset--color--blue-5);
 
-		@include break-medium() {
-				padding-left: calc(var(--wp--custom--layout--content-meta-size) + 32px + var(--wp--custom--alignment--edge-spacing));
+		// This is needed to position the version number so
+		// it appears "hidden".
+		overflow: hidden;
+
+		// Ignore some of this extraneous markup.
+		.wp-block-template-part {
+			display: contents;
 		}
 
-		.release__version-title h2 {
-			position: absolute;
-			top: 0;
-			bottom: 0;
-			align-items: center;
-			left: var(--wp--custom--alignment--edge-spacing);
-			width: calc(var(--wp--custom--layout--content-meta-size) - var(--wp--custom--alignment--edge-spacing));
+		// Make some room for the version number on
+		// larger viewports.
+		@include break-medium() {
+			padding-left: calc(var(--wp--custom--layout--content-meta-size) + 32px + var(--wp--custom--alignment--edge-spacing));
+		}
+
+		.wp-block-wporg-release-version {
 			font-family: var(--wp--preset--font-family--inter);
-			overflow: hidden;
 			font-size: 160px;
 			font-weight: 200;
-	    	white-space: nowrap;
-			word-spacing: 2em;
-			//text-indent: calc(-740px - 2em);
-			letter-spacing: -10px;
-	    	line-height: 1;
 			color: var(--wp--preset--color--blue-5);
 
-			display: none;
 			@include break-medium() {
-				display: flex;
+				position: absolute;
+				bottom: -24px;
+				left: var(--wp--custom--alignment--edge-spacing);
+				width: calc(var(--wp--custom--layout--content-meta-size) - var(--wp--custom--alignment--edge-spacing));
+				white-space: nowrap;
+				line-height: 1;
+				transition: all 0.2s ease-in-out;
 			}
 		}
 
-		header.entry-header {
-			margin: 0 !important;
+		// Reset the default block margins.
+		.wp-block-group.entry-header,
+		.wp-block-post-title,
+		.wp-block-post-date {
+			margin: 0;
 		}
 
+		.wp-block-post-title {
+			// I wanted to use a var here, but there isn't one
+			// for this value.
+			font-size: 36px;
+		}
+
+		// Hide post excerpts by default.
 		.wp-block-post-excerpt {
 			display: none;
 		}
 
+		// The lastest release is shown first, and includes
+		// an excerpt and special styling.
 		&:first-child {
 			.release__version-title h2 {
+				bottom: auto;
+				top: 20px;
 				color: var(--wp--preset--color--white);
 			}
+
 			.wp-block-post-excerpt {
 				display: block;
 			}
 		}
+
+		// The rest of the releases.
+		&:not(:first-child) {
+			.wp-block-post-title {
+				&::after {
+					content: "";
+					display: block;
+					height: 118px;
+					min-width: 160px;
+					position: absolute;
+					top: calc(50% - (118px / 2));
+					right: 0;
+					opacity: 0;
+					transform: scale(0.6) translateX(-12px);
+					background-image: url(images/right-arrow.svg);
+					background-position: center right;
+					background-repeat: no-repeat;
+					pointer-events: none;
+					transition: all 0.15s linear;
+				}
+			}
+
+			&:hover {
+				.wp-block-wporg-release-version {
+					transform: translateY(-36px);
+					color: var(--wp--preset--color--white);
+				}
+
+				.wp-block-post-title::after {
+					opacity: 1;
+					transform: scale(0.6) translateX(0);
+				}
+			}
+		}
+	}
+
+	.wp-block-query-pagination {
+		margin-left: calc(var(--wp--custom--layout--content-meta-size) + 32px + var(--wp--custom--alignment--edge-spacing));
 	}
 
 	@extend %bottom-banner-dark;
