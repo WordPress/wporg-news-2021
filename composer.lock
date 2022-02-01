@@ -314,9 +314,6 @@
             "require": {
                 "php": "^7.1 || ^8.0"
             },
-            "replace": {
-                "myclabs/deep-copy": "self.version"
-            },
             "require-dev": {
                 "doctrine/collections": "^1.0",
                 "doctrine/common": "^2.6",
@@ -2206,16 +2203,16 @@
         },
         {
             "name": "wp-phpunit/wp-phpunit",
-            "version": "5.8.3",
+            "version": "5.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-phpunit/wp-phpunit.git",
-                "reference": "0cefcc49fd8a7e8c2f8d755e314532441618aee5"
+                "reference": "02d98f9d5f15442489b5d98c1f4c486901e3e110"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-phpunit/wp-phpunit/zipball/0cefcc49fd8a7e8c2f8d755e314532441618aee5",
-                "reference": "0cefcc49fd8a7e8c2f8d755e314532441618aee5",
+                "url": "https://api.github.com/repos/wp-phpunit/wp-phpunit/zipball/02d98f9d5f15442489b5d98c1f4c486901e3e110",
+                "reference": "02d98f9d5f15442489b5d98c1f4c486901e3e110",
                 "shasum": ""
             },
             "type": "library",
@@ -2250,19 +2247,19 @@
                 "issues": "https://github.com/wp-phpunit/issues",
                 "source": "https://github.com/wp-phpunit/wp-phpunit"
             },
-            "time": "2021-11-10T19:49:29+00:00"
+            "time": "2022-01-25T20:37:14+00:00"
         },
         {
             "name": "wpackagist-plugin/code-syntax-block",
-            "version": "2.2.0",
+            "version": "3.0.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/code-syntax-block/",
-                "reference": "tags/2.2.0"
+                "reference": "tags/3.0.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/code-syntax-block.2.2.0.zip"
+                "url": "https://downloads.wordpress.org/plugin/code-syntax-block.3.0.0.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -2290,15 +2287,15 @@
         },
         {
             "name": "wpackagist-plugin/jetpack",
-            "version": "10.5.1",
+            "version": "10.6",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/jetpack/",
-                "reference": "tags/10.5.1"
+                "reference": "tags/10.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/jetpack.10.5.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/jetpack.10.6.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -2348,12 +2345,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/WordPress/wporg-mu-plugins.git",
-                "reference": "12b5193b3bf3d45283d9f19e1a71f215a6a0325a"
+                "reference": "91ffd976062f657736202013a31ba7073011a4e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WordPress/wporg-mu-plugins/zipball/12b5193b3bf3d45283d9f19e1a71f215a6a0325a",
-                "reference": "12b5193b3bf3d45283d9f19e1a71f215a6a0325a",
+                "url": "https://api.github.com/repos/WordPress/wporg-mu-plugins/zipball/91ffd976062f657736202013a31ba7073011a4e9",
+                "reference": "91ffd976062f657736202013a31ba7073011a4e9",
                 "shasum": ""
             },
             "require": {
@@ -2380,7 +2377,7 @@
                 "source": "https://github.com/WordPress/wporg-mu-plugins/tree/trunk",
                 "issues": "https://github.com/WordPress/wporg-mu-plugins/issues"
             },
-            "time": "2022-01-24T21:43:06+00:00"
+            "time": "2022-02-01T20:47:21+00:00"
         },
         {
             "name": "wporg/wporg-repo-tools",
@@ -2426,5 +2423,5 @@
     "platform-overrides": {
         "php": "7.4"
     },
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.2.0"
 }
