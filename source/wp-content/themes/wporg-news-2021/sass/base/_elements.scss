@@ -29,12 +29,10 @@ a {
 	figcaption {
 		font-size: var(--wp--custom--gallery--caption--font-size);
 		text-align: right;
-		padding-left: var(--wp--style--block-gap);
-		padding-right: var(--wp--style--block-gap);
 	}
 
 	&.alignfull {
-		figcaption {
+		> figcaption {
 			padding-right: calc(var(--wp--custom--alignment--edge-spacing) + var(--wp--style--block-gap));
 		}
 	}
