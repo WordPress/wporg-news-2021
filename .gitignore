@@ -31,9 +31,5 @@ README-svn.txt
 !/source/wp-content/themes
 !/source/wp-content/themes/wporg-news-2021
 
-# And this plugin.
-!/source/wp-content/plugins
-!/source/wp-content/plugins/wporg-release-version
-
 # Ignore built files in source directories.
 /source/wp-content/themes/wporg-news-2021/style.css
