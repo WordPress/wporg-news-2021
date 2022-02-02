@@ -345,9 +345,9 @@ body {
 	}
 
 	&.category .wp-block-post {
-		margin-bottom: 20px;
+		padding-bottom: 20px;
 		@include break-mobile() {
-			margin-bottom: 60px;
+			margin-bottom: 40px;
 		}
 	}
 }
