@@ -401,7 +401,7 @@ function render_block_wporg_release_version( $attributes, $content, $block ) {
 	$version = '';
 	$title = get_the_title( $post_ID );
 	// Do we also want x.y.z?
-	if ( preg_match( '/WordPress (\d+[.]\d+)/', $title, $matches ) ) {
+	if ( preg_match( '/WordPress (\d{0,3}(\.\d{1,3})+)/', $title, $matches ) ) {
 		$version = $matches[1];
 	}
 	$wrapper_attributes = get_block_wrapper_attributes( array( 'class' => $align_class_name ) );
