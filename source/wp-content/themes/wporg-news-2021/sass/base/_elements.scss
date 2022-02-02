@@ -33,7 +33,7 @@ a {
 
 	&.alignfull {
 		> figcaption {
-			padding-right: calc(var(--wp--custom--alignment--edge-spacing) + var(--wp--style--block-gap));
+			padding-right: var(--wp--style--block-gap);
 		}
 	}
 }
