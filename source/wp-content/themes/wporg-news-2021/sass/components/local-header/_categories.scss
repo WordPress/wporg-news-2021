@@ -97,7 +97,7 @@
 		display: none;
 		flex-direction: column;
 		flex-wrap: wrap;
-		max-height: 200px;
+		max-height: none;
 
 		// Override the default margin applied to the block.
 		[class*="wp-container-"] & {
@@ -114,7 +114,8 @@
 		}
 
 		@include break-small {
-			//flex-direction: row;
+			flex-direction: column;
+			max-height: 200px;
 
 			li {
 				width: 100%;
