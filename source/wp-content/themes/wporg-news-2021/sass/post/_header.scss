@@ -21,6 +21,12 @@
 		}
 	}
 
+	.archive & {
+		.wp-block-post-title {
+			margin-bottom: 10px;
+		}
+	}
+
 	.single &,
 	.page & {
 		margin-top: 8px;
