@@ -70,12 +70,10 @@ textarea {
 	border: var(--wp--custom--form--border--width) var(--wp--custom--form--border--style) var(--wp--custom--form--border--color);
 	border-radius: var(--wp--custom--form--border--radius);
 	box-shadow: var(--wp--custom--form--color--box-shadow);
-	color: var(--wp--custom--form--color--text);
 	font-family: inherit;
 	padding: var(--wp--custom--form--padding);
 
 	&:focus {
-		color: var(--wp--custom--form--color--text);
 		border-color: var(--custom--form--color--border);
 	}
 }
