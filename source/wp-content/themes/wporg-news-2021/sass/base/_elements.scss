@@ -25,10 +25,19 @@ a {
 
 // Captions
 .wp-block-gallery.wp-block-gallery, // Double class for increased specificity.
+figure[class*="wp-block-"],
 [class*="wp-block-"] {
 	figcaption {
 		font-size: var(--wp--custom--gallery--caption--font-size);
 		text-align: right;
+		margin-top: 1em;
+		margin-bottom: 1em;
+	}
+
+	&.wp-block-gallery.has-nested-images {
+		> figcaption {
+			margin-top: 0;
+		}
 	}
 
 	&.alignfull {
