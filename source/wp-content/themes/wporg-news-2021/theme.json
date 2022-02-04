@@ -103,8 +103,7 @@
 			"alignment": {
 				"alignedMaxWidth": "50%",
 				"//edge-spacing": "The min and max values represent the mobile and desktop spacing; the calc() value is for tablets.",
-				"edge-spacing": "clamp( 24px, calc( 100vw / 18 ), 80px )",
-				"scroll-bar-width": "8px"
+				"edge-spacing": "clamp( 24px, calc( 100vw / 18 ), 80px )"
 			},
 			"button": {
 				"color": {
