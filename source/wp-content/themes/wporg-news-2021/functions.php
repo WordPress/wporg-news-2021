@@ -23,7 +23,8 @@ add_filter( 'render_block_data', __NAMESPACE__ . '\custom_query_block_attributes
 add_filter( 'template_redirect', __NAMESPACE__ . '\jetpack_likes_workaround' );
 add_filter( 'the_title', __NAMESPACE__ . '\update_the_title', 10, 2 );
 add_action( 'ssp_album_art_cover', __NAMESPACE__ . '\custom_default_album_art_cover', 10, 2 );
-add_filter( 'render_block', __NAMESPACE__ . '\customize_podcast_player_position', null, 2);
+add_filter( 'render_block', __NAMESPACE__ . '\customize_podcast_player_position', null, 2 );
+add_filter( 'wp_list_categories', __NAMESPACE__ . '\add_all_posts_to_categories', 10, 2 );
 
 /**
  * Register theme support.
@@ -433,4 +434,24 @@ function customize_podcast_player_position (
 	}
 
 	return $block_content;
+}
+
+/**
+ * Prepend a link to "All Posts" to the category list.
+ *
+ * @param string $html HTML output.
+ * @return string
+ */
+function add_all_posts_to_categories( $html, $args ) {
+	if ( '' !== $args['title_li'] ) {
+		return $html;
+	}
+
+	$all_posts = sprintf(
+		'<li class="cat-item cat-item-0 %1$s"><a href="%2$s">%3$s</a></li>',
+		( is_home() && is_paged() ) ? 'current-cat' : '',
+		site_url( '/page/2' ),
+		__( 'All Posts', 'wporg' )
+	);
+	return $all_posts . $html;
 }
