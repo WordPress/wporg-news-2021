@@ -1,6 +1,7 @@
 <?php
 
 namespace WordPressdotorg\Theme\News_2021;
+
 use WP_Query;
 
 defined( 'WPINC' ) || die();
@@ -72,7 +73,7 @@ function editor_styles() {
 	add_editor_style(
 		array(
 			fonts_url(),
-			get_stylesheet_uri()
+			get_stylesheet_uri(),
 		)
 	);
 }
@@ -82,7 +83,7 @@ function editor_styles() {
  */
 function enqueue_assets() {
 	// Enqueue Google fonts
-	wp_enqueue_style( 'wporg-news-fonts', fonts_url(), array(), null );
+	wp_enqueue_style( 'wporg-news-fonts', fonts_url(), array(), null ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 	wp_enqueue_style( 'wporg-news-style', get_stylesheet_uri(), array(), wp_get_theme()->get( 'Version' ) );
 }
 
@@ -103,7 +104,7 @@ function fonts_url() {
 
 	$font_families = [];
 	if ( ! empty( $theme_data['typography']['fontFamilies']['theme'] ) ) {
-		foreach( $theme_data['typography']['fontFamilies']['theme'] as $font ) {
+		foreach ( $theme_data['typography']['fontFamilies']['theme'] as $font ) {
 			if ( ! empty( $font['google'] ) ) {
 				$font_families[] = $font['google'];
 			}
@@ -111,7 +112,7 @@ function fonts_url() {
 	}
 
 	if ( ! empty( $theme_data['typography']['fontFamilies']['user'] ) ) {
-		foreach( $theme_data['typography']['fontFamilies']['user'] as $font ) {
+		foreach ( $theme_data['typography']['fontFamilies']['user'] as $font ) {
 			if ( ! empty( $font['google'] ) ) {
 				$font_families[] = $font['google'];
 			}
@@ -167,9 +168,9 @@ function modify_archive_title_prefix( $prefix ) {
  * @return string
  */
 function override_front_page_template( $template ) {
-	if( is_posts_index() ) {
+	if ( is_posts_index() ) {
 		$template = locate_block_template(
-			get_stylesheet_directory() . '/block-templates/index.html' ,
+			get_stylesheet_directory() . '/block-templates/index.html',
 			'index',
 			array()
 		);
@@ -305,11 +306,13 @@ function specify_post_classes( $classes, $extra_classes, $post_id ) {
 	return $classes;
 }
 
+/**
+ * Crudely simulate the $name parameter to get_template_part() for the wp:template-part block
+ * Example: <!-- wp:template-part {"slug":"foo-bar{-test}"} -->
+ * will attempt to use "foo-bar-test", and fall back to "foo-bar" if that template file does not exist
+ */
 function conditional_template_part( $path, $file ) {
-	// Crudely simulate the $name parameter to get_template_part() for the wp:template-part block
-	// Example: <!-- wp:template-part {"slug":"foo-bar{-test}"} -->
-	// will attempt to use "foo-bar-test", and fall back to "foo-bar" if that template file does not exist
-	if ( false !== strpos( $path, '{' ) && !file_exists( $path ) ) {
+	if ( false !== strpos( $path, '{' ) && ! file_exists( $path ) ) {
 		if ( preg_match( '/[{]([-\w]+)[}]/', $path, $matches ) ) {
 			$name = $matches[1];
 			// Try "foo-bar-test"
@@ -324,7 +327,6 @@ function conditional_template_part( $path, $file ) {
 				}
 			}
 		}
-
 	}
 
 	return $path;
@@ -335,27 +337,25 @@ function conditional_template_part( $path, $file ) {
  *
  * This could be removed if https://github.com/WordPress/gutenberg/issues/36785 is resolved.
  *
- * @param array         $parsed_block The block being rendered.
+ * @param array $parsed_block The block being rendered.
  *
  * @return array
  */
-
 function custom_query_block_attributes( $parsed_block ) {
 	if ( 'core/query' === $parsed_block['blockName'] ) {
 		// If the block has a `category` attribute, then find the corresponding cat ID and set the `categoryIds` attribute.
 		// TODO: support multiple?
-		if ( isset( $parsed_block[ 'attrs' ][ 'query' ][ 'category' ] ) ) {
-			$category = get_category_by_slug( $parsed_block[ 'attrs' ][ 'query' ][ 'category' ] );
+		if ( isset( $parsed_block['attrs']['query']['category'] ) ) {
+			$category = get_category_by_slug( $parsed_block['attrs']['query']['category'] );
 			if ( $category ) {
-				$parsed_block[ 'attrs' ][ 'query' ][ 'categoryIds' ] = [ $category->term_id ];
+				$parsed_block['attrs']['query']['categoryIds'] = [ $category->term_id ];
 			}
 		}
-		if ( isset( $parsed_block[ 'attrs' ][ 'query' ][ 'tag' ] ) ) {
-			$tag = get_term_by( 'slug', $parsed_block[ 'attrs' ][ 'query' ][ 'tag' ], 'post_tag' );
+		if ( isset( $parsed_block['attrs']['query']['tag'] ) ) {
+			$tag = get_term_by( 'slug', $parsed_block['attrs']['query']['tag'], 'post_tag' );
 			if ( $tag ) {
-				$parsed_block[ 'attrs' ][ 'query' ][ 'tagIds' ] = [ $tag->term_id ];
+				$parsed_block['attrs']['query']['tagIds'] = [ $tag->term_id ];
 			}
-
 		}
 	}
 
@@ -368,7 +368,6 @@ function custom_query_block_attributes( $parsed_block ) {
  * This is only needed until Jetpack Likes is updated to work properly with FSE themes,
  * or https://core.trac.wordpress.org/ticket/54529 is merged to Core.
  */
-
 function jetpack_likes_workaround() {
 	$jetpack_likes = class_exists( '\Jetpack_Likes' ) ? \Jetpack_Likes::init() : false;
 	if ( is_callable( [ $jetpack_likes, 'load_styles_register_scripts' ] ) ) {
@@ -397,10 +396,10 @@ function update_the_title( $title, $id ) {
  * Replaces the default artwork for the podcast player when none is defined
  *
  * @param string $album_art The url of the album image.
- * @return string 			The updated url of the album image.
+ * @return string           The updated url of the album image.
  */
 function custom_default_album_art_cover( $album_art ) {
-	if( str_contains($album_art, 'seriously-simple-podcasting') ) {
+	if ( str_contains( $album_art, 'seriously-simple-podcasting' ) ) {
 		$album_art = get_stylesheet_directory_uri() . '/images/podcast-player/default_artwork.jpg';
 	}
 
@@ -413,22 +412,22 @@ function custom_default_album_art_cover( $album_art ) {
  * 'podcast-player-audio' inserts the standard compact player
  *
  * @param string $block_content The block content about to be appended.
- * @param array $block 			The full block, including name and attributes.
+ * @param array  $block          The full block, including name and attributes.
  *
- * @return string 				The block content about to be appended.
+ * @return string               The block content about to be appended.
  */
-function customize_podcast_player_position (
+function customize_podcast_player_position(
 	$block_content,
 	$block
 ) {
 	if (
-		$block['blockName'] === 'core/group' &&
-		!is_admin() &&
-		!wp_is_json_request()
+		'core/group' === $block['blockName'] &&
+		! is_admin() &&
+		! wp_is_json_request()
 	) {
-		if( isset($block['attrs']['className']) ) {
-			if( $block['attrs']['className'] == 'podcast-player' ) {
-				$block_content = do_blocks( '<!-- wp:seriously-simple-podcasting/castos-html-player {"episodeId":"'.get_the_ID().'"} /-->' );
+		if ( isset( $block['attrs']['className'] ) ) {
+			if ( 'podcast-player' === $block['attrs']['className'] ) {
+				$block_content = do_blocks( '<!-- wp:seriously-simple-podcasting/castos-html-player {"episodeId":"' . get_the_ID() . '"} /-->' );
 			}
 		}
 	}
