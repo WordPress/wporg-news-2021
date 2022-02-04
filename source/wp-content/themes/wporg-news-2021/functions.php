@@ -265,6 +265,12 @@ function clarify_body_classes( $classes ) {
 		}
 	}
 
+	if ( in_array( 'page-template-all-posts', $classes ) ) {
+		// Strip out "page" class, to prevent single-page styles from applying.
+		$classes = array_diff( $classes, [ 'page' ] );
+		$classes[] = 'news-posts-index';
+	}
+
 	return $classes;
 }
 
