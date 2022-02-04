@@ -78,12 +78,20 @@ body.category-month-in-wordpress {
 		}
 	}
 
-	.wp-block-post-date {
+	.wp-block-wporg-month-in-wp-title {
 		font-size: var(--wp--preset--font-size--normal);
+		font-size: min(max(50px, 5vw), 120px);
+		line-height: 1;
 
 		a {
 			color: var(--wp--preset--color--off-white-2);
 			text-transform: uppercase;
+		}
+
+		a:hover,
+		a:focus {
+			color: var(--wp--preset--color--blue-3);
+			text-decoration-thickness: 1px;
 		}
 	}
 
@@ -119,17 +127,6 @@ body.category-month-in-wordpress {
 			@include break-small-only() {
 				width: 50%;
 			}
-		}
-	}
-
-	h2 time {
-		font-size: min(max(50px, 5vw), 120px);
-		line-height: 1;
-
-		a:hover,
-		a:focus {
-			color: var(--wp--preset--color--blue-3);
-			text-decoration-thickness: 1px;
 		}
 	}
 

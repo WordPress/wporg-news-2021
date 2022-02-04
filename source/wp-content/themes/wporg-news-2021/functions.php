@@ -6,6 +6,7 @@ use WP_Query;
 
 defined( 'WPINC' ) || die();
 
+require_once __DIR__ . '/blocks/month-in-wordpress/index.php';
 
 /**
  * Actions and filters.
