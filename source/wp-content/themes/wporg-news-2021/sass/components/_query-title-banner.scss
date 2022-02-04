@@ -38,8 +38,11 @@ body.archive .query-title-banner__query-title,
 body.news-posts-index .query-title-banner__all-posts,
 body.search .query-title-banner__search-results {
 	display: block;
-	margin-top: 0;
 	margin-bottom: 0;
+
+	@include break-mobile() {
+		margin-top: 0;
+	}
 }
 
 // Setup the basic two-column layout;
