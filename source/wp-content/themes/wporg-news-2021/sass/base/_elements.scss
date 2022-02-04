@@ -25,17 +25,24 @@ a {
 
 // Captions
 .wp-block-gallery.wp-block-gallery, // Double class for increased specificity.
+figure[class*="wp-block-"],
 [class*="wp-block-"] {
 	figcaption {
 		font-size: var(--wp--custom--gallery--caption--font-size);
 		text-align: right;
-		padding-left: var(--wp--style--block-gap);
-		padding-right: var(--wp--style--block-gap);
+		margin-top: 1em;
+		margin-bottom: 1em;
+	}
+
+	&.wp-block-gallery.has-nested-images {
+		> figcaption {
+			margin-top: 0;
+		}
 	}
 
 	&.alignfull {
-		figcaption {
-			padding-right: calc(var(--wp--custom--alignment--edge-spacing) + var(--wp--style--block-gap));
+		> figcaption {
+			padding-right: var(--wp--style--block-gap);
 		}
 	}
 }

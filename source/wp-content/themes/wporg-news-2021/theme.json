@@ -392,12 +392,6 @@
 						"fontSize": "var(--wp--preset--font-size--tiny)"
 					}
 				}
-			},
-			"video": {
-				"caption": {
-					"textAlign": "center",
-					"margin": "var(--wp--custom--margin--vertical) auto"
-				}
 			}
 		},
 		"layout": {
