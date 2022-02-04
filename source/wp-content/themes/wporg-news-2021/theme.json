@@ -203,9 +203,6 @@
 					"typography": {
 						"fontSize": "var(--wp--preset--font-size--tiny)"
 					}
-				},
-				"typography": {
-					"fontSize": "var(--wp--preset--font-size--normal)"
 				}
 			},
 			"gallery": {
