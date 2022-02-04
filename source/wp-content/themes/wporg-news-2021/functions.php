@@ -19,7 +19,6 @@ add_action( 'pre_get_posts', __NAMESPACE__ . '\offset_paginated_index_posts' );
 add_action( 'pre_get_posts', __NAMESPACE__ . '\override_category_query_args' );
 add_filter( 'body_class', __NAMESPACE__ . '\clarify_body_classes' );
 add_filter( 'post_class', __NAMESPACE__ . '\specify_post_classes', 10, 3 );
-add_filter( 'theme_file_path', __NAMESPACE__ . '\conditional_template_part', 10, 2 );
 add_filter( 'render_block_data', __NAMESPACE__ . '\custom_query_block_attributes' );
 add_filter( 'template_redirect', __NAMESPACE__ . '\jetpack_likes_workaround' );
 add_filter( 'the_title', __NAMESPACE__ . '\update_the_title', 10, 2 );
@@ -304,32 +303,6 @@ function specify_post_classes( $classes, $extra_classes, $post_id ) {
 	}
 
 	return $classes;
-}
-
-/**
- * Crudely simulate the $name parameter to get_template_part() for the wp:template-part block
- * Example: <!-- wp:template-part {"slug":"foo-bar{-test}"} -->
- * will attempt to use "foo-bar-test", and fall back to "foo-bar" if that template file does not exist
- */
-function conditional_template_part( $path, $file ) {
-	if ( false !== strpos( $path, '{' ) && ! file_exists( $path ) ) {
-		if ( preg_match( '/[{]([-\w]+)[}]/', $path, $matches ) ) {
-			$name = $matches[1];
-			// Try "foo-bar-test"
-			$new_path = str_replace( '{' . $name . '}', $name, $path );
-			if ( file_exists( $new_path ) ) {
-				$path = $new_path;
-			} else {
-				// If that doesn't exist, try "foo-bar"
-				$new_path = str_replace( '{' . $name . '}', '', $path );
-				if ( file_exists( $new_path ) ) {
-					$path = $new_path;
-				}
-			}
-		}
-	}
-
-	return $path;
 }
 
 /**
