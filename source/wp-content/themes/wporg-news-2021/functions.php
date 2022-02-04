@@ -428,8 +428,8 @@ function add_all_posts_to_categories( $html, $args ) {
 
 	$all_posts = sprintf(
 		'<li class="cat-item cat-item-0 %1$s"><a href="%2$s">%3$s</a></li>',
-		( is_home() && is_paged() ) ? 'current-cat' : '',
-		site_url( '/page/2' ),
+		is_page_template( 'all-posts' ) ? 'current-cat' : '',
+		site_url( '/all-posts/' ),
 		__( 'All Posts', 'wporg' )
 	);
 	return $all_posts . $html;
