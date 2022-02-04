@@ -42,9 +42,10 @@ function render_block_wporg_month_in_wp_title( $attributes, $content, $block ) {
 	}
 
 	return sprintf(
-		'<%1$s %2$s>%3$s</%1$s>',
+		'<%1$s %2$s aria-label="%3$s">%4$s</%1$s>',
 		$tag_name,
 		$wrapper_attributes,
+		$label,
 		$visual_label
 	);
 }
