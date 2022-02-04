@@ -346,6 +346,7 @@ body {
 
 	&.category .wp-block-post {
 		padding-bottom: 20px;
+
 		@include break-mobile() {
 			margin-bottom: 40px;
 		}
