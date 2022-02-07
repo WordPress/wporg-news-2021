@@ -9,8 +9,10 @@
 	position: relative;
 
 	body:where(.archive, .blog.paged) & {
-		padding: 40px 0;
+		padding-top: 40px;
+		padding-bottom: 60px;
 		gap: 0;
+		margin-bottom: 30px;
 
 		@include break-small-only() {
 			display: flex;
