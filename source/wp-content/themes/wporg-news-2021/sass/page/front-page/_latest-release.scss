@@ -76,6 +76,14 @@ body.news-front-page .front__latest-release {
 				var(--wp--custom--alignment--edge-spacing)
 				var(--wp--custom--alignment--edge-spacing);
 
+			&:hover {
+				background-color: rgba(0, 0, 0, 0.1);
+
+				&::after {
+					transform: scale(0.9) translateX(10px);
+				}
+			}
+
 			a {
 				display: flex;
 				flex-direction: row;
@@ -98,14 +106,6 @@ body.news-front-page .front__latest-release {
 					background-repeat: no-repeat;
 					pointer-events: none;
 					transition: all 0.15s linear;
-				}
-
-				&:hover {
-					background-color: rgba(0, 0, 0, 0.1);
-
-					&::after {
-						transform: scale(0.9) translateX(10px);
-					}
 				}
 			}
 		}
