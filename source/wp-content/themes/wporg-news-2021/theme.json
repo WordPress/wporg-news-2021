@@ -2,13 +2,6 @@
 	"//README": "Comments should be added to document important things. Use the `//{property}` format. See https://github.com/WordPress/gutenberg/issues/35099.",
 	"$schema": "https://json.schemastore.org/theme-v1.json",
 	"version": 1,
-	"customTemplates": [
-		{
-			"name": "all-posts",
-			"title": "All Posts",
-			"postTypes": [ "page" ]
-		}
-	],
 	"settings": {
 		"border": {
 			"customColor": true,
