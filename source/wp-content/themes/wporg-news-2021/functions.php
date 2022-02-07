@@ -14,8 +14,6 @@ add_action( 'after_setup_theme', __NAMESPACE__ . '\theme_support', 9 );
 add_action( 'admin_init', __NAMESPACE__ . '\editor_styles' );
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_assets' );
 add_filter( 'get_the_archive_title_prefix', __NAMESPACE__ . '\modify_archive_title_prefix' );
-add_filter( 'template_include', __NAMESPACE__ . '\override_front_page_template' );
-add_action( 'pre_get_posts', __NAMESPACE__ . '\offset_paginated_index_posts' );
 add_action( 'pre_get_posts', __NAMESPACE__ . '\override_category_query_args' );
 add_filter( 'body_class', __NAMESPACE__ . '\clarify_body_classes' );
 add_filter( 'post_class', __NAMESPACE__ . '\specify_post_classes', 10, 3 );
@@ -143,86 +141,6 @@ function modify_archive_title_prefix( $prefix ) {
 }
 
 /**
- * Load the `index.html` template for `w.org/news/page/{n}` requests, rather than `front-page.html`.
- *
- * The design calls for a mix of `front-page.html` and `home.html`/`index.html` functionality. "home" is Core's
- * legacy terminology for the posts index from the pre-CMS days. The design calls it the "all posts" screen.
- *
- * Setting it up in separate files requires this hack, but feels more straight-forward overall. This lets us have
- * static content and the latest posts on the front page, while also preserving clean URLs. Using
- * `show_on_front = page` would change the URLs to `w.org/news/posts/page/2` rather than `w.org/news/page/2`.
- *
- * Another reason is that this keeps the markup for the front page separate from the posts index, because they're
- * not similar. Showing/hiding different content with CSS or dynamic template logic would result in a lot of cruft.
- * Gutenberg doesn't currently support dynamic templates either.
- *
- * This approach avoid avoids creating empty "dummy pages" in the database for the front page and posts index.
- *
- * @link https://core.trac.wordpress.org/ticket/16379
- * @link https://core.trac.wordpress.org/ticket/21237
- * @link https://wordpress.stackexchange.com/questions/110349/template-hierarchy-confused-with-index-php-front-page-php-home-php
- * @link https://github.com/WordPress/gutenberg/issues/32939
- *
- * @param string $template
- *
- * @return string
- */
-function override_front_page_template( $template ) {
-	if ( is_posts_index() ) {
-		$template = locate_block_template(
-			get_stylesheet_directory() . '/block-templates/index.html',
-			'index',
-			array()
-		);
-	}
-
-	return $template;
-}
-
-/**
- * Test if the current page is the front page, or the posts index screen.
- *
- * @see override_front_page_template for background.
- *
- * @param null|WP_Query $wp_query
- *
- * @return bool
- */
-function is_posts_index( $wp_query = null ) {
-	if ( ! $wp_query ) {
-		global $wp_query;
-	}
-
-	return $wp_query->is_home() && $wp_query->is_main_query() && $wp_query->is_paged();
-}
-
-/**
- * Offset `/page/{n}/` posts by 5 to sync with front page.
- *
- * The front page displays the latest 5 posts, and then links to `/page/2` for the rest. The default
- * `posts_per_page` option is 10, though. If this weren't here, then posts 6-10 would be skipped.
- *
- * @param WP_Query $query
- *
- * @see override_front_page_template()
- */
-function offset_paginated_index_posts( $query ) {
-	$is_posts_index = is_posts_index( $query );
-
-	if ( ! $is_posts_index ) {
-		return;
-	}
-
-	// This must match the `perPage` value in `block-template-parts/front-page/latest-posts.html`.
-	$posts_on_front_page = 5;
-	$posts_per_page      = get_option( 'posts_per_page' );
-	$current_page        = $query->get( 'paged' );
-	$default_offset      = ( $current_page - 2 ) * $posts_per_page;
-
-	$query->set( 'offset', $default_offset + $posts_on_front_page );
-}
-
-/**
  * Adjust WP_Query arguments separately for certain categories.
  *
  * We have certain category templates designed for different numbers of posts per page. Unfortunately it's not possible to set this in the block temlates.
@@ -256,16 +174,13 @@ function override_category_query_args( $query ) {
  * @return array
  */
 function clarify_body_classes( $classes ) {
-	if ( is_home() ) {
-		// The "news-" prefix helps distinguish from Core classes and prevent future conflicts.
-		if ( is_paged() ) {
-			$classes[] = 'news-posts-index';
-		} else {
-			$classes[] = 'news-front-page';
-		}
+	if ( is_front_page() ) {
+		// Strip out "page" class, to prevent single-page styles from applying.
+		$classes = array_diff( $classes, [ 'page' ] );
+		$classes[] = 'news-front-page';
 	}
 
-	if ( in_array( 'page-template-all-posts', $classes ) ) {
+	if ( is_home() ) {
 		// Strip out "page" class, to prevent single-page styles from applying.
 		$classes = array_diff( $classes, [ 'page' ] );
 		$classes[] = 'news-posts-index';
@@ -428,7 +343,7 @@ function add_all_posts_to_categories( $html, $args ) {
 
 	$all_posts = sprintf(
 		'<li class="cat-item cat-item-0 %1$s"><a href="%2$s">%3$s</a></li>',
-		is_page_template( 'all-posts' ) ? 'current-cat' : '',
+		is_home() ? 'current-cat' : '',
 		site_url( '/all-posts/' ),
 		__( 'All Posts', 'wporg' )
 	);

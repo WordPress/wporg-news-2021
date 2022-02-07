@@ -7,30 +7,9 @@
 	line-height: normal;
 	color: var(--wp--preset--color--blue-1);
 	position: relative;
-
-	body:where(.archive, .news-posts-index) & {
-		padding-top: 40px;
-		padding-bottom: 60px;
-		gap: 0;
-		margin-bottom: 30px;
-
-		@include break-small-only() {
-			display: flex;
-			justify-content: center;
-
-			&::after {
-				mask-position: center;
-			}
-		}
-
-		&::after {
-			z-index: -1;
-		}
-	}
-
-	.wp-block-query-pagination-next {
-		z-index: 2;
-	}
+	padding-top: 40px;
+	padding-bottom: 60px;
+	gap: 0 !important;
 
 	&::after {
 		content: "";
@@ -44,11 +23,20 @@
 		mask-position: bottom left;
 		mask-repeat: no-repeat;
 		mask-size: contain;
-		z-index: 1;
+		z-index: -1;
 
 		@include break-wide() {
 			bottom: 0;
 			left: -50px;
+		}
+	}
+
+	@include break-small-only() {
+		display: flex;
+		justify-content: center;
+
+		&::after {
+			mask-position: center;
 		}
 	}
 

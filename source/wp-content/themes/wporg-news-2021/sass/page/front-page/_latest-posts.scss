@@ -30,6 +30,7 @@ body.news-front-page .front__latest-posts {
 	.wp-block-post-template {
 
 		@include break-medium() {
+			margin-top: 0;
 			padding: var(--wp--custom--alignment--edge-spacing);
 			flex-grow: 1;
 			max-width: 75vw;
