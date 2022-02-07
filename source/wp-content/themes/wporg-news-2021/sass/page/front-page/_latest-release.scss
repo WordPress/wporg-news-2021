@@ -33,6 +33,7 @@ body.news-front-page .front__latest-release {
 	.front__latest-release-heading {
 		font-size: clamp(20px, calc(100vw / 24), 45px);
 		line-height: 1;
+		padding: var(--wp--custom--alignment--edge-spacing) 0;
 		width: calc(var(--wp--custom--layout--content-meta-size) - 32px);
 
 		@include break-medium() {
@@ -132,12 +133,14 @@ body.news-front-page .front__latest-release {
 	.front__next-page {
 		position: relative;
 		font-size: var(--wp--preset--font-size--small);
+		padding: var(--wp--custom--alignment--edge-spacing) 0;
 
 		@include break-medium() {
 			line-height: 1;
 			position: absolute;
 			bottom: var(--wp--custom--alignment--edge-spacing);
 			left: var(--wp--custom--alignment--edge-spacing);
+			padding: 0;
 		}
 
 		&::before {

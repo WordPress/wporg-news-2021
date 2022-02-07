@@ -23,7 +23,7 @@
 
 	> .wp-block-group {
 		text-align: left;
-		padding: var(--wp--custom--alignment--edge-spacing);
+		padding: calc(var(--wp--custom--alignment--edge-spacing) * 2) var(--wp--custom--alignment--edge-spacing);
 		border-top: 1px solid var(--wp--preset--color--light-grey);
 		width: 100%;
 
