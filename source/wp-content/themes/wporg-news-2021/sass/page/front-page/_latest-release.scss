@@ -70,6 +70,11 @@ body.news-front-page .front__latest-release {
 		@include break-medium() {
 			flex-grow: 1;
 			font-size: 90px;
+			padding:
+				calc(var(--wp--custom--alignment--edge-spacing) / 2)
+				var(--wp--custom--alignment--edge-spacing)
+				var(--wp--custom--alignment--edge-spacing)
+				var(--wp--custom--alignment--edge-spacing);
 
 			a {
 				display: flex;
@@ -77,11 +82,7 @@ body.news-front-page .front__latest-release {
 				align-items: center;
 				z-index: 1;
 				height: 100%;
-				padding:
-					calc(var(--wp--custom--alignment--edge-spacing) / 2)
-					var(--wp--custom--alignment--edge-spacing)
-					var(--wp--custom--alignment--edge-spacing)
-					var(--wp--custom--alignment--edge-spacing);
+				padding: 30px 0;
 				transition: background-color 0.15s linear;
 
 				&::after {
