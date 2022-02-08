@@ -198,7 +198,8 @@ function clarify_body_classes( $classes ) {
  * @return array
  */
 function specify_post_classes( $classes, $extra_classes, $post_id ) {
-	$classes[] = 'post-year-' . get_the_date( 'Y' );
+	$date = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-00 00:00:00' ) );
+	$classes[] = 'post-year-' . $date->format( 'Y' );
 
 	global $wp_query;
 
@@ -215,10 +216,15 @@ function specify_post_classes( $classes, $extra_classes, $post_id ) {
 
 		if ( ! is_null( $current_post ) ) {
 			if ( 0 !== $current_post && $current_post < $count_posts - 1 ) {
-				if ( get_the_date( 'Y' ) !== get_the_date( 'Y', $wp_query->posts[ $current_post - 1 ] ) ) {
+				$this_year = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-00 00:00:00' ) );
+				$next_year = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-00 00:00:00', $wp_query->posts[ $current_post + 1 ] ) );
+				$prev_year = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-00 00:00:00', $wp_query->posts[ $current_post - 1 ] ) );
+
+				if ( $this_year->format( 'Y' ) !== $prev_year->format( 'Y' ) ) {
 					$classes[] = 'first-in-year';
 				}
-				if ( get_the_date( 'Y' ) !== get_the_date( 'Y', $wp_query->posts[ $current_post + 1 ] ) ) {
+
+				if ( $this_year->format( 'Y' ) !== $next_year->format( 'Y' ) ) {
 					$classes[] = 'last-in-year';
 				}
 			}
