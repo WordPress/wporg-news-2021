@@ -56,42 +56,17 @@ body.category-month-in-wordpress {
 		border-top: 1px solid var(--wp--preset--color--darker-grey);
 	}
 
-	.site-content-container {
-		color: var(--wp--preset--color--white);
-
-		a {
-			color: var(--wp--preset--color--white);
-		}
-	}
-
 	.wp-block-post-template {
 		margin-top: calc(var(--wp--custom--margin--vertical) * 2);
 		margin-bottom: calc(var(--wp--custom--margin--vertical) * 2);
 	}
 
-	.wp-block-post {
+	.wp-block-post.wp-block-post {
+		margin-bottom: 0;
 		text-align: center;
-		margin-bottom: calc(var(--wp--custom--margin--vertical) * 1.333);
 
 		@include break-small-only() {
-			width: 50%;
-		}
-	}
-
-	.wp-block-wporg-month-in-wp-title {
-		font-size: var(--wp--preset--font-size--normal);
-		font-size: min(max(50px, 5vw), 120px);
-		line-height: 1;
-
-		a {
-			color: var(--wp--preset--color--off-white-2);
-			text-transform: uppercase;
-		}
-
-		a:hover,
-		a:focus {
-			color: var(--wp--preset--color--blue-3);
-			text-decoration-thickness: 1px;
+			width: calc(50% - 0.625em);
 		}
 	}
 
@@ -110,8 +85,7 @@ body.category-month-in-wordpress {
 			mask-position: center;
 			mask-repeat: no-repeat;
 			mask-size: 100% auto;
-			background-color: var(--wp--preset--color--blue-1);
-			transform: translateY(-25%);
+			background-color: var(--wp--preset--color--blue-3);
 
 			@include break-small() {
 				mask-size: 280px auto;
@@ -122,10 +96,9 @@ body.category-month-in-wordpress {
 
 			/* We are making the article look like it's a child of the grid container */
 			width: calc(33.33333% - 0.83333em);
-			margin-bottom: calc(var(--wp--custom--margin--vertical) * 2.5);
 
 			@include break-small-only() {
-				width: 50%;
+				width: calc(50% - 0.625em);
 			}
 		}
 	}
