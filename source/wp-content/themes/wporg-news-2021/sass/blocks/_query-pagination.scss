@@ -62,6 +62,7 @@
 	.wp-block-query-pagination-previous {
 		&::after {
 			content: "\00B7";
+			display: inline-block;
 			padding: 0 8px;
 		}
 	}
@@ -69,6 +70,7 @@
 	.wp-block-query-pagination-next {
 		&::before {
 			content: "\00B7";
+			display: inline-block;
 			padding: 0 8px;
 		}
 	}
