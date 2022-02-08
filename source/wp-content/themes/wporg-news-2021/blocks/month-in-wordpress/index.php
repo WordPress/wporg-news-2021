@@ -25,28 +25,33 @@ function render_block_wporg_month_in_wp_title( $attributes, $content, $block ) {
 		$tag_name = 0 === $attributes['level'] ? 'p' : 'h' . $attributes['level'];
 	}
 
-	$label = get_the_date( 'F Y', $post_id );
-	$visual_label = get_the_date( 'M', $post_id );
+	$date = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-00 00:00:00', $post_id ) );
+
+	$short_month = $date->format( 'M' );
+	$long_month = $date->format( 'F' );
+	$year = $date->format( 'Y' );
 
 	$wrapper_attributes = get_block_wrapper_attributes();
 
 	if ( isset( $attributes['isLink'] ) && $attributes['isLink'] ) {
 		return sprintf(
-			'<%1$s %2$s><a href="%3$s" aria-label="%4$s">%5$s</a></%1$s>',
+			'<%1$s %2$s><a href="%3$s"><span aria-label="%4$s">%5$s</span> %6$s</a></%1$s>',
 			$tag_name,
 			$wrapper_attributes,
 			get_permalink( $post_id ),
-			$label,
-			$visual_label
+			$long_month,
+			$short_month,
+			$year
 		);
 	}
 
 	return sprintf(
-		'<%1$s %2$s aria-label="%3$s">%4$s</%1$s>',
+		'<%1$s %2$s><span aria-label="%3$s">%4$s</span> %5$s</%1$s>',
 		$tag_name,
 		$wrapper_attributes,
-		$label,
-		$visual_label
+		$long_month,
+		$short_month,
+		$year
 	);
 }
 
