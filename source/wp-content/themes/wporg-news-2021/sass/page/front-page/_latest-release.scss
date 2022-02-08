@@ -77,7 +77,8 @@ body.news-front-page .front__latest-release {
 				var(--wp--custom--alignment--edge-spacing)
 				var(--wp--custom--alignment--edge-spacing);
 
-			&:hover {
+			&:hover,
+			&:focus-within {
 				background-color: rgba(0, 0, 0, 0.1);
 
 				&::after {
