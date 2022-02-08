@@ -3,6 +3,7 @@
 namespace WordPressdotorg\Theme\News_2021\Blocks\Month_In_WordPress;
 
 add_action( 'init', __NAMESPACE__ . '\register_block' );
+add_action( 'enqueue_block_assets', __NAMESPACE__ . '\register_block_type_js' );
 
 /**
  * Renders the `wporg/month-in-wp-title` block on the server.
@@ -60,11 +61,34 @@ function render_block_wporg_month_in_wp_title( $attributes, $content, $block ) {
  */
 function register_block() {
 	register_block_type(
-		'wporg/month-in-wp-title',
+		__DIR__,
 		array(
-			'title'           => 'Month in WordPress Title',
 			'render_callback' => __NAMESPACE__ . '\render_block_wporg_month_in_wp_title',
-			'uses_context'    => [ 'postId', 'postType' ],
 		)
 	);
+}
+
+/**
+ * Register block type in JS, for the editor.
+ */
+function register_block_type_js() {
+	$block = wp_json_file_decode( __DIR__ . '/block.json' );
+	ob_start();
+	?>
+	( function( wp ) {
+		wp.blocks.registerBlockType(
+			'<?php echo esc_html( $block->name ); ?>',
+			{
+				title: '<?php echo esc_html( $block->title ); ?>',
+				edit: function( props ) {
+					return wp.element.createElement( wp.serverSideRender, {
+						block: '<?php echo esc_html( $block->name ); ?>',
+						attributes: props.attributes
+					} );
+				},
+			}
+		);
+	}( window.wp ));
+	<?php
+	wp_add_inline_script( 'wp-editor', ob_get_clean(), 'after' );
 }

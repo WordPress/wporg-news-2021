@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "wporg/month-in-wp-title",
+	"title": "Month In WordPress Title",
+	"category": "widgets",
+	"icon": "calendar-alt",
+	"description": "Show the month & year for a \"Month in WordPress\" recap post.",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"isLink": {
+			"type": "boolean",
+			"default": false
+		},
+		"level": {
+			"type": "number",
+			"default": 2
+		}
+	},
+	"usesContext": [ "postId" ],
+	"textdomain": "wporg"
+}
