@@ -25,6 +25,7 @@ add_filter( 'the_title', __NAMESPACE__ . '\update_the_title', 10, 2 );
 add_action( 'ssp_album_art_cover', __NAMESPACE__ . '\custom_default_album_art_cover', 10, 2 );
 add_filter( 'render_block', __NAMESPACE__ . '\customize_podcast_player_position', null, 2 );
 add_filter( 'wp_list_categories', __NAMESPACE__ . '\add_all_posts_to_categories', 10, 2 );
+add_action( 'parse_query', __NAMESPACE__ . '\compat_workaround_core_55100' );
 
 /**
  * Register theme support.
@@ -426,4 +427,21 @@ function add_all_posts_to_categories( $html, $args ) {
 		__( 'All Posts', 'wporg' )
 	);
 	return $all_posts . $html;
+}
+
+/**
+ * Ensure that WP_Query::get_queried_object() works for /author/xxx requests.
+ * 
+ * @see https://core.trac.wordpress.org/ticket/55100
+ * 
+ * @param \WP_Query $query The WP_Query instance.
+ */
+function compat_workaround_core_55100( $query ) {
+	$author_name = $query->get( 'author_name' );
+	if ( $author_name ) {
+		$author = get_user_by( 'slug', $author_name );
+		if ( $author ) {
+			$query->set( 'author', $author->ID );
+		}
+	}
 }
