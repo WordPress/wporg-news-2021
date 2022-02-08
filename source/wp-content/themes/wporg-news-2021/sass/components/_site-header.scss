@@ -1,13 +1,23 @@
-// The container for the site-specific (/news/) menu bar.
-.site-header-container {
+html {
 
 	@include break-small {
-		position: sticky;
-		top: 0;
-		z-index: 10;
+		scroll-padding-top: calc(var(--wp-global-header-offset, 0px) + 58px);
+		margin-top: calc(var(--wp-global-header-offset, 0px) + 58px);
+	}
+}
+
+// The container for the site-specific (/news/) menu bar.
+.site-header-container {
+	.wp-block-group.global-header {
+		// Unstick the header, since we're sticking the whole container.
+		position: revert;
 	}
 
-	body.admin-bar & {
-		padding-top: var(--wp-admin--admin-bar--height, 0);
+	@include break-small {
+		position: fixed;
+		top: var(--wp-admin--admin-bar--height, 0);
+		left: 0;
+		right: 0;
+		z-index: 10;
 	}
 }
