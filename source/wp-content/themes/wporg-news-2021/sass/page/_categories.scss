@@ -84,7 +84,7 @@ body.category-month-in-wordpress {
 			mask-image: url(images/brush-stroke-big.svg);
 			mask-position: center;
 			mask-repeat: no-repeat;
-			mask-size: 100% auto;
+			mask-size: 80% auto;
 			background-color: var(--wp--preset--color--blue-3);
 
 			@include break-small() {
