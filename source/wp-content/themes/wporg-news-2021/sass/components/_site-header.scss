@@ -1,4 +1,4 @@
-html {
+html[lang] {
 
 	@include break-small {
 		scroll-padding-top: calc(var(--wp-global-header-offset, 0px) + 58px);
