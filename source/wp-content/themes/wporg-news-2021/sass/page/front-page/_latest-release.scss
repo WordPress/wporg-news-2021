@@ -81,7 +81,7 @@ body.news-front-page .front__latest-release {
 			&:focus-within {
 				background-color: rgba(0, 0, 0, 0.1);
 
-				&::after {
+				a::after {
 					transform: scale(0.9) translateX(10px);
 				}
 			}
