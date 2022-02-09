@@ -14,7 +14,7 @@ add_action( 'enqueue_block_assets', __NAMESPACE__ . '\register_block_type_js' );
  *
  * @return string Returns the release version for the current post wrapped inside "h1" tags.
  */
-function render_block_wporg_month_in_wp_title( $attributes, $content, $block ) {
+function render_block( $attributes, $content, $block ) {
 	if ( ! isset( $block->context['postId'] ) ) {
 		return '';
 	}
@@ -63,7 +63,7 @@ function register_block() {
 	register_block_type(
 		__DIR__,
 		array(
-			'render_callback' => __NAMESPACE__ . '\render_block_wporg_month_in_wp_title',
+			'render_callback' => __NAMESPACE__ . '\render_block',
 		)
 	);
 }
