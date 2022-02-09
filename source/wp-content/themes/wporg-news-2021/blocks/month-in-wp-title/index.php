@@ -26,6 +26,9 @@ function render_block( $attributes, $content, $block ) {
 		$tag_name = 0 === $attributes['level'] ? 'p' : 'h' . $attributes['level'];
 	}
 
+	// Getting the "0th" of the month actually gets the last day of the previous month, so for a post published on
+	// June 5th 2021, this will return a date object for midnight on May 31st 2021. This ensures we get the correct
+	// previous year for the December recap.
 	$date = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-00 00:00:00', $post_id ) );
 
 	$short_month = $date->format( 'M' );

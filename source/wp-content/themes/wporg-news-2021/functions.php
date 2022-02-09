@@ -198,6 +198,7 @@ function clarify_body_classes( $classes ) {
  * @return array
  */
 function specify_post_classes( $classes, $extra_classes, $post_id ) {
+	// The "0th" of the month returns the last day of the previous month.
 	$date = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-00 00:00:00' ) );
 	$classes[] = 'post-year-' . $date->format( 'Y' );
 
