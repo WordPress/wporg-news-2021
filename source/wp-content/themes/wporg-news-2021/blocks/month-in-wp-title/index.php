@@ -80,12 +80,12 @@ function register_block_type_js() {
 	?>
 	( function( wp ) {
 		wp.blocks.registerBlockType(
-			'<?php echo esc_html( $block->name ); ?>',
+			'<?php echo esc_js( $block->name ); ?>',
 			{
-				title: '<?php echo esc_html( $block->title ); ?>',
+				title: '<?php echo esc_js( $block->title ); ?>',
 				edit: function( props ) {
 					return wp.element.createElement( wp.serverSideRender, {
-						block: '<?php echo esc_html( $block->name ); ?>',
+						block: '<?php echo esc_js( $block->name ); ?>',
 						attributes: props.attributes
 					} );
 				},
