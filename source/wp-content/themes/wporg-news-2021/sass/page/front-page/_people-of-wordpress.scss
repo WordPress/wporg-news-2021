@@ -2,9 +2,13 @@ body.news-front-page .front__people-of-wordpress {
 	background-color: var(--wp--preset--color--off-white);
 	position: relative;
 
-	h2 {
+	.front__people-of-wordpress-heading {
 		font-size: clamp(20px, calc(100vw / 24), 45px);
-		padding: var(--wp--custom--alignment--edge-spacing);
+		padding: calc(var(--wp--custom--alignment--edge-spacing) * 2 ) var(--wp--custom--alignment--edge-spacing);
+
+		@include break-medium() {
+			padding: var(--wp--custom--alignment--edge-spacing);
+		}
 	}
 
 	.wp-block-post-template {
@@ -89,7 +93,10 @@ body.news-front-page .front__people-of-wordpress {
 
 	.front__next-page {
 		font-size: var(--wp--preset--font-size--small);
-		padding: var(--wp--custom--alignment--edge-spacing);
+		padding:
+			var(--wp--custom--alignment--edge-spacing)
+			var(--wp--custom--alignment--edge-spacing)
+			calc(var(--wp--custom--alignment--edge-spacing) + var(--wp--style--block-gap));
 		width: 192px;
 
 		@include break-medium() {

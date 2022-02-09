@@ -33,6 +33,7 @@ body.news-front-page .front__latest-release {
 	.front__latest-release-heading {
 		font-size: clamp(20px, calc(100vw / 24), 45px);
 		line-height: 1;
+		padding: var(--wp--custom--alignment--edge-spacing) 0;
 		width: calc(var(--wp--custom--layout--content-meta-size) - 32px);
 
 		@include break-medium() {
@@ -70,6 +71,20 @@ body.news-front-page .front__latest-release {
 		@include break-medium() {
 			flex-grow: 1;
 			font-size: 90px;
+			padding:
+				calc(var(--wp--custom--alignment--edge-spacing) / 2)
+				var(--wp--custom--alignment--edge-spacing)
+				var(--wp--custom--alignment--edge-spacing)
+				var(--wp--custom--alignment--edge-spacing);
+
+			&:hover,
+			&:focus-within {
+				background-color: rgba(0, 0, 0, 0.1);
+
+				a::after {
+					transform: scale(0.9) translateX(10px);
+				}
+			}
 
 			a {
 				display: flex;
@@ -77,11 +92,7 @@ body.news-front-page .front__latest-release {
 				align-items: center;
 				z-index: 1;
 				height: 100%;
-				padding:
-					calc(var(--wp--custom--alignment--edge-spacing) / 2)
-					var(--wp--custom--alignment--edge-spacing)
-					var(--wp--custom--alignment--edge-spacing)
-					var(--wp--custom--alignment--edge-spacing);
+				padding: 30px 0;
 				transition: background-color 0.15s linear;
 
 				&::after {
@@ -97,14 +108,6 @@ body.news-front-page .front__latest-release {
 					background-repeat: no-repeat;
 					pointer-events: none;
 					transition: all 0.15s linear;
-				}
-
-				&:hover {
-					background-color: rgba(0, 0, 0, 0.1);
-
-					&::after {
-						transform: scale(0.9) translateX(10px);
-					}
 				}
 			}
 		}
@@ -131,12 +134,14 @@ body.news-front-page .front__latest-release {
 	.front__next-page {
 		position: relative;
 		font-size: var(--wp--preset--font-size--small);
+		padding: var(--wp--custom--alignment--edge-spacing) 0;
 
 		@include break-medium() {
 			line-height: 1;
 			position: absolute;
 			bottom: var(--wp--custom--alignment--edge-spacing);
 			left: var(--wp--custom--alignment--edge-spacing);
+			padding: 0;
 		}
 
 		&::before {
