@@ -7,6 +7,7 @@ use WP_Query;
 defined( 'WPINC' ) || die();
 
 require_once __DIR__ . '/blocks/month-in-wp-title/index.php';
+require_once __DIR__ . '/blocks/release-version/index.php';
 
 /**
  * Actions and filters.
@@ -25,7 +26,6 @@ add_action( 'ssp_album_art_cover', __NAMESPACE__ . '\custom_default_album_art_co
 add_filter( 'render_block', __NAMESPACE__ . '\customize_podcast_player_position', null, 2 );
 add_filter( 'wp_list_categories', __NAMESPACE__ . '\add_all_posts_to_categories', 10, 2 );
 add_action( 'parse_query', __NAMESPACE__ . '\compat_workaround_core_55100' );
-add_action( 'init', __NAMESPACE__ . '\register_block_wporg_release_version' );
 
 /**
  * Register theme support.
@@ -374,58 +374,4 @@ function compat_workaround_core_55100( $query ) {
 			$query->set( 'author', $author->ID );
 		}
 	}
-}
-
-/**
- * Renders the `wporg/release-version` block on the server.
- *
- * @param array    $attributes Block attributes.
- * @param string   $content    Block default content.
- * @param WP_Block $block      Block instance.
- *
- * @return string Returns the release version for the current post wrapped inside "h1" tags.
- */
-function render_block_wporg_release_version( $attributes, $content, $block ) {
-	if ( ! isset( $block->context['postId'] ) ) {
-		return '';
-	}
-
-	$post_ID          = $block->context['postId'];
-	$tag_name         = 'h2';
-	$align_class_name = empty( $attributes['textAlign'] ) ? '' : "has-text-align-{$attributes['textAlign']}";
-
-	if ( isset( $attributes['level'] ) ) {
-		$tag_name = 0 === $attributes['level'] ? 'p' : 'h' . $attributes['level'];
-	}
-
-	$version = '';
-	$title = get_the_title( $post_ID );
-	// Do we also want x.y.z?
-	if ( preg_match( '/WordPress (\d{0,3}(?:\.\d{1,3})+)\s*(?|Release Candidate\s*(\d+)|RC\s*(\d+))?/', $title, $matches ) ) {
-		$version = $matches[1];
-		if ( !empty( $matches[2] ) ) {
-			$version = 'RC' . $matches[2];
-		}
-	}
-	$wrapper_attributes = get_block_wrapper_attributes( array( 'class' => $align_class_name ) );
-	return sprintf(
-		'<%1$s %2$s>%3$s</%1$s>',
-		$tag_name,
-		$wrapper_attributes,
-		$version
-	);
-}
-
-/**
- * Registers the `wporg/release-version` block on the server.
- */
-function register_block_wporg_release_version() {
-	register_block_type(
-		'wporg/release-version',
-		array(
-			'title'           => 'WordPress.org Release Version',
-			'render_callback' => __NAMESPACE__ . '\render_block_wporg_release_version',
-			'uses_context'    => [ 'postId', 'postType', 'queryId' ],
-		)
-	);
 }

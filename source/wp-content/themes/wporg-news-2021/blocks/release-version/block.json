@@ -1,0 +1,23 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "wporg/release-version",
+	"title": "WordPress.org Release Version Title",
+	"category": "widgets",
+	"icon": "code-standards",
+	"description": "Show the version number for a \"Releases\" announcement post.",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"level": {
+			"type": "number",
+			"default": 2
+		},
+		"textAlign": {
+			"type": "string"
+		}
+	},
+	"usesContext": [ "postId", "postType", "queryId" ],
+	"textdomain": "wporg"
+}
