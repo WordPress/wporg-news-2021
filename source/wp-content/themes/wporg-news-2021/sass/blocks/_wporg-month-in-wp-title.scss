@@ -1,0 +1,39 @@
+.wp-block-wporg-month-in-wp-title {
+	font-family: var(--wp--preset--font-family--inter);
+	font-size: 18px;
+	color: var(--wp--preset--color--off-white-2);
+
+	a {
+		color: var(--wp--preset--color--off-white-2);
+	}
+
+	a:hover,
+	a:focus {
+		text-decoration: none;
+
+		span {
+			color: var(--wp--preset--color--blue-3);
+			text-decoration-thickness: 1px;
+			text-underline-offset: 0.1em;
+			text-decoration-line: underline;
+		}
+	}
+
+	a:focus {
+		outline: none;
+
+		span {
+			outline: 1px dotted currentColor;
+		}
+	}
+
+	span {
+		display: block;
+		margin-bottom: calc(var(--wp--custom--margin--vertical) / 2);
+		font-family: var(--wp--custom--heading--typography--font-family);
+		// Will adjust between 555px-1333px wide.
+		font-size: min(max(50px, 9vw), 120px);
+		line-height: 1;
+		text-transform: uppercase;
+	}
+}
