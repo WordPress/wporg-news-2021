@@ -47,7 +47,9 @@ body.category-releases {
 
 	.wp-block-post {
 		margin: 0;
-		padding: var(--wp--custom--alignment--edge-spacing);
+		padding:
+			clamp( 24px, calc( 100vw / 26 ), 50px )
+			var(--wp--custom--alignment--edge-spacing);
 		position: relative;
 		border-bottom: 1px solid var(--wp--preset--color--blue-5);
 
