@@ -111,6 +111,13 @@ body.category-releases {
 			.wp-block-post-excerpt {
 				display: block;
 			}
+
+			.wp-block-post-excerpt__more-link {
+				&:hover,
+				:focus {
+					text-decoration: none;
+				}
+			}
 		}
 
 		&:hover,
