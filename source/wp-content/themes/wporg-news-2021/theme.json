@@ -240,7 +240,7 @@
 				"breakpoint": {
 					"mobile": {
 						"typography": {
-							"fontSize": "50px"
+							"fontSize": "clamp(26px, 4vw, 50px)"
 						}
 					}
 				},
