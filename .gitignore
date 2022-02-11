@@ -22,7 +22,6 @@ README-svn.txt
 # Ignore everything in source...
 /source/wp-content/*
 /source/wp-content/themes/*
-/source/wp-content/plugins/*
 
 # `.env/0-sandbox.php` is tracked, so these files can contain local tweaks that shouldn't be tracked.
 /source/wp-content/mu-plugins/sandbox-*.php
