@@ -115,7 +115,7 @@ body.news-front-page .front__people-of-wordpress {
 			background-image: url(images/brush-stroke-see-all-people.svg);
 			position: absolute;
 			top: calc(var(--wp--custom--alignment--edge-spacing) - 1em);
-			left: 1em;
+			left: 0;
 
 			@include break-medium() {
 				top: calc(50% - (62px / 2));
