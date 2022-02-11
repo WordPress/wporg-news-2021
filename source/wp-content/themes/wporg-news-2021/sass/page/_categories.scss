@@ -73,6 +73,7 @@ body.category-releases {
 			color: var(--wp--preset--color--blue-5);
 
 			@include break-medium() {
+				padding-top: var(--wp--custom--alignment--edge-spacing);
 				position: absolute;
 				bottom: -24px;
 				left: var(--wp--custom--alignment--edge-spacing);
@@ -106,7 +107,7 @@ body.category-releases {
 		&:first-child {
 			.release__version-title h2 {
 				bottom: auto;
-				top: 20px;
+				top: 0;
 				color: var(--wp--preset--color--white);
 			}
 
