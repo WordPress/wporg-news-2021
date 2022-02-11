@@ -20,19 +20,14 @@ function render_block( $attributes, $content, $block ) {
 	}
 
 	$post_ID          = $block->context['postId'];
-	$tag_name         = 'h2';
 	$align_class_name = empty( $attributes['textAlign'] ) ? '' : "has-text-align-{$attributes['textAlign']}";
-
-	if ( isset( $attributes['level'] ) ) {
-		$tag_name = 0 === $attributes['level'] ? 'p' : 'h' . $attributes['level'];
-	}
 
 	$version = '';
 	$title = get_the_title( $post_ID );
 	// Do we also want x.y.z?
 	if ( preg_match( '/WordPress (\d{0,3}(?:\.\d{1,3})+)\s*(?|Release Candidate\s*(\d+)|RC\s*(\d+))?/', $title, $matches ) ) {
 		$version = $matches[1];
-		if ( !empty( $matches[2] ) ) {
+		if ( ! empty( $matches[2] ) ) {
 			$version = 'RC' . $matches[2];
 		}
 	}
@@ -40,8 +35,7 @@ function render_block( $attributes, $content, $block ) {
 	$wrapper_attributes = get_block_wrapper_attributes( array( 'class' => $align_class_name ) );
 
 	return sprintf(
-		'<%1$s %2$s>%3$s</%1$s>',
-		$tag_name,
+		'<div %1$s>%2$s</div>',
 		$wrapper_attributes,
 		$version
 	);
@@ -54,9 +48,9 @@ function register_block() {
 	register_block_type(
 		'wporg/release-version',
 		array(
-			'title'           => 'WordPress.org Release Version Title',
+			'title'           => 'WordPress.org Release Version',
 			'render_callback' => __NAMESPACE__ . '\render_block',
-			'uses_context'    => [ 'postId', 'postType', 'queryId' ],
+			'uses_context'    => [ 'postId' ],
 		)
 	);
 }

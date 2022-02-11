@@ -66,24 +66,6 @@ body.category-releases {
 			padding-left: calc(var(--wp--custom--layout--content-meta-size) + 32px + var(--wp--custom--alignment--edge-spacing));
 		}
 
-		.wp-block-wporg-release-version {
-			font-family: var(--wp--preset--font-family--inter);
-			font-size: 160px;
-			font-weight: 200;
-			color: var(--wp--preset--color--blue-5);
-
-			@include break-medium() {
-				padding-top: var(--wp--custom--alignment--edge-spacing);
-				position: absolute;
-				bottom: -24px;
-				left: var(--wp--custom--alignment--edge-spacing);
-				width: calc(var(--wp--custom--layout--content-meta-size) - var(--wp--custom--alignment--edge-spacing));
-				white-space: nowrap;
-				line-height: 1;
-				transition: all 0.2s ease-in-out;
-			}
-		}
-
 		// Reset the default block margins.
 		.wp-block-group.entry-header,
 		.wp-block-post-title,
@@ -102,10 +84,23 @@ body.category-releases {
 			display: none;
 		}
 
+		.wp-block-wporg-release-version {
+			color: var(--wp--preset--color--blue-5);
+
+			@include break-medium() {
+				position: absolute;
+				bottom: -24px;
+				left: var(--wp--custom--alignment--edge-spacing);
+				padding-top: var(--wp--custom--alignment--edge-spacing);
+				width: calc(var(--wp--custom--layout--content-meta-size) - var(--wp--custom--alignment--edge-spacing));
+				transition: all 0.2s ease-in-out;
+			}
+		}
+
 		// The lastest release is shown first, and includes
 		// an excerpt and special styling.
 		&:first-child {
-			.release__version-title h2 {
+			.wp-block-wporg-release-version {
 				bottom: auto;
 				top: 0;
 				color: var(--wp--preset--color--white);
@@ -116,10 +111,17 @@ body.category-releases {
 			}
 		}
 
-		// The rest of the releases.
-		&:not(:first-child) {
-			.wp-block-post-title {
-				&::after {
+		&:hover,
+		&:focus-within {
+			.wp-block-wporg-release-version {
+				color: var(--wp--preset--color--white);
+			}
+		}
+
+		@include break-medium() {
+			// The rest of the releases.
+			&:not(:first-child) {
+				.wp-block-post-title::after {
 					content: "";
 					display: block;
 					height: 118px;
@@ -135,17 +137,17 @@ body.category-releases {
 					pointer-events: none;
 					transition: all 0.15s linear;
 				}
-			}
 
-			&:hover {
-				.wp-block-wporg-release-version {
-					transform: translateY(-36px);
-					color: var(--wp--preset--color--white);
-				}
+				&:hover,
+				&:focus-within {
+					.wp-block-wporg-release-version {
+						transform: translateY(-36px);
+					}
 
-				.wp-block-post-title::after {
-					opacity: 1;
-					transform: scale(0.6) translateX(0);
+					.wp-block-post-title::after {
+						opacity: 1;
+						transform: scale(0.6) translateX(0);
+					}
 				}
 			}
 		}

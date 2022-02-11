@@ -1,0 +1,10 @@
+.wp-block-wporg-release-version {
+	font-family: var(--wp--preset--font-family--inter);
+	font-size: 160px;
+	font-weight: 200;
+
+	@include break-medium() {
+		white-space: nowrap;
+		line-height: 1;
+	}
+}
