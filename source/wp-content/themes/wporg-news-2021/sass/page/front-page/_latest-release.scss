@@ -31,7 +31,7 @@ body.news-front-page .front__latest-release {
 
 	// The "Latest Release" headline
 	.front__latest-release-heading {
-		font-size: clamp(20px, calc(100vw / 24), 45px);
+		font-size: clamp(38px, 4vw, 50px);
 		line-height: 1;
 		padding: var(--wp--custom--alignment--edge-spacing) 0;
 		width: calc(var(--wp--custom--layout--content-meta-size) - 32px);

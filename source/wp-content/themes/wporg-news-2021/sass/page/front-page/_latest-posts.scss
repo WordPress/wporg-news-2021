@@ -9,7 +9,7 @@ body.news-front-page .front__latest-posts {
 	}
 
 	.front__latest-posts-heading {
-		font-size: clamp(20px, calc(100vw / 24), 45px);
+		font-size: clamp(38px, 4vw, 50px);
 		line-height: 1;
 		margin-bottom: var(--wp--custom--alignment--edge-spacing);
 		padding: var(--wp--custom--alignment--edge-spacing) 0;
@@ -50,7 +50,7 @@ body.news-front-page .front__latest-posts {
 		}
 
 		h3 {
-			font-size: clamp(40px, calc(100vw / 24), 60px);
+			font-size: var(--wp--custom--h-2--typography--font-size);
 			margin-bottom: 15px;
 		}
 	}

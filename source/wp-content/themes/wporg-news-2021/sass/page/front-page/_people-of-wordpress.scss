@@ -3,8 +3,8 @@ body.news-front-page .front__people-of-wordpress {
 	position: relative;
 
 	.front__people-of-wordpress-heading {
-		font-size: clamp(20px, calc(100vw / 24), 45px);
-		padding: calc(var(--wp--custom--alignment--edge-spacing) * 2 ) var(--wp--custom--alignment--edge-spacing);
+		font-size: clamp(38px, 4vw, 50px);
+		padding: calc(var(--wp--custom--alignment--edge-spacing) * 2) var(--wp--custom--alignment--edge-spacing);
 
 		@include break-medium() {
 			padding: var(--wp--custom--alignment--edge-spacing);
