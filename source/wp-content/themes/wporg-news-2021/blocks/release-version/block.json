@@ -14,6 +14,6 @@
 			"type": "string"
 		}
 	},
-	"usesContext": [ "postId", "postType", "queryId" ],
+	"usesContext": [ "postId" ],
 	"textdomain": "wporg"
 }
