@@ -50,8 +50,9 @@ body.category-releases {
 	.wp-block-post {
 		margin: 0;
 		padding:
-			var(--row-padding-vertical)
-			var(--wp--custom--alignment--edge-spacing);
+			calc(var(--wp--custom--alignment--edge-spacing) * 1.5)
+			var(--wp--custom--alignment--edge-spacing)
+			calc(160px + var(--wp--custom--alignment--edge-spacing));
 		position: relative;
 		border-bottom: 1px solid var(--wp--preset--color--blue-5);
 
@@ -67,7 +68,11 @@ body.category-releases {
 		// Make some room for the version number on
 		// larger viewports.
 		@include break-medium() {
-			padding-left: calc(var(--wp--custom--layout--content-meta-size) + 32px + var(--wp--custom--alignment--edge-spacing));
+			padding:
+				var(--row-padding-vertical)
+				var(--wp--custom--alignment--edge-spacing)
+				var(--row-padding-vertical)
+				calc(var(--wp--custom--layout--content-meta-size) + 32px + var(--wp--custom--alignment--edge-spacing));
 		}
 
 		// Reset the default block margins.
@@ -89,12 +94,11 @@ body.category-releases {
 		}
 
 		.wp-block-wporg-release-version {
+			position: absolute;
+			bottom: -24px;
 			color: var(--wp--preset--color--blue-5);
-			line-height: 1;
 
 			@include break-medium() {
-				position: absolute;
-				bottom: -24px;
 				left: var(--wp--custom--alignment--edge-spacing);
 				width: calc(var(--wp--custom--layout--content-meta-size) - var(--wp--custom--alignment--edge-spacing));
 				transition: all 0.2s ease-in-out;
@@ -104,10 +108,18 @@ body.category-releases {
 		// The lastest release is shown first, and includes
 		// an excerpt and special styling.
 		&:first-child {
+			padding-bottom: calc(var(--wp--custom--alignment--edge-spacing) * 1.5);
+
 			.wp-block-wporg-release-version {
-				bottom: auto;
-				top: var(--row-padding-vertical);
+				position: static;
+				padding-bottom: 0.3em;
 				color: var(--wp--preset--color--white);
+
+				@include break-medium() {
+					position: absolute;
+					bottom: auto;
+					top: var(--row-padding-vertical);
+				}
 			}
 
 			.wp-block-post-excerpt {
@@ -165,7 +177,9 @@ body.category-releases {
 	}
 
 	.wp-block-query-pagination {
-		margin-left: calc(var(--wp--custom--layout--content-meta-size) + 32px + var(--wp--custom--alignment--edge-spacing));
+		@include break-medium() {
+			margin-left: calc(var(--wp--custom--layout--content-meta-size) + 32px + var(--wp--custom--alignment--edge-spacing));
+		}
 	}
 
 	@extend %bottom-banner-dark;
