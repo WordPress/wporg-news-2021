@@ -14,6 +14,8 @@ body.category-events {
 }
 
 body.category-releases {
+	--row-padding-vertical: clamp( 24px, calc( 100vw / 26 ), 50px );
+
 	background-color: var(--wp--preset--color--blue-1);
 
 	.local-header {
@@ -48,7 +50,7 @@ body.category-releases {
 	.wp-block-post {
 		margin: 0;
 		padding:
-			clamp( 24px, calc( 100vw / 26 ), 50px )
+			var(--row-padding-vertical)
 			var(--wp--custom--alignment--edge-spacing);
 		position: relative;
 		border-bottom: 1px solid var(--wp--preset--color--blue-5);
@@ -88,12 +90,12 @@ body.category-releases {
 
 		.wp-block-wporg-release-version {
 			color: var(--wp--preset--color--blue-5);
+			line-height: 1;
 
 			@include break-medium() {
 				position: absolute;
 				bottom: -24px;
 				left: var(--wp--custom--alignment--edge-spacing);
-				padding-top: var(--wp--custom--alignment--edge-spacing);
 				width: calc(var(--wp--custom--layout--content-meta-size) - var(--wp--custom--alignment--edge-spacing));
 				transition: all 0.2s ease-in-out;
 			}
@@ -104,7 +106,7 @@ body.category-releases {
 		&:first-child {
 			.wp-block-wporg-release-version {
 				bottom: auto;
-				top: 0;
+				top: var(--row-padding-vertical);
 				color: var(--wp--preset--color--white);
 			}
 
@@ -150,7 +152,7 @@ body.category-releases {
 				&:hover,
 				&:focus-within {
 					.wp-block-wporg-release-version {
-						transform: translateY(-36px);
+						transform: translateY( calc( 0px - var(--row-padding-vertical) / 2 ) );
 					}
 
 					.wp-block-post-title::after {
