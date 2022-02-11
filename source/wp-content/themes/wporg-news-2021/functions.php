@@ -216,12 +216,16 @@ function specify_post_classes( $classes, $extra_classes, $post_id ) {
 		}
 
 		if ( ! is_null( $current_post ) ) {
-			if ( 0 !== $current_post && $current_post < $count_posts - 1 ) {
+			if ( $current_post < $count_posts - 1 ) {
 				$this_year = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-00 00:00:00' ) );
 				$next_year = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-00 00:00:00', $wp_query->posts[ $current_post + 1 ] ) );
-				$prev_year = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-00 00:00:00', $wp_query->posts[ $current_post - 1 ] ) );
+				$prev_year = false;
 
-				if ( $this_year->format( 'Y' ) !== $prev_year->format( 'Y' ) ) {
+				if ( $current_post >= 1 ) {
+					$prev_year = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-00 00:00:00', $wp_query->posts[ $current_post - 1 ] ) );
+				}
+
+				if ( $prev_year && $this_year->format( 'Y' ) !== $prev_year->format( 'Y' ) ) {
 					$classes[] = 'first-in-year';
 				}
 
