@@ -64,11 +64,6 @@ body.category-releases {
 		// it appears "hidden".
 		overflow: hidden;
 
-		// Ignore some of this extraneous markup.
-		.wp-block-template-part {
-			display: contents;
-		}
-
 		// Make some room for the version number on
 		// larger viewports.
 		@include break-medium() {
