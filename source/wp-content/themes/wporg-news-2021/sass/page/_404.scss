@@ -1,24 +1,48 @@
 body.error404 {
-	// Set the page background color to darker-grey
-	background-color: var(--wp--preset--color--darker-grey);
+	// The min is a "magic number" ala https://css-tricks.com/fitting-text-to-a-container/.
+	// The max prevents it from bleeding into the footer.
+	--oops-font-size: min(39vw, 48vh);
 
-	// Set the background color for the local-header
+	background-color: var(--wp--preset--color--dark-grey);
+
+	.site-header-container {
+		border-bottom: 1px solid var(--wp--preset--color--darker-grey);
+	}
+
 	.local-header {
-		--bar-background-color: var(--wp--preset--color--dark-grey);
-		--bar-text-color: var(--wp--preset--color--white);
-		--bar-link-color: var(--wp--preset--color--off-white);
-		--bar-link-hover-color: var(--wp--preset--color--off-white-2);
-
-		// Since the bar is the same color as the W.org header, we
-		// add a border to help separate them.
-		border-top: 1px solid var(--wp--preset--color--darker-grey);
+		display: none;
 	}
 
 	.site-content-container {
 		color: var(--wp--preset--color--off-white-2);
-		text-align: center;
-		margin-top: max(100px, 15vh);
-		margin-bottom: min(100px, 15vh);
+		padding-left: var(--wp--custom--alignment--edge-spacing);
+		padding-right: var(--wp--custom--alignment--edge-spacing);
+	}
+
+	.error404__oops {
+		z-index: -1;
+		position: absolute;
+		top: calc(var(--wp-global-header-offset) + var(--wp--style--block-gap));
+		left: 50%;
+		transform: translate(-50%, 0);
+		font-family: var(--wp--preset--font-family--eb-garamond);
+		color: var(--wp--preset--color--darker-grey);
+		font-size: var(--oops-font-size);
+		line-height: var(--oops-font-size);
+	}
+
+	h1 {
+		margin-top: calc(var(--oops-font-size) * 1.6);
+		margin-bottom: 30px;
+		font-size: 38px;
+		line-height: 40px;
+
+		@include break-small() {
+			// Keep it stuck to rougly the same position on top of "Oops" as the viewport grows.
+			margin-top: calc(var(--oops-font-size) * 0.35);
+			font-size: 70px;
+			line-height: 72px;
+		}
 	}
 
 	ul.is-inline {
@@ -31,5 +55,49 @@ body.error404 {
 		}
 	}
 
-	@extend %bottom-banner-dark;
+	.wp-block-search.wp-block-search__button-inside {
+		max-width: 400px;
+		margin-top: 40px;
+		padding: 16px 17px 16px 19px;
+		background-color: var(--wp--preset--color--white);
+		border-radius: var(--wp--custom--button--border--radius);
+
+		.wp-block-search__inside-wrapper {
+			border: none;
+			padding: 0;
+
+			.wp-block-search__input {
+				font-size: 20px;
+				padding: 0;
+				-webkit-appearance: none; /* Remove duplicate magnifying glass icon on Safari-mobile. */
+
+				@include break-small() {
+					font-size: 14px;
+				}
+			}
+
+			.wp-block-search__button {
+				background-color: transparent;
+				color: var(--wp--preset--color--black);
+				margin: 0;
+				padding: 0;
+
+				svg {
+					fill: currentColor;
+					height: 36px;
+					width: 36px;
+
+					@include break-small() {
+						height: 28px;
+						width: 28px;
+					}
+				}
+			}
+		}
+	}
+
+	.global-footer {
+		margin-top: 150px;
+		border-top: 1px solid var(--wp--preset--color--darker-grey);
+	}
 }
