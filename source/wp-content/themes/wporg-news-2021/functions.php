@@ -23,7 +23,7 @@ add_filter( 'template_redirect', __NAMESPACE__ . '\jetpack_likes_workaround' );
 add_filter( 'the_title', __NAMESPACE__ . '\update_the_title', 10, 2 );
 add_action( 'ssp_album_art_cover', __NAMESPACE__ . '\custom_default_album_art_cover', 10, 2 );
 add_filter( 'render_block', __NAMESPACE__ . '\customize_podcast_player_position', null, 2 );
-add_filter( 'wp_list_categories', __NAMESPACE__ . '\add_all_posts_to_categories', 10, 2 );
+add_filter( 'wp_list_categories', __NAMESPACE__ . '\add_links_to_categories_list', 10, 2 );
 add_action( 'parse_query', __NAMESPACE__ . '\compat_workaround_core_55100' );
 
 /**
@@ -339,25 +339,47 @@ function customize_podcast_player_position(
  * @param string $html HTML output.
  * @return string
  */
-function add_all_posts_to_categories( $html, $args ) {
+function add_links_to_categories_list( $html, $args ) {
 	if ( '' !== $args['title_li'] ) {
 		return $html;
 	}
 
-	$all_posts = sprintf(
+	$raw_links = explode( "\n\t", $html );
+	$labels    = array_map(
+		function( $link ) {
+			preg_match( '|href="[^"]+">([^<]+)</a>|', $link, $matches );
+			return $matches[1] ?? '';
+		},
+		$raw_links
+	);
+	$links = array_combine( $labels, $raw_links );
+
+	// All Posts
+	$links[ __( 'All Posts', 'wporg' ) ] = sprintf(
 		'<li class="cat-item cat-item-0 %1$s"><a href="%2$s">%3$s</a></li>',
 		is_home() ? 'current-cat' : '',
 		site_url( '/all-posts/' ),
 		__( 'All Posts', 'wporg' )
 	);
-	return $all_posts . $html;
+
+	// Podcast
+	$links[ __( 'Podcast', 'wporg' ) ] = sprintf(
+		'<li class="cat-item cat-item-0 %1$s"><a href="%2$s">%3$s</a></li>',
+		is_post_type_archive( 'podcast' ) ? 'current-cat' : '',
+		get_post_type_archive_link( 'podcast' ),
+		__( 'Podcast', 'wporg' )
+	);
+
+	ksort( $links );
+
+	return implode( "\n\t", $links );
 }
 
 /**
  * Ensure that WP_Query::get_queried_object() works for /author/xxx requests.
- * 
+ *
  * @see https://core.trac.wordpress.org/ticket/55100
- * 
+ *
  * @param \WP_Query $query The WP_Query instance.
  */
 function compat_workaround_core_55100( $query ) {
