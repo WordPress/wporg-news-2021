@@ -7,6 +7,7 @@ use WP_Query;
 defined( 'WPINC' ) || die();
 
 require_once __DIR__ . '/blocks/month-in-wp-title/index.php';
+require_once __DIR__ . '/blocks/release-version/index.php';
 
 /**
  * Actions and filters.
@@ -355,9 +356,9 @@ function add_all_posts_to_categories( $html, $args ) {
 
 /**
  * Ensure that WP_Query::get_queried_object() works for /author/xxx requests.
- * 
+ *
  * @see https://core.trac.wordpress.org/ticket/55100
- * 
+ *
  * @param \WP_Query $query The WP_Query instance.
  */
 function compat_workaround_core_55100( $query ) {

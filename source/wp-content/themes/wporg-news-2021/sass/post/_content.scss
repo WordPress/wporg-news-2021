@@ -1,6 +1,6 @@
 .wp-block-post {
 	.blog &,
-	.category:not(.category-community) & {
+	.category:not(.category-community):not(.category-releases) & {
 		padding-bottom: 20px;
 
 		@include break-mobile() {
