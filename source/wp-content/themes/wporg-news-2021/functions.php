@@ -204,7 +204,7 @@ function specify_post_classes( $classes, $extra_classes, $post_id ) {
 
 	global $wp_query;
 
-	// Add first-in-year and last-in-year to help put design elements in between year groups in the Month In WordPress category
+	// Add last-in-year to help put design elements in between year groups in the Month In WordPress category
 	if ( is_object( $wp_query ) && $wp_query->is_category( 'month-in-wordpress' ) && $wp_query->post_count > 1 ) {
 		// Seems like the wp:query loop block doesn't count as "in the loop" so we'll do this the hard way:
 		$current_post = null;
@@ -219,15 +219,6 @@ function specify_post_classes( $classes, $extra_classes, $post_id ) {
 			if ( $current_post < $count_posts - 1 ) {
 				$this_year = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-00 00:00:00' ) );
 				$next_year = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-00 00:00:00', $wp_query->posts[ $current_post + 1 ] ) );
-				$prev_year = false;
-
-				if ( $current_post >= 1 ) {
-					$prev_year = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-00 00:00:00', $wp_query->posts[ $current_post - 1 ] ) );
-				}
-
-				if ( $prev_year && $this_year->format( 'Y' ) !== $prev_year->format( 'Y' ) ) {
-					$classes[] = 'first-in-year';
-				}
 
 				if ( $this_year->format( 'Y' ) !== $next_year->format( 'Y' ) ) {
 					$classes[] = 'last-in-year';
