@@ -92,34 +92,40 @@ body.news-front-page .front__people-of-wordpress {
 	}
 
 	.front__next-page {
+		position: relative;
 		font-size: var(--wp--preset--font-size--small);
 		padding:
 			var(--wp--custom--alignment--edge-spacing)
 			var(--wp--custom--alignment--edge-spacing)
 			calc(var(--wp--custom--alignment--edge-spacing) + var(--wp--style--block-gap));
-		width: 192px;
 
 		@include break-medium() {
 			padding: 0 var(--wp--custom--alignment--edge-spacing) 0 0;
 			position: absolute;
 			top: var(--wp--custom--alignment--edge-spacing);
 			right: 0;
+			width: 192px;
+		}
 
-			&::before {
-				content: "";
-				display: block;
-				height: 62px;
-				width: 192px;
-				background-image: url(images/brush-stroke-see-all-people.svg);
-				position: absolute;
+		&::before {
+			content: "";
+			display: block;
+			height: 62px;
+			width: 192px;
+			background-image: url(images/brush-stroke-see-all-people.svg);
+			position: absolute;
+			top: calc(var(--wp--custom--alignment--edge-spacing) - 1em);
+			left: 0;
+
+			@include break-medium() {
 				top: calc(50% - (62px / 2));
 				left: -20px;
 			}
+		}
 
-			a {
-				position: relative;
-				z-index: 1;
-			}
+		a {
+			position: relative;
+			z-index: 1;
 		}
 	}
 }

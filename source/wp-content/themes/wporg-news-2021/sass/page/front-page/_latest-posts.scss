@@ -56,30 +56,33 @@ body.news-front-page .front__latest-posts {
 	}
 
 	.front__next-page {
+		position: relative;
 		font-size: var(--wp--preset--font-size--small);
-		padding: 0 0 var(--wp--custom--alignment--edge-spacing) 0;
+		padding: 0;
+		margin-bottom: var(--wp--custom--alignment--edge-spacing);
 
 		@include break-medium() {
 			position: absolute;
 			bottom: var(--wp--custom--alignment--edge-spacing);
 			left: var(--wp--custom--alignment--edge-spacing);
 			padding: 0;
+			margin-bottom: 0;
+		}
 
-			&::before {
-				content: "";
-				display: block;
-				height: 115px;
-				width: 233px;
-				background-image: url(images/brush-stroke-see-all-posts.svg);
-				position: absolute;
-				top: calc(50% - (115px / 2));
-				left: -70px;
-			}
+		&::before {
+			content: "";
+			display: block;
+			height: 115px;
+			width: 233px;
+			background-image: url(images/brush-stroke-see-all-posts.svg);
+			position: absolute;
+			top: calc(50% - (115px / 2));
+			left: -70px;
+		}
 
-			a {
-				position: relative;
-				z-index: 1;
-			}
+		a {
+			position: relative;
+			z-index: 1;
 		}
 	}
 }
