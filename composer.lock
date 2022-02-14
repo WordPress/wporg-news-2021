@@ -319,9 +319,6 @@
             "require": {
                 "php": "^7.1 || ^8.0"
             },
-            "replace": {
-                "myclabs/deep-copy": "self.version"
-            },
             "require-dev": {
                 "doctrine/collections": "^1.0",
                 "doctrine/common": "^2.6",
@@ -2353,12 +2350,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/WordPress/wporg-mu-plugins.git",
-                "reference": "60e7286b201bb3c8e27fad878621f70280226977"
+                "reference": "ee1995d3970487832dfc9261b30b85c094a115a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WordPress/wporg-mu-plugins/zipball/60e7286b201bb3c8e27fad878621f70280226977",
-                "reference": "60e7286b201bb3c8e27fad878621f70280226977",
+                "url": "https://api.github.com/repos/WordPress/wporg-mu-plugins/zipball/ee1995d3970487832dfc9261b30b85c094a115a1",
+                "reference": "ee1995d3970487832dfc9261b30b85c094a115a1",
                 "shasum": ""
             },
             "require": {
@@ -2385,7 +2382,7 @@
                 "source": "https://github.com/WordPress/wporg-mu-plugins/tree/trunk",
                 "issues": "https://github.com/WordPress/wporg-mu-plugins/issues"
             },
-            "time": "2022-02-11T20:43:25+00:00"
+            "time": "2022-02-14T18:18:57+00:00"
         },
         {
             "name": "wporg/wporg-repo-tools",
@@ -2431,5 +2428,5 @@
     "platform-overrides": {
         "php": "7.4"
     },
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.2.0"
 }
