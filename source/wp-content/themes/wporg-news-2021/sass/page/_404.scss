@@ -45,19 +45,9 @@ body.error404 {
 		}
 	}
 
-	ul.is-inline {
-		display: inline;
-		margin: 0;
-		padding: 0;
-
-		li {
-			display: inline;
-
-			a {
-				color: var(--wp--preset--color--blue-3);
-				text-decoration: underline;
-			}
-		}
+	a {
+		color: var(--wp--preset--color--blue-3);
+		text-decoration: underline;
 	}
 
 	.wp-block-search.wp-block-search__button-inside {
