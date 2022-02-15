@@ -316,8 +316,15 @@ body.category-community {
 	}
 
 	.wp-block-post-title {
-		font-size: var(--wp--preset--font-size--huge);
+		font-size: clamp(26px, 2vw, 32px);
 		line-height: 1.3;
+
+		a {
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 3;
+			overflow: hidden;
+		}
 
 		a:hover,
 		a:focus {
@@ -331,10 +338,7 @@ body.category-community {
 
 	li.post {
 		margin: 0;
-
-		@include break-small() {
-			aspect-ratio: 1 / 1;
-		}
+		aspect-ratio: 1 / 1;
 
 		.entry-meta {
 			padding: 24px;
@@ -353,12 +357,14 @@ body.category-community {
 					height: 100%;
 				}
 			}
+
 			// B&W featured image
 			.wp-block-post-featured-image {
 				object-fit: cover;
 
 				img {
 					filter: grayscale(100%);
+					aspect-ratio: 1 / 1;
 				}
 			}
 
