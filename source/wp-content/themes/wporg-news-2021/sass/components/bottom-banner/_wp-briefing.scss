@@ -31,20 +31,24 @@
 
 }
 
-.wp-briefing__apple-podcasts a {
-	background-image: url(images/podcast-services/apple-podcasts.svg);
-}
+.wp-block-social-link-anchor {
+	background-position: center;
 
-.wp-briefing__google-podcasts a {
-	background-image: url(images/podcast-services/google-podcasts.svg);
-}
+	.wp-briefing__apple-podcasts & {
+		background-image: url(images/podcast-services/apple-podcasts.svg);
+	}
 
-.wp-briefing__pocket-casts a {
-	background-image: url(images/podcast-services/pocket-casts.svg);
-}
+	.wp-briefing__google-podcasts & {
+		background-image: url(images/podcast-services/google-podcasts.svg);
+	}
 
-.wp-briefing__stitcher a {
-	background-image: url(images/podcast-services/stitcher.svg);
+	.wp-briefing__pocket-casts & {
+		background-image: url(images/podcast-services/pocket-casts.svg);
+	}
+
+	.wp-briefing__stitcher & {
+		background-image: url(images/podcast-services/stitcher.svg);
+	}
 }
 
 body.single-podcast {
@@ -59,19 +63,19 @@ body.single-podcast {
 			background-image: url(images/brush-stroke-short-2-dark-4.svg);
 		}
 
-		.wp-briefing__apple-podcasts a {
+		.wp-briefing__apple-podcasts .wp-block-social-link-anchor {
 			background-image: url(images/podcast-services/apple-podcasts-light.svg);
 		}
 
-		.wp-briefing__google-podcasts a {
+		.wp-briefing__google-podcasts .wp-block-social-link-anchor {
 			background-image: url(images/podcast-services/google-podcasts-light.svg);
 		}
 
-		.wp-briefing__pocket-casts a {
+		.wp-briefing__pocket-casts .wp-block-social-link-anchor {
 			background-image: url(images/podcast-services/pocket-casts-light.svg);
 		}
 
-		.wp-briefing__stitcher a {
+		.wp-briefing__stitcher .wp-block-social-link-anchor {
 			background-image: url(images/podcast-services/stitcher-light.svg);
 		}
 	}
