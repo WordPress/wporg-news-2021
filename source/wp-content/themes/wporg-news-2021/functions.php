@@ -3,6 +3,7 @@
 namespace WordPressdotorg\Theme\News_2021;
 
 use WP_Query;
+use function WordPressdotorg\MU_Plugins\Global_Fonts\get_font_stylesheet_url;
 
 defined( 'WPINC' ) || die();
 
@@ -15,7 +16,6 @@ require_once __DIR__ . '/blocks/release-version/index.php';
  * Actions and filters.
  */
 add_action( 'after_setup_theme', __NAMESPACE__ . '\theme_support', 9 );
-add_action( 'admin_init', __NAMESPACE__ . '\editor_styles' );
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_assets' );
 add_filter( 'get_the_archive_title_prefix', __NAMESPACE__ . '\modify_archive_title_prefix' );
 add_action( 'pre_get_posts', __NAMESPACE__ . '\override_category_query_args' );
@@ -46,6 +46,7 @@ function theme_support() {
 
 	// Add support for editor styles.
 	add_theme_support( 'editor-styles' );
+	add_editor_style( get_font_stylesheet_url() );
 
 	// Add support for post thumbnails.
 	add_theme_support( 'post-thumbnails' );
@@ -69,63 +70,15 @@ function theme_support() {
 }
 
 /**
- * Enqueue editor styles.
- */
-function editor_styles() {
-	// Enqueue editor styles.
-	add_editor_style(
-		array(
-			fonts_url(),
-			get_stylesheet_uri(),
-		)
-	);
-}
-
-/**
  * Enqueue scripts and styles.
  */
 function enqueue_assets() {
-	// Enqueue Google fonts
-	wp_enqueue_style( 'wporg-news-fonts', fonts_url(), array(), null ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
-	wp_enqueue_style( 'wporg-news-style', get_stylesheet_uri(), array(), filemtime( __DIR__ . '/style.css' ) );
-}
-
-/**
- * Add Google webfonts.
- *
- * @return string $fonts_url
- */
-function fonts_url() {
-	if ( ! class_exists( '\WP_Theme_JSON_Resolver' ) ) {
-		return '';
-	}
-
-	$theme_data = \WP_Theme_JSON_Resolver::get_merged_data()->get_settings();
-	if ( empty( $theme_data ) || empty( $theme_data['typography'] ) || empty( $theme_data['typography']['fontFamilies'] ) ) {
-		return '';
-	}
-
-	$font_families = [];
-	if ( ! empty( $theme_data['typography']['fontFamilies']['theme'] ) ) {
-		foreach ( $theme_data['typography']['fontFamilies']['theme'] as $font ) {
-			if ( ! empty( $font['google'] ) ) {
-				$font_families[] = $font['google'];
-			}
-		}
-	}
-
-	if ( ! empty( $theme_data['typography']['fontFamilies']['user'] ) ) {
-		foreach ( $theme_data['typography']['fontFamilies']['user'] as $font ) {
-			if ( ! empty( $font['google'] ) ) {
-				$font_families[] = $font['google'];
-			}
-		}
-	}
-
-	$font_families[] = 'display=swap';
-
-	// Make a single request for the theme fonts.
-	return esc_url_raw( 'https://fonts.googleapis.com/css2?' . implode( '&', $font_families ) );
+	wp_enqueue_style(
+		'wporg-news-style',
+		get_stylesheet_uri(),
+		array( 'wporg-global-fonts' ),
+		filemtime( __DIR__ . '/style.css' )
+	);
 }
 
 /**
