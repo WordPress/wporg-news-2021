@@ -52,6 +52,11 @@ body.error404 {
 
 		li {
 			display: inline;
+
+			a {
+				color: var(--wp--preset--color--blue-3);
+				text-decoration: underline;
+			}
 		}
 	}
 
