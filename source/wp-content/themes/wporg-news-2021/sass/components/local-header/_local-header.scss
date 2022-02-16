@@ -1,18 +1,22 @@
+:root {
+	--local-header-height: 58px;
+}
+
 .local-header {
-	--bar-min-height: 58px;
+
 	--bar-text-color: var(--wp--preset--color--white);
 	--bar-link-color: var(--wp--preset--color--white);
 	--bar-link-hover-color: var(--wp--preset--color--off-white-2);
 	--bar-background-color: var(--wp--preset--color--blue-1);
 
 	color: var(--bar-text-color);
-	min-height: var(--bar-min-height);
+	min-height: var(--local-header-height);
 	position: relative;
-	background: linear-gradient(to top, transparent var(--bar-min-height), var(--bar-background-color) var(--bar-min-height) 100%);
+	background: linear-gradient(to top, transparent var(--local-header-height), var(--bar-background-color) var(--local-header-height) 100%);
 
 	&::after {
 		content: "";
-		min-height: var(--bar-min-height);
+		min-height: var(--local-header-height);
 		position: absolute;
 		bottom: 1px;
 		left: 0;
