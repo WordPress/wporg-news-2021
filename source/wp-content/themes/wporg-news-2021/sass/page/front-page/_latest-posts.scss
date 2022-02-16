@@ -38,11 +38,9 @@ body.news-front-page .front__latest-posts {
 		}
 
 		> li {
-			margin-bottom: calc(var(--wp--custom--alignment--edge-spacing) * 2);
+			margin-bottom: clamp( 48px, calc( 100vw / 16 ), 58px );
 
 			@include break-medium() {
-				margin-bottom: calc(var(--wp--custom--alignment--edge-spacing) / 2);
-
 				&:last-child {
 					margin-bottom: 0;
 				}
