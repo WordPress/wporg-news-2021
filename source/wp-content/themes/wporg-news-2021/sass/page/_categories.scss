@@ -289,11 +289,6 @@ body.category-community {
 			padding-left: 0;
 			padding-right: 0;
 		}
-
-		@include break-large() {
-			padding-left: var(--wp--custom--alignment--edge-spacing);
-			padding-right: var(--wp--custom--alignment--edge-spacing);
-		}
 	}
 
 	.wp-block-post-template {
