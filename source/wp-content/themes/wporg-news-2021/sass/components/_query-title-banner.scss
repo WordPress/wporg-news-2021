@@ -3,12 +3,12 @@
 	color: var(--wp--preset--color--white);
 	position: relative;
 	z-index: -1;
-	background: linear-gradient(to top, transparent 58px, var(--wp--preset--color--blue-1) 58px 100%);
+	background: linear-gradient(to top, transparent var(--local-header-height), var(--wp--preset--color--blue-1) var(--local-header-height) 100%);
 	transform: translateY(-80px);
 
 	&::after {
 		content: "";
-		min-height: 58px;
+		min-height: var(--local-header-height);
 		position: absolute;
 		bottom: 1px;
 		left: 0;

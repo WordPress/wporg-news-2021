@@ -1,9 +1,7 @@
 html[lang] {
-
 	@include break-small {
-		// 58px = height of the local nav.
-		scroll-padding-top: calc(var(--wp-global-header-offset, 0px) + 58px);
-		margin-top: calc(var(--wp-global-header-offset, 0px) + 58px);
+		margin-top: calc(var(--wp-global-header-offset, 0px) + var(--local-header-height));
+		scroll-padding-top: calc(var(--wp-global-header-offset, 0px) + var(--local-header-height));
 	}
 }
 

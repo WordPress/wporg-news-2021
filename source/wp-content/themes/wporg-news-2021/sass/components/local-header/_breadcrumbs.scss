@@ -4,7 +4,7 @@
 	.local-header__breadcrumb {
 		display: flex;
 		align-items: center;
-		min-height: var(--bar-min-height);
+		min-height: var(--local-header-height);
 		color: var(--bar-text-color);
 
 		// The current item is highlighted.
