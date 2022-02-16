@@ -1,7 +1,5 @@
 body.error404 {
-	// The min is a "magic number" ala https://css-tricks.com/fitting-text-to-a-container/.
-	// The max prevents it from bleeding into the footer.
-	--oops-font-size: min(39vw, 48vh);
+	--oops-font-size: 47vw; // "Magic number" ala https://css-tricks.com/fitting-text-to-a-container/
 
 	background-color: var(--wp--preset--color--dark-grey);
 
@@ -14,21 +12,41 @@ body.error404 {
 	}
 
 	.site-content-container {
+		/*
+		 * Prevent "oops" from creating a horizontal scroll.
+		 * In some iOS versions, these rules also have to be applied to <html>, but that would bleed over to other
+		 * pages. It's better to just let there be a scroll, since it's not a commonly used page.
+		 */
+		position: relative; // needed for overflow to work
+		overflow: hidden;
+		min-height: var(--oops-font-size);
+		margin-top: 0;
 		color: var(--wp--preset--color--off-white-2);
 		padding-left: var(--wp--custom--alignment--edge-spacing);
 		padding-right: var(--wp--custom--alignment--edge-spacing);
+
+		@include break-small() {
+			// <html> has a `margin-top` that assumes the local header is present. That creates a gap when when
+			// hide the local nav. We can't change <html> without affecting other pages, so instead we just push
+			// this element up to cover the gap.
+			top: calc(-1 * var(--local-header-height));
+		}
 	}
 
 	.error404__oops {
 		z-index: -1;
 		position: absolute;
-		top: calc(var(--wp-global-header-offset) + var(--wp--style--block-gap));
-		left: 50%;
-		transform: translate(-50%, 0);
+		top: 14px;
+		left: -4.9vw;
 		font-family: var(--wp--preset--font-family--eb-garamond);
 		color: var(--wp--preset--color--darker-grey);
 		font-size: var(--oops-font-size);
 		line-height: var(--oops-font-size);
+
+		@include break-small() {
+			top: calc(var(--oops-font-size) * -0.23);
+			opacity: 0.6; // Make the overlaid text more readable.
+		}
 	}
 
 	h1 {
@@ -38,8 +56,8 @@ body.error404 {
 		line-height: 40px;
 
 		@include break-small() {
-			// Keep it stuck to rougly the same position on top of "Oops" as the viewport grows.
-			margin-top: calc(var(--oops-font-size) * 0.35);
+			// Keep it stuck to roughly the same position on top of "Oops" as the viewport grows.
+			margin-top: calc(var(--oops-font-size) * 0.31);
 			font-size: 70px;
 			line-height: 72px;
 		}
@@ -50,12 +68,16 @@ body.error404 {
 		text-decoration: underline;
 	}
 
-	.wp-block-search.wp-block-search__button-inside {
-		max-width: 400px;
+	.site-content-container .wp-block-search.wp-block-search__button-inside {
+		width: 100%;
 		margin-top: 40px;
 		padding: 16px 17px 16px 19px;
 		background-color: var(--wp--preset--color--white);
 		border-radius: var(--wp--custom--button--border--radius);
+
+		@include break-small() {
+			max-width: 400px;
+		}
 
 		.wp-block-search__inside-wrapper {
 			border: none;
