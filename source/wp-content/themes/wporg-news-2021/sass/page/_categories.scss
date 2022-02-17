@@ -347,7 +347,6 @@ body.category-community {
 			figure,
 			figure a,
 			img {
-
 				@include break-small() {
 					height: 100%;
 				}
@@ -402,7 +401,7 @@ body.category-community {
 				min-height: 0;
 
 				&:nth-of-type(even):hover,
-				&:nth-of-type(odd):hover
+				&:nth-of-type(odd):hover,
 				&:nth-of-type(even):focus-within,
 				&:nth-of-type(odd):focus-within {
 					transition: all 0.3s ease-in-out;
