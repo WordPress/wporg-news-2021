@@ -56,11 +56,6 @@ body.news-front-page .front__people-of-wordpress {
 			}
 
 			&.has-post-thumbnail {
-				.wp-block-post-title {
-					@include hide-accessibly;
-				}
-
-				// B&W featured image
 				.wp-block-post-featured-image {
 					margin: 0;
 
@@ -70,19 +65,26 @@ body.news-front-page .front__people-of-wordpress {
 						aspect-ratio: 1 / 1;
 					}
 				}
-
-				@include break-small() {
-					&:hover,
-					&:focus-within {
-						figure {
-							transition: all 0.3s ease-in-out;
-							background-color: var(--wp--preset--color--blue-1);
-						}
-
-						img {
-							mix-blend-mode: multiply;
-						}
+				
+				&:hover,
+				&:focus-within {
+					figure {
+						transition: all 0.3s ease-in-out;
+						background-color: var(--wp--preset--color--blue-1);
 					}
+
+					img {
+						mix-blend-mode: multiply;
+					}
+
+					.wp-block-post-title {
+						opacity: 1;
+						transition: opacity 0.3s ease-in-out;
+					}
+				}
+
+				.wp-block-post-title {
+					opacity: 0;
 				}
 			}
 
