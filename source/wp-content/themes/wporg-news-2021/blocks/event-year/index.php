@@ -19,56 +19,16 @@ function render_block( $attributes, $content, $block ) {
 		return '';
 	}
 
-	$post_ID          = $block->context['postId'];
+	$post_ID = $block->context['postId'];
 	$align_class_name = empty( $attributes['textAlign'] ) ? '' : "has-text-align-{$attributes['textAlign']}";
 
-	$year = '';
-	$post_year = get_the_date( 'Y', $post_ID );
-
-	/** @var \WP_Query $wp_query */
-	global $wp_query;
-	$current_page_post_dates = wp_list_pluck( $wp_query->posts, 'post_date', 'ID' );
-	array_reduce(
-		$wp_query->posts,
-		function( $carry, $item ) {
-			$year = get_the_date( 'Y', $item->ID );
-
-			if ( ! isset( $carry[ $year ] ) ) {
-				$carry[ $year ] = array();
-			}
-
-
-		},
-		array()
-	);
-
-
+	$year = get_the_date( 'Y', $post_ID );
 	$wrapper_attributes = get_block_wrapper_attributes( array( 'class' => $align_class_name ) );
 
 	return sprintf(
 		'<div %1$s>%2$s</div>',
 		$wrapper_attributes,
 		$year
-	);
-}
-
-
-function get_current_post_ids_sorted_by_year() {
-	/** @var \WP_Query $wp_query */
-	global $wp_query;
-
-	array_reduce(
-		$wp_query->posts,
-		function( $carry, $item ) {
-			$year = get_the_date( 'Y', $item->ID );
-
-			if ( ! isset( $carry[ $year ] ) ) {
-				$carry[ $year ] = array();
-			}
-
-
-		},
-		array()
 	);
 }
 
