@@ -40,7 +40,12 @@
 				{
 					"slug": "beige",
 					"color": "#e4ddd4",
-					"name": "Beige"
+					"name": "Beige 1"
+				},
+				{
+					"slug": "beige-2",
+					"color": "#d3ccc3",
+					"name": "Beige 2"
 				},
 				{
 					"slug": "blue-1",

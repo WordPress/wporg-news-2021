@@ -3,6 +3,8 @@
  */
 
 body.category-events {
+	--row-padding-vertical: clamp( 24px, calc( 100vw / 26 ), 50px );
+
 	background-color: var(--wp--preset--color--off-white);
 
 	.local-header {
@@ -10,6 +12,106 @@ body.category-events {
 		--bar-text-color: var(--wp--preset--color--darker-grey);
 		--bar-link-color: var(--wp--preset--color--blue-1);
 		--bar-link-hover-color: var(--wp--preset--color--blue-5);
+	}
+
+	// This added specificity is needed to override the general
+	// layout styles for category templates.
+	.wp-site-blocks {
+		.site-content-container {
+			padding: 0 0 var(--wp--custom--alignment--edge-spacing);
+			display: block;
+		}
+	}
+
+	.wp-block-post-template {
+		margin: 0 0 var(--wp--custom--alignment--edge-spacing);
+	}
+
+	.wp-block-post {
+		margin: 0;
+		padding:
+				calc(var(--wp--custom--alignment--edge-spacing) * 1.5)
+				var(--wp--custom--alignment--edge-spacing)
+				calc(160px + var(--wp--custom--alignment--edge-spacing));
+		position: relative;
+
+		// This is needed to position the version number so
+		// it appears "hidden".
+		overflow: hidden;
+
+		// Make some room for the version number on
+		// larger viewports.
+		@include break-medium() {
+			padding:
+					var(--row-padding-vertical)
+					var(--wp--custom--alignment--edge-spacing)
+					var(--row-padding-vertical)
+					calc(var(--wp--custom--layout--content-meta-size) + 32px + var(--wp--custom--alignment--edge-spacing));
+		}
+
+		// Reset the default block margins.
+		.wp-block-group.entry-header,
+		.wp-block-post-title,
+		.wp-block-post-date {
+			margin: 0;
+		}
+
+		.wp-block-post-title {
+			font-size: var(--wp--custom--h-3--typography--font-size);
+		}
+
+		// Hide post excerpts by default.
+		.wp-block-post-excerpt {
+			display: none;
+		}
+
+		.wp-block-wporg-event-year {
+			position: absolute;
+			bottom: -30px;
+			color: var(--wp--preset--color--beige-2);
+			display: none;
+
+			@include break-medium() {
+				left: var(--wp--custom--alignment--edge-spacing);
+				width: calc(var(--wp--custom--layout--content-meta-size) - var(--wp--custom--alignment--edge-spacing));
+				transition: all 0.2s ease-in-out;
+			}
+		}
+
+		&.last-in-year {
+			border-bottom: 1px solid var(--wp--preset--color--beige-2);
+
+			&:not(.first-year-of-page) .wp-block-wporg-event-year {
+				display: block;
+			}
+		}
+
+		// The lastest release is shown first, and includes
+		// an excerpt and special styling.
+		&.first-year-of-page.first-in-year {
+			.wp-block-wporg-event-year {
+				display: block;
+				position: static;
+				padding-bottom: 0.3em;
+
+				@include break-medium() {
+					position: absolute;
+					bottom: auto;
+					top: var(--row-padding-vertical);
+				}
+			}
+
+			.wp-block-post-excerpt {
+				display: block;
+			}
+
+			.wp-block-post-excerpt__more-link {
+				&:hover,
+				&:focus {
+					text-decoration: none;
+				}
+			}
+		}
 	}
 }
 
