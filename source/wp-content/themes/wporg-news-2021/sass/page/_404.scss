@@ -74,7 +74,6 @@ body.error404 {
 	.site-content-container .wp-block-search.wp-block-search__button-inside {
 		width: 100%;
 		margin-top: 40px;
-		padding: 16px 17px 16px 19px;
 		background-color: var(--wp--preset--color--white);
 		border-radius: var(--wp--custom--button--border--radius);
 
@@ -84,14 +83,20 @@ body.error404 {
 
 		.wp-block-search__inside-wrapper {
 			border: none;
-			padding: 0;
+			padding: 0 15px 0 0;
+
+			@include break-small() {
+				padding: 0 8px 0 0;
+			}
 
 			.wp-block-search__input {
 				font-size: 20px;
-				padding: 0;
 				-webkit-appearance: none; /* Remove duplicate magnifying glass icon on Safari-mobile. */
 
+				padding: 12px 0 12px 19px;
+
 				@include break-small() {
+					padding: 6px 0 6px 14px;
 					font-size: 14px;
 				}
 			}
