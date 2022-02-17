@@ -34,7 +34,8 @@
 	}
 }
 
-body.archive .site-content-container {
+body.archive .site-content-container,
+body.search .site-content-container {
 	padding-left: var(--wp--custom--alignment--edge-spacing);
 	padding-right: var(--wp--custom--alignment--edge-spacing);
 	padding-bottom: var(--wp--custom--alignment--edge-spacing);
