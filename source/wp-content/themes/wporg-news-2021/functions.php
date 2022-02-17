@@ -84,7 +84,7 @@ function editor_styles() {
 function enqueue_assets() {
 	// Enqueue Google fonts
 	wp_enqueue_style( 'wporg-news-fonts', fonts_url(), array(), null ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
-	wp_enqueue_style( 'wporg-news-style', get_stylesheet_uri(), array(), wp_get_theme()->get( 'Version' ) );
+	wp_enqueue_style( 'wporg-news-style', get_stylesheet_uri(), array(), filemtime( __DIR__ . '/style.css' ) );
 }
 
 /**
