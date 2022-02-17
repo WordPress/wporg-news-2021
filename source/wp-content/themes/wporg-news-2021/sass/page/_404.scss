@@ -20,7 +20,6 @@ body.error404 {
 		 */
 		position: relative; // needed for overflow to work
 		overflow: hidden;
-		min-height: var(--oops-font-size);
 		margin-top: 0;
 		color: var(--wp--preset--color--off-white-2);
 		padding-left: var(--wp--custom--alignment--edge-spacing);
@@ -30,7 +29,10 @@ body.error404 {
 			// <html> has a `margin-top` that assumes the local header is present. That creates a gap when when
 			// hide the local nav. We can't change <html> without affecting other pages, so instead we just push
 			// this element up to cover the gap.
-			top: calc(-1 * var(--local-header-height));
+			margin-top: calc(-1 * var(--local-header-height));
+			// Prevent the gap under the content container from growing too big.
+			// The max will start cutting off the text after ~2500px, but that's an edge case.
+			min-height: min( var(--oops-font-size), 975px );
 		}
 	}
 
@@ -117,5 +119,9 @@ body.error404 {
 	.global-footer {
 		margin-top: 150px;
 		border-top: 1px solid var(--wp--preset--color--darker-grey);
+
+		@include break-small() {
+			margin-top: 115px;
+		}
 	}
 }
