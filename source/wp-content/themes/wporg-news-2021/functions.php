@@ -25,6 +25,7 @@ add_filter( 'the_title', __NAMESPACE__ . '\update_the_title', 10, 2 );
 add_action( 'ssp_album_art_cover', __NAMESPACE__ . '\custom_default_album_art_cover', 10, 2 );
 add_filter( 'render_block', __NAMESPACE__ . '\customize_podcast_player_position', null, 2 );
 add_filter( 'wp_list_categories', __NAMESPACE__ . '\add_links_to_categories_list', 10, 2 );
+add_filter( 'author_link', __NAMESPACE__ . '\use_wporg_profile_for_author_link', 10, 3 );
 add_action( 'parse_query', __NAMESPACE__ . '\compat_workaround_core_55100' );
 
 /**
@@ -374,6 +375,22 @@ function add_links_to_categories_list( $html, $args ) {
 	ksort( $links );
 
 	return implode( "\n\t", $links );
+}
+
+/**
+ * Swap out the normal author archive link for the author's wp.org profile link.
+ *
+ * @param string $link            Overwritten.
+ * @param int    $author_id       Unused.
+ * @param string $author_nicename Used as the slug in the profiles URL.
+ *
+ * @return string
+ */
+function use_wporg_profile_for_author_link( $link, $author_id, $author_nicename ) {
+	return sprintf(
+		'https://profiles.wordpress.org/%s/',
+		$author_nicename
+	);
 }
 
 /**
