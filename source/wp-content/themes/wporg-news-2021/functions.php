@@ -201,31 +201,66 @@ function clarify_body_classes( $classes ) {
  * @return array
  */
 function specify_post_classes( $classes, $extra_classes, $post_id ) {
-	// The "0th" of the month returns the last day of the previous month.
-	$date = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-00 00:00:00' ) );
-	$classes[] = 'post-year-' . $date->format( 'Y' );
-
 	global $wp_query;
+	if ( ! is_object( $wp_query ) ) {
+		return $classes;
+	}
+
+	// Seems like the wp:query loop block doesn't count as "in the loop" so we'll do this the hard way:
+	$current_post = null;
+	$count_posts = count( $wp_query->posts );
+	for ( $i = 0; $i < $count_posts; $i++ ) {
+		if ( $wp_query->posts[ $i ]->ID === $post_id ) {
+			$current_post = $i;
+		}
+	}
 
 	// Add last-in-year to help put design elements in between year groups in the Month In WordPress category
-	if ( is_object( $wp_query ) && $wp_query->is_category( 'month-in-wordpress' ) && $wp_query->post_count > 1 ) {
-		// Seems like the wp:query loop block doesn't count as "in the loop" so we'll do this the hard way:
-		$current_post = null;
-		$count_posts = count( $wp_query->posts );
-		for ( $i = 0; $i < $count_posts; $i++ ) {
-			if ( $wp_query->posts[ $i ]->ID === $post_id ) {
-				$current_post = $i;
+	if ( $wp_query->is_category( 'month-in-wordpress' ) && $wp_query->post_count > 1 && ! is_null( $current_post ) ) {
+		// The "0th" of the month returns the last day of the previous month.
+		$date = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-00 00:00:00' ) );
+		$classes[] = 'post-year-' . $date->format( 'Y' );
+
+		if ( $current_post < $count_posts - 1 ) {
+			$this_year = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-00 00:00:00' ) );
+			$next_year = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-00 00:00:00', $wp_query->posts[ $current_post + 1 ] ) );
+
+			if ( $this_year->format( 'Y' ) !== $next_year->format( 'Y' ) ) {
+				$classes[] = 'last-in-year';
+			}
+		}
+	}
+
+	// Add helper classes for the Events category.
+	if ( $wp_query->is_category( 'events' ) && $wp_query->post_count > 0 && ! is_null( $current_post ) ) {
+		$first_year_of_page = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-d 00:00:00', $wp_query->posts[0] ) );
+		$this_year = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-d 00:00:00' ) );
+
+		if ( $first_year_of_page->format( 'Y' ) === $this_year->format( 'Y' ) ) {
+			$classes[] = 'first-year-of-page';
+		}
+
+		if ( $current_post === 0 ) {
+			$classes[] = 'first-in-year';
+		}
+
+		if ( $current_post === $count_posts - 1 ) {
+			$classes[] = 'last-in-year';
+		}
+
+		if ( $current_post < $count_posts - 1 ) {
+			$next_year = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-d 00:00:00', $wp_query->posts[ $current_post + 1 ] ) );
+
+			if ( $this_year->format( 'Y' ) !== $next_year->format( 'Y' ) ) {
+				$classes[] = 'last-in-year';
 			}
 		}
 
-		if ( ! is_null( $current_post ) ) {
-			if ( $current_post < $count_posts - 1 ) {
-				$this_year = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-00 00:00:00' ) );
-				$next_year = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-00 00:00:00', $wp_query->posts[ $current_post + 1 ] ) );
+		if ( $current_post > 0 ) {
+			$prev_year = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-d 00:00:00', $wp_query->posts[ $current_post - 1 ] ) );
 
-				if ( $this_year->format( 'Y' ) !== $next_year->format( 'Y' ) ) {
-					$classes[] = 'last-in-year';
-				}
+			if ( $this_year->format( 'Y' ) !== $prev_year->format( 'Y' ) ) {
+				$classes[] = 'first-in-year';
 			}
 		}
 	}
