@@ -283,7 +283,7 @@ body.category-community {
 
 	.wp-site-blocks > .site-content-container:not(.site-header-container):not(.local-header):not(.global-footer):not(.bottom-banner) {
 		padding: 0;
-		margin-top: 0;
+		margin-top: calc(-1 * var(--local-header-height) / 3);
 
 		@include break-medium() {
 			padding-left: 0;
