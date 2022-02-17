@@ -322,11 +322,6 @@
 					}
 				}
 			},
-			"post-author": {
-				"typography": {
-					"fontWeight": "normal"
-				}
-			},
 			"post-comment": {
 				"typography": {
 					"fontSize": "var(--wp--preset--font-size--normal)",
