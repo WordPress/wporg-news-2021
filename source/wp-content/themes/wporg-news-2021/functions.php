@@ -27,6 +27,7 @@ add_action( 'ssp_album_art_cover', __NAMESPACE__ . '\custom_default_album_art_co
 add_filter( 'render_block', __NAMESPACE__ . '\customize_podcast_player_position', null, 2 );
 add_filter( 'wp_list_categories', __NAMESPACE__ . '\add_links_to_categories_list', 10, 2 );
 add_filter( 'author_link', __NAMESPACE__ . '\use_wporg_profile_for_author_link', 10, 3 );
+add_action( 'wp_print_footer_scripts', __NAMESPACE__ . '\print_events_category_archive_script' );
 add_action( 'parse_query', __NAMESPACE__ . '\compat_workaround_core_55100' );
 
 /**
@@ -235,6 +236,7 @@ function specify_post_classes( $classes, $extra_classes, $post_id ) {
 	if ( $wp_query->is_category( 'events' ) && $wp_query->post_count > 0 && ! is_null( $current_post ) ) {
 		$first_year_of_page = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-d 00:00:00', $wp_query->posts[0] ) );
 		$this_year = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-d 00:00:00' ) );
+		$classes[] = 'post-year-' . $this_year->format( 'Y' );
 
 		if ( $first_year_of_page->format( 'Y' ) === $this_year->format( 'Y' ) ) {
 			$classes[] = 'first-year-of-page';
@@ -427,6 +429,60 @@ function use_wporg_profile_for_author_link( $link, $author_id, $author_nicename 
 		'https://profiles.wordpress.org/%s/',
 		$author_nicename
 	);
+}
+
+/**
+ * Add a script to the footer of the Events category archive page.
+ *
+ * @return void
+ */
+function print_events_category_archive_script() {
+	if ( ! is_category( 'events' ) ) {
+		return;
+	}
+
+	ob_start();
+	?>
+<script id="wporg-news-2021-events-archive-handler">
+	( () => {
+		const getPostYear = ( element ) => {
+			return Array.from( element.classList ).find( yearClass => yearClass.match( /^post-year-/ ) );
+		};
+
+		const eventHandler = ( event ) => {
+			const row = event.target;
+			const postYear = getPostYear( row );
+			const yearGroup = document.getElementsByClassName( postYear );
+
+			Array.from( yearGroup ).forEach( ( row ) => {
+				switch ( event.type ) {
+					case 'focus':
+					case 'mouseenter':
+						row.classList.add( 'active' );
+						break;
+					case 'blur':
+					case 'mouseleave':
+						row.classList.remove( 'active' );
+						break;
+				}
+			} );
+		};
+
+		const rows = document.querySelectorAll('[class*="post-year-"]');
+		Array.from( rows ).forEach( ( row ) => {
+			const postYear = getPostYear( row );
+
+			if ( postYear ) {
+				row.addEventListener( 'focus', eventHandler );
+				row.addEventListener( 'mouseenter', eventHandler );
+				row.addEventListener( 'blur', eventHandler );
+				row.addEventListener( 'mouseleave', eventHandler );
+			}
+		} );
+	} )();
+</script>
+	<?php
+	echo ob_get_clean();
 }
 
 /**

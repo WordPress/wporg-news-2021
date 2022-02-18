@@ -138,19 +138,20 @@ body.category-events {
 
 			&:hover,
 			&:focus-within {
-				.wp-block-wporg-event-year {
-					color: var(--wp--preset--color--blue-2);
-				}
-
 				.wp-block-post-title::after {
 					opacity: 1;
 					transform: scale(0.6) translateX(0);
 				}
 			}
 
+			&.active {
+				.wp-block-wporg-event-year {
+					color: var(--wp--preset--color--blue-2);
+				}
+			}
+
 			&:not(.first-year-of-page.first-in-year) {
-				&:hover,
-				&:focus-within {
+				&.active {
 					.wp-block-wporg-event-year {
 						transform: translateY(calc(0px - var(--row-padding-vertical)));
 					}
