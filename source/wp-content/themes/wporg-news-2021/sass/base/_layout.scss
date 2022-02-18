@@ -1,9 +1,9 @@
 // Setup the main container to use a flex box-model
 // allowing us to simplify the layout and "sticky" bar.
 .wp-site-blocks {
-	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
+	min-height: calc(100vh - var(--wp-global-header-offset) - var(--local-header-height));
 
 	> .site-content-container {
 		// Make the content area grow to fill any remaining space on the screen, so that the footer is pushed to
