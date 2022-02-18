@@ -152,7 +152,7 @@ body.category-events {
 				&:hover,
 				&:focus-within {
 					.wp-block-wporg-event-year {
-						transform: translateY( calc( 0px - var(--row-padding-vertical) / 2 ) );
+						transform: translateY( calc( 0px - var(--row-padding-vertical) ) );
 					}
 				}
 			}
