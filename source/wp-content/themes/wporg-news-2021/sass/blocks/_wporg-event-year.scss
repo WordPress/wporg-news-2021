@@ -3,6 +3,7 @@
 	font-size: 160px;
 	font-weight: 200;
 	line-height: 1;
+	letter-spacing: -10px;
 
 	@include break-medium() {
 		white-space: nowrap;
