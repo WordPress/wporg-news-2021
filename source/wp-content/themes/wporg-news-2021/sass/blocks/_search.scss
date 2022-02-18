@@ -29,7 +29,13 @@
 
 		&.has-icon {
 			line-height: 0;
+
+			// The user needs some kind of indication that the search icon is a button that can be clicked to
+			// submit the form, because these buttons don't have the normal indicators. For background, see:
+			// https://ux.stackexchange.com/questions/105024/why-dont-button-html-elements-have-a-css-cursor-pointer-by-default
+			&:hover {
+				cursor: pointer;
+			}
 		}
 	}
-
 }
