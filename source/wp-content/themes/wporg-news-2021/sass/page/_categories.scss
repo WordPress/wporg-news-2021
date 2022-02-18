@@ -55,6 +55,10 @@ body.category-events {
 			margin: 0;
 		}
 
+		.wp-block-group.entry-header {
+			position: relative;
+		}
+
 		.wp-block-post-title {
 			font-size: var(--wp--custom--h-3--typography--font-size);
 		}
@@ -115,34 +119,40 @@ body.category-events {
 		}
 
 		@include break-medium() {
-			&:not(.first-year-of-page.first-in-year) {
-				.wp-block-post-title::after {
-					content: "";
-					display: block;
-					height: 118px;
-					min-width: 160px;
-					position: absolute;
-					top: calc(50% - (118px / 2));
-					right: 0;
-					opacity: 0;
-					transform: scale(0.6) translateX(-12px);
-					background-image: url(images/right-arrow-blue.svg);
-					background-position: center right;
-					background-repeat: no-repeat;
-					pointer-events: none;
-					transition: all 0.15s linear;
+			.wp-block-post-title::after {
+				content: "";
+				display: block;
+				height: 118px;
+				min-width: 160px;
+				position: absolute;
+				top: calc(50% - (118px / 2));
+				right: calc(-1 * var(--wp--custom--alignment--edge-spacing));
+				opacity: 0;
+				transform: scale(0.6) translateX(-12px);
+				background-image: url(images/right-arrow-blue.svg);
+				background-position: center right;
+				background-repeat: no-repeat;
+				pointer-events: none;
+				transition: all 0.15s linear;
+			}
+
+			&:hover,
+			&:focus-within {
+				.wp-block-wporg-event-year {
+					color: var(--wp--preset--color--blue-2);
 				}
 
+				.wp-block-post-title::after {
+					opacity: 1;
+					transform: scale(0.6) translateX(0);
+				}
+			}
+
+			&:not(.first-year-of-page.first-in-year) {
 				&:hover,
 				&:focus-within {
 					.wp-block-wporg-event-year {
-						color: var(--wp--preset--color--blue-1);
 						transform: translateY( calc( 0px - var(--row-padding-vertical) / 2 ) );
-					}
-
-					.wp-block-post-title::after {
-						opacity: 1;
-						transform: scale(0.6) translateX(0);
 					}
 				}
 			}
