@@ -450,7 +450,7 @@ function print_events_category_archive_script() {
 		};
 
 		const eventHandler = ( event ) => {
-			const row = event.target;
+			const row = event.currentTarget;
 			const postYear = getPostYear( row );
 			const yearGroup = document.getElementsByClassName( postYear );
 
@@ -473,9 +473,9 @@ function print_events_category_archive_script() {
 			const postYear = getPostYear( row );
 
 			if ( postYear ) {
-				row.addEventListener( 'focus', eventHandler );
+				row.addEventListener( 'focus', eventHandler, { capture: true } );
 				row.addEventListener( 'mouseenter', eventHandler );
-				row.addEventListener( 'blur', eventHandler );
+				row.addEventListener( 'blur', eventHandler, { capture: true } );
 				row.addEventListener( 'mouseleave', eventHandler );
 			}
 		} );
