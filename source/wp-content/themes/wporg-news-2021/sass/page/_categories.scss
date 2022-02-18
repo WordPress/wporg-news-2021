@@ -30,10 +30,17 @@ body.category-events {
 	.wp-block-post {
 		margin: 0;
 		padding:
-				calc(var(--wp--custom--alignment--edge-spacing) * 1.5)
 				var(--wp--custom--alignment--edge-spacing)
-				calc(160px + var(--wp--custom--alignment--edge-spacing));
+				var(--wp--custom--alignment--edge-spacing);
 		position: relative;
+
+		&.first-in-year {
+			padding-top: calc(var(--wp--custom--alignment--edge-spacing) * 1.5);
+		}
+
+		&.first-year-of-page.last-in-year {
+			padding-bottom: calc(var(--wp--custom--alignment--edge-spacing) * 1.5);
+		}
 
 		// This is needed to position the version number so
 		// it appears "hidden".
@@ -81,8 +88,12 @@ body.category-events {
 		&.last-in-year {
 			border-bottom: 1px solid var(--wp--preset--color--beige-2);
 
-			&:not(.first-year-of-page) .wp-block-wporg-event-year {
-				display: block;
+			&:not(.first-year-of-page) {
+				padding-bottom: calc(160px + var(--wp--custom--alignment--edge-spacing));
+
+				.wp-block-wporg-event-year {
+					display: block;
+				}
 			}
 		}
 
