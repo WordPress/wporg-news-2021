@@ -29,12 +29,10 @@ body.category-events {
 
 	.wp-block-post {
 		margin: 0;
-		padding:
-				var(--wp--custom--alignment--edge-spacing)
-				var(--wp--custom--alignment--edge-spacing);
+		padding: var(--row-padding-vertical) var(--wp--custom--alignment--edge-spacing);
 		position: relative;
 
-		&.first-in-year {
+		&.first-in-year:not(.first-year-of-page) {
 			padding-top: calc(var(--wp--custom--alignment--edge-spacing) * 1.5);
 		}
 
@@ -42,19 +40,13 @@ body.category-events {
 			padding-bottom: calc(var(--wp--custom--alignment--edge-spacing) * 1.5);
 		}
 
+		&.last-in-year:not(.first-year-of-page) {
+			padding-bottom: calc(160px + var(--wp--custom--alignment--edge-spacing));
+		}
+
 		// This is needed to position the version number so
 		// it appears "hidden".
 		overflow: hidden;
-
-		// Make some room for the version number on
-		// larger viewports.
-		@include break-medium() {
-			padding:
-					var(--row-padding-vertical)
-					var(--wp--custom--alignment--edge-spacing)
-					var(--row-padding-vertical)
-					calc(var(--wp--custom--layout--content-meta-size) + 32px + var(--wp--custom--alignment--edge-spacing));
-		}
 
 		// Reset the default block margins.
 		.wp-block-group.entry-header,
@@ -153,6 +145,26 @@ body.category-events {
 						transform: scale(0.6) translateX(0);
 					}
 				}
+			}
+		}
+	}
+
+	// This needs to be down here for some reason or the rules get overridden by the mobile ones.
+	@include break-medium() {
+		.wp-block-post {
+			padding:
+					var(--row-padding-vertical)
+					var(--wp--custom--alignment--edge-spacing)
+					var(--row-padding-vertical)
+					calc(var(--wp--custom--layout--content-meta-size) + 32px + var(--wp--custom--alignment--edge-spacing));
+
+			&.first-in-year:not(.first-year-of-page) {
+				padding-top: var(--wp--custom--alignment--edge-spacing);
+			}
+
+			&.first-year-of-page.last-in-year,
+			&.last-in-year:not(.first-year-of-page) {
+				padding-bottom: var(--wp--custom--alignment--edge-spacing);
 			}
 		}
 	}
