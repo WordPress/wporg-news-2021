@@ -3,7 +3,7 @@
  */
 
 body.category-events {
-	--row-padding-vertical: clamp( 24px, calc( 100vw / 26 ), 50px );
+	--row-padding-vertical: clamp(24px, calc(100vw / 26), 50px);
 
 	background-color: var(--wp--preset--color--off-white);
 
@@ -152,7 +152,7 @@ body.category-events {
 				&:hover,
 				&:focus-within {
 					.wp-block-wporg-event-year {
-						transform: translateY( calc( 0px - var(--row-padding-vertical) ) );
+						transform: translateY(calc(0px - var(--row-padding-vertical)));
 					}
 				}
 			}
@@ -163,10 +163,10 @@ body.category-events {
 	@include break-medium() {
 		.wp-block-post {
 			padding:
-					var(--row-padding-vertical)
-					var(--wp--custom--alignment--edge-spacing)
-					var(--row-padding-vertical)
-					calc(var(--wp--custom--layout--content-meta-size) + 32px + var(--wp--custom--alignment--edge-spacing));
+				var(--row-padding-vertical)
+				var(--wp--custom--alignment--edge-spacing)
+				var(--row-padding-vertical)
+				calc(var(--wp--custom--layout--content-meta-size) + 32px + var(--wp--custom--alignment--edge-spacing));
 
 			&.first-in-year:not(.first-year-of-page) {
 				padding-top: var(--wp--custom--alignment--edge-spacing);
@@ -194,7 +194,7 @@ body.category-events {
 }
 
 body.category-releases {
-	--row-padding-vertical: clamp( 24px, calc( 100vw / 26 ), 50px );
+	--row-padding-vertical: clamp(24px, calc(100vw / 26), 50px);
 
 	background-color: var(--wp--preset--color--blue-1);
 
@@ -341,7 +341,7 @@ body.category-releases {
 				&:hover,
 				&:focus-within {
 					.wp-block-wporg-release-version {
-						transform: translateY( calc( 0px - var(--row-padding-vertical) / 2 ) );
+						transform: translateY(calc(0px - var(--row-padding-vertical) / 2));
 					}
 
 					.wp-block-post-title::after {
@@ -527,6 +527,7 @@ body.category-community {
 			figure,
 			figure a,
 			img {
+
 				@include break-small() {
 					height: 100%;
 				}

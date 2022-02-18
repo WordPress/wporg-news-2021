@@ -38,7 +38,7 @@ body.news-front-page .front__latest-posts {
 		}
 
 		> li {
-			margin-bottom: clamp( 48px, 6.25vw, 58px );
+			margin-bottom: clamp(48px, 6.25vw, 58px);
 
 			@include break-medium() {
 				&:last-child {
