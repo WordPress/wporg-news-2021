@@ -1,0 +1,20 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "wporg/podcast-player",
+	"title": "Podcast Player",
+	"category": "widgets",
+	"icon": "embed-audio",
+	"description": "Audio player for the current Podcast episode.",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"showMeta": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"usesContext": [ "postId" ],
+	"textdomain": "wporg"
+}

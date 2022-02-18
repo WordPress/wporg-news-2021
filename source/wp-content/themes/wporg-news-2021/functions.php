@@ -7,6 +7,7 @@ use WP_Query;
 defined( 'WPINC' ) || die();
 
 require_once __DIR__ . '/blocks/month-in-wp-title/index.php';
+require_once __DIR__ . '/blocks/podcast-player/index.php';
 require_once __DIR__ . '/blocks/release-version/index.php';
 
 /**
@@ -23,7 +24,6 @@ add_filter( 'render_block_data', __NAMESPACE__ . '\custom_query_block_attributes
 add_filter( 'template_redirect', __NAMESPACE__ . '\jetpack_likes_workaround' );
 add_filter( 'the_title', __NAMESPACE__ . '\update_the_title', 10, 2 );
 add_action( 'ssp_album_art_cover', __NAMESPACE__ . '\custom_default_album_art_cover', 10, 2 );
-add_filter( 'render_block', __NAMESPACE__ . '\customize_podcast_player_position', null, 2 );
 add_filter( 'wp_list_categories', __NAMESPACE__ . '\add_links_to_categories_list', 10, 2 );
 add_filter( 'author_link', __NAMESPACE__ . '\use_wporg_profile_for_author_link', 10, 3 );
 add_action( 'parse_query', __NAMESPACE__ . '\compat_workaround_core_55100' );
@@ -304,35 +304,6 @@ function custom_default_album_art_cover( $album_art ) {
 	}
 
 	return $album_art;
-}
-
-/**
- * Inserts the podcast player in a group block that has the 'podcast-player' or 'podcast-player-audio' class names
- * 'podcast-player' inserts the HTML5 player with album art
- * 'podcast-player-audio' inserts the standard compact player
- *
- * @param string $block_content The block content about to be appended.
- * @param array  $block          The full block, including name and attributes.
- *
- * @return string               The block content about to be appended.
- */
-function customize_podcast_player_position(
-	$block_content,
-	$block
-) {
-	if (
-		'core/group' === $block['blockName'] &&
-		! is_admin() &&
-		! wp_is_json_request()
-	) {
-		if ( isset( $block['attrs']['className'] ) ) {
-			if ( 'podcast-player' === $block['attrs']['className'] ) {
-				$block_content = do_blocks( '<!-- wp:seriously-simple-podcasting/castos-html-player {"episodeId":"' . get_the_ID() . '"} /-->' );
-			}
-		}
-	}
-
-	return $block_content;
 }
 
 /**

@@ -277,6 +277,21 @@
 	}
 }
 
+.wp-block-wporg-podcast-player {
+	.castos-player + .podcast-player-meta {
+		margin-top: var(--wp--style--block-gap);
+	}
+
+	.podcast-player-meta a {
+		text-decoration-line: underline;
+	}
+
+	.podcast-player-meta a:hover,
+	.podcast-player-meta a:focus {
+		text-decoration: none;
+	}
+}
+
 /* Reduced version of the player */
 .podcast-title {
 	.castos-player {
