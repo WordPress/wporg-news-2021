@@ -156,11 +156,14 @@ function override_category_query_args( $query ) {
 		return;
 	}
 	if ( $query->is_category() ) {
+		if ( $query->is_category( 'community' ) ) {
+			$query->set( 'posts_per_page', 20 );
+		}
 		if ( $query->is_category( 'month-in-wordpress' ) ) {
 			$query->set( 'posts_per_page', 600 );
 		}
-		if ( $query->is_category( 'community' ) ) {
-			$query->set( 'posts_per_page', 20 );
+		if ( $query->is_category( 'releases' ) ) {
+			$query->set( 'posts_per_page', 100 );
 		}
 	}
 }
