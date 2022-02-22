@@ -6,6 +6,7 @@ use WP_Query;
 
 defined( 'WPINC' ) || die();
 
+require_once __DIR__ . '/blocks/event-year/index.php';
 require_once __DIR__ . '/blocks/month-in-wp-title/index.php';
 require_once __DIR__ . '/blocks/podcast-player/index.php';
 require_once __DIR__ . '/blocks/release-version/index.php';
@@ -26,6 +27,7 @@ add_filter( 'the_title', __NAMESPACE__ . '\update_the_title', 10, 2 );
 add_action( 'ssp_album_art_cover', __NAMESPACE__ . '\custom_default_album_art_cover', 10, 2 );
 add_filter( 'wp_list_categories', __NAMESPACE__ . '\add_links_to_categories_list', 10, 2 );
 add_filter( 'author_link', __NAMESPACE__ . '\use_wporg_profile_for_author_link', 10, 3 );
+add_action( 'wp_print_footer_scripts', __NAMESPACE__ . '\print_events_category_archive_script' );
 add_action( 'parse_query', __NAMESPACE__ . '\compat_workaround_core_55100' );
 
 /**
@@ -203,31 +205,67 @@ function clarify_body_classes( $classes ) {
  * @return array
  */
 function specify_post_classes( $classes, $extra_classes, $post_id ) {
-	// The "0th" of the month returns the last day of the previous month.
-	$date = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-00 00:00:00' ) );
-	$classes[] = 'post-year-' . $date->format( 'Y' );
-
 	global $wp_query;
+	if ( ! is_object( $wp_query ) ) {
+		return $classes;
+	}
+
+	// Seems like the wp:query loop block doesn't count as "in the loop" so we'll do this the hard way:
+	$current_post = null;
+	$count_posts = count( $wp_query->posts );
+	for ( $i = 0; $i < $count_posts; $i++ ) {
+		if ( $wp_query->posts[ $i ]->ID === $post_id ) {
+			$current_post = $i;
+		}
+	}
 
 	// Add last-in-year to help put design elements in between year groups in the Month In WordPress category
-	if ( is_object( $wp_query ) && $wp_query->is_category( 'month-in-wordpress' ) && $wp_query->post_count > 1 ) {
-		// Seems like the wp:query loop block doesn't count as "in the loop" so we'll do this the hard way:
-		$current_post = null;
-		$count_posts = count( $wp_query->posts );
-		for ( $i = 0; $i < $count_posts; $i++ ) {
-			if ( $wp_query->posts[ $i ]->ID === $post_id ) {
-				$current_post = $i;
+	if ( $wp_query->is_category( 'month-in-wordpress' ) && $wp_query->post_count > 1 && ! is_null( $current_post ) ) {
+		// The "0th" of the month returns the last day of the previous month.
+		$date = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-00 00:00:00' ) );
+		$classes[] = 'post-year-' . $date->format( 'Y' );
+
+		if ( $current_post < $count_posts - 1 ) {
+			$this_year = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-00 00:00:00' ) );
+			$next_year = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-00 00:00:00', $wp_query->posts[ $current_post + 1 ] ) );
+
+			if ( $this_year->format( 'Y' ) !== $next_year->format( 'Y' ) ) {
+				$classes[] = 'last-in-year';
+			}
+		}
+	}
+
+	// Add helper classes for the Events category.
+	if ( $wp_query->is_category( 'events' ) && $wp_query->post_count > 0 && ! is_null( $current_post ) ) {
+		$first_year_of_page = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-d 00:00:00', $wp_query->posts[0] ) );
+		$this_year = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-d 00:00:00' ) );
+		$classes[] = 'post-year-' . $this_year->format( 'Y' );
+
+		if ( $first_year_of_page->format( 'Y' ) === $this_year->format( 'Y' ) ) {
+			$classes[] = 'first-year-of-page';
+		}
+
+		if ( $current_post === 0 ) {
+			$classes[] = 'first-in-year';
+		}
+
+		if ( $current_post === $count_posts - 1 ) {
+			$classes[] = 'last-in-year';
+		}
+
+		if ( $current_post < $count_posts - 1 ) {
+			$next_year = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-d 00:00:00', $wp_query->posts[ $current_post + 1 ] ) );
+
+			if ( $this_year->format( 'Y' ) !== $next_year->format( 'Y' ) ) {
+				$classes[] = 'last-in-year';
 			}
 		}
 
-		if ( ! is_null( $current_post ) ) {
-			if ( $current_post < $count_posts - 1 ) {
-				$this_year = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-00 00:00:00' ) );
-				$next_year = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-00 00:00:00', $wp_query->posts[ $current_post + 1 ] ) );
+		if ( $current_post > 0 ) {
+			$prev_year = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-d 00:00:00', $wp_query->posts[ $current_post - 1 ] ) );
 
-				if ( $this_year->format( 'Y' ) !== $next_year->format( 'Y' ) ) {
-					$classes[] = 'last-in-year';
-				}
+			if ( $this_year->format( 'Y' ) !== $prev_year->format( 'Y' ) ) {
+				$classes[] = 'first-in-year';
 			}
 		}
 	}
@@ -365,6 +403,60 @@ function use_wporg_profile_for_author_link( $link, $author_id, $author_nicename 
 		'https://profiles.wordpress.org/%s/',
 		$author_nicename
 	);
+}
+
+/**
+ * Add a script to the footer of the Events category archive page.
+ *
+ * @return void
+ */
+function print_events_category_archive_script() {
+	if ( ! is_category( 'events' ) ) {
+		return;
+	}
+
+	ob_start();
+	?>
+<script id="wporg-news-2021-events-archive-handler">
+	( () => {
+		const getPostYear = ( element ) => {
+			return Array.from( element.classList ).find( yearClass => yearClass.match( /^post-year-/ ) );
+		};
+
+		const eventHandler = ( event ) => {
+			const row = event.currentTarget;
+			const postYear = getPostYear( row );
+			const yearGroup = document.getElementsByClassName( postYear );
+
+			Array.from( yearGroup ).forEach( ( row ) => {
+				switch ( event.type ) {
+					case 'focus':
+					case 'mouseenter':
+						row.classList.add( 'active' );
+						break;
+					case 'blur':
+					case 'mouseleave':
+						row.classList.remove( 'active' );
+						break;
+				}
+			} );
+		};
+
+		const rows = document.querySelectorAll('[class*="post-year-"]');
+		Array.from( rows ).forEach( ( row ) => {
+			const postYear = getPostYear( row );
+
+			if ( postYear ) {
+				row.addEventListener( 'focus', eventHandler, { capture: true } );
+				row.addEventListener( 'mouseenter', eventHandler );
+				row.addEventListener( 'blur', eventHandler, { capture: true } );
+				row.addEventListener( 'mouseleave', eventHandler );
+			}
+		} );
+	} )();
+</script>
+	<?php
+	echo ob_get_clean();
 }
 
 /**

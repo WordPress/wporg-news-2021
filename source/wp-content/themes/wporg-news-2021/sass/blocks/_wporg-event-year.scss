@@ -1,0 +1,11 @@
+.wp-block-wporg-event-year {
+	font-family: var(--wp--preset--font-family--inter);
+	font-size: 160px;
+	font-weight: 200;
+	line-height: 1;
+	letter-spacing: -10px;
+
+	@include break-medium() {
+		white-space: nowrap;
+	}
+}

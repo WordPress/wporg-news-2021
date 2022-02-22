@@ -1,0 +1,19 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "wporg/event-year",
+	"title": "WordPress.org Event Year",
+	"category": "widgets",
+	"icon": "calendar",
+	"description": "Show the year for an \"Events\" post.",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"textAlign": {
+			"type": "string"
+		}
+	},
+	"usesContext": [ "postId" ],
+	"textdomain": "wporg"
+}

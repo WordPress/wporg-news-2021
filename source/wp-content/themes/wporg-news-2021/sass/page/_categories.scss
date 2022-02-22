@@ -3,6 +3,8 @@
  */
 
 body.category-events {
+	--row-padding-vertical: clamp(24px, calc(100vw / 26), 50px);
+
 	background-color: var(--wp--preset--color--off-white);
 
 	.local-header {
@@ -10,6 +12,185 @@ body.category-events {
 		--bar-text-color: var(--wp--preset--color--darker-grey);
 		--bar-link-color: var(--wp--preset--color--blue-1);
 		--bar-link-hover-color: var(--wp--preset--color--blue-5);
+	}
+
+	// This added specificity is needed to override the general
+	// layout styles for category templates.
+	.wp-site-blocks {
+		.site-content-container {
+			padding: 0 0 var(--wp--custom--alignment--edge-spacing);
+			display: block;
+		}
+	}
+
+	.wp-block-post-template {
+		margin: 0 0 var(--wp--custom--alignment--edge-spacing);
+	}
+
+	.wp-block-post {
+		margin: 0;
+		padding: var(--row-padding-vertical) var(--wp--custom--alignment--edge-spacing);
+		position: relative;
+
+		&.first-in-year:not(.first-year-of-page) {
+			padding-top: calc(var(--wp--custom--alignment--edge-spacing) * 1.5);
+		}
+
+		&.first-year-of-page.last-in-year {
+			padding-bottom: calc(var(--wp--custom--alignment--edge-spacing) * 1.5);
+		}
+
+		&.last-in-year:not(.first-year-of-page) {
+			padding-bottom: calc(160px + var(--wp--custom--alignment--edge-spacing));
+		}
+
+		// This is needed to position the version number so
+		// it appears "hidden".
+		overflow: hidden;
+
+		// Reset the default block margins.
+		.wp-block-group.entry-header,
+		.wp-block-post-title,
+		.wp-block-post-date {
+			margin: 0;
+		}
+
+		.wp-block-group.entry-header {
+			position: relative;
+		}
+
+		.wp-block-post-title {
+			font-size: var(--wp--custom--h-3--typography--font-size);
+		}
+
+		// Hide post excerpts by default.
+		.wp-block-post-excerpt {
+			display: none;
+		}
+
+		.wp-block-wporg-event-year {
+			position: absolute;
+			bottom: -30px;
+			color: var(--wp--preset--color--beige-2);
+			display: none;
+
+			@include break-medium() {
+				left: var(--wp--custom--alignment--edge-spacing);
+				width: calc(var(--wp--custom--layout--content-meta-size) - var(--wp--custom--alignment--edge-spacing));
+				transition: all 0.2s ease-in-out;
+			}
+		}
+
+		&.last-in-year {
+			border-bottom: 1px solid var(--wp--preset--color--beige-2);
+
+			&:not(.first-year-of-page) {
+				padding-bottom: calc(160px + var(--wp--custom--alignment--edge-spacing));
+
+				.wp-block-wporg-event-year {
+					display: block;
+				}
+			}
+		}
+
+		&.first-year-of-page.first-in-year {
+			.wp-block-wporg-event-year {
+				display: block;
+				position: static;
+				padding-bottom: 0.3em;
+
+				@include break-medium() {
+					position: absolute;
+					bottom: auto;
+					top: var(--row-padding-vertical);
+				}
+			}
+
+			.wp-block-post-excerpt {
+				display: block;
+			}
+
+			.wp-block-post-excerpt__more-link {
+				&:hover,
+				&:focus {
+					text-decoration: none;
+				}
+			}
+		}
+
+		@include break-medium() {
+			.wp-block-post-title::after {
+				content: "";
+				display: block;
+				height: 118px;
+				min-width: 160px;
+				position: absolute;
+				top: calc(50% - (118px / 2));
+				right: calc(-1 * var(--wp--custom--alignment--edge-spacing));
+				opacity: 0;
+				transform: scale(0.6) translateX(-12px);
+				background-image: url(images/right-arrow-blue.svg);
+				background-position: center right;
+				background-repeat: no-repeat;
+				pointer-events: none;
+				transition: all 0.15s linear;
+			}
+
+			&:hover,
+			&:focus-within {
+				.wp-block-post-title::after {
+					opacity: 1;
+					transform: scale(0.6) translateX(0);
+				}
+			}
+
+			&.active {
+				.wp-block-wporg-event-year {
+					color: var(--wp--preset--color--blue-2);
+				}
+			}
+
+			&:not(.first-year-of-page.first-in-year) {
+				&.active {
+					.wp-block-wporg-event-year {
+						transform: translateY(calc(0px - var(--row-padding-vertical)));
+					}
+				}
+			}
+		}
+	}
+
+	// This needs to be down here for some reason or the rules get overridden by the mobile ones.
+	@include break-medium() {
+		.wp-block-post {
+			padding:
+				var(--row-padding-vertical)
+				var(--wp--custom--alignment--edge-spacing)
+				var(--row-padding-vertical)
+				calc(var(--wp--custom--layout--content-meta-size) + 32px + var(--wp--custom--alignment--edge-spacing));
+
+			&.first-in-year:not(.first-year-of-page) {
+				padding-top: var(--wp--custom--alignment--edge-spacing);
+			}
+
+			&.first-year-of-page.last-in-year,
+			&.last-in-year:not(.first-year-of-page) {
+				padding-bottom: var(--wp--custom--alignment--edge-spacing);
+			}
+		}
+	}
+
+	.wp-block-query-pagination {
+		margin-left: var(--wp--custom--alignment--edge-spacing);
+		margin-right: var(--wp--custom--alignment--edge-spacing);
+
+		&::after {
+			background-color: var(--wp--preset--color--white);
+		}
+
+		@include break-medium() {
+			margin-left: calc(var(--wp--custom--layout--content-meta-size) + 32px + var(--wp--custom--alignment--edge-spacing));
+		}
 	}
 }
 
