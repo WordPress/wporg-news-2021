@@ -1,0 +1,171 @@
+body.category-releases {
+	--row-padding-vertical: clamp(24px, calc(100vw / 26), 50px);
+
+	background-color: var(--wp--preset--color--blue-1);
+
+	.local-header {
+		--bar-background-color: var(--wp--preset--color--blue-5);
+	}
+
+	// This added specificity is needed to override the general
+	// layout styles for category templates.
+	.wp-site-blocks {
+		.site-content-container {
+			padding: 0 0 var(--wp--custom--alignment--edge-spacing);
+			color: var(--wp--preset--color--white);
+			display: block;
+
+			a,
+			a:hover {
+				color: var(--wp--preset--color--white);
+			}
+
+			// Make sure the pagination works with the category's
+			// blue background color.
+			.wp-block-query-pagination {
+				color: var(--wp--preset--color--white);
+
+				&::after {
+					background-color: var(--wp--preset--color--blue-5);
+				}
+			}
+		}
+	}
+
+	.wp-block-post-template {
+		margin: 0 0 var(--wp--custom--alignment--edge-spacing);
+	}
+
+	.wp-block-post {
+		margin: 0;
+		padding:
+				calc(var(--wp--custom--alignment--edge-spacing) * 1.5)
+				var(--wp--custom--alignment--edge-spacing)
+				calc(160px + var(--wp--custom--alignment--edge-spacing));
+		position: relative;
+		border-bottom: 1px solid var(--wp--preset--color--blue-5);
+
+		// This is needed to position the version number so
+		// it appears "hidden".
+		overflow: hidden;
+
+		// Make some room for the version number on
+		// larger viewports.
+		@include break-medium() {
+			padding:
+					var(--row-padding-vertical)
+					var(--wp--custom--alignment--edge-spacing)
+					var(--row-padding-vertical)
+					calc(var(--wp--custom--layout--content-meta-size) + 32px + var(--wp--custom--alignment--edge-spacing));
+		}
+
+		// Reset the default block margins.
+		.wp-block-group.entry-header,
+		.wp-block-post-title,
+		.wp-block-post-date {
+			margin: 0;
+		}
+
+		.wp-block-post-title {
+			font-size: var(--wp--custom--h-3--typography--font-size);
+		}
+
+		// Hide post excerpts by default.
+		.wp-block-post-excerpt {
+			display: none;
+		}
+
+		.wp-block-wporg-release-version {
+			position: absolute;
+			bottom: -24px;
+			color: var(--wp--preset--color--blue-5);
+
+			@include break-medium() {
+				left: var(--wp--custom--alignment--edge-spacing);
+				width: calc(var(--wp--custom--layout--content-meta-size) - var(--wp--custom--alignment--edge-spacing));
+				transition: all 0.2s ease-in-out;
+			}
+		}
+
+		// The lastest release is shown first, and includes
+		// an excerpt and special styling.
+		&:first-child {
+			padding-bottom: calc(var(--wp--custom--alignment--edge-spacing) * 1.5);
+
+			.wp-block-wporg-release-version {
+				position: static;
+				padding-bottom: 0.3em;
+				color: var(--wp--preset--color--white);
+
+				@include break-medium() {
+					position: absolute;
+					bottom: auto;
+					top: var(--row-padding-vertical);
+				}
+			}
+
+			.wp-block-post-excerpt {
+				display: block;
+			}
+
+			.wp-block-post-excerpt__more-link {
+				&:hover,
+				&:focus {
+					text-decoration: none;
+				}
+			}
+		}
+
+		&:hover,
+		&:focus-within {
+			.wp-block-wporg-release-version {
+				color: var(--wp--preset--color--white);
+			}
+		}
+
+		@include break-medium() {
+			// The rest of the releases.
+			&:not(:first-child) {
+				.wp-block-post-title::after {
+					content: "";
+					display: block;
+					height: 118px;
+					min-width: 160px;
+					position: absolute;
+					top: calc(50% - (118px / 2));
+					right: 0;
+					opacity: 0;
+					transform: scale(0.6) translateX(-12px);
+					background-image: url(images/right-arrow.svg);
+					background-position: center right;
+					background-repeat: no-repeat;
+					pointer-events: none;
+					transition: all 0.15s linear;
+				}
+
+				&:hover,
+				&:focus-within {
+					.wp-block-wporg-release-version {
+						transform: translateY(calc(0px - var(--row-padding-vertical) / 2));
+					}
+
+					.wp-block-post-title::after {
+						opacity: 1;
+						transform: scale(0.6) translateX(0);
+					}
+				}
+			}
+		}
+	}
+
+	.wp-block-query-pagination {
+		margin-left: var(--wp--custom--alignment--edge-spacing);
+		margin-right: var(--wp--custom--alignment--edge-spacing);
+
+		@include break-medium() {
+			margin-left: calc(var(--wp--custom--layout--content-meta-size) + 32px + var(--wp--custom--alignment--edge-spacing));
+		}
+	}
+
+	@extend %bottom-banner-dark;
+}

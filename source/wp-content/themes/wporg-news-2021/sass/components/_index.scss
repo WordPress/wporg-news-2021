@@ -1,0 +1,7 @@
+// These style generic/custom components like the site header, footer archive, local navigation, etc.
+// Global components are listed first, to apply default styles.
+@import "site-header";
+@import "local-header";
+@import "bottom-banner";
+@import "query-title-banner";
+@import "podcast-player";
