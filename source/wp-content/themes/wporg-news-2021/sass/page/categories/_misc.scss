@@ -1,4 +1,15 @@
-body {
+// Extra specificity to override default rules.
+body.archive.category {
+	.site-content-container {
+
+		@include break-huge() {
+			padding-left: calc(var(--wp--custom--alignment--edge-spacing) + var(--wp--custom--alignment--outside-edge-extra-spacing));
+			padding-right: calc(var(--wp--custom--alignment--edge-spacing) + var(--wp--custom--alignment--outside-edge-extra-spacing));
+		}
+	}
+}
+
+body.category {
 	--category-color: var(--wp--preset--color--blue-1);
 
 	.query-title-banner__title__dropcap {
@@ -19,7 +30,7 @@ body {
 			}
 
 			&::first-letter {
-				font-size: 35vw;
+				font-size: min(35vw, 475px); // Don't let this grow outside its container.
 				text-transform: uppercase;
 			}
 		}
