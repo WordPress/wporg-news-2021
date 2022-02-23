@@ -160,10 +160,10 @@ body.category-events {
 	@include break-medium() {
 		.wp-block-post {
 			padding:
-					var(--row-padding-vertical)
-					var(--wp--custom--alignment--edge-spacing)
-					var(--row-padding-vertical)
-					calc(var(--wp--custom--layout--content-meta-size) + 32px + var(--wp--custom--alignment--edge-spacing));
+				var(--row-padding-vertical)
+				var(--wp--custom--alignment--edge-spacing)
+				var(--row-padding-vertical)
+				calc(var(--wp--custom--layout--content-meta-size) + 32px + var(--wp--custom--alignment--edge-spacing));
 
 			&.first-in-year:not(.first-year-of-page) {
 				padding-top: var(--wp--custom--alignment--edge-spacing);
