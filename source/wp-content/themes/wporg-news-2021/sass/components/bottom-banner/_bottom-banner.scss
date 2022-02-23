@@ -10,15 +10,25 @@
 	margin-top: 0;
 	gap: 0;
 	background-color: var(--wp--preset--color--white);
-	line-height: 30px;
 
 	h3 {
-		font-size: 26px;
 		margin-bottom: var(--wp--custom--margin--baseline);
+		font-size: clamp(26px, 5.4vw, 36px);
+		line-height: 1.625;
+
+		@include break-medium() {
+			font-size: clamp(26px, 2.2vw, 36px);
+		}
 	}
 
 	h3 + p {
 		margin-top: 0;
+		line-height: 1.9;
+		font-size: clamp(var(--wp--preset--font-size--normal), 3.1vw, var(--wp--preset--font-size--extra-large));
+
+		@include break-medium() {
+			font-size: clamp(var(--wp--preset--font-size--normal), 1.3vw, var(--wp--preset--font-size--extra-large));
+		}
 	}
 
 	> .wp-block-group {
