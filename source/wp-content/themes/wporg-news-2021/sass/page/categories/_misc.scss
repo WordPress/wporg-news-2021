@@ -24,7 +24,6 @@ body.category {
 			display: none;
 
 			@include break-wide() {
-
 				display: block;
 				margin-top: var(--wp--style--block-gap);
 			}
