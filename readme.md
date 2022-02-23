@@ -34,4 +34,4 @@ These must be run in the project's root folder, _not_ in theme/plugin subfolders
 ### Asset management
 
 * Build all assets once: `yarn workspaces run build`
-* Rebuild all assets on change: `npm run start:all`
+* Rebuild all assets on change: `yarn run start:all`
