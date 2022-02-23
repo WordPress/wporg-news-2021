@@ -57,3 +57,43 @@ body.category-security {
 		--bar-link-hover-color: var(--wp--preset--color--darker-grey);
 	}
 }
+
+// Scale text to maintain a comfortable line length, regardless of viewport size.
+// This is specific to the type of layout that Releases and Events use.
+// See `sass/font-scaling.md` for details.
+%scale-fonts-releases-events {
+	.wp-block-post {
+		.wp-block-post-title {
+			max-width: var(--wp--custom--layout--content-size);
+			font-size: clamp(30px, 5.8vw, 36px);
+
+			@include break-medium() {
+				font-size: clamp(36px, 3.1vw, 50px);
+			}
+		}
+
+		.wp-block-post-date {
+
+			@include break-wide() {
+				font-size: var(--wp--preset--font-size--normal);
+			}
+		}
+
+		.wp-block-post-excerpt {
+			max-width: var(--wp--custom--layout--content-size);
+			font-size: clamp(var(--wp--preset--font-size--normal), 3.1vw, 20px);
+
+			@include break-medium() {
+				// The layout is now side-by side, so there isn't much room and we need a regular font size.
+				font-size: var(--wp--preset--font-size--normal);
+			}
+
+			@include break-xlarge() {
+				// There's enough room to scale the font again.
+				max-width: unset;
+
+				font-size: clamp(var(--wp--preset--font-size--normal), 1.3vw, var(--wp--preset--font-size--extra-large));
+			}
+		}
+	}
+}
