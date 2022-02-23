@@ -59,6 +59,11 @@ body.category-releases {
 				calc(var(--wp--custom--layout--content-meta-size) + 32px + var(--wp--custom--alignment--edge-spacing));
 		}
 
+		@include break-huge() {
+			padding-left: calc(var(--wp--custom--layout--content-meta-size) + 32px + var(--wp--custom--alignment--edge-spacing) + var(--wp--custom--alignment--outside-edge-extra-spacing));
+			padding-right: calc(var(--wp--custom--alignment--edge-spacing) + var(--wp--custom--alignment--outside-edge-extra-spacing));
+		}
+
 		// Reset the default block margins.
 		.wp-block-group.entry-header,
 		.wp-block-post-title,
@@ -85,9 +90,13 @@ body.category-releases {
 				width: calc(var(--wp--custom--layout--content-meta-size) - var(--wp--custom--alignment--edge-spacing));
 				transition: all 0.2s ease-in-out;
 			}
+
+			@include break-huge() {
+				left: calc(var(--wp--custom--alignment--edge-spacing) + var(--wp--custom--alignment--outside-edge-extra-spacing));
+			}
 		}
 
-		// The lastest release is shown first, and includes
+		// The latest release is shown first, and includes
 		// an excerpt and special styling.
 		&:first-child {
 			padding-bottom: calc(var(--wp--custom--alignment--edge-spacing) * 1.5);
