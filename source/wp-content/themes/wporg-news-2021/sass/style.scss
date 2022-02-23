@@ -21,68 +21,8 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 */
 
-// Base
-// Foundational styles like browser normalization, mixins, layout, z-index.
-@import "base/mixins";
-@import "base/breakpoints";
-@import "base/normalize";
-@import "base/alignment";
-@import "base/layout";
-@import "base/elements";
-
-
-// Blocks
-// Override the default styles that a block has from Core, it's plugin, etc.
-@import "blocks/button";
-@import "blocks/html";
-@import "blocks/image";
-@import "blocks/list";
-@import "blocks/paragraph";
-@import "blocks/post-comments";
-@import "blocks/post-excerpt";
-@import "blocks/post-title";
-@import "blocks/pullquote";
-@import "blocks/query-pagination";
-@import "blocks/quote";
-@import "blocks/search";
-@import "blocks/separator";
-@import "blocks/social-links";
-@import "blocks/file";
-@import "blocks/table";
-@import "blocks/columns";
-@import "blocks/wporg-event-year";
-@import "blocks/wporg-month-in-wp-title";
-@import "blocks/wporg-release-version";
-
-
-// Components
-// These style generic/custom components like the site header, footer archive, local navigation, etc.
-// Global components are listed first, to apply default styles.
-@import "components/site-header";
-@import "components/local-header/local-header";
-@import "components/local-header/breadcrumbs";
-@import "components/local-header/categories";
-@import "components/bottom-banner/bottom-banner";
-@import "components/bottom-banner/subscribe-wp-news";
-@import "components/bottom-banner/wp-briefing";
-@import "components/query-title-banner";
-@import "components/podcast-player";
-
-
-// Pages
-@import "page/front-page/front-page";
-@import "page/front-page/latest-release";
-@import "page/front-page/latest-posts";
-@import "page/front-page/people-of-wordpress";
-@import "page/categories";
-@import "page/all-posts";
-@import "page/404";
-
-
-// Posts
-// - Styles for post areas
-@import "post/content";
-@import "post/header";
-@import "post/navigation";
-@import "post/single";
-@import "post/podcast";
+@import "base";
+@import "blocks";
+@import "components";
+@import "page";
+@import "post";

@@ -1,0 +1,63 @@
+body.category-month-in-wordpress {
+	background-color: var(--wp--preset--color--darker-grey);
+
+	.local-header {
+		--bar-background-color: var(--wp--preset--color--dark-grey);
+		--bar-text-color: var(--wp--preset--color--white);
+		--bar-link-color: var(--wp--preset--color--off-white);
+		--bar-link-hover-color: var(--wp--preset--color--off-white-2);
+
+		// Since the bar is the same color as the W.org header, we
+		// add a border to help separate them.
+		border-top: 1px solid var(--wp--preset--color--darker-grey);
+	}
+
+	.wp-block-post-template {
+		margin-top: calc(var(--wp--custom--margin--vertical) * 2);
+		margin-bottom: calc(var(--wp--custom--margin--vertical) * 2);
+	}
+
+	.wp-block-post.wp-block-post {
+		margin-bottom: 0;
+		text-align: center;
+
+		@include break-small-only() {
+			width: calc(50% - 0.625em);
+		}
+	}
+
+	.last-in-year {
+
+		/* We are removing this item from the grid so we can make the ::after element work as a child of the grid*/
+		display: contents;
+		position: relative;
+		break-after: always;
+
+		&::after {
+			content: "-";
+			line-height: calc(var(--wp--custom--margin--vertical) * 6);
+			width: 100%;
+			mask-image: url(images/brush-stroke-big.svg);
+			mask-position: center;
+			mask-repeat: no-repeat;
+			mask-size: 80% auto;
+			background-color: var(--wp--preset--color--blue-3);
+
+			@include break-small() {
+				mask-size: 280px auto;
+			}
+		}
+
+		article {
+
+			/* We are making the article look like it's a child of the grid container */
+			width: calc(33.33333% - 0.83333em);
+
+			@include break-small-only() {
+				width: calc(50% - 0.625em);
+			}
+		}
+	}
+
+	@extend %bottom-banner-dark;
+}
