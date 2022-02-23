@@ -16,12 +16,9 @@
 // styles for various sections of the site.
 // Read more here: https://sass-lang.com/documentation/style-rules/placeholder-selectors
 %two-column-grid-container {
-
 	@include break-wide() {
 		display: grid;
-		grid-template-columns:
-			calc(var(--wp--custom--layout--content-meta-size) - 32px)
-			auto;
+		grid-template-columns: calc(var(--wp--custom--layout--content-meta-size) - 32px) auto;
 
 		// This defines the minimum horizontal gap. An additional implicit gap is created because the right column
 		// contents have a `max-width` and are justified in the center.
