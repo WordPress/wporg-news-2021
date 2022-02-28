@@ -5,7 +5,14 @@ body.page {
 		.wp-block-post-content {
 			padding-left: var(--wp--custom--alignment--edge-spacing);
 			padding-right: var(--wp--custom--alignment--edge-spacing);
+		}
+	}
+}
 
+body.single:not(.single-podcast),
+body.page {
+	.site-content-container {
+		.wp-block-post-content {
 			@include break-huge() {
 				padding-left: calc(var(--wp--custom--alignment--edge-spacing) + var(--wp--custom--alignment--outside-edge-extra-spacing));
 				padding-right: calc(var(--wp--custom--alignment--edge-spacing) + var(--wp--custom--alignment--outside-edge-extra-spacing));
