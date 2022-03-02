@@ -1,6 +1,6 @@
 .wp-block-wporg-release-version {
 	font-family: var(--wp--preset--font-family--inter);
-	font-size: 160px;
+	font-size: min( 35vw, 160px );
 	font-weight: 200;
 	line-height: 1;
 
