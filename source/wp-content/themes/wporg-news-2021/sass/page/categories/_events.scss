@@ -49,9 +49,12 @@ body.category-events {
 
 		// Reset the default block margins.
 		.wp-block-group.entry-header,
-		.wp-block-post-title,
-		.wp-block-post-date {
+		.wp-block-post-title {
 			margin: 0;
+		}
+
+		.wp-block-post-date {
+			margin: 10px 0 0 0;
 		}
 
 		.wp-block-group.entry-header {
