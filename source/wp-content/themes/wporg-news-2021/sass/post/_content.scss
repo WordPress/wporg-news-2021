@@ -32,6 +32,12 @@
 		width: 100% !important;
 		max-width: 100% !important;
 	}
+
+	.wp-block-button {
+		a {
+			font-weight: bold;
+		}
+	}
 }
 
 body.archive .site-content-container,
