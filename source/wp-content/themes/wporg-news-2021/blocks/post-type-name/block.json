@@ -4,10 +4,19 @@
 	"name": "wporg/post-type-name",
 	"title": "Post Type Name",
 	"category": "widgets",
-	"icon": "embed-audio",
 	"description": "Add the post type.",
 	"supports": {
 		"html": false
+	},
+	"attributes": {
+		"tagName": {
+			"type": "string",
+			"default": "span"
+		},
+		"isLink": {
+			"type": "boolean",
+			"default": false
+		}
 	},
 	"usesContext": [ "postId" ],
 	"textdomain": "wporg"
