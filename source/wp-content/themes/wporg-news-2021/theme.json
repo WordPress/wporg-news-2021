@@ -108,9 +108,7 @@
 			"alignment": {
 				"alignedMaxWidth": "50%",
 				"//edge-spacing": "The min and max values represent the mobile and desktop spacing; the calc() value is for tablets.",
-				"edge-spacing": "clamp( 24px, calc( 100vw / 18 ), 80px )",
-				"//outside-edge-extra-spacing": "A separate variable is necessary here because `edge-spacing` isn't only used for the outer left/right edges.",
-				"outside-edge-extra-spacing": "7vw"
+				"edge-spacing": "clamp( 24px, calc( 100vw / 18 ), 80px )"
 			},
 			"button": {
 				"color": {
