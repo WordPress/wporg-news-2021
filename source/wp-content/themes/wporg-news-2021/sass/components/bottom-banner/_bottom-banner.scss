@@ -13,22 +13,21 @@
 
 	h3 {
 		margin-bottom: var(--wp--custom--margin--baseline);
-		font-size: clamp(26px, 5.4vw, 36px);
-		line-height: 1.625;
+		font-size: var(--wp--custom--h-3--typography--font-size);
+		line-height: 1.3;
 
-		@include break-medium() {
-			font-size: clamp(26px, 2.2vw, 36px);
+		@include break-wide() {
+			line-height: 1.35;
+		}
+
+		@include break-giant() {
+			font-size: 36px;
 		}
 	}
 
 	h3 + p {
 		margin-top: 0;
-		line-height: 1.9;
-		font-size: clamp(var(--wp--preset--font-size--normal), 3.1vw, var(--wp--preset--font-size--extra-large));
-
-		@include break-medium() {
-			font-size: clamp(var(--wp--preset--font-size--normal), 1.3vw, var(--wp--preset--font-size--extra-large));
-		}
+		line-height: var(--wp--custom--body--typography--line-height);
 	}
 
 	> .wp-block-group {

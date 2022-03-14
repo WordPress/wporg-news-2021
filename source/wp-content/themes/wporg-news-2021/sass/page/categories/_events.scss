@@ -1,6 +1,6 @@
 body.category-events {
 
-	@extend %scale-fonts-releases-events;
+	@extend %releases-events-fonts;
 
 	--row-padding-vertical: clamp(24px, calc(100vw / 26), 50px);
 

@@ -47,22 +47,29 @@ body.category-security {
 	}
 }
 
-// Scale text to maintain a comfortable line length, regardless of viewport size.
-// This is specific to the type of layout that Releases and Events use.
-// See `sass/font-scaling.md` for details.
-%scale-fonts-releases-events {
+body.category-events,
+body.category-releases {
+	.wp-block-post article {
+		max-width: var(--wp--custom--layout--content-size);
+		margin: 0 auto;
+	}
+}
+
+%releases-events-fonts {
 	.wp-block-post {
 		.wp-block-post-title {
-			max-width: var(--wp--custom--layout--content-size);
-			font-size: clamp(30px, 5.8vw, 36px);
-			line-height: 1.3;
+			font-size: 30px;
+			line-height: var(--wp--custom--heading--typography--line-height);
 
-			@include break-medium() {
-				font-size: clamp(36px, 3.1vw, 50px);
+			@include break-wide() {
+				font-size: 36px;
+				line-height: 1.35;
 			}
 		}
 
 		.wp-block-post-date {
+			font-size: 13px;
+			line-height: 1.6;
 
 			@include break-wide() {
 				font-size: var(--wp--preset--font-size--normal);
@@ -70,19 +77,8 @@ body.category-security {
 		}
 
 		.wp-block-post-excerpt {
-			max-width: var(--wp--custom--layout--content-size);
-			font-size: clamp(var(--wp--preset--font-size--normal), 3.1vw, 20px);
-
-			@include break-medium() {
-				// The layout is now side-by side, so there isn't much room and we need a regular font size.
-				font-size: var(--wp--preset--font-size--normal);
-			}
-
-			@include break-xlarge() {
-				// There's enough room to scale the font again.
-				max-width: unset;
-
-				font-size: clamp(var(--wp--preset--font-size--normal), 1.3vw, var(--wp--preset--font-size--extra-large));
+			@include break-wide() {
+				line-height: 1.6;
 			}
 		}
 	}
