@@ -12,3 +12,10 @@
 		@content;
 	}
 }
+
+// "giant" is an exaggeration, but it's named this way to stay consistent with Gutenberg.
+@mixin break-giant() {
+	@media (min-width: 2000px) {
+		@content;
+	}
+}
