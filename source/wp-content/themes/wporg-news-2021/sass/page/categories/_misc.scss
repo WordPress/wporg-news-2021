@@ -1,14 +1,3 @@
-// Extra specificity to override default rules.
-body.archive.category {
-	.site-content-container {
-
-		@include break-huge() {
-			padding-left: calc(var(--wp--custom--alignment--edge-spacing) + var(--wp--custom--alignment--outside-edge-extra-spacing));
-			padding-right: calc(var(--wp--custom--alignment--edge-spacing) + var(--wp--custom--alignment--outside-edge-extra-spacing));
-		}
-	}
-}
-
 body.category {
 	--category-color: var(--wp--preset--color--blue-1);
 
