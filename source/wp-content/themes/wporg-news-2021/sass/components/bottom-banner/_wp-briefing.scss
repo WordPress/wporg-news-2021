@@ -1,19 +1,27 @@
-.bottom-banner .bottom-banner-row[class*="wp-container-"] .wp-briefing {
+.bottom-banner .bottom-banner-items[class*="wp-container-"] .wp-briefing {
 	p {
 		margin-top: 0;
 		margin-bottom: 0;
 	}
 
-	.podcast-link {
-		line-height: 2.4;
-		padding: 1em 1em 1em 0;
-		background-image: url(images/brush-stroke-short-2-blue-4.svg);
-		background-position: bottom right;
-		background-repeat: no-repeat;
-		background-size: contain;
+	.podcast-links-container {
+		gap: 15px 30px;
+		margin-top: 20px;
 
-		a {
-			text-decoration: underline currentColor;
+		.wp-block-social-links {
+			margin: 0;
+		}
+
+		.podcast-link {
+			line-height: 2.4;
+			background-image: url(images/brush-stroke-short-2-blue-4.svg);
+			background-position: bottom right;
+			background-repeat: no-repeat;
+			background-size: contain;
+
+			a {
+				text-decoration: underline currentColor;
+			}
 		}
 	}
 }
@@ -28,7 +36,6 @@
 	svg {
 		visibility: hidden;
 	}
-
 }
 
 .wp-block-social-link-anchor {
@@ -58,7 +65,7 @@ body.single-podcast {
 }
 
 %bottom-banner-dark {
-	.bottom-banner .bottom-banner-row[class*="wp-container-"] .wp-briefing {
+	.bottom-banner .bottom-banner-items[class*="wp-container-"] .wp-briefing {
 		.podcast-link {
 			background-image: url(images/brush-stroke-short-2-dark-4.svg);
 		}
