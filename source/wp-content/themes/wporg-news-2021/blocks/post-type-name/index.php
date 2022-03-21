@@ -22,7 +22,7 @@ function render_block( $attributes, $content, $block ) {
 	}
 
 	$post_id  = $block->context['postId'];
-	$post_type = get_post_type( $post_id  );
+	$post_type = get_post_type( $post_id );
 	$post_type_obj = get_post_type_object( $post_type );
 	$wrapper_attributes = get_block_wrapper_attributes();
 
@@ -50,15 +50,15 @@ function register_block() {
 	register_block_type(
 		'wporg/post-type-name',
 		array(
-			'title'           =>  __( 'Post Type Name', 'wporg' ),
+			'title'           => __( 'Post Type Name', 'wporg' ),
 			'render_callback' => __NAMESPACE__ . '\render_block',
 			'uses_context'    => [ 'postId' ],
-			'attributes'	=> [
+			'attributes'    => [
 				'tagName' => [
 					'default' => 'span',
-					'type' => 'string'
-				]
-			]
+					'type' => 'string',
+				],
+			],
 		)
 	);
 }
