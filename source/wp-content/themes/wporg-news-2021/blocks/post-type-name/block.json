@@ -4,7 +4,7 @@
 	"name": "wporg/post-type-name",
 	"title": "Post Type Name",
 	"category": "widgets",
-	"description": "Add the post type.",
+	"description": "Add the post type name.",
 	"supports": {
 		"html": false
 	},
