@@ -2,6 +2,8 @@
 
 namespace WordPressdotorg\Theme\News_2021\Blocks\Release_Version;
 
+use WP_Block;
+
 add_action( 'init', __NAMESPACE__ . '\register_block' );
 add_action( 'enqueue_block_assets', __NAMESPACE__ . '\register_block_type_js' );
 
@@ -24,7 +26,7 @@ function render_block( $attributes, $content, $block ) {
 
 	$version = '';
 	$title = get_the_title( $post_ID );
-	// Do we also want x.y.z?
+
 	if ( preg_match( '/WordPress (\d{0,3}(?:\.\d{1,3})+)\s*(?|Release Candidate\s*(\d+)|RC\s*(\d+))?/', $title, $matches ) ) {
 		$version = $matches[1];
 		if ( ! empty( $matches[2] ) ) {
@@ -32,13 +34,13 @@ function render_block( $attributes, $content, $block ) {
 		}
 	}
 
-	$wrapper_attributes = get_block_wrapper_attributes( array( 'class' => $align_class_name ) );
+	$wrapper_tag   = $attributes['tagName'] ?? 'div';
+	$wrapper_open  = "<$wrapper_tag " . get_block_wrapper_attributes( array( 'class' => $align_class_name ) ) . '>';
+	$link_open     = empty( $attributes['isLink'] ) ? '' : '<a href="' . get_permalink( $post_ID ) . '">';
+	$link_close    = empty( $attributes['isLink'] ) ? '' : '</a>';
+	$wrapper_close = "</$wrapper_tag>";
 
-	return sprintf(
-		'<div %1$s>%2$s</div>',
-		$wrapper_attributes,
-		$version
-	);
+	return "$wrapper_open $link_open $version $link_close $wrapper_close";
 }
 
 /**

@@ -10,6 +10,14 @@
 		"html": false
 	},
 	"attributes": {
+		"isLink": {
+			"type": "boolean",
+			"default": false
+		},
+		"tagName": {
+			"type": "string",
+			"default": "div"
+		},
 		"textAlign": {
 			"type": "string"
 		}
