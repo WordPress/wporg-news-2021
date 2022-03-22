@@ -1,5 +1,4 @@
-// The "Latest Release" section which displays the
-// latest post in the releases category.
+// The "Latest Release" section which displays the latest post in the releases category.
 body.news-front-page .front__latest-release {
 	color: var(--wp--preset--color--white);
 	font-size: var(--wp--preset--font-size--small);
@@ -16,15 +15,13 @@ body.news-front-page .front__latest-release {
 	padding: var(--wp--custom--alignment--edge-spacing);
 
 	@include break-medium() {
-		// Display side-by-side when the viewport
-		// is big enough.
+		// Display side-by-side when the viewport is big enough.
 		flex-direction: row;
 		gap: 0;
 		padding: 0;
 	}
 
-	// Since we have a blue backround our links need
-	// to be white.
+	// Since we have a blue background our links need to be white.
 	a {
 		color: var(--wp--preset--color--white);
 	}
@@ -53,15 +50,13 @@ body.news-front-page .front__latest-release {
 		margin-top: 0;
 	}
 
-	// This allows us to ignore some of the underlying markup
-	// in order to make our layout work.
+	// This allows us to ignore some of the underlying markup in order to make our layout work.
 	.wp-block-post-template,
 	.wp-block-post-template .wp-block-post,
 	.wp-block-post-template .wp-block-group.entry-header {
 		display: contents;
 	}
 
-	// The release post title
 	.wp-block-post-title {
 		font-family: var(--wp--preset--font-family--inter);
 		font-size: 60px;
@@ -113,7 +108,6 @@ body.news-front-page .front__latest-release {
 		}
 	}
 
-	// The releast post date
 	.wp-block-post-date {
 		font-size: var(--wp--preset--font-size--small);
 
@@ -125,7 +119,7 @@ body.news-front-page .front__latest-release {
 			bottom: var(--wp--custom--alignment--edge-spacing);
 			left: calc((var(--wp--custom--layout--content-meta-size) - 32px) + (var(--wp--custom--alignment--edge-spacing) * 2));
 
-			// Avoid interferring with the large anchor link.
+			// Avoid interfering with the large anchor link.
 			pointer-events: none;
 		}
 	}
@@ -161,43 +155,6 @@ body.news-front-page .front__latest-release {
 			z-index: 1;
 
 			&:hover {
-				text-decoration: none;
-			}
-		}
-	}
-
-	.old--wp-block-post-template {
-		.wp-block-post-title {
-			--header-size: clamp(var(--wp--preset--font-size--huge), 13vw, 130px);
-
-			margin-bottom: var(--wp--custom--margin--vertical);
-			padding-right: var(--header-size);
-			background-image: url(images/right-arrow.svg);
-			background-size: var(--header-size);
-			background-repeat: no-repeat;
-			background-position: right center;
-			font-size: var(--header-size);
-			font-family: var(--wp--preset--font-family--inter);
-			font-weight: 200;
-			line-height: 1.1;
-		}
-	}
-
-	.old--front__next-page {
-
-		@include break-medium() {
-			border-right: 1px solid var(--wp--preset--color--blue-2);
-		}
-
-		&::after {
-			background-color: var(--wp--preset--color--blue-2);
-		}
-
-		a {
-			text-decoration: underline;
-
-			&:hover,
-			&:focus {
 				text-decoration: none;
 			}
 		}
