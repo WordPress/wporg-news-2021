@@ -21,9 +21,9 @@ function render_block( $attributes, $content, $block ) {
 		return '';
 	}
 
-	$post_id  = $block->context['postId'];
-	$post_type = get_post_type( $post_id );
-	$post_type_obj = get_post_type_object( $post_type );
+	$post_id            = $block->context['postId'];
+	$post_type          = get_post_type( $post_id );
+	$post_type_obj      = get_post_type_object( $post_type );
 	$wrapper_attributes = get_block_wrapper_attributes();
 
 	if ( isset( $attributes['isLink'] ) && $attributes['isLink'] ) {
@@ -52,13 +52,13 @@ function register_block() {
 		array(
 			'title'           => __( 'Post Type Name', 'wporg' ),
 			'render_callback' => __NAMESPACE__ . '\render_block',
-			'uses_context'    => [ 'postId' ],
-			'attributes'    => [
-				'tagName' => [
+			'uses_context'    => array( 'postId' ),
+			'attributes'      => array(
+				'tagName' => array(
 					'default' => 'span',
-					'type' => 'string',
-				],
-			],
+					'type'    => 'string',
+				),
+			),
 		)
 	);
 }
