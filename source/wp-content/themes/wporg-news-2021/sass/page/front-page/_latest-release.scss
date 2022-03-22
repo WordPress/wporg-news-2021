@@ -151,7 +151,11 @@ body.news-front-page .front__latest-release {
 			background-image: url(images/brush-stroke-see-all-releases.svg);
 			position: absolute;
 			top: calc(50% - (45px / 2));
-			left: calc(-116px / 2);
+			left: -20px;
+
+			@include break-medium() {
+				left: calc(-116px / 2);
+			}
 		}
 
 		a {
