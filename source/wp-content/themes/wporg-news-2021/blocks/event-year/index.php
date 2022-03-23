@@ -37,11 +37,9 @@ function render_block( $attributes, $content, $block ) {
  */
 function register_block() {
 	register_block_type(
-		'wporg/event-year',
+		__DIR__ . '/block.json',
 		array(
-			'title'           => 'WordPress.org Event Year',
 			'render_callback' => __NAMESPACE__ . '\render_block',
-			'uses_context'    => [ 'postId' ],
 		)
 	);
 }

@@ -48,11 +48,9 @@ function render_block( $attributes, $content, $block ) {
  */
 function register_block() {
 	register_block_type(
-		'wporg/release-version',
+		__DIR__ . '/block.json',
 		array(
-			'title'           => 'WordPress.org Release Version',
 			'render_callback' => __NAMESPACE__ . '\render_block',
-			'uses_context'    => [ 'postId' ],
 		)
 	);
 }
