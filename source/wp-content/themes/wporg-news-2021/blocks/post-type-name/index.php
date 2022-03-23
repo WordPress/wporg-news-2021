@@ -48,17 +48,9 @@ function render_block( $attributes, $content, $block ) {
  */
 function register_block() {
 	register_block_type(
-		'wporg/post-type-name',
+		__DIR__ . '/block.json',
 		array(
-			'title'           => __( 'Post Type Name', 'wporg' ),
 			'render_callback' => __NAMESPACE__ . '\render_block',
-			'uses_context'    => array( 'postId' ),
-			'attributes'      => array(
-				'tagName' => array(
-					'default' => 'span',
-					'type'    => 'string',
-				),
-			),
 		)
 	);
 }
