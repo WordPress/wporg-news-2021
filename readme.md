@@ -35,3 +35,10 @@ These must be run in the project's root folder, _not_ in theme/plugin subfolders
 
 * Build all assets once: `yarn workspaces run build`
 * Rebuild all assets on change: `yarn run start:all`
+
+
+### Sync/Deploy
+
+The built files are committed to `dotorg.svn` so they can be deployed. They aren't synced to `meta.svn`, since they're already open in GitHub.
+
+To sync these to `dotorg.svn`, run `bin/sync/news.sh` on a w.org sandbox. Once they're committed, you can deploy like normal.
