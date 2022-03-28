@@ -27,6 +27,7 @@ add_action( 'ssp_album_art_cover', __NAMESPACE__ . '\custom_default_album_art_co
 add_filter( 'wp_list_categories', __NAMESPACE__ . '\add_links_to_categories_list', 10, 2 );
 add_filter( 'author_link', __NAMESPACE__ . '\use_wporg_profile_for_author_link', 10, 3 );
 add_action( 'wp_print_footer_scripts', __NAMESPACE__ . '\print_events_category_archive_script' );
+add_action( 'after_setup_theme', __NAMESPACE__ . '\add_block_styles' );
 add_action( 'parse_query', __NAMESPACE__ . '\compat_workaround_core_55100' );
 
 /**
@@ -392,6 +393,32 @@ function print_events_category_archive_script() {
 </script>
 	<?php
 	echo ob_get_clean();
+}
+
+/**
+ * Register custom block styles for the News site.
+ *
+ * @return void
+ */
+function add_block_styles() {
+	$props_styles = array(
+		'short' => array(
+			'name'  => 'wporg-props-short',
+			'label' => __( 'Props (Short)', 'wporg' ),
+		),
+		'medium' => array(
+			'name'  => 'wporg-props-medium',
+			'label' => __( 'Props (Medium)', 'wporg' ),
+		),
+		'long' => array(
+			'name'  => 'wporg-props-long',
+			'label' => __( 'Props (Long)', 'wporg' ),
+		),
+	);
+
+	register_block_style( 'core/paragraph', $props_styles['short'] );
+	register_block_style( 'core/paragraph', $props_styles['medium'] );
+	register_block_style( 'core/paragraph', $props_styles['long'] );
 }
 
 /**

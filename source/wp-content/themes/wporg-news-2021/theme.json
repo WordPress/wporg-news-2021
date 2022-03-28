@@ -325,6 +325,10 @@
 						"fontSize": "110px",
 						"fontWeight": "400"
 					}
+				},
+				"padding": {
+					"horizontal": "var(--wp--custom--alignment--edge-spacing)",
+					"vertical": "var(--wp--custom--alignment--edge-spacing)"
 				}
 			},
 			"post-comment": {

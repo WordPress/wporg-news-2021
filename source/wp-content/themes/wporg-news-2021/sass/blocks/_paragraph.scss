@@ -6,6 +6,37 @@ p {
 	}
 
 	&.has-background {
-		padding: var(--wp--custom--padding--vertical) var(--wp--custom--padding--horizontal);
+		padding: var(--wp--custom--paragraph--padding--vertical) var(--wp--custom--paragraph--padding--horizontal);
+	}
+
+	&[class*="is-style-wporg-props-"] {
+		background-color: var(--wp--preset--color--blue-1);
+		color: var(--wp--preset--color--white);
+		font-family: var(--wp--preset--font-family--eb-garamond);
+		padding: var(--wp--custom--paragraph--padding--vertical) var(--wp--custom--paragraph--padding--horizontal);
+
+		a {
+			color: var(--wp--preset--color--white);
+			text-decoration: none;
+
+			&:hover,
+			&:focus {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	&.is-style-wporg-props-short {
+		font-size: calc( var(--wp--preset--font-size--normal) * 2.5 ); // 16 * 2.5 = 40
+		line-height: 1.3;
+	}
+
+	&.is-style-wporg-props-medium {
+		font-size: calc( var(--wp--preset--font-size--normal) * 1.875 ); // 16 * 1.875 = 30
+		line-height: 1.4;
+	}
+
+	&.is-style-wporg-props-long {
+		font-size: var(--wp--preset--font-size--normal);
 	}
 }
