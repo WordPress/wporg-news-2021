@@ -1,11 +1,3 @@
-.wp-block-post-excerpt__excerpt {
-	// Add an ellipses so that excerpts are not just cut off mid-sentence.
-	// Necessary since we're making the "more text" a link on a separate line.
-	&::after {
-		content: "\2026";
-	}
-}
-
 .wp-block-post-excerpt__more-text {
 	a {
 		text-decoration: underline;
