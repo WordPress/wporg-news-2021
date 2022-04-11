@@ -11,6 +11,7 @@ require_once __DIR__ . '/blocks/event-year/index.php';
 require_once __DIR__ . '/blocks/month-in-wp-title/index.php';
 require_once __DIR__ . '/blocks/podcast-player/index.php';
 require_once __DIR__ . '/blocks/release-version/index.php';
+require_once __DIR__ . '/blocks/post-type-name/index.php';
 
 /**
  * Actions and filters.

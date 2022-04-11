@@ -1,0 +1,23 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "wporg/post-type-name",
+	"title": "Post Type Name",
+	"category": "widgets",
+	"description": "Add the post type name.",
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"tagName": {
+			"type": "string",
+			"default": "span"
+		},
+		"isLink": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"usesContext": [ "postId" ],
+	"textdomain": "wporg"
+}
