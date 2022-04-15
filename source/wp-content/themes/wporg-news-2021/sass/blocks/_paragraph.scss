@@ -27,12 +27,12 @@ p {
 	}
 
 	&.is-style-wporg-props-short {
-		font-size: calc( var(--wp--preset--font-size--normal) * 2.5 ); // 16 * 2.5 = 40
+		font-size: calc(var(--wp--preset--font-size--normal) * 2.5); // 16 * 2.5 = 40
 		line-height: 1.3;
 	}
 
 	&.is-style-wporg-props-medium {
-		font-size: calc( var(--wp--preset--font-size--normal) * 1.875 ); // 16 * 1.875 = 30
+		font-size: calc(var(--wp--preset--font-size--normal) * 1.875); // 16 * 1.875 = 30
 		line-height: 1.4;
 	}
 

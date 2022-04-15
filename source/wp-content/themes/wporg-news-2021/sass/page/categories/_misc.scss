@@ -77,6 +77,7 @@ body.category-releases {
 		}
 
 		.wp-block-post-excerpt {
+
 			@include break-wide() {
 				line-height: 1.6;
 			}
