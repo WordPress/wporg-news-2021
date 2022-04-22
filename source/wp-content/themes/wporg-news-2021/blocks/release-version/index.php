@@ -27,10 +27,13 @@ function render_block( $attributes, $content, $block ) {
 	$version = '';
 	$title = get_the_title( $post_ID );
 
-	if ( preg_match( '/WordPress (\d{0,3}(?:\.\d{1,3})+)\s*(?|Release Candidate\s*(\d+)|RC\s*(\d+))?/', $title, $matches ) ) {
+	if ( preg_match( '/WordPress (\d{0,3}(?:\.\d{1,3})+)\s*(?|Release Candidate\s*(\d+)|RC\s*(\d+))?(?|Beta\s*(\d+))?/', $title, $matches ) ) {
 		$version = $matches[1];
 		if ( ! empty( $matches[2] ) ) {
 			$version = 'RC' . $matches[2];
+		}
+		if ( ! empty( $matches[3] ) ) {
+			$version = 'Beta' . $matches[3];
 		}
 	}
 
