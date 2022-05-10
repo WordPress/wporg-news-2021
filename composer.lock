@@ -2279,15 +2279,15 @@
         },
         {
             "name": "wpackagist-plugin/gutenberg",
-            "version": "13.0.0",
+            "version": "13.1.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/gutenberg/",
-                "reference": "tags/13.0.0"
+                "reference": "tags/13.1.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/gutenberg.13.0.0.zip"
+                "url": "https://downloads.wordpress.org/plugin/gutenberg.13.1.0.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -2297,15 +2297,15 @@
         },
         {
             "name": "wpackagist-plugin/jetpack",
-            "version": "10.8",
+            "version": "10.9",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/jetpack/",
-                "reference": "tags/10.8"
+                "reference": "tags/10.9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/jetpack.10.8.zip"
+                "url": "https://downloads.wordpress.org/plugin/jetpack.10.9.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -2315,7 +2315,7 @@
         },
         {
             "name": "wpackagist-plugin/seriously-simple-podcasting",
-            "version": "2.12.0",
+            "version": "2.13.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/seriously-simple-podcasting/",
@@ -2323,7 +2323,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/seriously-simple-podcasting.zip?timestamp=1648547207"
+                "url": "https://downloads.wordpress.org/plugin/seriously-simple-podcasting.zip?timestamp=1650290097"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -2355,12 +2355,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/WordPress/wporg-mu-plugins.git",
-                "reference": "cb3d3413c3227fe423eb7662b83099091a282e32"
+                "reference": "f203c21cd26722279eb91dc48d33f9cebb77d4df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WordPress/wporg-mu-plugins/zipball/cb3d3413c3227fe423eb7662b83099091a282e32",
-                "reference": "cb3d3413c3227fe423eb7662b83099091a282e32",
+                "url": "https://api.github.com/repos/WordPress/wporg-mu-plugins/zipball/f203c21cd26722279eb91dc48d33f9cebb77d4df",
+                "reference": "f203c21cd26722279eb91dc48d33f9cebb77d4df",
                 "shasum": ""
             },
             "require": {
@@ -2387,7 +2387,7 @@
                 "source": "https://github.com/WordPress/wporg-mu-plugins/tree/trunk",
                 "issues": "https://github.com/WordPress/wporg-mu-plugins/issues"
             },
-            "time": "2022-04-12T06:02:37+00:00"
+            "time": "2022-04-19T16:11:40+00:00"
         },
         {
             "name": "wporg/wporg-repo-tools",
@@ -2395,12 +2395,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/WordPress/wporg-repo-tools.git",
-                "reference": "864f2607f7ce2d2c39ae518b6a84cf61b15ccfb2"
+                "reference": "325447b539639664a0867d233631e3af84e2d548"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WordPress/wporg-repo-tools/zipball/864f2607f7ce2d2c39ae518b6a84cf61b15ccfb2",
-                "reference": "864f2607f7ce2d2c39ae518b6a84cf61b15ccfb2",
+                "url": "https://api.github.com/repos/WordPress/wporg-repo-tools/zipball/325447b539639664a0867d233631e3af84e2d548",
+                "reference": "325447b539639664a0867d233631e3af84e2d548",
                 "shasum": ""
             },
             "default-branch": true,
@@ -2417,7 +2417,7 @@
                 "issues": "https://github.com/WordPress/wporg-repo-tools/issues",
                 "source": "https://github.com/WordPress/wporg-repo-tools/tree/trunk"
             },
-            "time": "2022-03-23T22:40:02+00:00"
+            "time": "2022-04-28T23:06:09+00:00"
         }
     ],
     "aliases": [],
