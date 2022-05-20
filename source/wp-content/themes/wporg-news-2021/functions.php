@@ -29,8 +29,6 @@ add_filter( 'wp_list_categories', __NAMESPACE__ . '\add_links_to_categories_list
 add_filter( 'author_link', __NAMESPACE__ . '\use_wporg_profile_for_author_link', 10, 3 );
 add_action( 'wp_print_footer_scripts', __NAMESPACE__ . '\print_events_category_archive_script' );
 add_action( 'after_setup_theme', __NAMESPACE__ . '\add_block_styles' );
-add_action( 'parse_query', __NAMESPACE__ . '\compat_workaround_core_55100' );
-add_action( 'init', __NAMESPACE__ . '\compat_workaround_gutenberg_41121', 9 );
 
 /**
  * Register theme support.
@@ -421,35 +419,4 @@ function add_block_styles() {
 	register_block_style( 'core/paragraph', $props_styles['short'] );
 	register_block_style( 'core/paragraph', $props_styles['medium'] );
 	register_block_style( 'core/paragraph', $props_styles['long'] );
-}
-
-/**
- * Ensure that WP_Query::get_queried_object() works for /author/xxx requests.
- *
- * @see https://core.trac.wordpress.org/ticket/55100
- *
- * @param \WP_Query $query The WP_Query instance.
- */
-function compat_workaround_core_55100( $query ) {
-	$author_name = $query->get( 'author_name' );
-	if ( $author_name ) {
-		$author = get_user_by( 'slug', $author_name );
-		if ( $author ) {
-			$query->set( 'author', $author->ID );
-		}
-	}
-}
-
-/**
- * Load the post-author-name block, to work around Gutenberg.
- *
- * Remove by Gutenberg 13.4.
- *
- * @see https://github.com/WordPress/gutenberg/issues/41121
- * @see https://github.com/WordPress/wporg-news-2021/issues/376
- */
-function compat_workaround_gutenberg_41121() {
-	if ( file_exists( WP_PLUGIN_DIR . '/gutenberg/build/block-library/blocks/post-author-name.php' ) ) {
-		include_once WP_PLUGIN_DIR . '/gutenberg/build/block-library/blocks/post-author-name.php';
-	}
 }
