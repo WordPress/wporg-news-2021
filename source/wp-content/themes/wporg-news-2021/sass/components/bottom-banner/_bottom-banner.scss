@@ -66,6 +66,10 @@
 			}
 		}
 	}
+	
+	.subscribe-wp-news {
+		width: 100%;
+	}
 }
 
 // Alternate dark version.
@@ -85,6 +89,10 @@
 			a {
 				color: var(--wp--preset--color--blue-3);
 			}
+		}
+
+		.subscribe-wp-news {
+			width: 100%;
 		}
 	}
 }
