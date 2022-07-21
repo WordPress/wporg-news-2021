@@ -1,5 +1,5 @@
 .entry-header {
-	&[class*="wp-container-"] * + * {
+	&[class*="wp-block-"] * + * {
 		margin-top: 0;
 	}
 

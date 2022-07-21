@@ -98,7 +98,7 @@
 		max-height: none;
 
 		// Override the default margin applied to the block.
-		[class*="wp-container-"] & {
+		[class*="wp-block-"] & {
 			margin: 0;
 		}
 
