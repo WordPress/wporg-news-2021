@@ -1,5 +1,5 @@
 // Links
-a {
+a:not(.wp-element-button) {
 	cursor: pointer;
 	text-decoration: none;
 	text-decoration-thickness: 1px;
