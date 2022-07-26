@@ -4,7 +4,7 @@
 }
 
 // Default/light version.
-.bottom-banner-items[class*="wp-container-"] {
+.bottom-banner-items[class*="wp-block-"] {
 	justify-content: space-between;
 	align-items: stretch !important;
 	margin-top: 0;
@@ -74,7 +74,7 @@
 		border-color: #1c2024;
 	}
 
-	.bottom-banner .bottom-banner-items[class*="wp-container-"] {
+	.bottom-banner .bottom-banner-items[class*="wp-block-"] {
 		background-color: var(--wp--preset--color--dark-grey);
 		color: var(--wp--preset--color--white);
 		border-color: #1c2024;

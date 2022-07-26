@@ -1,4 +1,4 @@
-.bottom-banner .bottom-banner-items[class*="wp-container-"] .wp-briefing {
+.bottom-banner .bottom-banner-items[class*="wp-block-"] .wp-briefing {
 	p {
 		margin-top: 0;
 		margin-bottom: 0;
@@ -65,7 +65,7 @@ body.single-podcast {
 }
 
 %bottom-banner-dark {
-	.bottom-banner .bottom-banner-items[class*="wp-container-"] .wp-briefing {
+	.bottom-banner .bottom-banner-items[class*="wp-block-"] .wp-briefing {
 		.podcast-link {
 			background-image: url(images/brush-stroke-short-2-dark-4.svg);
 		}

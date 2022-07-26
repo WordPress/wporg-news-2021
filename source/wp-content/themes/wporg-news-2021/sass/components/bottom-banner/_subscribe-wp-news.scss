@@ -1,4 +1,4 @@
-.bottom-banner .bottom-banner-items[class*="wp-container-"] .subscribe-wp-news {
+.bottom-banner .bottom-banner-items[class*="wp-block-"] .subscribe-wp-news {
 	.jetpack_subscription_widget {
 		form {
 			display: grid;
@@ -55,7 +55,7 @@
 
 // Alternate dark version.
 %bottom-banner-dark {
-	.bottom-banner .bottom-banner-items[class*="wp-container-"] .subscribe-wp-news {
+	.bottom-banner .bottom-banner-items[class*="wp-block-"] .subscribe-wp-news {
 		#subscribe-email input {
 			background-color: var(--wp--preset--color--white);
 			color: var(--wp--preset--color--black);
