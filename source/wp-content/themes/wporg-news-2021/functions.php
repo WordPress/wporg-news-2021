@@ -24,6 +24,7 @@ add_filter( 'body_class', __NAMESPACE__ . '\clarify_body_classes' );
 add_filter( 'post_class', __NAMESPACE__ . '\specify_post_classes', 10, 3 );
 add_filter( 'render_block_data', __NAMESPACE__ . '\custom_query_block_attributes' );
 add_filter( 'template_redirect', __NAMESPACE__ . '\jetpack_likes_workaround' );
+add_action( 'tag_template_hierarchy', __NAMESPACE__ . '\override_tag_template' );
 add_action( 'ssp_album_art_cover', __NAMESPACE__ . '\custom_default_album_art_cover', 10, 2 );
 add_filter( 'wp_list_categories', __NAMESPACE__ . '\add_links_to_categories_list', 10, 2 );
 add_filter( 'author_link', __NAMESPACE__ . '\use_wporg_profile_for_author_link', 10, 3 );
@@ -267,6 +268,23 @@ function jetpack_likes_workaround() {
 	if ( is_callable( [ $jetpack_likes, 'load_styles_register_scripts' ] ) ) {
 		$jetpack_likes->load_styles_register_scripts();
 	}
+}
+
+/**
+ * Force tag requests to use the Category template rather than the Podcast template.
+ *
+ * `SeriouslySimplePodcasting\Controllers\Frontend_Controller\add_all_post_types_for_tag_archive()` adds the
+ * `podcast` post type to `$wp_query->query_vars['post_type']`. That causes the template loader to choose
+ * `archive-podcast.html`, but we really want a standard content template instead.
+ */
+function override_tag_template( array $templates ) : array {
+	if ( is_main_query() ) {
+		// This must use the Classic `.php` hierarchy extension. It will later be automatically converted to `.html`
+		// by Core.
+		$templates = array( 'category.php' );
+	}
+
+	return $templates;
 }
 
 /**
