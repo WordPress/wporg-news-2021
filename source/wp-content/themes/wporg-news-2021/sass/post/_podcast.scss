@@ -40,6 +40,10 @@ body.post-type-archive-podcast {
 
 			span {
 				font-size: clamp(72px, 12vw, 150px);
+
+				@media (max-width: 380px) {
+                    font-size: clamp(62px, 12vw, 130px);
+                }
 			}
 		}
 
