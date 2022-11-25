@@ -2,6 +2,7 @@
 	.blog &,
 	.category:not(.category-community):not(.category-events):not(.category-releases) & {
 		padding-bottom: 20px;
+		word-break: break-word;
 
 		@include break-mobile() {
 			margin-bottom: 40px;
