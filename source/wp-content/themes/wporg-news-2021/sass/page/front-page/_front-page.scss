@@ -16,7 +16,6 @@ body.news-front-page {
 		z-index: 1;
 		background-color: var(--wp--preset--color--blue-1);
 		color: var(--wp--preset--color--white);
-		margin: var(--wp--custom--alignment--edge-spacing) 0 calc(var(--wp--custom--alignment--edge-spacing) * 2);
 		padding: var(--wp--custom--alignment--edge-spacing);
 		font-size: clamp(80px, 25vw, 160px);
 
