@@ -16,8 +16,13 @@ body.news-front-page {
 		z-index: 1;
 		background-color: var(--wp--preset--color--blue-1);
 		color: var(--wp--preset--color--white);
+		margin: 0 0 var(--wp--custom--alignment--edge-spacing);
 		padding: var(--wp--custom--alignment--edge-spacing);
 		font-size: clamp(80px, 25vw, 160px);
+
+		@media (min-width: 768px) {
+			margin: 0;
+		}
 
 		// Add and place the brush stroke
 		&::after {
