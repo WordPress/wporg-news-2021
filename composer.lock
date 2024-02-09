@@ -2197,15 +2197,15 @@
         },
         {
             "name": "wpackagist-plugin/gutenberg",
-            "version": "13.4.0",
+            "version": "17.6.5",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/gutenberg/",
-                "reference": "tags/13.4.0"
+                "reference": "tags/17.6.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/gutenberg.13.4.0.zip"
+                "url": "https://downloads.wordpress.org/plugin/gutenberg.17.6.5.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -2215,15 +2215,15 @@
         },
         {
             "name": "wpackagist-plugin/jetpack",
-            "version": "11.0",
+            "version": "13.1.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/jetpack/",
-                "reference": "tags/11.0"
+                "reference": "tags/13.1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/jetpack.11.0.zip"
+                "url": "https://downloads.wordpress.org/plugin/jetpack.13.1.1.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
