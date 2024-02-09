@@ -1,3 +1,25 @@
+// Create balanced text blocks
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+caption,
+figcaption {
+	text-wrap: var(--wp--custom--heading--typography--text-wrap);
+	overflow-wrap: initial;
+	word-break: initial;
+}
+
+// Prevent orphans
+p,
+ul,
+ol,
+blockquote {
+	text-wrap: var(--wp--custom--body--typography--text-wrap);
+}
+
 // Links
 a:not(.wp-element-button) {
 	cursor: pointer;
