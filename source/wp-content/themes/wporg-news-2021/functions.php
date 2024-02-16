@@ -154,6 +154,8 @@ function clarify_body_classes( $classes ) {
 
 /**
  * Add post classes to help make possible some design elements such as spacers between groups of posts.
+ * 
+ * @global WP_Query $wp_query WordPress Query object.
  *
  * @param array $classes
  *
