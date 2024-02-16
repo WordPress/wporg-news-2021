@@ -149,6 +149,10 @@ body.category-community {
 				color: var(--wp--preset--color--white);
 				vertical-align: bottom;
 			}
+
+			@include break-small-only() {
+				align-items: center;
+			}
 		}
 	}
 }
