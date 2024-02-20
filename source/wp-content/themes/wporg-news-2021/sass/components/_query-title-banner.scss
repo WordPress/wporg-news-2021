@@ -1,5 +1,5 @@
 .query-title-banner {
-	padding: var(--wp--custom--alignment--edge-spacing);
+	padding: var(--wp--preset--spacing--70) var(--wp--custom--alignment--edge-spacing) var(--wp--custom--alignment--edge-spacing);
 	color: var(--wp--preset--color--white);
 	position: relative;
 	z-index: -1;
@@ -23,6 +23,10 @@
 
 	.wp-block-query-title {
 		font-size: clamp(20px, calc(100vw / 12), 120px);
+	}
+
+	@include break-medium {
+		padding-top: var(--wp--custom--alignment--edge-spacing);
 	}
 }
 
