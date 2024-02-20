@@ -32,8 +32,13 @@
 
 	> .wp-block-group {
 		padding: calc(var(--wp--custom--alignment--edge-spacing) * 2) var(--wp--custom--alignment--edge-spacing);
+		flex-basis: 100%;
 
 		&:not(:first-of-type) {
+			border-top: 1px solid var(--wp--preset--color--light-grey);
+		}
+
+		body.single & {
 			border-top: 1px solid var(--wp--preset--color--light-grey);
 		}
 
@@ -59,10 +64,12 @@
 		}
 
 		@include break-giant() {
-			flex-basis: 25%;
+			body.home & {
+				flex-basis: 25%;
 
-			&:not(:last-of-type) {
-				border-right: 1px solid var(--wp--preset--color--light-grey);
+				&:not(:last-of-type) {
+					border-right: 1px solid var(--wp--preset--color--light-grey);
+				}
 			}
 		}
 	}
