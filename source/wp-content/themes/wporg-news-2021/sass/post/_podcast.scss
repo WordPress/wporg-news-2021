@@ -40,6 +40,9 @@ body.post-type-archive-podcast {
 
 			span {
 				font-size: clamp(72px, 12vw, 150px);
+				@include break-small() {
+					font-size: clamp(38px, 12vw, 50px);
+				}
 			}
 		}
 
