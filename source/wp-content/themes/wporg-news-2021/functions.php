@@ -30,6 +30,7 @@ add_filter( 'wp_list_categories', __NAMESPACE__ . '\add_links_to_categories_list
 add_filter( 'author_link', __NAMESPACE__ . '\use_wporg_profile_for_author_link', 10, 3 );
 add_action( 'wp_print_footer_scripts', __NAMESPACE__ . '\print_events_category_archive_script' );
 add_action( 'after_setup_theme', __NAMESPACE__ . '\add_block_styles' );
+add_filter( 'render_block_core/query-title', __NAMESPACE__ . '\modify_query_title' );
 
 /**
  * Register theme support.
@@ -129,6 +130,15 @@ function clarify_body_classes( $classes ) {
 		// Strip out "page" class, to prevent single-page styles from applying.
 		$classes = array_diff( $classes, [ 'page' ] );
 		$classes[] = 'news-posts-index';
+	}
+
+	if ( is_search() && is_category() ) {
+		$classes = array_filter(
+			$classes,
+			function ( $class ) {
+				return ! str_starts_with( $class, 'category' );
+			}
+		);
 	}
 
 	return $classes;
@@ -429,4 +439,21 @@ function add_block_styles() {
  */
 function disable_jetpack_sharing() {
 	remove_post_type_support( 'post', 'publicize' );
+}
+
+/**
+ * Prevent the query title on search+category views.
+ *
+ * These pages use a template with a large heading, so the local-nav
+ * heading is not necessary.
+ *
+ * @param string $block_content The block content.
+ *
+ * @return string
+ */
+function modify_query_title( $block_content ) {
+	if ( is_search() && is_category() ) {
+		return '';
+	}
+	return $block_content;
 }

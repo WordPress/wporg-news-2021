@@ -38,7 +38,7 @@
 }
 
 // Show the relevant banner based on the body class.
-body.archive .query-title-banner__query-title,
+body.archive:not(.search) .query-title-banner__query-title,
 body.news-posts-index .query-title-banner__all-posts,
 body.search .query-title-banner__search-results {
 	display: block;
