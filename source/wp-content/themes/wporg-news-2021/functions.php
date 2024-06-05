@@ -19,7 +19,6 @@ require_once __DIR__ . '/blocks/post-type-name/index.php';
 add_action( 'init', __NAMESPACE__ . '\disable_jetpack_sharing' );
 add_action( 'after_setup_theme', __NAMESPACE__ . '\theme_support', 9 );
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_assets' );
-add_filter( 'get_the_archive_title_prefix', __NAMESPACE__ . '\modify_archive_title_prefix' );
 add_action( 'pre_get_posts', __NAMESPACE__ . '\override_category_query_args' );
 add_filter( 'body_class', __NAMESPACE__ . '\clarify_body_classes' );
 add_filter( 'post_class', __NAMESPACE__ . '\specify_post_classes', 10, 3 );
@@ -81,23 +80,6 @@ function enqueue_assets() {
 		array( 'wporg-global-fonts' ),
 		filemtime( __DIR__ . '/style.css' )
 	);
-}
-
-/**
- * Blank out the archive title prefix sometimes.
- *
- * We want the prefix when it's used in `query-title-banner`, but not in `local-header`.
- *
- * TODO This filter can be removed if/when this issue is resolved: https://github.com/WordPress/gutenberg/issues/30519
- *
- * @return string
- */
-function modify_archive_title_prefix( $prefix ) {
-	if ( is_category() || is_post_type_archive() ) {
-		$prefix = '';
-	}
-
-	return $prefix;
 }
 
 /**
