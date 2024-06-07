@@ -153,7 +153,7 @@ function clarify_body_classes( $classes ) {
  */
 function specify_post_classes( $classes, $extra_classes, $post_id ) {
 	global $wp_query;
-	if ( ! is_object( $wp_query ) ) {
+	if ( ! is_object( $wp_query ) || ! isset( $wp_query->posts ) ) {
 		return $classes;
 	}
 
