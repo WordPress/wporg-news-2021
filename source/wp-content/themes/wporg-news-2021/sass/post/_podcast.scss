@@ -10,10 +10,14 @@ body.post-type-archive-podcast {
 		margin-top: calc(var(--wp--custom--margin--baseline) * -4);
 		position: relative;
 		padding-top: 80px;
-		padding-bottom: 160px;
+		padding-bottom: 80px;
 		padding-left: var(--wp--custom--alignment--edge-spacing);
 		padding-right: var(--wp--custom--alignment--edge-spacing);
 		color: var(--wp--preset--color--white);
+
+		@include break-medium() {
+			padding-bottom: 160px;
+		}
 
 		&::after {
 			content: "";
@@ -34,12 +38,12 @@ body.post-type-archive-podcast {
 		}
 
 		.wp-block-query-title {
-			font-size: clamp(38px, 12vw, 50px);
+			font-size: clamp(22px, 12vw, 50px);
 			word-break: break-all;
 			line-height: 1;
 
 			span {
-				font-size: clamp(72px, 12vw, 150px);
+				font-size: clamp(56px, 12vw, 150px);
 			}
 		}
 
