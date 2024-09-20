@@ -55,7 +55,7 @@ body.error404 {
 		line-height: var(--oops-font-size);
 
 		@include break-small() {
-			top: calc(var(--oops-font-size) * -0.23);
+			top: calc(var(--oops-font-size) * -1.25);
 			opacity: 0.6; // Make the overlaid text more readable.
 		}
 	}
