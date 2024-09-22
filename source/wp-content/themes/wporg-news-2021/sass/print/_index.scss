@@ -1,0 +1,91 @@
+@media print {
+
+	@page {
+		margin-top: 1.5cm;
+		margin-bottom: 1.5cm;
+	}
+
+	html[lang] {
+		margin-top: unset;
+		scroll-padding-top: unset;
+	}
+
+	:root :where(.wp-block-post-title) {
+		--wp--custom--h-1--typography--font-size: 35px;
+	}
+
+	:root :where(body) {
+		--local--block-gap: 15px;
+		// Reduce font sizes.
+		--wp--preset--font-size--normal: 13px;
+		--wp--preset--font-size--small: 12px;
+		// Remove content width constraints.
+		--wp--custom--layout--content-size: 100%;
+		--wp--style--global--content-size: 100%;
+	}
+
+	// Reduce block gap.
+	.is-layout-constrained > *:not(.wp-block-heading) {
+		margin-block-start: var(--local--block-gap);
+	}
+
+	// Hide elements that are not needed in print.
+	.global-header,
+	.local-header,
+	.single .entry-header + .wp-block-separator,
+	.page .entry-header + .wp-block-separator,
+	.post-navigation-container,
+	.bottom-banner,
+	.global-footer {
+		display: none !important;
+	}
+
+	// Turn grid layout elements to block to enable margins to collapse.
+	.single .entry-header,
+	.page .entry-header,
+	body.news-posts-index .site-content-container,
+	body.archive .site-content-container,
+	body.search .site-content-container,
+	body.single:not(.single-podcast) .site-content-container .wp-block-post-content,
+	body.single-podcast .site-content-container .podcast-wrapper,
+	body.page .site-content-container .wp-block-post-content {
+		display: block;
+	}
+
+	// Remove padding from entry header and post content.
+	body.single:not(.single-podcast) .site-content-container .entry-header,
+	body.single:not(.single-podcast) .site-content-container .wp-block-post-content,
+	body.page .site-content-container .entry-header,
+	body.page .site-content-container .wp-block-post-content {
+		padding-left: unset;
+		padding-right: unset;
+	}
+
+	// Reduce margins for post titles.
+	.single .entry-header .wp-block-post-title,
+	.page .entry-header .wp-block-post-title {
+		margin-top: var(--local--block-gap);
+		margin-bottom: calc(var(--local--block-gap) * 2);
+	}
+
+	// Reduce image size and spacing to reduce the number of page breaks.
+	.wp-block-post-content .wp-block-gallery,
+	.wp-block-post-content .wp-block-image {
+		margin-top: var(--local--block-gap);
+		margin-bottom: var(--local--block-gap);
+
+		img {
+			max-width: 67%;
+		}
+	}
+
+	// Reduce caption font size and align center to match image.
+	.wp-block-gallery.wp-block-gallery figcaption,
+	figure[class*="wp-block-"] figcaption,
+	[class*="wp-block-"] figcaption {
+		--wp--custom--gallery--caption--font-size: var(--wp--preset--font-size--small);
+
+		line-height: 1.5;
+		text-align: center;
+	}
+}
