@@ -12,7 +12,15 @@ body.error404 {
 	}
 
 	.site-content-container {
-		position: relative;
+
+		/*
+		 * Prevent "oops" from creating a horizontal scroll.
+		 * In some iOS versions, these rules also have to be applied to <html>, but that would bleed over to other
+		 * pages. It's better to just let there be a scroll, since it's not a commonly used page.
+		 */
+		position: relative; // needed for overflow to work
+		overflow-x: hidden;
+
 		margin-top: 0;
 		color: var(--wp--preset--color--off-white-2);
 		padding-left: var(--wp--custom--alignment--edge-spacing);
