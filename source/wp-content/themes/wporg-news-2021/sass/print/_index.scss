@@ -10,6 +10,14 @@
 		scroll-padding-top: unset;
 	}
 
+	.wp-site-blocks {
+		display: block;
+
+		> .site-content-container {
+			margin-top: unset;
+		}
+	}
+
 	:root :where(.wp-block-post-title) {
 		--wp--custom--h-1--typography--font-size: 35px;
 	}
@@ -56,12 +64,22 @@
 	body.single:not(.single-podcast) .site-content-container .entry-header,
 	body.single:not(.single-podcast) .site-content-container .wp-block-post-content,
 	body.page .site-content-container .entry-header,
-	body.page .site-content-container .wp-block-post-content {
+	body.page .site-content-container .wp-block-post-content,
+	body.single-podcast .query-title-banner-podcast,
+	body.post-type-archive-podcast .query-title-banner-podcast,
+	body.single-podcast .site-content-container,
+	body.post-type-archive-podcast .site-content-container {
 		padding-left: unset;
 		padding-right: unset;
 	}
 
-	// Reduce margins for post titles.
+	// Reduce margins for post meta.
+	.single .entry-header .wp-block-post-date,
+	.page .entry-header .wp-block-post-date {
+		margin-top: unset;
+	}
+
+	// Reduce margins for post title.
 	.single .entry-header .wp-block-post-title,
 	.page .entry-header .wp-block-post-title {
 		margin-top: var(--local--block-gap);
@@ -87,5 +105,35 @@
 
 		line-height: 1.5;
 		text-align: center;
+	}
+
+	/* Podcast specific styles */
+	.wp-block-wporg-podcast-player,
+	body.single-podcast .site-content-container .podcast-wrapper > *.left-column,
+	body.single-podcast .query-title-banner-podcast::after,
+	body.post-type-archive-podcast .query-title-banner-podcast::after {
+		display: none;
+	}
+
+	body.single-podcast .query-title-banner-podcast,
+	body.post-type-archive-podcast .query-title-banner-podcast {
+		margin-top: var(--local--block-gap);
+		padding-top: unset;
+		padding-bottom: unset;
+	}
+
+	body.single-podcast .wp-block-post-content,
+	body.post-type-archive-podcast .wp-block-post-content {
+		margin-top: var(--local--block-gap);
+	}
+
+	body.single-podcast .query-title-banner-podcast,
+	body.post-type-archive-podcast .query-title-banner-podcast {
+		color: initial;
+	}
+
+	body.single-podcast .query-title-banner-podcast a,
+	body.post-type-archive-podcast .query-title-banner-podcast a {
+		color: var(--wp--preset--color--blue-1);
 	}
 }
