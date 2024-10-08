@@ -20,6 +20,10 @@
 		},
 		"textAlign": {
 			"type": "string"
+		},
+		"showMajorVersion": {
+			"type": "boolean",
+			"default": false
 		}
 	},
 	"usesContext": [ "postId" ],
