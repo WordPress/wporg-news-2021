@@ -68,7 +68,7 @@ body.news-front-page .front__latest-release {
 		@include break-medium() {
 			left: unset;
 			flex-grow: 1;
-			font-size: min(16vw, 160px);
+			font-size: clamp(60px, calc(20vw + -96px), 160px);
 			padding:
 				calc(var(--wp--custom--alignment--edge-spacing) / 2)
 				var(--wp--custom--alignment--edge-spacing)
@@ -93,7 +93,7 @@ body.news-front-page .front__latest-release {
 				padding: 15px 0;
 				transition: background-color 0.15s linear;
 
-				@include break-xlarge() {
+				@media (min-width: 1500px) {
 					&::after {
 						content: "";
 						display: block;
