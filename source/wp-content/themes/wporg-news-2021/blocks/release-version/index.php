@@ -21,8 +21,9 @@ function render_block( $attributes, $content, $block ) {
 		return '';
 	}
 
-	$post_ID          = $block->context['postId'];
-	$align_class_name = empty( $attributes['textAlign'] ) ? '' : "has-text-align-{$attributes['textAlign']}";
+	$post_ID            = $block->context['postId'];
+	$align_class_name   = empty( $attributes['textAlign'] ) ? '' : "has-text-align-{$attributes['textAlign']}";
+	$show_major_version = $attributes['showMajorVersion'];
 
 	$version = '';
 	$title = get_the_title( $post_ID );
@@ -30,10 +31,18 @@ function render_block( $attributes, $content, $block ) {
 	if ( preg_match( '/WordPress (\d{0,3}(?:\.\d{1,3})+)\s*(?|Release Candidate\s*(\d+)|RC\s*(\d+))?(?|Beta\s*(\d+))?/', $title, $matches ) ) {
 		$version = $matches[1];
 		if ( ! empty( $matches[2] ) ) {
-			$version = 'RC' . $matches[2];
+			if ( $show_major_version ) {
+				$version .= ' RC' . $matches[2];
+			} else {
+				$version = 'RC' . $matches[2];
+			}
 		}
 		if ( ! empty( $matches[3] ) ) {
-			$version = 'Beta' . $matches[3];
+			if ( $show_major_version ) {
+				$version .= ' Beta' . $matches[3];
+			} else {
+				$version = 'Beta' . $matches[3];
+			}
 		}
 	}
 
