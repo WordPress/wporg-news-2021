@@ -5,6 +5,8 @@
 		color: var(--bar-text-color) !important;
 		background: var(--bar-background-color) !important;
 		border: none !important;
+		padding-left: 0 !important;
+		padding-right: 0 !important;
 
 		li a {
 			display: block;
@@ -99,6 +101,12 @@
 			background: var(--bar-background-color) !important;
 		}
 
+		.wp-block-navigation-item__content {
+			padding-top: 8px !important;
+			padding-bottom: 8px !important;
+		}
+
+		// Hide the "Categories" button, only show the submenu.
 		.wp-block-navigation-submenu__toggle {
 			display: none !important;
 		}
