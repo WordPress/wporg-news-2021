@@ -31,6 +31,10 @@ add_filter( 'author_link', __NAMESPACE__ . '\use_wporg_profile_for_author_link',
 add_action( 'wp_print_footer_scripts', __NAMESPACE__ . '\print_events_category_archive_script' );
 add_action( 'after_setup_theme', __NAMESPACE__ . '\add_block_styles' );
 add_filter( 'render_block_core/query-title', __NAMESPACE__ . '\modify_query_title' );
+add_filter( 'render_block_data', __NAMESPACE__ . '\update_header_template_part_class' );
+add_filter( 'wporg_block_navigation_menus', __NAMESPACE__ . '\add_site_navigation_menus' );
+add_filter( 'get_the_archive_title', __NAMESPACE__ . '\update_archive_title' );
+add_filter( 'render_block_core/site-title', __NAMESPACE__ . '\update_site_title' );
 
 /**
  * Register theme support.
@@ -456,4 +460,94 @@ function modify_query_title( $block_content ) {
 		return '';
 	}
 	return $block_content;
+}
+
+/**
+ * Add the has-display-contents class to the header template so that the fixed local nav bar works.
+ *
+ * @param array $block The parsed block data.
+ *
+ * @return array
+ */
+function update_header_template_part_class( $block ) {
+	if ( ! empty( $block['blockName'] ) && 'core/template-part' === $block['blockName'] ) {
+		if ( str_starts_with( $block['attrs']['slug'], 'header' ) ) {
+			if ( isset( $block['attrs']['className'] ) ) {
+				$block['attrs']['className'] .= ' has-display-contents';
+			} else {
+				$block['attrs']['className'] = 'has-display-contents';
+			}
+		}
+	}
+	return $block;
+}
+
+/**
+ * Provide a list of local navigation menus.
+ */
+function add_site_navigation_menus( $menus ) {
+	$term_list = get_terms(
+		array(
+			'taxonomy' => 'category',
+			'parent' => 0,
+			'orderby' => 'name',
+		)
+	);
+
+	$categories = array_map(
+		function( $item ) {
+			return array(
+				'label' => $item->name,
+				'url' => get_term_link( $item ),
+				'className' => is_category( $item->term_id ) ? 'current-menu-item' : '',
+			);
+		},
+		$term_list
+	);
+
+	// All Posts
+	$categories[] = array(
+		'label' => __( 'All Posts', 'wporg' ),
+		'url' => site_url( '/all-posts/' ),
+		'className' => is_home() ? 'current-menu-item' : '',
+	);
+
+	usort(
+		$categories,
+		function( $a, $b ) {
+			return strcmp( $a['label'], $b['label'] );
+		}
+	);
+
+	return array(
+		'categories' => array(
+			array(
+				'label' => __( 'Categories', 'wporg' ),
+				'submenu' => $categories,
+			),
+		),
+	);
+}
+
+/**
+ * Update the archive title on the Podcast archive.
+ */
+function update_archive_title( $title ) {
+	if ( is_post_type_archive( 'podcast' ) ) {
+		$title = __( 'WP Briefing Podcast', 'wporg' );
+	}
+	return $title;
+}
+
+/**
+ * Update the archive title for all filter views.
+ *
+ * @param string $block_content The block content.
+ */
+function update_site_title( $block_content ) {
+	return str_replace(
+		get_bloginfo( 'name' ),
+		__( 'News', 'wporg' ),
+		$block_content
+	);
 }

@@ -40,4 +40,16 @@ body[class] {
 		--wp--custom--h-5--typography--font-size: var(--wp--custom--h-5--breakpoint--mobile--typography--font-size);
 		--wp--custom--h-5--typography--line-height: var(--wp--custom--h-5--breakpoint--mobile--typography--line-height);
 	}
+
+	// Adjust the edge-spacing on smaller screens.
+	@media (max-width: 889px) {
+		--wp--preset--spacing--edge-space: 20px;
+	}
+}
+
+// This should only be used on template part containers to work around nested
+// sticky headers.
+// See https://github.com/WordPress/wporg-parent-2021/commit/49347b094f16835895c499a6181ca0e6fd853090
+.has-display-contents {
+	display: contents;
 }

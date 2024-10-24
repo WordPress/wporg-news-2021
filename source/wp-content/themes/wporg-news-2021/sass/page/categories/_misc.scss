@@ -28,7 +28,7 @@ body.category {
 body.category-development {
 	--category-color: var(--wp--preset--color--green);
 
-	.local-header {
+	.wp-block-wporg-local-navigation-bar {
 		--bar-background-color: var(--wp--preset--color--green);
 		--bar-text-color: var(--wp--preset--color--black);
 		--bar-link-color: var(--wp--preset--color--black);
@@ -39,7 +39,7 @@ body.category-development {
 body.category-security {
 	--category-color: var(--wp--preset--color--coral-red);
 
-	.local-header {
+	.wp-block-wporg-local-navigation-bar {
 		--bar-background-color: var(--wp--preset--color--coral-red);
 		--bar-text-color: var(--wp--preset--color--black);
 		--bar-link-color: var(--wp--preset--color--black);

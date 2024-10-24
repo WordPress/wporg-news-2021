@@ -113,7 +113,7 @@ body.single-podcast {
 		@extend %two-column-grid-right-column;
 	}
 
-	.wp-block-post-title {
+	.wp-block-post-title:not(p) {
 		margin-bottom: calc(var(--wp--custom--margin--baseline) * 3);
 
 		@include break-wide() {

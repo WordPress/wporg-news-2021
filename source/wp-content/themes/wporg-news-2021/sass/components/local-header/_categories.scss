@@ -1,122 +1,38 @@
-// The Categories button toggles the display of the list
-// over highlighted categories.
-.local-header__categories {
+// Navigation block inside the local nav block.
+.wp-block-wporg-local-navigation-bar .wp-block-navigation {
+	.wp-block-navigation__submenu-container {
+		display: block !important;
+		color: var(--bar-text-color) !important;
+		background: var(--bar-background-color) !important;
+		border: none !important;
 
-	margin-top: 0;
-
-	// The (hidden) checkbox which allows
-	// for toggling the menu on and off.
-	.local-header__categories-toggle {
-
-		@include hide-accessibly;
-
-		+ label {
-			// The scrim that covers the content below
-			// with a dark overlay. It's hidden by default.
-			&::before {
-				content: "";
-				display: block;
-				position: fixed;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100vh;
-				opacity: 0;
-				pointer-events: none;
-				background-color: rgba(0, 0, 0, 0.5);
-				z-index: -1;
-				transition: opacity 0.15s ease-in-out;
-			}
-		}
-
-		// Add focus state around label when input is focused.
-		&:focus + label {
-			outline: 1px dotted currentColor;
-		}
-
-		// When toggled, underline the label, rotate the
-		// icon, fade-in the scrim, and display the categories.
-		&:checked {
-			+ label {
-				span {
-					text-decoration: underline;
-				}
-
-				svg {
-					transform: rotate(180deg);
-				}
-
-				// Display the scrim when toggled.
-				&::before {
-					opacity: 1;
-					pointer-events: auto;
-				}
-			}
-
-			~ .wp-block-categories {
-				display: block;
-			}
-		}
-	}
-
-	// The "Categories" label itself
-	.local-header__categories-label {
-		display: flex;
-		align-items: center;
-		text-align: right;
-		color: var(--bar-link-color);
-		cursor: pointer;
-		user-select: none;
-		margin: 0;
-		padding: 0 12px;
-		min-height: var(--local-header-height);
-		position: absolute;
-		top: 0;
-		right: 9px;
-
-		@include break-small {
-			right: var(--wp--custom--alignment--edge-spacing);
-		}
-
-		svg {
-			margin-left: 12px;
-			stroke: currentColor;
-			transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
-		}
-
-		&:hover {
-			color: var(--bar-link-hover-color);
-		}
-	}
-
-	// The list of categories which is toggled
-	// on and off using the label+checkbox above.
-	.wp-block-categories {
-		list-style: none;
-		padding: 0 0 30px 0;
-		display: none;
-		max-height: none;
-
-		// Override the default margin applied to the block.
-		[class*="wp-block-"] & {
-			margin: 0;
-		}
-
-		li {
-			padding: 6px 40px 6px 24px;
-			text-align: right;
-
-			a {
-				display: block;
-			}
+		li a {
+			display: block;
+			justify-content: flex-end;
 		}
 
 		@include break-small {
 			column-count: 2;
 
-			li {
+			li a {
 				padding: 4px 0;
-				text-align: left;
+				justify-content: flex-start;
+			}
+
+			&::before,
+			&::after {
+				content: "";
+				position: absolute;
+				inset: 0;
+				left: calc(var(--wp--preset--spacing--edge-space) * -1);
+				right: auto;
+				width: var(--wp--preset--spacing--edge-space);
+				background: var(--bar-background-color) !important;
+			}
+
+			&::after {
+				left: auto;
+				right: calc(var(--wp--preset--spacing--edge-space) * -1);
 			}
 		}
 
@@ -134,7 +50,7 @@
 
 		// If currently viewing a category, highlighted
 		// that category in the list.
-		.current-cat {
+		.current-menu-item {
 			font-weight: 700;
 			position: relative;
 
@@ -165,6 +81,30 @@
 					left: 0;
 				}
 			}
+		}
+	}
+
+	.wp-block-navigation-submenu__toggle[aria-expanded="true"] ~ .wp-block-navigation__submenu-container {
+		width: calc(100dvw - (var(--wp--preset--spacing--edge-space) * 2)) !important;
+		top: 100% !important;
+		padding-bottom: var(--wp--preset--spacing--40) !important;
+	}
+
+	&.wporg-is-collapsed-nav,
+	&.wporg-is-mobile-nav {
+		.wp-block-navigation__responsive-close,
+		.wp-block-navigation__responsive-container-close,
+		.wp-block-navigation__responsive-dialog {
+			color: var(--bar-text-color) !important;
+			background: var(--bar-background-color) !important;
+		}
+
+		.wp-block-navigation-submenu__toggle {
+			display: none !important;
+		}
+
+		wp-block-navigation__responsive-container {
+			top: calc(var(--wp--custom--local-navigation-bar--spacing--height) + var(--wp-global-header-offset)) !important;
 		}
 	}
 }
