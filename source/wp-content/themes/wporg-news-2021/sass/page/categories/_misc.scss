@@ -10,11 +10,11 @@ body.category {
 			color: var(--category-color);
 			font-size: 0;
 			line-height: 0.7;
-			display: none;
+			margin-top: var(--wp--style--block-gap);
 
-			@include break-wide() {
-				display: block;
-				margin-top: var(--wp--style--block-gap);
+			@media (max-width: #{ ($break-wide - 1) }) {
+
+				@include hide-accessibly;
 			}
 
 			&::first-letter {
