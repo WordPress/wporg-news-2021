@@ -40,23 +40,4 @@ body:not(.search) .wp-block-wporg-local-navigation-bar .local-header__title-sear
 
 	color: var(--bar-text-color) !important;
 	background: var(--bar-background-color) !important;
-
-	@include break-small {
-		background: linear-gradient(to top, transparent var(--local-header-height), var(--bar-background-color) var(--local-header-height) 100%) !important;
-
-		&::after {
-			content: "";
-			min-height: var(--local-header-height);
-			position: absolute;
-			bottom: 1px;
-			left: 0;
-			right: 0;
-			z-index: -1;
-			mask-image: url(images/local-nav-mask.svg);
-			mask-repeat: no-repeat;
-			mask-size: cover;
-			mask-position: 0;
-			background-color: var(--bar-background-color);
-		}
-	}
 }
