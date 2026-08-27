@@ -321,16 +321,16 @@ function add_links_to_categories_list( $html, $args ) {
 	$links[ __( 'All Posts', 'wporg' ) ] = sprintf(
 		'<li class="cat-item cat-item-0 %1$s"><a href="%2$s">%3$s</a></li>',
 		is_home() ? 'current-cat' : '',
-		site_url( '/all-posts/' ),
-		__( 'All Posts', 'wporg' )
+		esc_url( site_url( '/all-posts/' ) ),
+		esc_html__( 'All Posts', 'wporg' )
 	);
 
 	// Podcast
 	$links[ __( 'Podcast', 'wporg' ) ] = sprintf(
 		'<li class="cat-item cat-item-0 %1$s"><a href="%2$s">%3$s</a></li>',
 		is_post_type_archive( 'podcast' ) ? 'current-cat' : '',
-		get_post_type_archive_link( 'podcast' ),
-		__( 'Podcast', 'wporg' )
+		esc_url( get_post_type_archive_link( 'podcast' ) ),
+		esc_html__( 'Podcast', 'wporg' )
 	);
 
 	ksort( $links );

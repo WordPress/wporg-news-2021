@@ -46,13 +46,14 @@ function render_block( $attributes, $content, $block ) {
 		}
 	}
 
-	$wrapper_tag   = $attributes['tagName'] ?? 'div';
-	$wrapper_open  = "<$wrapper_tag " . get_block_wrapper_attributes( array( 'class' => $align_class_name ) ) . '>';
-	$link_open     = empty( $attributes['isLink'] ) ? '' : '<a href="' . get_permalink( $post_ID ) . '">';
+	$allowed_tags  = array( 'div', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' );
+	$wrapper_tag   = in_array( $attributes['tagName'] ?? '', $allowed_tags, true ) ? $attributes['tagName'] : 'div';
+	$wrapper_open  = '<' . $wrapper_tag . ' ' . get_block_wrapper_attributes( array( 'class' => $align_class_name ) ) . '>';
+	$link_open     = empty( $attributes['isLink'] ) ? '' : '<a href="' . esc_url( get_permalink( $post_ID ) ) . '">';
 	$link_close    = empty( $attributes['isLink'] ) ? '' : '</a>';
-	$wrapper_close = "</$wrapper_tag>";
+	$wrapper_close = '</' . $wrapper_tag . '>';
 
-	return "$wrapper_open $link_open $version $link_close $wrapper_close";
+	return $wrapper_open . ' ' . $link_open . ' ' . esc_html( $version ) . ' ' . $link_close . ' ' . $wrapper_close;
 }
 
 /**
