@@ -23,7 +23,7 @@ function render_block( $attributes, $content, $block ) {
 	$tag_name = 'h2';
 
 	if ( isset( $attributes['level'] ) ) {
-		$tag_name = 0 === $attributes['level'] ? 'p' : 'h' . $attributes['level'];
+		$tag_name = 0 === $attributes['level'] ? 'p' : 'h' . (int) $attributes['level'];
 	}
 
 	// Getting the "0th" of the month actually gets the last day of the previous month, so for a post published on
@@ -42,10 +42,10 @@ function render_block( $attributes, $content, $block ) {
 			'<%1$s %2$s><a href="%3$s"><span aria-label="%4$s">%5$s</span> %6$s</a></%1$s>',
 			$tag_name,
 			$wrapper_attributes,
-			get_permalink( $post_id ),
-			$long_month,
-			$short_month,
-			$year
+			esc_url( get_permalink( $post_id ) ),
+			esc_attr( $long_month ),
+			esc_html( $short_month ),
+			esc_html( $year )
 		);
 	}
 
@@ -53,9 +53,9 @@ function render_block( $attributes, $content, $block ) {
 		'<%1$s %2$s><span aria-label="%3$s">%4$s</span> %5$s</%1$s>',
 		$tag_name,
 		$wrapper_attributes,
-		$long_month,
-		$short_month,
-		$year
+		esc_attr( $long_month ),
+		esc_html( $short_month ),
+		esc_html( $year )
 	);
 }
 

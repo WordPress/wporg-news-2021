@@ -28,7 +28,7 @@ function render_block( $attributes, $content, $block ) {
 	return sprintf(
 		'<div %1$s>%2$s</div>',
 		$wrapper_attributes,
-		$year
+		esc_html( $year )
 	);
 }
 
