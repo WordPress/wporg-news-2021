@@ -18,6 +18,14 @@ body.news-front-page {
 		.wp-block-navigation__responsive-container {
 			--bar-background-color: var(--wp--preset--color--blue-1);
 		}
+
+		// While the categories menu is open, turn the bar blue too, so the bar and
+		// menu read as one panel. The toggle reports itself as expanded even when the
+		// mobile/collapsed menus hide it, so those are matched on the open panel instead.
+		&:has(nav.wp-block-navigation:not(.wporg-is-collapsed-nav):not(.wporg-is-mobile-nav) .wp-block-navigation-submenu__toggle[aria-expanded="true"]),
+		&:has(.wp-block-navigation__responsive-container.is-menu-open) {
+			--bar-background-color: var(--wp--preset--color--blue-1);
+		}
 	}
 
 	// Remove the default block margin
