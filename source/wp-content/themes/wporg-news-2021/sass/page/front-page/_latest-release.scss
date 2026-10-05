@@ -2,8 +2,8 @@
 body.news-front-page .front__latest-release {
 	color: var(--wp--preset--color--white);
 	font-size: var(--wp--preset--font-size--small);
-	background-color: var(--wp--preset--color--blue-1);
-	border-top: 1px solid var(--wp--preset--color--blue-2);
+	background-color: var(--wp--preset--color--dark-grey);
+	border-top: 1px solid rgba(255, 255, 255, 0.15);
 
 	// To allow for absolute positioning of children.
 	position: relative;
@@ -20,7 +20,7 @@ body.news-front-page .front__latest-release {
 		padding: 0;
 	}
 
-	// Since we have a blue background our links need to be white.
+	// Since we have a dark background our links need to be white.
 	a {
 		color: var(--wp--preset--color--white);
 	}
@@ -41,7 +41,7 @@ body.news-front-page .front__latest-release {
 				calc(var(--wp--custom--alignment--edge-spacing) * 2)
 				calc(var(--wp--custom--alignment--edge-spacing) * 2)
 				0;
-			border-right: 1px solid var(--wp--preset--color--blue-2);
+			border-right: 1px solid rgba(255, 255, 255, 0.15);
 		}
 	}
 
@@ -77,7 +77,7 @@ body.news-front-page .front__latest-release {
 
 			&:hover,
 			&:focus-within {
-				background-color: rgba(0, 0, 0, 0.1);
+				background-color: #1a1919;
 
 				a::after {
 					transform: scale(0.9) translateX(10px);
@@ -148,7 +148,7 @@ body.news-front-page .front__latest-release {
 			display: block;
 			height: 45px;
 			width: 116px;
-			background-image: url(images/brush-stroke-see-all-releases.svg);
+			background-image: url(images/brush-stroke-see-all-releases-dark.svg);
 			position: absolute;
 			top: calc(50% - (45px / 2));
 			left: -20px;
