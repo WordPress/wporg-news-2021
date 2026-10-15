@@ -63,6 +63,14 @@ body.news-front-page .front__people-of-wordpress {
 						object-fit: cover;
 						filter: grayscale(100%);
 						aspect-ratio: 1 / 1;
+
+						@supports not (aspect-ratio: 1 / 1) {
+							height: 100%;
+						}
+					}
+
+					@supports not (aspect-ratio: 1 / 1) {
+						height: 100%;
 					}
 				}
 
