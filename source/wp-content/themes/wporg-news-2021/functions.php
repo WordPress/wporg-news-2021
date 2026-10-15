@@ -364,9 +364,8 @@ function print_events_category_archive_script() {
 		return;
 	}
 
-	ob_start();
-	?>
-<script id="wporg-news-2021-events-archive-handler">
+	wp_print_inline_script_tag(
+		<<<'JS'
 	( () => {
 		const getPostYear = ( element ) => {
 			return Array.from( element.classList ).find( yearClass => yearClass.match( /^post-year-/ ) );
@@ -403,9 +402,9 @@ function print_events_category_archive_script() {
 			}
 		} );
 	} )();
-</script>
-	<?php
-	echo ob_get_clean();
+	JS,
+		array( 'id' => 'wporg-news-2021-events-archive-handler' )
+	);
 }
 
 /**
