@@ -8,13 +8,15 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 
-	// Text selection background color
+	// Text selection colors.
 	::selection {
-		background-color: var(--wp--preset--color--coral-red);
+		background-color: var(--wp--preset--color--off-white-2);
+		color: var(--wp--preset--color--black);
 	}
 
 	::-moz-selection {
-		background-color: var(--wp--preset--color--coral-red);
+		background-color: var(--wp--preset--color--off-white-2);
+		color: var(--wp--preset--color--black);
 	}
 }
 
