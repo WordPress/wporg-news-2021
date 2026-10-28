@@ -8,4 +8,9 @@
 	https://github.com/WordPress/gutenberg/issues/28923
 	*/
 	text-align: center;
+
+	// Core's z-index of 100 puts the enlarge button above the sticky local navigation bar.
+	&.wp-lightbox-container button {
+		z-index: 1;
+	}
 }
