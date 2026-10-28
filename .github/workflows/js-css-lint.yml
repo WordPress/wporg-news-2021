@@ -1,17 +1,17 @@
-name: Lint and Build
+name: Static Analysis (JS/CSS)
 
 on:
   pull_request:
     paths:
     - 'source/wp-content/themes/wporg-news-2021/**'
     - .nvmrc
-    - .github/workflows/build.yml
+    - .github/workflows/js-css-lint.yml
   push:
     branches: [trunk]
     paths:
     - 'source/wp-content/themes/wporg-news-2021/**'
     - .nvmrc
-    - .github/workflows/build.yml
+    - .github/workflows/js-css-lint.yml
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
