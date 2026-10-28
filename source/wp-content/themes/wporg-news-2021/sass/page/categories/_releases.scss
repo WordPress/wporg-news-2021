@@ -120,6 +120,11 @@ body.category-releases {
 		@include break-medium() {
 			// The rest of the releases.
 			&:not(:first-child) {
+				// The scaled arrow reaches 128px in from the post's right edge, so long titles need to wrap before it.
+				.wp-block-post-title {
+					padding-right: calc(128px - var(--wp--custom--alignment--edge-spacing));
+				}
+
 				.wp-block-post-title::after {
 					content: "";
 					display: block;
