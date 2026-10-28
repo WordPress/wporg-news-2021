@@ -1,55 +1,91 @@
 .bottom-banner .bottom-banner-items[class*="wp-block-"] .subscribe-wp-news {
-	.jetpack_subscription_widget {
-		form {
-			display: grid;
-			grid-template-columns: 1fr auto;
+	// Repeats the block class to outrank the Jetpack block's flex layout.
+	.wp-block-jetpack-subscriptions .wp-block-jetpack-subscriptions__form-elements {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		grid-template-areas: "email submit";
+	}
 
-			grid-template-areas:
-				"count count"
-				"email submit";
+	#subscribe-email,
+	#subscribe-submit {
+		margin: 1em 0;
+	}
 
-			.jetpack-subscribe-count {
-				grid-area: count;
+	// The block inlines font size, padding, and border styles; `!important` restores the theme's values.
+	#subscribe-email {
+		grid-area: email;
 
-				p {
-					margin-top: 0;
-					margin-bottom: 0;
-				}
-			}
+		input {
+			width: 100%;
+			border: 1px solid var(--wp--preset--color--black);
+			border-right: none;
+			border-radius: 2px 0 0 2px !important;
+			font-size: var(--wp--custom--button--typography--font-size) !important;
+			line-height: normal;
+			padding: var(--wp--custom--form--padding) !important;
+			margin: 0;
+			height: 50px;
+			cursor: text;
 
-			#subscribe-email {
-				grid-area: email;
-
-				input {
-					width: 100%;
-					border: 1px solid var(--wp--preset--color--black);
-					border-right: none;
-					border-radius: 2px 0 0 2px;
-					font-size: var(--wp--custom--button--typography--font-size);
-					margin: 0;
-					height: 50px;
-				}
-			}
-
-			#subscribe-submit {
-				grid-area: submit;
-
-				.wp-block-button__link {
-					border-radius: 0 2px 2px 0;
-					margin: 0;
-					line-height: inherit;
-					height: 50px;
-				}
+			&::placeholder {
+				color: revert;
+				opacity: revert;
 			}
 		}
+	}
 
-		.success {
-			color: var(--wp--preset--color--success-green);
-		}
+	#subscribe-submit {
+		grid-area: submit;
+		display: block;
 
-		.error {
-			color: var(--wp--preset--color--vivid-red);
+		.wp-block-button__link {
+			border: none;
+			border-radius: 0 2px 2px 0 !important;
+			font-size: var(--wp--custom--button--typography--font-size) !important;
+			padding: 10px 19px !important;
+			margin: 0;
+			line-height: inherit;
+			height: 50px;
 		}
+	}
+
+	// Subscribers get a link to their subscription settings instead of the form; styled as a secondary action.
+	#subscribe-submit.is-link {
+		display: block;
+		text-align: start;
+
+		.wp-block-button__link {
+			--wp--custom--button--color--text: var(--wp--custom--button--border--color);
+			--wp--custom--button--color--background: transparent;
+
+			@include button-border-styles;
+			@include button-color-styles;
+
+			// Centers the label within the fixed 50px height, which its line height would otherwise overflow.
+			display: inline-flex;
+			align-items: center;
+			border-width: var(--wp--custom--button--border--width) !important;
+			border-radius: 2px !important;
+
+			&,
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+
+	.wp-block-jetpack-subscriptions__subscount {
+		font-size: inherit;
+		margin: 0;
+		text-align: start;
+	}
+
+	.success {
+		color: var(--wp--preset--color--success-green);
+	}
+
+	.error {
+		color: var(--wp--preset--color--vivid-red);
 	}
 }
 
@@ -60,6 +96,10 @@
 			background-color: var(--wp--preset--color--white);
 			color: var(--wp--preset--color--black);
 			border: none;
+		}
+
+		#subscribe-submit.is-link .wp-block-button__link {
+			--wp--custom--button--border--color: var(--wp--preset--color--white);
 		}
 	}
 }
