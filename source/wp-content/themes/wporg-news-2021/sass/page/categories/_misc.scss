@@ -1,3 +1,7 @@
+@use "@wordpress/base-styles/breakpoints";
+@use "@wordpress/base-styles/mixins" as base-styles-mixins;
+@use "../../base/mixins";
+
 body.category {
 	--category-color: var(--wp--preset--color--blue-1);
 
@@ -12,9 +16,9 @@ body.category {
 			line-height: 0.7;
 			margin-top: var(--wp--style--block-gap);
 
-			@media (max-width: #{ ($break-wide - 1) }) {
+			@media (max-width: #{ (breakpoints.$break-wide - 1) }) {
 
-				@include hide-accessibly;
+				@include mixins.hide-accessibly;
 			}
 
 			&::first-letter {
@@ -61,7 +65,7 @@ body.category-releases {
 			font-size: 30px;
 			line-height: var(--wp--custom--heading--typography--line-height);
 
-			@include break-wide() {
+			@include base-styles-mixins.break-wide() {
 				font-size: 36px;
 				line-height: 1.35;
 			}
@@ -71,14 +75,14 @@ body.category-releases {
 			font-size: 13px;
 			line-height: 1.6;
 
-			@include break-wide() {
+			@include base-styles-mixins.break-wide() {
 				font-size: var(--wp--preset--font-size--normal);
 			}
 		}
 
 		.wp-block-post-excerpt {
 
-			@include break-wide() {
+			@include base-styles-mixins.break-wide() {
 				line-height: 1.6;
 			}
 		}

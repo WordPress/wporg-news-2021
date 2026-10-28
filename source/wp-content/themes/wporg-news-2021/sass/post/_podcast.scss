@@ -1,3 +1,6 @@
+@use "@wordpress/base-styles/mixins";
+@use "../base/layout";
+
 body.single-podcast,
 body.post-type-archive-podcast {
 	.site-content-container {
@@ -15,7 +18,7 @@ body.post-type-archive-podcast {
 		padding-right: var(--wp--custom--alignment--edge-spacing);
 		color: var(--wp--preset--color--white);
 
-		@include break-medium() {
+		@include mixins.break-medium() {
 			padding-bottom: 160px;
 		}
 
@@ -70,15 +73,15 @@ body.post-type-archive-podcast {
 			right: calc(var(--wp--custom--alignment--edge-spacing) * -1);
 			z-index: -2;
 
-			@include break-small() {
+			@include mixins.break-small() {
 				background-size: contain;
 			}
 
-			@include break-medium() {
+			@include mixins.break-medium() {
 				transform: translateX(-20%);
 			}
 
-			@include break-wide() {
+			@include mixins.break-wide() {
 				background-position: top left;
 				top: 0;
 				transform: translateY(-41%);
@@ -116,7 +119,7 @@ body.single-podcast {
 	.wp-block-post-title:not(p) {
 		margin-bottom: calc(var(--wp--custom--margin--baseline) * 3);
 
-		@include break-wide() {
+		@include mixins.break-wide() {
 			margin-bottom: calc(var(--wp--custom--margin--baseline) * 7.7);
 		}
 	}

@@ -1,3 +1,8 @@
+@use "@wordpress/base-styles/mixins";
+@use "misc";
+@use "../../components/bottom-banner/bottom-banner";
+@use "../../components/bottom-banner/subscribe-wp-news";
+
 body.category-releases {
 
 	@extend %releases-events-fonts;
@@ -50,7 +55,7 @@ body.category-releases {
 		overflow: hidden;
 
 		// Make some room for the version number on larger viewports.
-		@include break-medium() {
+		@include mixins.break-medium() {
 			padding:
 				var(--row-padding-vertical)
 				var(--wp--custom--alignment--edge-spacing)
@@ -75,7 +80,7 @@ body.category-releases {
 			bottom: -24px;
 			color: var(--wp--preset--color--blue-5);
 
-			@include break-medium() {
+			@include mixins.break-medium() {
 				left: var(--wp--custom--alignment--edge-spacing);
 				width: calc(var(--wp--custom--layout--content-meta-size) - var(--wp--custom--alignment--edge-spacing));
 				transition: all 0.2s ease-in-out;
@@ -91,7 +96,7 @@ body.category-releases {
 				padding-bottom: 0.3em;
 				color: var(--wp--preset--color--white);
 
-				@include break-medium() {
+				@include mixins.break-medium() {
 					position: absolute;
 					bottom: auto;
 					top: var(--row-padding-vertical);
@@ -117,7 +122,7 @@ body.category-releases {
 			}
 		}
 
-		@include break-medium() {
+		@include mixins.break-medium() {
 			// The rest of the releases.
 			&:not(:first-child) {
 				// The scaled arrow reaches 128px in from the post's right edge, so long titles need to wrap before it.
@@ -161,7 +166,7 @@ body.category-releases {
 		margin-left: var(--wp--custom--alignment--edge-spacing);
 		margin-right: var(--wp--custom--alignment--edge-spacing);
 
-		@include break-medium() {
+		@include mixins.break-medium() {
 			margin-left: calc(var(--wp--custom--layout--content-meta-size) + 32px + var(--wp--custom--alignment--edge-spacing));
 		}
 	}

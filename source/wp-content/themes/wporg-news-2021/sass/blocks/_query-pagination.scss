@@ -1,3 +1,6 @@
+@use "@wordpress/base-styles/mixins";
+@use "../base/breakpoints";
+
 .query-navigation-container {
 	padding: 2em 0;
 }
@@ -25,13 +28,13 @@
 		mask-size: contain;
 		z-index: -1;
 
-		@include break-wide() {
+		@include mixins.break-wide() {
 			bottom: 0;
 			left: -50px;
 		}
 	}
 
-	@include break-small-only() {
+	@include breakpoints.break-small-only() {
 		display: flex;
 		justify-content: center;
 

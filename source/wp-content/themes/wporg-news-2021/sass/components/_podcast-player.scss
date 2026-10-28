@@ -32,7 +32,7 @@
 	}
 
 	.play-progress {
-		grid-gap: 0;
+		gap: 0;
 		align-items: center;
 		margin-left: 0 !important;
 		margin-top: 0;
@@ -76,7 +76,7 @@
 	}
 
 	.playback__controls {
-		grid-gap: 0;
+		gap: 0;
 
 		button {
 			opacity: 1;
@@ -201,7 +201,7 @@
 	}
 
 	.player__main {
-		grid-gap: 25px;
+		gap: 25px;
 	}
 
 	.player__body {

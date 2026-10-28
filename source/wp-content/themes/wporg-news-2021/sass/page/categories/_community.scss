@@ -1,3 +1,5 @@
+@use "@wordpress/base-styles/mixins";
+
 body.category-community,
 body.category-interviews {
 	background-color: var(--wp--preset--color--off-white);
@@ -13,7 +15,7 @@ body.category-interviews {
 		padding: 0;
 		margin-top: calc(-1 * var(--local-header-height) / 3);
 
-		@include break-medium() {
+		@include mixins.break-medium() {
 			padding-left: 0;
 			padding-right: 0;
 		}
@@ -24,15 +26,15 @@ body.category-interviews {
 
 		&.is-flex-container.columns-4 > li {
 
-			@include break-small() {
+			@include mixins.break-small() {
 				width: calc(50% - 2px);
 			}
 
-			@include break-medium() {
+			@include mixins.break-medium() {
 				width: calc(33.333% - 2px);
 			}
 
-			@include break-large() {
+			@include mixins.break-large() {
 				width: calc(25% - 2px);
 			}
 		}
@@ -76,7 +78,7 @@ body.category-interviews {
 			figure a,
 			img {
 
-				@include break-small() {
+				@include mixins.break-small() {
 					height: 100%;
 				}
 			}
@@ -91,7 +93,7 @@ body.category-interviews {
 				}
 			}
 
-			@include break-small() {
+			@include mixins.break-small() {
 				&:hover,
 				&:focus-within {
 					figure {
@@ -126,7 +128,7 @@ body.category-interviews {
 			display: flex;
 			align-items: flex-end;
 
-			@include break-small() {
+			@include mixins.break-small() {
 				min-height: 0;
 
 				&:nth-of-type(even):hover,

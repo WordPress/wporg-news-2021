@@ -1,5 +1,5 @@
-@import "@wordpress/base-styles/breakpoints";
-@import "@wordpress/base-styles/mixins";
+@use "@wordpress/base-styles/breakpoints";
+@use "@wordpress/base-styles/mixins";
 
 /*
  * Custom breakpoints
@@ -8,7 +8,7 @@
  */
 @mixin break-small-only() {
 
-	@media (max-width: #{ ($break-small - 1) }) {
+	@media (max-width: #{ (breakpoints.$break-small - 1) }) {
 		@content;
 	}
 }

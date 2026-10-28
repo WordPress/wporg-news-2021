@@ -1,3 +1,5 @@
+@use "../../blocks/button-mixins";
+
 .bottom-banner .bottom-banner-items[class*="wp-block-"] .subscribe-wp-news {
 	// Repeats the block class to outrank the Jetpack block's flex layout.
 	.wp-block-jetpack-subscriptions .wp-block-jetpack-subscriptions__form-elements {
@@ -58,8 +60,8 @@
 			--wp--custom--button--color--text: var(--wp--custom--button--border--color);
 			--wp--custom--button--color--background: transparent;
 
-			@include button-border-styles;
-			@include button-color-styles;
+			@include button-mixins.button-border-styles;
+			@include button-mixins.button-color-styles;
 
 			// Centers the label within the fixed 50px height, which its line height would otherwise overflow.
 			display: inline-flex;

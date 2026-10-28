@@ -1,3 +1,5 @@
+@use "@wordpress/base-styles/mixins";
+
 // Navigation block inside the local nav block.
 .wp-block-wporg-local-navigation-bar .wp-block-navigation {
 	.wp-block-navigation__submenu-container {
@@ -13,7 +15,7 @@
 			justify-content: flex-end;
 		}
 
-		@include break-small {
+		@include mixins.break-small {
 			column-count: 2;
 
 			li a {
@@ -38,15 +40,15 @@
 			}
 		}
 
-		@include break-medium {
+		@include mixins.break-medium {
 			column-count: 3;
 		}
 
-		@include break-large {
+		@include mixins.break-large {
 			column-count: 4;
 		}
 
-		@include break-wide {
+		@include mixins.break-wide {
 			column-count: 5;
 		}
 
@@ -70,7 +72,7 @@
 				left: auto;
 			}
 
-			@include break-small {
+			@include mixins.break-small {
 				// On large viewports the current category is highlighted
 				// using padding an a square.
 				padding-right: 0;

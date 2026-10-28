@@ -1,3 +1,5 @@
+@use "@wordpress/base-styles/mixins";
+
 body.news-front-page .front__people-of-wordpress {
 	background-color: var(--wp--preset--color--off-white);
 	position: relative;
@@ -6,7 +8,7 @@ body.news-front-page .front__people-of-wordpress {
 		font-size: clamp(38px, 4vw, 50px);
 		padding: calc(var(--wp--custom--alignment--edge-spacing) * 2) var(--wp--custom--alignment--edge-spacing);
 
-		@include break-medium() {
+		@include mixins.break-medium() {
 			padding: var(--wp--custom--alignment--edge-spacing);
 		}
 	}
@@ -15,7 +17,7 @@ body.news-front-page .front__people-of-wordpress {
 		margin-top: 0;
 		padding: 0 var(--wp--custom--alignment--edge-spacing);
 
-		@include break-medium() {
+		@include mixins.break-medium() {
 			display: flex;
 			flex-direction: row;
 			padding: 0;
@@ -28,7 +30,7 @@ body.news-front-page .front__people-of-wordpress {
 			margin: 0 0 15px 0;
 			overflow: hidden;
 
-			@include break-medium() {
+			@include mixins.break-medium() {
 				margin: 1px;
 				width: calc(25% - 2px);
 			}
@@ -110,7 +112,7 @@ body.news-front-page .front__people-of-wordpress {
 			var(--wp--custom--alignment--edge-spacing)
 			calc(var(--wp--custom--alignment--edge-spacing) + var(--wp--style--block-gap));
 
-		@include break-medium() {
+		@include mixins.break-medium() {
 			padding: 0 var(--wp--custom--alignment--edge-spacing) 0 0;
 			position: absolute;
 			top: var(--wp--custom--alignment--edge-spacing);
@@ -128,7 +130,7 @@ body.news-front-page .front__people-of-wordpress {
 			top: calc(var(--wp--custom--alignment--edge-spacing) - 1em);
 			left: 0;
 
-			@include break-medium() {
+			@include mixins.break-medium() {
 				top: calc(50% - (62px / 2));
 				left: -20px;
 			}

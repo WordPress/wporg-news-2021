@@ -2,7 +2,6 @@
 // Source: https://github.com/WordPress/gutenberg/blob/3da717b8d0ac7d7821fc6d0475695ccf3ae2829f/packages/block-editor/src/components/responsive-block-control/style.scss#L1
 @mixin hide-accessibly {
 	border: 0;
-	clip: rect(1px, 1px, 1px, 1px);
 	clip-path: inset(50%);
 	height: 1px;
 	margin: -1px;
@@ -10,12 +9,13 @@
 	padding: 0;
 	position: absolute;
 	width: 1px;
-	word-wrap: normal !important;
+	overflow-wrap: normal !important;
 }
 
 // Unset the `screen-reader-text` styles to make an element visible.
 @mixin show-hidden-accessibly {
 	border: unset;
+	/* stylelint-disable-next-line property-no-deprecated -- Undoes the `clip` that core's `.screen-reader-text` still sets. */
 	clip: unset;
 	clip-path: unset;
 	height: unset;
@@ -24,5 +24,5 @@
 	padding: unset;
 	position: unset;
 	width: unset;
-	word-wrap: unset !important;
+	overflow-wrap: unset !important;
 }
