@@ -43,4 +43,4 @@ The theme's styles live in `sass/` and are compiled with `@wordpress/scripts` in
 
 The theme is deployable as-is from `trunk`, including its built CSS, so syncing doesn't need a build step. The files are committed to `dotorg.svn` so they can be deployed. They aren't synced to `meta.svn`, since they're already open in GitHub.
 
-To sync them to `dotorg.svn`, run `bin/sync/news.sh` on a w.org sandbox. Once they're committed, you can deploy like normal.
+To sync them to `dotorg.svn`, run `bin/sync/wporg-news-2021.sh` on a w.org sandbox. Once they're committed, you can deploy like normal.
