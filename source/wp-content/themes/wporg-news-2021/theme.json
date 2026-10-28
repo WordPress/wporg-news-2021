@@ -234,7 +234,7 @@
 					"mobile": {
 						"typography": {
 							"fontSize": "70px",
-							"lineHeight": "1.1"
+							"lineHeight": "1.05"
 						}
 					}
 				},
@@ -247,7 +247,8 @@
 				"breakpoint": {
 					"mobile": {
 						"typography": {
-							"fontSize": "clamp(26px, 4vw, 50px)"
+							"fontSize": "clamp(26px, 4vw, 50px)",
+							"lineHeight": "1.2"
 						}
 					}
 				},
