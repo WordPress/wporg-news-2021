@@ -102,7 +102,7 @@ body.news-front-page .front__latest-release {
 						flex-grow: 1;
 						margin-left: 40px;
 						transform: scale(0.9);
-						background-image: url(images/right-arrow.svg);
+						background-image: url(../images/right-arrow.svg);
 						background-position: center right;
 						background-repeat: no-repeat;
 						pointer-events: none;
@@ -148,7 +148,7 @@ body.news-front-page .front__latest-release {
 			display: block;
 			height: 45px;
 			width: 116px;
-			background-image: url(images/brush-stroke-see-all-releases-dark.svg);
+			background-image: url(../images/brush-stroke-see-all-releases-dark.svg);
 			position: absolute;
 			top: calc(50% - (45px / 2));
 			left: -20px;
