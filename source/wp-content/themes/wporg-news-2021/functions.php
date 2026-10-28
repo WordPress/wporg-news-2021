@@ -318,11 +318,11 @@ function add_links_to_categories_list( $html, $args ) {
 	$links = array_combine( $labels, $raw_links );
 
 	// All Posts
-	$links[ __( 'All Posts', 'wporg' ) ] = sprintf(
+	$links[ __( 'All posts', 'wporg' ) ] = sprintf(
 		'<li class="cat-item cat-item-0 %1$s"><a href="%2$s">%3$s</a></li>',
 		is_home() ? 'current-cat' : '',
 		esc_url( site_url( '/all-posts/' ) ),
-		esc_html__( 'All Posts', 'wporg' )
+		esc_html__( 'All posts', 'wporg' )
 	);
 
 	// Podcast
@@ -504,7 +504,7 @@ function add_site_navigation_menus( $menus ) {
 
 	// All Posts
 	$categories[] = array(
-		'label' => __( 'All Posts', 'wporg' ),
+		'label' => __( 'All posts', 'wporg' ),
 		'url' => site_url( '/all-posts/' ),
 		'className' => is_home() ? 'current-menu-item' : '',
 	);
