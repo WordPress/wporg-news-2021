@@ -6,36 +6,21 @@ const config = require( '@wordpress/scripts/config/webpack.config' );
 /**
  * External dependencies
  */
-const path = require( 'path' );
 const RemoveEmptyScriptsPlugin = require( 'webpack-remove-empty-scripts' );
 
-const cssLoader = require.resolve( 'css-loader' );
+// Leave `url()` paths as written, so they point at the theme's `images/` folder instead of copies in `build/`.
+for ( const rule of config.module.rules ) {
+	for ( const loader of rule.use ?? [] ) {
+		if ( loader.loader === require.resolve( 'css-loader' ) ) {
+			loader.options.url = false;
+		}
+	}
+}
 
 module.exports = {
 	...config,
 	entry: {
-		style: path.resolve( __dirname, 'sass/main.scss' ),
-	},
-	module: {
-		...config.module,
-		rules: config.module.rules.map( ( rule ) => {
-			if ( ! Array.isArray( rule.use ) ) {
-				return rule;
-			}
-
-			// Leave `url()` paths as written, so they point at the theme's `images/` folder instead of copies in `build/`.
-			return {
-				...rule,
-				use: rule.use.map( ( loader ) =>
-					loader.loader === cssLoader
-						? {
-								...loader,
-								options: { ...loader.options, url: false },
-							}
-						: loader
-				),
-			};
-		} ),
+		style: './sass/main.scss',
 	},
 	plugins: [
 		// The site is LTR only, so skip the RTL stylesheet.
