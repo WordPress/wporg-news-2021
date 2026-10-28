@@ -1,4 +1,6 @@
 @mixin minimal-player {
+	--local--focus-color: var(--wp--preset--color--white);
+
 	.player__artwork,
 	.currently-playing,
 	.player-panels-nav,
@@ -107,6 +109,8 @@
 }
 
 @mixin light-player {
+	--local--focus-color: var(--wp--preset--color--blue-2);
+
 	.player {
 		background-color: var(--wp--preset--color--off-white-2);
 	}
@@ -132,6 +136,8 @@
 }
 
 .castos-player {
+	--local--focus-color: var(--wp--preset--color--blue-2);
+
 	font-family: var(--wp--preset--font-family--inter);
 
 	&.dark-mode {
@@ -237,7 +243,45 @@
 
 	button:focus {
 		opacity: 1;
-		outline: 1px dotted currentColor !important;
+	}
+
+	button:focus-visible {
+		outline: 2px solid var(--local--focus-color);
+		outline-offset: 3px;
+	}
+
+	// The icon buttons are drawn with `mask-image`, which clips their own outline, so the ring goes on unmasked elements.
+	.play-pause-controls:has(:focus-visible) {
+		outline: 2px solid var(--local--focus-color);
+		outline-offset: 3px;
+	}
+
+	// Absolutely positioned so it fills the focused button's grid cell without taking part in auto-placement.
+	.playback__controls:has(:is(.player-btn__volume, .player-btn__rwd, .player-btn__fwd):focus-visible) {
+		position: relative;
+
+		&::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			grid-row: 1 / 2;
+			pointer-events: none;
+			outline: 2px solid var(--local--focus-color);
+			outline-offset: 3px;
+		}
+	}
+
+	// Columns follow the markup order: volume, rewind, speed, forward.
+	.playback__controls:has(.player-btn__volume:focus-visible)::after {
+		grid-column: 1 / 2;
+	}
+
+	.playback__controls:has(.player-btn__rwd:focus-visible)::after {
+		grid-column: 2 / 3;
+	}
+
+	.playback__controls:has(.player-btn__fwd:focus-visible)::after {
+		grid-column: 4 / 5;
 	}
 
 	button.player-btn__speed {
