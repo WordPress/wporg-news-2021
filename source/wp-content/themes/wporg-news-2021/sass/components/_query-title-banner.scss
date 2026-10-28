@@ -21,31 +21,19 @@
 		background-color: var(--wp--preset--color--blue-1);
 	}
 
-	.wp-block-query-title {
+	h1 {
+		// The group's flow layout strips the first child's top margin.
+		margin-top: revert;
+		margin-bottom: 0;
 		font-size: clamp(20px, calc(100vw / 12), 120px);
+
+		@include break-mobile() {
+			margin-top: 0;
+		}
 	}
 
 	@include break-medium {
 		padding-top: var(--wp--custom--alignment--edge-spacing);
-	}
-}
-
-// Hide the banner by default
-.query-title-banner__query-title,
-.query-title-banner__all-posts,
-.query-title-banner__search-results {
-	display: none;
-}
-
-// Show the relevant banner based on the body class.
-body.archive:not(.search) .query-title-banner__query-title,
-body.news-posts-index .query-title-banner__all-posts,
-body.search .query-title-banner__search-results {
-	display: block;
-	margin-bottom: 0;
-
-	@include break-mobile() {
-		margin-top: 0;
 	}
 }
 
