@@ -61,7 +61,9 @@
 			@include button-border-styles;
 			@include button-color-styles;
 
-			display: inline-block;
+			// Centers the label within the fixed 50px height, which its line height would otherwise overflow.
+			display: inline-flex;
+			align-items: center;
 			border-width: var(--wp--custom--button--border--width) !important;
 			border-radius: 2px !important;
 
