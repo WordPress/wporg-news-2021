@@ -30,7 +30,7 @@ add_filter( 'wp_list_categories', __NAMESPACE__ . '\add_links_to_categories_list
 add_filter( 'author_link', __NAMESPACE__ . '\use_wporg_profile_for_author_link', 10, 3 );
 add_action( 'wp_print_footer_scripts', __NAMESPACE__ . '\print_events_category_archive_script' );
 add_action( 'after_setup_theme', __NAMESPACE__ . '\add_block_styles' );
-add_filter( 'render_block_core/query-title', __NAMESPACE__ . '\modify_query_title' );
+add_filter( 'render_block_core/query-title', __NAMESPACE__ . '\modify_query_title', 10, 2 );
 add_filter( 'render_block_data', __NAMESPACE__ . '\update_header_template_part_class' );
 add_filter( 'wporg_block_navigation_menus', __NAMESPACE__ . '\add_site_navigation_menus' );
 add_filter( 'get_the_archive_title', __NAMESPACE__ . '\update_archive_title' );
@@ -443,17 +443,18 @@ function disable_jetpack_sharing() {
 }
 
 /**
- * Prevent the query title on search+category views.
+ * Prevent the archive query title on search+category views.
  *
- * These pages use a template with a large heading, so the local-nav
- * heading is not necessary.
+ * These pages use a template with a large search heading, so the local-nav
+ * archive heading is not necessary.
  *
  * @param string $block_content The block content.
+ * @param array  $block         The full block, including name and attributes.
  *
  * @return string
  */
-function modify_query_title( $block_content ) {
-	if ( is_search() && is_category() ) {
+function modify_query_title( $block_content, $block ) {
+	if ( is_search() && is_category() && 'archive' === ( $block['attrs']['type'] ?? '' ) ) {
 		return '';
 	}
 	return $block_content;
