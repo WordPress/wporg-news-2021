@@ -32,7 +32,7 @@
 	}
 
 	.play-progress {
-		grid-gap: 0;
+		gap: 0;
 		align-items: center;
 		margin-left: 0 !important;
 		margin-top: 0;
@@ -66,17 +66,17 @@
 			}
 
 			.pause-btn {
-				mask-image: url(images/podcast-player/pause.svg);
+				mask-image: url(../images/podcast-player/pause.svg);
 			}
 
 			.play-btn {
-				mask-image: url(images/podcast-player/play.svg);
+				mask-image: url(../images/podcast-player/play.svg);
 			}
 		}
 	}
 
 	.playback__controls {
-		grid-gap: 0;
+		gap: 0;
 
 		button {
 			opacity: 1;
@@ -84,7 +84,7 @@
 
 		.player-btn__volume {
 			background-color: var(--wp--preset--color--white);
-			mask-image: url(images/podcast-player/sound.svg);
+			mask-image: url(../images/podcast-player/sound.svg);
 			display: block !important;
 		}
 	}
@@ -201,7 +201,7 @@
 	}
 
 	.player__main {
-		grid-gap: 25px;
+		gap: 25px;
 	}
 
 	.player__body {
@@ -227,13 +227,13 @@
 	}
 
 	.play-progress .play-pause-controls .play-btn {
-		background-image: url(images/podcast-player/play.svg);
+		background-image: url(../images/podcast-player/play.svg);
 		background-position: 17px 14px;
 	}
 
 	.play-progress .play-pause-controls .pause-btn {
 		background-color: var(--wp--preset--color--blue-1);
-		background-image: url(images/podcast-player/pause.svg);
+		background-image: url(../images/podcast-player/pause.svg);
 		background-position: 8px;
 	}
 

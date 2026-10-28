@@ -1,3 +1,8 @@
+@use "@wordpress/base-styles/mixins";
+@use "../../base/breakpoints";
+@use "../../components/bottom-banner/bottom-banner";
+@use "../../components/bottom-banner/subscribe-wp-news";
+
 body.category-month-in-wordpress {
 	background-color: var(--wp--preset--color--darker-grey);
 
@@ -21,7 +26,7 @@ body.category-month-in-wordpress {
 		margin-bottom: 0;
 		text-align: center;
 
-		@include break-small-only() {
+		@include breakpoints.break-small-only() {
 			width: calc(50% - 0.625em);
 		}
 	}
@@ -37,13 +42,13 @@ body.category-month-in-wordpress {
 			content: "-";
 			line-height: calc(var(--wp--custom--margin--vertical) * 6);
 			width: 100%;
-			mask-image: url(images/brush-stroke-big.svg);
+			mask-image: url(../images/brush-stroke-big.svg);
 			mask-position: center;
 			mask-repeat: no-repeat;
 			mask-size: 80% auto;
 			background-color: var(--wp--preset--color--blue-3);
 
-			@include break-small() {
+			@include mixins.break-small() {
 				mask-size: 280px auto;
 			}
 		}
@@ -53,7 +58,7 @@ body.category-month-in-wordpress {
 			/* We are making the article look like it's a child of the grid container */
 			width: calc(33.33333% - 0.83333em);
 
-			@include break-small-only() {
+			@include breakpoints.break-small-only() {
 				width: calc(50% - 0.625em);
 			}
 		}

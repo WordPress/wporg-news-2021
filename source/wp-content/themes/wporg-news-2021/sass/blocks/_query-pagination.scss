@@ -1,3 +1,6 @@
+@use "@wordpress/base-styles/mixins";
+@use "../base/breakpoints";
+
 .query-navigation-container {
 	padding: 2em 0;
 }
@@ -19,19 +22,19 @@
 		right: 0;
 		left: 0;
 		background-color: var(--wp--preset--color--off-white-2);
-		mask-image: url(images/brush-stroke-short-blue-4.svg);
+		mask-image: url(../images/brush-stroke-short-blue-4.svg);
 		mask-position: bottom left;
 		mask-repeat: no-repeat;
 		mask-size: contain;
 		z-index: -1;
 
-		@include break-wide() {
+		@include mixins.break-wide() {
 			bottom: 0;
 			left: -50px;
 		}
 	}
 
-	@include break-small-only() {
+	@include breakpoints.break-small-only() {
 		display: flex;
 		justify-content: center;
 

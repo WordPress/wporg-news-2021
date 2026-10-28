@@ -1,3 +1,5 @@
+@use "@wordpress/base-styles/mixins";
+
 .wp-block-wporg-event-year {
 	font-family: var(--wp--preset--font-family--inter);
 	font-size: min(35vw, 160px);
@@ -5,7 +7,7 @@
 	line-height: 1;
 	letter-spacing: -10px;
 
-	@include break-medium() {
+	@include mixins.break-medium() {
 		white-space: nowrap;
 	}
 }

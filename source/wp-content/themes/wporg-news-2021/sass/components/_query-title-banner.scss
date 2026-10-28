@@ -1,3 +1,5 @@
+@use "@wordpress/base-styles/mixins";
+
 .query-title-banner {
 	padding: var(--wp--preset--spacing--70) var(--wp--custom--alignment--edge-spacing) var(--wp--custom--alignment--edge-spacing);
 	color: var(--wp--preset--color--white);
@@ -14,7 +16,7 @@
 		left: 0;
 		right: 0;
 		z-index: -1;
-		mask-image: url(images/local-nav-mask.svg);
+		mask-image: url(../images/local-nav-mask.svg);
 		mask-repeat: no-repeat;
 		mask-size: cover;
 		mask-position: 0;
@@ -27,12 +29,12 @@
 		margin-bottom: 0;
 		font-size: clamp(20px, calc(100vw / 12), 120px);
 
-		@include break-mobile() {
+		@include mixins.break-mobile() {
 			margin-top: 0;
 		}
 	}
 
-	@include break-medium {
+	@include mixins.break-medium {
 		padding-top: var(--wp--custom--alignment--edge-spacing);
 	}
 }
@@ -41,7 +43,7 @@
 .site-index {
 	margin: var(--wp--custom--alignment--edge-spacing);
 
-	@include break-large() {
+	@include mixins.break-large() {
 		padding-left: var(--wp--custom--layout--content-meta-size);
 	}
 }

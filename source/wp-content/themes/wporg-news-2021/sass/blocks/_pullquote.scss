@@ -1,9 +1,11 @@
+@use "@wordpress/base-styles/mixins";
+
 // Both selectors for increased specificity.
 .wp-block-pullquote.is-style-solid-color,
 .wp-block-pullquote:not(.is-style-solid-color) {
 	min-height: 430px;
 	padding: 40px 0 0;
-	background-image: url(./images/quotemark.svg);
+	background-image: url(../images/quotemark.svg);
 	background-repeat: no-repeat;
 	background-position: top left;
 	background-size: 200px auto;
@@ -12,7 +14,7 @@
 	margin-top: calc(var(--wp--custom--margin--vertical) * 1.333);
 	margin-bottom: calc(var(--wp--custom--margin--vertical) * 3);
 
-	@include break-small {
+	@include mixins.break-small {
 		background-size: contain;
 	}
 
@@ -22,7 +24,7 @@
 		padding-right: var(--wp--custom--margin--horizontal);
 	}
 
-	@include break-medium {
+	@include mixins.break-medium {
 		padding: 115px 0 0 185px;
 		font-size: 50px;
 
@@ -54,7 +56,7 @@
 				content: "—";
 			}
 
-			@include break-medium {
+			@include mixins.break-medium {
 				font-size: var(--wp--custom--pullquote--citation--typography--font-size);
 			}
 		}

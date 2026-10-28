@@ -1,4 +1,6 @@
-@include break-mobile {
+@use "@wordpress/base-styles/mixins";
+
+@include mixins.break-mobile {
 	// limit size of any element that is aligned left/right
 	.wp-block[data-align="left"], // This is for the editor
 	.wp-block[data-align="right"], // This is for the editor

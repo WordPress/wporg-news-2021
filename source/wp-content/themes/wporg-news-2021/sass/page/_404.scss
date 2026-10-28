@@ -1,3 +1,5 @@
+@use "@wordpress/base-styles/mixins";
+
 body.error404 {
 	--oops-font-size: 47vw; // "Magic number" ala https://css-tricks.com/fitting-text-to-a-container/
 
@@ -19,7 +21,7 @@ body.error404 {
 		padding-left: var(--wp--custom--alignment--edge-spacing);
 		padding-right: var(--wp--custom--alignment--edge-spacing);
 
-		@include break-small() {
+		@include mixins.break-small() {
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
@@ -53,7 +55,7 @@ body.error404 {
 		font-size: var(--oops-font-size);
 		line-height: var(--oops-font-size);
 
-		@include break-small() {
+		@include mixins.break-small() {
 			top: calc(var(--oops-font-size) * -1.25);
 			opacity: 0.6; // Make the overlaid text more readable.
 		}
@@ -65,7 +67,7 @@ body.error404 {
 		font-size: 38px;
 		line-height: 40px;
 
-		@include break-small() {
+		@include mixins.break-small() {
 			margin-top: 0;
 			font-size: 70px;
 			line-height: 72px;
@@ -94,7 +96,8 @@ body.error404 {
 			box-shadow: 0 0 0 2px var(--wp-admin-theme-color, #2271b1); // WP blue focus for accessibility
 			outline: none;
 		}
-		@include break-small() {
+
+		@include mixins.break-small() {
 			max-width: 400px;
 		}
 
@@ -102,7 +105,7 @@ body.error404 {
 			border: none;
 			padding: 0 15px 0 0;
 
-			@include break-small() {
+			@include mixins.break-small() {
 				padding: 0 8px 0 0;
 			}
 
@@ -113,7 +116,7 @@ body.error404 {
 
 				padding: 12px 0 12px 19px;
 
-				@include break-small() {
+				@include mixins.break-small() {
 					padding: 6px 0 6px 14px;
 					font-size: 14px;
 				}
@@ -130,7 +133,7 @@ body.error404 {
 					height: 36px;
 					width: 36px;
 
-					@include break-small() {
+					@include mixins.break-small() {
 						height: 28px;
 						width: 28px;
 					}
@@ -143,7 +146,7 @@ body.error404 {
 		margin-top: 150px;
 		background: none;
 
-		@include break-small() {
+		@include mixins.break-small() {
 			margin-top: 0;
 		}
 	}

@@ -1,3 +1,5 @@
+@use "@wordpress/base-styles/mixins";
+
 // The "Latest Release" section which displays the latest post in the releases category.
 body.news-front-page .front__latest-release {
 	color: var(--wp--preset--color--white);
@@ -13,7 +15,7 @@ body.news-front-page .front__latest-release {
 	flex-direction: column;
 	padding: var(--wp--custom--alignment--edge-spacing);
 
-	@include break-medium() {
+	@include mixins.break-medium() {
 		// Display side-by-side when the viewport is big enough.
 		flex-direction: row;
 		gap: 0;
@@ -33,7 +35,7 @@ body.news-front-page .front__latest-release {
 		width: calc(var(--wp--custom--layout--content-meta-size) - 32px);
 		max-width: 100%;
 
-		@include break-medium() {
+		@include mixins.break-medium() {
 			margin-left: var(--wp--custom--alignment--edge-spacing);
 			min-width: calc(var(--wp--custom--layout--content-meta-size) - 32px);
 			padding:
@@ -65,7 +67,7 @@ body.news-front-page .front__latest-release {
 		font-weight: 200;
 		line-height: 1.2;
 
-		@include break-medium() {
+		@include mixins.break-medium() {
 			left: unset;
 			flex-grow: 1;
 			font-size: clamp(60px, calc(20vw + -96px), 160px);
@@ -102,7 +104,7 @@ body.news-front-page .front__latest-release {
 						flex-grow: 1;
 						margin-left: 40px;
 						transform: scale(0.9);
-						background-image: url(images/right-arrow.svg);
+						background-image: url(../images/right-arrow.svg);
 						background-position: center right;
 						background-repeat: no-repeat;
 						pointer-events: none;
@@ -116,7 +118,7 @@ body.news-front-page .front__latest-release {
 	.wp-block-post-date {
 		font-size: var(--wp--preset--font-size--small);
 
-		@include break-medium() {
+		@include mixins.break-medium() {
 			line-height: 1;
 
 			// Position the date to line-up with the "See All" link.
@@ -135,7 +137,7 @@ body.news-front-page .front__latest-release {
 		font-size: var(--wp--preset--font-size--small);
 		padding: var(--wp--custom--alignment--edge-spacing) 0;
 
-		@include break-medium() {
+		@include mixins.break-medium() {
 			line-height: 1;
 			position: absolute;
 			bottom: var(--wp--custom--alignment--edge-spacing);
@@ -148,12 +150,12 @@ body.news-front-page .front__latest-release {
 			display: block;
 			height: 45px;
 			width: 116px;
-			background-image: url(images/brush-stroke-see-all-releases-dark.svg);
+			background-image: url(../images/brush-stroke-see-all-releases-dark.svg);
 			position: absolute;
 			top: calc(50% - (45px / 2));
 			left: -20px;
 
-			@include break-medium() {
+			@include mixins.break-medium() {
 				left: calc(-116px / 2);
 			}
 		}

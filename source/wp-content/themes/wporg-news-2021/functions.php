@@ -76,9 +76,9 @@ function theme_support() {
 function enqueue_assets() {
 	wp_enqueue_style(
 		'wporg-news-style',
-		get_stylesheet_uri(),
+		get_theme_file_uri( 'build/style.css' ),
 		array( 'wporg-global-fonts' ),
-		filemtime( __DIR__ . '/style.css' )
+		filemtime( __DIR__ . '/build/style.css' )
 	);
 }
 

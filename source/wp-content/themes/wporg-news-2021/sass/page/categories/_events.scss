@@ -1,3 +1,6 @@
+@use "@wordpress/base-styles/mixins";
+@use "misc";
+
 body.category-events {
 
 	@extend %releases-events-fonts;
@@ -72,7 +75,7 @@ body.category-events {
 			color: var(--wp--preset--color--beige-2);
 			display: none;
 
-			@include break-medium() {
+			@include mixins.break-medium() {
 				left: var(--wp--custom--alignment--edge-spacing);
 				width: calc(var(--wp--custom--layout--content-meta-size) - var(--wp--custom--alignment--edge-spacing));
 				transition: all 0.2s ease-in-out;
@@ -97,7 +100,7 @@ body.category-events {
 				position: static;
 				padding-bottom: 0.3em;
 
-				@include break-medium() {
+				@include mixins.break-medium() {
 					position: absolute;
 					bottom: auto;
 					top: var(--row-padding-vertical);
@@ -116,7 +119,7 @@ body.category-events {
 			}
 		}
 
-		@include break-medium() {
+		@include mixins.break-medium() {
 			// The scaled arrow reaches 128px in from the post's right edge, so long titles need to wrap before it.
 			.wp-block-post-title {
 				padding-right: calc(128px - var(--wp--custom--alignment--edge-spacing));
@@ -132,7 +135,7 @@ body.category-events {
 				right: calc(-1 * var(--wp--custom--alignment--edge-spacing));
 				opacity: 0;
 				transform: scale(0.6) translateX(-12px);
-				background-image: url(images/right-arrow-blue.svg);
+				background-image: url(../images/right-arrow-blue.svg);
 				background-position: center right;
 				background-repeat: no-repeat;
 				pointer-events: none;
@@ -166,7 +169,7 @@ body.category-events {
 	// This needs to be down here for some reason or the rules get overridden by the mobile ones.
 	.wp-block-post {
 
-		@include break-medium() {
+		@include mixins.break-medium() {
 			padding:
 				var(--row-padding-vertical)
 				var(--wp--custom--alignment--edge-spacing)
@@ -192,7 +195,7 @@ body.category-events {
 			background-color: var(--wp--preset--color--white);
 		}
 
-		@include break-medium() {
+		@include mixins.break-medium() {
 			margin-left: calc(var(--wp--custom--layout--content-meta-size) + 32px + var(--wp--custom--alignment--edge-spacing));
 		}
 	}
