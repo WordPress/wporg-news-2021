@@ -22,6 +22,8 @@
 	}
 
 	h1 {
+		// The group's flow layout strips the first child's top margin.
+		margin-top: revert;
 		margin-bottom: 0;
 		font-size: clamp(20px, calc(100vw / 12), 120px);
 
