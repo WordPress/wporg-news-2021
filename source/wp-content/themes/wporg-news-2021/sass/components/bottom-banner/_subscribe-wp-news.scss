@@ -11,7 +11,7 @@
 		margin: 1em 0;
 	}
 
-	// The block inlines font size, padding, and border radius; `!important` restores the theme's values.
+	// The block inlines font size, padding, and border styles; `!important` restores the theme's values.
 	#subscribe-email {
 		grid-area: email;
 
@@ -49,6 +49,29 @@
 		}
 	}
 
+	// Subscribers get a link to their subscription settings instead of the form; styled as a secondary action.
+	#subscribe-submit.is-link {
+		display: block;
+		text-align: start;
+
+		.wp-block-button__link {
+			--wp--custom--button--color--text: var(--wp--custom--button--border--color);
+			--wp--custom--button--color--background: transparent;
+
+			@include button-border-styles;
+			@include button-color-styles;
+
+			display: inline-block;
+			border-width: var(--wp--custom--button--border--width) !important;
+			border-radius: 2px !important;
+
+			&,
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+
 	.wp-block-jetpack-subscriptions__subscount {
 		font-size: inherit;
 		margin: 0;
@@ -71,6 +94,10 @@
 			background-color: var(--wp--preset--color--white);
 			color: var(--wp--preset--color--black);
 			border: none;
+		}
+
+		#subscribe-submit.is-link .wp-block-button__link {
+			--wp--custom--button--border--color: var(--wp--preset--color--white);
 		}
 	}
 }
