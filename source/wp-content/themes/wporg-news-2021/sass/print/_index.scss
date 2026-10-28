@@ -139,7 +139,7 @@
 
 	// Reduce spacing between posts on archives.
 	.blog .wp-block-post,
-	.category:not(.category-community):not(.category-events):not(.category-releases) .wp-block-post {
+	.category:not(.category-community):not(.category-interviews):not(.category-events):not(.category-releases) .wp-block-post {
 		margin-bottom: 0;
 	}
 

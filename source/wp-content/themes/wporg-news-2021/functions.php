@@ -96,7 +96,7 @@ function override_category_query_args( $query ) {
 		return;
 	}
 	if ( $query->is_category() ) {
-		if ( $query->is_category( 'community' ) ) {
+		if ( $query->is_category( array( 'community', 'interviews' ) ) ) {
 			$query->set( 'posts_per_page', 20 );
 		}
 		if ( $query->is_category( 'month-in-wordpress' ) ) {
