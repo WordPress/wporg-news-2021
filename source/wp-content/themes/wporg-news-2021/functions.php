@@ -23,7 +23,6 @@ add_action( 'pre_get_posts', __NAMESPACE__ . '\override_category_query_args' );
 add_filter( 'body_class', __NAMESPACE__ . '\clarify_body_classes' );
 add_filter( 'post_class', __NAMESPACE__ . '\specify_post_classes', 10, 3 );
 add_filter( 'render_block_data', __NAMESPACE__ . '\custom_query_block_attributes' );
-add_filter( 'template_redirect', __NAMESPACE__ . '\jetpack_likes_workaround' );
 add_action( 'tag_template_hierarchy', __NAMESPACE__ . '\override_tag_template' );
 add_action( 'ssp_album_art_cover', __NAMESPACE__ . '\custom_default_album_art_cover', 10, 2 );
 add_filter( 'wp_list_categories', __NAMESPACE__ . '\add_links_to_categories_list', 10, 2 );
@@ -253,19 +252,6 @@ function custom_query_block_attributes( $parsed_block ) {
 }
 
 /**
- * A Workaround to make Jetpack Likes work with FSE themes.
- *
- * This is only needed until Jetpack Likes is updated to work properly with FSE themes,
- * or https://core.trac.wordpress.org/ticket/54529 is merged to Core.
- */
-function jetpack_likes_workaround() {
-	$jetpack_likes = class_exists( '\Jetpack_Likes' ) ? \Jetpack_Likes::init() : false;
-	if ( is_callable( [ $jetpack_likes, 'load_styles_register_scripts' ] ) ) {
-		$jetpack_likes->load_styles_register_scripts();
-	}
-}
-
-/**
  * Force tag requests to use the Category template rather than the Podcast template.
  *
  * `SeriouslySimplePodcasting\Controllers\Frontend_Controller\add_all_post_types_for_tag_archive()` adds the
@@ -318,11 +304,11 @@ function add_links_to_categories_list( $html, $args ) {
 	$links = array_combine( $labels, $raw_links );
 
 	// All Posts
-	$links[ __( 'All Posts', 'wporg' ) ] = sprintf(
+	$links[ __( 'All posts', 'wporg' ) ] = sprintf(
 		'<li class="cat-item cat-item-0 %1$s"><a href="%2$s">%3$s</a></li>',
 		is_home() ? 'current-cat' : '',
 		esc_url( site_url( '/all-posts/' ) ),
-		esc_html__( 'All Posts', 'wporg' )
+		esc_html__( 'All posts', 'wporg' )
 	);
 
 	// Podcast
@@ -504,7 +490,7 @@ function add_site_navigation_menus( $menus ) {
 
 	// All Posts
 	$categories[] = array(
-		'label' => __( 'All Posts', 'wporg' ),
+		'label' => __( 'All posts', 'wporg' ),
 		'url' => site_url( '/all-posts/' ),
 		'className' => is_home() ? 'current-menu-item' : '',
 	);
