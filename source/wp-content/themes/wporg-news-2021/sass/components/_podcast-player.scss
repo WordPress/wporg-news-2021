@@ -44,7 +44,8 @@
 
 		.play-pause-controls {
 			background: transparent;
-			border-radius: 0;
+			// Only visible as the focus ring's corners, since the wrapper is transparent.
+			border-radius: 2px;
 			height: 20px;
 			width: 20px;
 
@@ -250,7 +251,7 @@
 		outline-offset: 3px;
 	}
 
-	// The icon buttons are drawn with `mask-image`, which clips their own outline, so the ring goes on unmasked elements.
+	// Icon buttons use `mask-image`, which clips their outline, so the ring goes on unmasked elements.
 	.play-pause-controls:has(:focus-visible) {
 		outline: 2px solid var(--local--focus-color);
 		outline-offset: 3px;
@@ -266,6 +267,7 @@
 			inset: 0;
 			grid-row: 1 / 2;
 			pointer-events: none;
+			border-radius: 2px;
 			outline: 2px solid var(--local--focus-color);
 			outline-offset: 3px;
 		}
