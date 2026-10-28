@@ -1,0 +1,63 @@
+name: Lint and Build
+
+on:
+  pull_request:
+    paths:
+    - 'source/wp-content/themes/wporg-news-2021/**'
+    - .nvmrc
+    - .github/workflows/build.yml
+  push:
+    branches: [trunk]
+    paths:
+    - 'source/wp-content/themes/wporg-news-2021/**'
+    - .nvmrc
+    - .github/workflows/build.yml
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  theme:
+    name: Theme
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    defaults:
+      run:
+        working-directory: source/wp-content/themes/wporg-news-2021
+
+    steps:
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        persist-credentials: false
+
+    - name: Set up Node.js
+      uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+      with:
+        node-version-file: .nvmrc
+        cache: npm
+        cache-dependency-path: source/wp-content/themes/wporg-news-2021/package-lock.json
+
+    - name: Install dependencies
+      run: npm ci --ignore-scripts
+
+    - name: Lint JavaScript
+      run: npm run lint:js
+
+    - name: Lint CSS
+      run: npm run lint:css
+
+    # Build output is committed so the theme deploys without a build step; a source edit without a rebuild ships stale CSS.
+    - name: Check build output is up to date
+      run: |
+        npm run build
+        if [ -n "$( git status --porcelain -- . )" ]; then
+          git status --short -- .
+          git diff --stat -- .
+          echo "::error::Build output is out of date. Run 'npm run build' in source/wp-content/themes/wporg-news-2021 and commit the result."
+          exit 1
+        fi
