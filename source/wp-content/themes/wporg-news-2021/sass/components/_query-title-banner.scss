@@ -1,6 +1,10 @@
 @use "@wordpress/base-styles/mixins";
+@use "../base/selection";
 
 .query-title-banner {
+
+	@include selection.on-dark;
+
 	padding: var(--wp--preset--spacing--70) var(--wp--custom--alignment--edge-spacing) var(--wp--custom--alignment--edge-spacing);
 	color: var(--wp--preset--color--white);
 	position: relative;

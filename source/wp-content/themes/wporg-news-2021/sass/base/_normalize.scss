@@ -1,4 +1,5 @@
 @use "@wordpress/base-styles/mixins";
+@use "selection";
 
 body {
 	// Remove the margin in all browsers.
@@ -9,15 +10,31 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 
-	// Text selection colors.
-	::selection {
-		background-color: var(--wp--preset--color--off-white-2);
-		color: var(--wp--preset--color--black);
-	}
+	@include selection.on-white;
 
-	::-moz-selection {
-		background-color: var(--wp--preset--color--off-white-2);
-		color: var(--wp--preset--color--black);
+	::selection {
+		background-color: var(--selection-background-color);
+	}
+}
+
+.global-header,
+.global-footer {
+
+	@include selection.on-dark;
+}
+
+// Backgrounds picked in the editor.
+@each $slug in "black", "darker-grey", "dark-grey", "dark-strokes-grey", "blue-1", "blue-2", "blue-3", "blue-5", "green", "success-green", "coral-red" {
+	.has-#{$slug}-background-color {
+
+		@include selection.on-dark;
+	}
+}
+
+@each $slug in "light-grey", "beige", "beige-2", "off-white", "off-white-2", "light-salmon" {
+	.has-#{$slug}-background-color {
+
+		@include selection.on-pale;
 	}
 }
 

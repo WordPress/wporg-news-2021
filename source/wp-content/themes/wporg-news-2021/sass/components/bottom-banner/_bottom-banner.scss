@@ -1,5 +1,6 @@
 @use "@wordpress/base-styles/mixins";
 @use "../../base/breakpoints";
+@use "../../base/selection";
 
 .bottom-banner.wp-block-template-part {
 	margin-top: 0;
@@ -8,6 +9,9 @@
 
 // Default/light version.
 .bottom-banner-items[class*="wp-block-"] {
+
+	@include selection.on-white;
+
 	justify-content: space-between;
 	align-items: stretch !important;
 	margin-top: 0;
@@ -85,6 +89,9 @@
 	}
 
 	.bottom-banner .bottom-banner-items[class*="wp-block-"] {
+
+		@include selection.on-dark;
+
 		background-color: var(--wp--preset--color--dark-grey);
 		color: var(--wp--preset--color--white);
 		border-color: #1c2024;

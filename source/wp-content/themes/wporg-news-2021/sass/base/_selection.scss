@@ -1,0 +1,16 @@
+// Text selection colors, for `--selection-background-color` on the element that sets the background.
+
+// The light blue default, also for white backgrounds inside the others.
+@mixin on-white {
+	--selection-background-color: var(--wp--preset--color--off-white-2);
+}
+
+// Translucent, so selected text keeps its own color on dark and saturated backgrounds.
+@mixin on-dark {
+	--selection-background-color: color-mix(in sRGB, var(--wp--preset--color--off-white-2) 20%, transparent);
+}
+
+// The default light blue doesn't show on pale backgrounds.
+@mixin on-pale {
+	--selection-background-color: var(--wp--preset--color--white);
+}

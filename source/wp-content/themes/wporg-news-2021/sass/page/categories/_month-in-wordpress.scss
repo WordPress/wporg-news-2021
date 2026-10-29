@@ -1,9 +1,13 @@
 @use "@wordpress/base-styles/mixins";
 @use "../../base/breakpoints";
+@use "../../base/selection";
 @use "../../components/bottom-banner/bottom-banner";
 @use "../../components/bottom-banner/subscribe-wp-news";
 
 body.category-month-in-wordpress {
+
+	@include selection.on-dark;
+
 	background-color: var(--wp--preset--color--darker-grey);
 
 	.wp-block-wporg-local-navigation-bar {

@@ -1,3 +1,5 @@
+@use "../base/selection";
+
 p {
 	&.has-drop-cap:not(:focus)::first-letter {
 		font-size: var(--wp--custom--paragraph--dropcap--typography--font-size);
@@ -10,6 +12,9 @@ p {
 	}
 
 	&[class*="is-style-wporg-props-"] {
+
+		@include selection.on-dark;
+
 		background-color: var(--wp--preset--color--blue-1);
 		color: var(--wp--preset--color--white);
 		font-family: var(--wp--preset--font-family--eb-garamond);

@@ -1,4 +1,5 @@
 @use "../../blocks/button-mixins";
+@use "../../base/selection";
 
 .bottom-banner .bottom-banner-items[class*="wp-block-"] .subscribe-wp-news {
 	// Repeats the block class to outrank the Jetpack block's flex layout.
@@ -95,6 +96,9 @@
 %bottom-banner-dark {
 	.bottom-banner .bottom-banner-items[class*="wp-block-"] .subscribe-wp-news {
 		#subscribe-email input {
+
+			@include selection.on-white;
+
 			background-color: var(--wp--preset--color--white);
 			color: var(--wp--preset--color--black);
 			border: none;
