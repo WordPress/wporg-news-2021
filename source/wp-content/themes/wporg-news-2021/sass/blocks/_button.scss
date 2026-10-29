@@ -1,5 +1,4 @@
 @use "button-mixins";
-@use "../base/selection";
 
 /**
  * Button
@@ -11,7 +10,6 @@
 
 		@include button-mixins.button-color-styles;
 		@include button-mixins.button-main-styles;
-		@include selection.on-dark;
 
 		background-color: var(--wp--preset--color--blue-1);
 		color: var(--wp--preset--color--white);
@@ -24,11 +22,12 @@
 		.wp-block-button__link {
 			--wp--custom--button--color--text: var(--wp--custom--button--border--color);
 			--wp--custom--button--color--background: transparent;
-			// No background of its own, so it keeps the selection color of what is behind it.
-			--selection-background-color: inherit;
 
 			@include button-mixins.button-border-styles;
 			@include button-mixins.button-color-styles;
+
+			// No background of its own until hovered or focused, so it keeps the selection color of what is behind it.
+			--selection-background-color: inherit;
 		}
 	}
 }
