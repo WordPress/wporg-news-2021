@@ -21,13 +21,14 @@ module.exports = {
 	...config,
 	entry: {
 		style: './sass/main.scss',
+		editor: './sass/editor.scss',
 	},
 	plugins: [
 		// The site is LTR only, so skip the RTL stylesheet.
 		...config.plugins.filter(
 			( plugin ) => plugin.constructor.name !== 'RtlCssPlugin'
 		),
-		// Drop the empty JS file webpack emits for the CSS-only entry.
+		// Drop the empty JS files webpack emits for the CSS-only entries.
 		new RemoveEmptyScriptsPlugin(),
 	],
 };

@@ -1,0 +1,16 @@
+// Content styles for the post and page editor, so blocks look the same as on the front end.
+@use "base/layout";
+@use "base/normalize";
+@use "base/alignment";
+@use "base/elements";
+@use "blocks";
+@use "post/content";
+
+// The front end's two-column post grid, for the title and the post content (not the Site Editor's template); `body` beats core's `.is-root-container > .alignwide`.
+body > :has(> .editor-post-title),
+body .block-editor-block-list__layout.wp-block-post-content.is-root-container {
+	padding-left: var(--wp--custom--alignment--edge-spacing);
+	padding-right: var(--wp--custom--alignment--edge-spacing);
+
+	@extend %two-column-grid-container-dynamic-rows;
+}
