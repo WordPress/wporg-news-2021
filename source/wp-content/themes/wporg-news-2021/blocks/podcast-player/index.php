@@ -1,4 +1,9 @@
 <?php
+/**
+ * Registers and renders the `wporg/podcast-player` block.
+ *
+ * @package WordPressdotorg\Theme\News_2021
+ */
 
 namespace WordPressdotorg\Theme\News_2021\Blocks\Podcast_Player;
 
@@ -23,7 +28,7 @@ function render_block( $attributes, $content, $block ) {
 	}
 
 	$post_id = $block->context['postId'];
-	$output = do_blocks( '<!-- wp:seriously-simple-podcasting/castos-html-player {"episodeId":"' . $post_id . '"} /-->' );
+	$output  = do_blocks( '<!-- wp:seriously-simple-podcasting/castos-html-player {"episodeId":"' . $post_id . '"} /-->' );
 
 	$show_meta = isset( $attributes['showMeta'] ) && $attributes['showMeta'];
 
@@ -37,7 +42,7 @@ function render_block( $attributes, $content, $block ) {
 		$download_link   = '<a href="' . esc_url( $download_url ) . '" class="podcast-meta-download">' . __( 'Download file', 'wporg' ) . '</a>';
 		$new_window_link = '<a href="' . esc_url( $new_window_url ) . '" target="_blank" class="podcast-meta-new-window">' . __( 'Play in new window', 'wporg' ) . '</a>';
 
-		$duration      = get_post_meta( $post_id, 'duration', true );
+		$duration = get_post_meta( $post_id, 'duration', true );
 		/* translators: %s duration of podcast episode. */
 		$duration_text = '<span class="podcast-meta-duration">' . sprintf( __( 'Duration: %s', 'wporg' ), esc_html( $duration ) ) . '</span>';
 

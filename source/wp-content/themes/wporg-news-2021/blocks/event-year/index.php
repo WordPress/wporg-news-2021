@@ -1,4 +1,9 @@
 <?php
+/**
+ * Registers and renders the `wporg/event-year` block.
+ *
+ * @package WordPressdotorg\Theme\News_2021
+ */
 
 namespace WordPressdotorg\Theme\News_2021\Blocks\Event_Year;
 
@@ -19,10 +24,10 @@ function render_block( $attributes, $content, $block ) {
 		return '';
 	}
 
-	$post_ID = $block->context['postId'];
+	$post_ID          = $block->context['postId'];
 	$align_class_name = empty( $attributes['textAlign'] ) ? '' : "has-text-align-{$attributes['textAlign']}";
 
-	$year = get_the_date( 'Y', $post_ID );
+	$year               = get_the_date( 'Y', $post_ID );
 	$wrapper_attributes = get_block_wrapper_attributes( array( 'class' => $align_class_name ) );
 
 	return sprintf(

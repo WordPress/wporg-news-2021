@@ -1,4 +1,9 @@
 <?php
+/**
+ * Theme functions and hooks.
+ *
+ * @package WordPressdotorg\Theme\News_2021
+ */
 
 namespace WordPressdotorg\Theme\News_2021;
 
@@ -46,8 +51,7 @@ function theme_support() {
 	// Add support for experimental link color control.
 	add_theme_support( 'experimental-link-color' );
 
-	// Add support for responsive embedded content.
-	// https://github.com/WordPress/gutenberg/issues/26901
+	// Add support for responsive embedded content (https://github.com/WordPress/gutenberg/issues/26901).
 	add_theme_support( 'responsive-embeds' );
 
 	// Add support for editor styles.
@@ -58,10 +62,10 @@ function theme_support() {
 	// Add support for post thumbnails.
 	add_theme_support( 'post-thumbnails' );
 
-	// Declare that there are no <title> tags and allow WordPress to provide them
+	// Declare that there are no <title> tags and allow WordPress to provide them.
 	add_theme_support( 'title-tag' );
 
-	// Experimental support for adding blocks inside nav menus
+	// Experimental support for adding blocks inside nav menus.
 	add_theme_support( 'block-nav-menus' );
 
 	// This theme has one menu location.
@@ -90,7 +94,7 @@ function enqueue_assets() {
  * We have certain category templates designed for different numbers of posts per page. Unfortunately it's not possible to set this in the block temlates.
  * (See https://github.com/WordPress/wporg-news-2021/issues/70#issuecomment-996460735)
  *
- * @param WP_Query $query
+ * @param WP_Query $query The query being prepared.
  */
 function override_category_query_args( $query ) {
 	if ( ! $query->get_queried_object() ) {
@@ -116,28 +120,28 @@ function override_category_query_args( $query ) {
  * @link https://core.trac.wordpress.org/ticket/21237
  * @link https://wordpress.stackexchange.com/questions/110349/template-hierarchy-confused-with-index-php-front-page-php-home-php
  *
- * @param array $classes
+ * @param array $classes Body classes.
  *
  * @return array
  */
 function clarify_body_classes( $classes ) {
 	if ( is_front_page() ) {
 		// Strip out "page" class, to prevent single-page styles from applying.
-		$classes = array_diff( $classes, [ 'page' ] );
+		$classes   = array_diff( $classes, array( 'page' ) );
 		$classes[] = 'news-front-page';
 	}
 
 	if ( is_home() ) {
 		// Strip out "page" class, to prevent single-page styles from applying.
-		$classes = array_diff( $classes, [ 'page' ] );
+		$classes   = array_diff( $classes, array( 'page' ) );
 		$classes[] = 'news-posts-index';
 	}
 
 	if ( is_search() && is_category() ) {
 		$classes = array_filter(
 			$classes,
-			function ( $class ) {
-				return ! str_starts_with( $class, 'category' );
+			function ( $class_name ) {
+				return ! str_starts_with( $class_name, 'category' );
 			}
 		);
 	}
@@ -147,10 +151,12 @@ function clarify_body_classes( $classes ) {
 
 /**
  * Add post classes to help make possible some design elements such as spacers between groups of posts.
- * 
+ *
  * @global WP_Query $wp_query WordPress Query object.
  *
- * @param array $classes
+ * @param array $classes       Post classes.
+ * @param array $extra_classes Unused.
+ * @param int   $post_id       The post ID.
  *
  * @return array
  */
@@ -160,19 +166,19 @@ function specify_post_classes( $classes, $extra_classes, $post_id ) {
 		return $classes;
 	}
 
-	// Seems like the wp:query loop block doesn't count as "in the loop" so we'll do this the hard way:
+	// Seems like the wp:query loop block doesn't count as "in the loop" so we'll do this the hard way.
 	$current_post = null;
-	$count_posts = count( $wp_query->posts );
+	$count_posts  = count( $wp_query->posts );
 	for ( $i = 0; $i < $count_posts; $i++ ) {
 		if ( $wp_query->posts[ $i ]->ID === $post_id ) {
 			$current_post = $i;
 		}
 	}
 
-	// Add last-in-year to help put design elements in between year groups in the Month In WordPress category
+	// Add last-in-year to help put design elements in between year groups in the Month In WordPress category.
 	if ( $wp_query->is_category( 'month-in-wordpress' ) && $wp_query->post_count > 1 && ! is_null( $current_post ) ) {
 		// The "0th" of the month returns the last day of the previous month.
-		$date = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-00 00:00:00' ) );
+		$date      = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-00 00:00:00' ) );
 		$classes[] = 'post-year-' . $date->format( 'Y' );
 
 		if ( $current_post < $count_posts - 1 ) {
@@ -188,14 +194,14 @@ function specify_post_classes( $classes, $extra_classes, $post_id ) {
 	// Add helper classes for the Events category.
 	if ( $wp_query->is_category( 'events' ) && $wp_query->post_count > 0 && ! is_null( $current_post ) ) {
 		$first_year_of_page = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-d 00:00:00', $wp_query->posts[0] ) );
-		$this_year = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-d 00:00:00' ) );
-		$classes[] = 'post-year-' . $this_year->format( 'Y' );
+		$this_year          = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-d 00:00:00' ) );
+		$classes[]          = 'post-year-' . $this_year->format( 'Y' );
 
 		if ( $first_year_of_page->format( 'Y' ) === $this_year->format( 'Y' ) ) {
 			$classes[] = 'first-year-of-page';
 		}
 
-		if ( $current_post === 0 ) {
+		if ( 0 === $current_post ) {
 			$classes[] = 'first-in-year';
 		}
 
@@ -239,13 +245,13 @@ function custom_query_block_attributes( $parsed_block ) {
 		if ( isset( $parsed_block['attrs']['query']['category'] ) ) {
 			$category = get_category_by_slug( $parsed_block['attrs']['query']['category'] );
 			if ( $category ) {
-				$parsed_block['attrs']['query']['categoryIds'] = [ $category->term_id ];
+				$parsed_block['attrs']['query']['categoryIds'] = array( $category->term_id );
 			}
 		}
 		if ( isset( $parsed_block['attrs']['query']['tag'] ) ) {
 			$tag = get_term_by( 'slug', $parsed_block['attrs']['query']['tag'], 'post_tag' );
 			if ( $tag ) {
-				$parsed_block['attrs']['query']['tagIds'] = [ $tag->term_id ];
+				$parsed_block['attrs']['query']['tagIds'] = array( $tag->term_id );
 			}
 		}
 	}
@@ -259,8 +265,12 @@ function custom_query_block_attributes( $parsed_block ) {
  * `SeriouslySimplePodcasting\Controllers\Frontend_Controller\add_all_post_types_for_tag_archive()` adds the
  * `podcast` post type to `$wp_query->query_vars['post_type']`. That causes the template loader to choose
  * `archive-podcast.html`, but we really want a standard content template instead.
+ *
+ * @param array $templates Template candidates.
+ *
+ * @return array
  */
-function override_tag_template( array $templates ) : array {
+function override_tag_template( array $templates ): array {
 	if ( is_main_query() ) {
 		// This must use the Classic `.php` hierarchy extension. It will later be automatically converted to `.html`
 		// by Core.
@@ -288,6 +298,7 @@ function custom_default_album_art_cover( $album_art ) {
  * Prepend a link to "All Posts" to the category list.
  *
  * @param string $html HTML output.
+ * @param array  $args Arguments passed to `wp_list_categories()`.
  * @return string
  */
 function add_links_to_categories_list( $html, $args ) {
@@ -297,15 +308,15 @@ function add_links_to_categories_list( $html, $args ) {
 
 	$raw_links = explode( "\n\t", $html );
 	$labels    = array_map(
-		function( $link ) {
+		function ( $link ) {
 			preg_match( '|href="[^"]+">([^<]+)</a>|', $link, $matches );
 			return $matches[1] ?? '';
 		},
 		$raw_links
 	);
-	$links = array_combine( $labels, $raw_links );
+	$links     = array_combine( $labels, $raw_links );
 
-	// All Posts
+	// All Posts.
 	$links[ __( 'All posts', 'wporg' ) ] = sprintf(
 		'<li class="cat-item cat-item-0 %1$s"><a href="%2$s">%3$s</a></li>',
 		is_home() ? 'current-cat' : '',
@@ -313,7 +324,7 @@ function add_links_to_categories_list( $html, $args ) {
 		esc_html__( 'All posts', 'wporg' )
 	);
 
-	// Podcast
+	// Podcast.
 	$links[ __( 'Podcast', 'wporg' ) ] = sprintf(
 		'<li class="cat-item cat-item-0 %1$s"><a href="%2$s">%3$s</a></li>',
 		is_post_type_archive( 'podcast' ) ? 'current-cat' : '',
@@ -402,7 +413,7 @@ function print_events_category_archive_script() {
  */
 function add_block_styles() {
 	$props_styles = array(
-		'short' => array(
+		'short'  => array(
 			'name'  => 'wporg-props-short',
 			'label' => __( 'Props (Short)', 'wporg' ),
 		),
@@ -410,7 +421,7 @@ function add_block_styles() {
 			'name'  => 'wporg-props-medium',
 			'label' => __( 'Props (Medium)', 'wporg' ),
 		),
-		'long' => array(
+		'long'   => array(
 			'name'  => 'wporg-props-long',
 			'label' => __( 'Props (Long)', 'wporg' ),
 		),
@@ -470,37 +481,39 @@ function update_header_template_part_class( $block ) {
 
 /**
  * Provide a list of local navigation menus.
+ *
+ * @return array
  */
-function add_site_navigation_menus( $menus ) {
+function add_site_navigation_menus() {
 	$term_list = get_terms(
 		array(
 			'taxonomy' => 'category',
-			'parent' => 0,
-			'orderby' => 'name',
+			'parent'   => 0,
+			'orderby'  => 'name',
 		)
 	);
 
 	$categories = array_map(
-		function( $item ) {
+		function ( $item ) {
 			return array(
-				'label' => $item->name,
-				'url' => get_term_link( $item ),
+				'label'     => $item->name,
+				'url'       => get_term_link( $item ),
 				'className' => is_category( $item->term_id ) ? 'current-menu-item' : '',
 			);
 		},
 		$term_list
 	);
 
-	// All Posts
+	// All Posts.
 	$categories[] = array(
-		'label' => __( 'All posts', 'wporg' ),
-		'url' => site_url( '/all-posts/' ),
+		'label'     => __( 'All posts', 'wporg' ),
+		'url'       => site_url( '/all-posts/' ),
 		'className' => is_home() ? 'current-menu-item' : '',
 	);
 
 	usort(
 		$categories,
-		function( $a, $b ) {
+		function ( $a, $b ) {
 			return strcmp( $a['label'], $b['label'] );
 		}
 	);
@@ -508,7 +521,7 @@ function add_site_navigation_menus( $menus ) {
 	return array(
 		'categories' => array(
 			array(
-				'label' => __( 'Categories', 'wporg' ),
+				'label'   => __( 'Categories', 'wporg' ),
 				'submenu' => $categories,
 			),
 		),
@@ -517,6 +530,10 @@ function add_site_navigation_menus( $menus ) {
 
 /**
  * Update the archive title on the Podcast archive.
+ *
+ * @param string $title The archive title.
+ *
+ * @return string
  */
 function update_archive_title( $title ) {
 	if ( is_post_type_archive( 'podcast' ) ) {
