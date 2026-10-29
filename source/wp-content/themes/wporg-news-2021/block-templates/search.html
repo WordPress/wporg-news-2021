@@ -1,32 +1,36 @@
 <!-- wp:template-part {"slug":"header","align":"full","className":"site-header-container"} /-->
 
-<!-- wp:group {"tagName":"header","align":"full","className":"query-title-banner"} -->
-<header class="wp-block-group alignfull query-title-banner">
-	<!-- wp:query-title {"type":"search","level":1} /-->
-</header>
-<!-- /wp:group -->
+<!-- wp:group {"tagName":"main","className":"site-main"} -->
+<main class="wp-block-group site-main">
+	<!-- wp:group {"tagName":"header","align":"full","className":"query-title-banner"} -->
+	<header class="wp-block-group alignfull query-title-banner">
+		<!-- wp:query-title {"type":"search","level":1} /-->
+	</header>
+	<!-- /wp:group -->
 
-<!-- wp:group {"tagName":"main","className":"site-content-container","layout":{"inherit":true}} -->
-<main class="wp-block-group site-content-container">
+	<!-- wp:group {"className":"site-content-container","layout":{"inherit":true}} -->
+	<div class="wp-block-group site-content-container">
 
-<!-- wp:query {"queryId":1,"query":{"perPage":10,"inherit":true}} -->
-<div class="wp-block-query">
-	<!-- wp:post-template -->
-		<!-- wp:post-title {"level":2,"isLink":true,"style":{"spacing":{"margin":{"top":"0","bottom":"var:preset|spacing|30"}}}} /-->
+		<!-- wp:query {"queryId":1,"query":{"perPage":10,"inherit":true}} -->
+		<div class="wp-block-query">
+			<!-- wp:post-template -->
+				<!-- wp:post-title {"level":2,"isLink":true,"style":{"spacing":{"margin":{"top":"0","bottom":"var:preset|spacing|30"}}}} /-->
 
-		<!-- wp:post-excerpt {"style":{"spacing":{"margin":{"top":"0","bottom":"var:preset|spacing|70"}}}} /-->
-	<!-- /wp:post-template -->
+				<!-- wp:post-excerpt {"style":{"spacing":{"margin":{"top":"0","bottom":"var:preset|spacing|70"}}}} /-->
+			<!-- /wp:post-template -->
 
-	<!-- wp:query-no-results -->
-		<!-- wp:paragraph -->
-		<p>No posts matched your search. Try different keywords.</p>
-		<!-- /wp:paragraph -->
+			<!-- wp:query-no-results -->
+				<!-- wp:paragraph -->
+				<p>No posts matched your search. Try different keywords.</p>
+				<!-- /wp:paragraph -->
 
-		<!-- wp:search {"label":"Search","showLabel":false,"placeholder":"Search...","buttonText":"Search","buttonUseIcon":true,"buttonPosition":"button-inside"} /-->
-	<!-- /wp:query-no-results -->
-</div>
-<!-- /wp:query -->
+				<!-- wp:search {"label":"Search","showLabel":false,"placeholder":"Search...","buttonText":"Search","buttonUseIcon":true,"buttonPosition":"button-inside"} /-->
+			<!-- /wp:query-no-results -->
+		</div>
+		<!-- /wp:query -->
 
+	</div>
+	<!-- /wp:group -->
 </main>
 <!-- /wp:group -->
 

@@ -7,11 +7,17 @@
 	flex-direction: column;
 	min-height: calc(100vh - var(--wp-global-header-offset) - var(--local-header-height));
 
-	> .site-content-container {
+	> main {
 		// Make the content area grow to fill any remaining space on the screen, so that the footer is pushed to
 		// the bottom.
 		margin-bottom: auto;
 	}
+}
+
+// Lay out the title banner and content the same as direct children of `.wp-site-blocks`.
+.site-main {
+	display: flex;
+	flex-direction: column;
 }
 
 // The following "placeholder selectors" define many of the layout-related
