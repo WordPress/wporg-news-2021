@@ -1,4 +1,4 @@
-@import "button-mixins";
+@use "button-mixins";
 
 /**
  * Button
@@ -8,8 +8,8 @@
 [class*="wp-block"] {
 	.wp-block-button__link {
 
-		@include button-color-styles;
-		@include button-main-styles;
+		@include button-mixins.button-color-styles;
+		@include button-mixins.button-main-styles;
 
 		background-color: var(--wp--preset--color--blue-1);
 		color: var(--wp--preset--color--white);
@@ -23,8 +23,8 @@
 			--wp--custom--button--color--text: var(--wp--custom--button--border--color);
 			--wp--custom--button--color--background: transparent;
 
-			@include button-border-styles;
-			@include button-color-styles;
+			@include button-mixins.button-border-styles;
+			@include button-mixins.button-color-styles;
 		}
 	}
 }

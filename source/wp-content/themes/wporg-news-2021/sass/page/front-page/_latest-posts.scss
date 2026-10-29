@@ -1,9 +1,11 @@
+@use "@wordpress/base-styles/mixins";
+
 body.news-front-page .front__latest-posts {
 	background: var(--wp--preset--color--white);
 	padding: var(--wp--custom--alignment--edge-spacing);
 	position: relative;
 
-	@include break-medium() {
+	@include mixins.break-medium() {
 		display: flex;
 		padding: 0;
 	}
@@ -16,7 +18,7 @@ body.news-front-page .front__latest-posts {
 		width: calc(var(--wp--custom--layout--content-meta-size) - 32px);
 		max-width: 100%;
 
-		@include break-medium() {
+		@include mixins.break-medium() {
 			min-width: calc(var(--wp--custom--layout--content-meta-size) - 32px);
 			padding:
 				var(--wp--custom--alignment--edge-spacing)
@@ -31,7 +33,7 @@ body.news-front-page .front__latest-posts {
 
 	.wp-block-post-template {
 
-		@include break-medium() {
+		@include mixins.break-medium() {
 			margin-top: 0;
 			padding: var(--wp--custom--alignment--edge-spacing);
 			flex-grow: 1;
@@ -41,7 +43,7 @@ body.news-front-page .front__latest-posts {
 		> li {
 			margin-bottom: clamp(48px, 6.25vw, 58px);
 
-			@include break-medium() {
+			@include mixins.break-medium() {
 				&:last-child {
 					margin-bottom: 0;
 				}
@@ -60,7 +62,7 @@ body.news-front-page .front__latest-posts {
 		padding: 0;
 		margin-bottom: var(--wp--custom--alignment--edge-spacing);
 
-		@include break-medium() {
+		@include mixins.break-medium() {
 			position: absolute;
 			bottom: var(--wp--custom--alignment--edge-spacing);
 			left: var(--wp--custom--alignment--edge-spacing);
@@ -73,7 +75,7 @@ body.news-front-page .front__latest-posts {
 			display: block;
 			height: 115px;
 			width: 233px;
-			background-image: url(images/brush-stroke-see-all-posts.svg);
+			background-image: url(../images/brush-stroke-see-all-posts.svg);
 			position: absolute;
 			top: calc(50% - (115px / 2));
 			left: -70px;

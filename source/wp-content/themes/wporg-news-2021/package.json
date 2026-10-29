@@ -1,35 +1,48 @@
 {
 	"name": "wporg-news-2021-theme",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "A Full Site Editing theme for w.org/news, with a jazz-inspired design.",
 	"author": "WordPress.org",
 	"license": "GPL-2.0-or-later",
 	"private": true,
-	"dependencies": {},
 	"devDependencies": {
-		"@wordpress/base-styles": "^4.3.0",
-		"@wordpress/browserslist-config": "^4.1.2",
-		"@wordpress/scripts": "^22.4.0",
-		"autoprefixer": "^10.4.4",
-		"chokidar-cli": "^3.0.0",
-		"postcss": "^8.4.12",
-		"rtlcss": "^3.5.0",
-		"sass": "^1.50.0"
+		"@wordpress/base-styles": "^14.0.0",
+		"@wordpress/browserslist-config": "^7.0.0",
+		"@wordpress/scripts": "^37.0.0",
+		"@wordpress/stylelint-config": "^27.0.0",
+		"webpack-remove-empty-scripts": "^1.1.1"
 	},
 	"scripts": {
-		"build": "node build-styles.js --no-rtl",
-		"start": "chokidar \"sass/**/*.scss\" -c \"node build-styles.js --no-rtl\" --initial",
-		"lint:css": "wp-scripts lint-style sass",
-		"lint:js": "echo \"No JS.\""
+		"build": "wp-scripts build",
+		"start": "wp-scripts start",
+		"lint:css": "wp-scripts lint-style 'sass/**/*.scss'",
+		"lint:js": "wp-scripts lint-js",
+		"packages-update": "wp-scripts packages-update"
 	},
 	"browserslist": [
 		"extends @wordpress/browserslist-config"
 	],
 	"stylelint": {
-		"extends": "../../../../.stylelintrc",
+		"extends": "@wordpress/stylelint-config/scss",
 		"rules": {
-			"max-line-length": null,
-			"no-duplicate-selectors": null
+			"no-descending-specificity": null,
+			"no-duplicate-selectors": null,
+			"rule-empty-line-before": [
+				"always-multi-line",
+				{
+					"except": [
+						"first-nested",
+						"after-single-line-comment"
+					]
+				}
+			],
+			"selector-class-pattern": null,
+			"value-keyword-case": [
+				"lower",
+				{
+					"camelCaseSvgKeywords": true
+				}
+			]
 		}
 	}
 }

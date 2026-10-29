@@ -1,4 +1,6 @@
 @mixin minimal-player {
+	--local--focus-color: var(--wp--preset--color--white);
+
 	.player__artwork,
 	.currently-playing,
 	.player-panels-nav,
@@ -30,7 +32,7 @@
 	}
 
 	.play-progress {
-		grid-gap: 0;
+		gap: 0;
 		align-items: center;
 		margin-left: 0 !important;
 		margin-top: 0;
@@ -42,7 +44,8 @@
 
 		.play-pause-controls {
 			background: transparent;
-			border-radius: 0;
+			// Only visible as the focus ring's corners, since the wrapper is transparent.
+			border-radius: 2px;
 			height: 20px;
 			width: 20px;
 
@@ -63,17 +66,17 @@
 			}
 
 			.pause-btn {
-				mask-image: url(images/podcast-player/pause.svg);
+				mask-image: url(../images/podcast-player/pause.svg);
 			}
 
 			.play-btn {
-				mask-image: url(images/podcast-player/play.svg);
+				mask-image: url(../images/podcast-player/play.svg);
 			}
 		}
 	}
 
 	.playback__controls {
-		grid-gap: 0;
+		gap: 0;
 
 		button {
 			opacity: 1;
@@ -81,7 +84,7 @@
 
 		.player-btn__volume {
 			background-color: var(--wp--preset--color--white);
-			mask-image: url(images/podcast-player/sound.svg);
+			mask-image: url(../images/podcast-player/sound.svg);
 			display: block !important;
 		}
 	}
@@ -107,6 +110,8 @@
 }
 
 @mixin light-player {
+	--local--focus-color: var(--wp--preset--color--blue-2);
+
 	.player {
 		background-color: var(--wp--preset--color--off-white-2);
 	}
@@ -132,6 +137,8 @@
 }
 
 .castos-player {
+	--local--focus-color: var(--wp--preset--color--blue-2);
+
 	font-family: var(--wp--preset--font-family--inter);
 
 	&.dark-mode {
@@ -141,7 +148,6 @@
 
 		.episode-title,
 		.currently-playing .show,
-		.subscribe-icons a,
 		.player-panel h3,
 		.player__podcast-title,
 		.playback__timers,
@@ -195,7 +201,7 @@
 	}
 
 	.player__main {
-		grid-gap: 25px;
+		gap: 25px;
 	}
 
 	.player__body {
@@ -221,13 +227,13 @@
 	}
 
 	.play-progress .play-pause-controls .play-btn {
-		background-image: url(images/podcast-player/play.svg);
+		background-image: url(../images/podcast-player/play.svg);
 		background-position: 17px 14px;
 	}
 
 	.play-progress .play-pause-controls .pause-btn {
 		background-color: var(--wp--preset--color--blue-1);
-		background-image: url(images/podcast-player/pause.svg);
+		background-image: url(../images/podcast-player/pause.svg);
 		background-position: 8px;
 	}
 
@@ -238,7 +244,46 @@
 
 	button:focus {
 		opacity: 1;
-		outline: 1px dotted currentColor !important;
+	}
+
+	button:focus-visible {
+		outline: 2px solid var(--local--focus-color);
+		outline-offset: 3px;
+	}
+
+	// Icon buttons use `mask-image`, which clips their outline, so the ring goes on unmasked elements.
+	.play-pause-controls:has(:focus-visible) {
+		outline: 2px solid var(--local--focus-color);
+		outline-offset: 3px;
+	}
+
+	// Absolutely positioned so it fills the focused button's grid cell without taking part in auto-placement.
+	.playback__controls:has(:is(.player-btn__volume, .player-btn__rwd, .player-btn__fwd):focus-visible) {
+		position: relative;
+
+		&::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			grid-row: 1 / 2;
+			pointer-events: none;
+			border-radius: 2px;
+			outline: 2px solid var(--local--focus-color);
+			outline-offset: 3px;
+		}
+	}
+
+	// Columns follow the markup order: volume, rewind, speed, forward.
+	.playback__controls:has(.player-btn__volume:focus-visible)::after {
+		grid-column: 1 / 2;
+	}
+
+	.playback__controls:has(.player-btn__rwd:focus-visible)::after {
+		grid-column: 2 / 3;
+	}
+
+	.playback__controls:has(.player-btn__fwd:focus-visible)::after {
+		grid-column: 4 / 5;
 	}
 
 	button.player-btn__speed {

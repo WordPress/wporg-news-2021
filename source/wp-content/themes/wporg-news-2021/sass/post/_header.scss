@@ -1,5 +1,8 @@
+@use "@wordpress/base-styles/mixins";
+@use "../base/layout";
+
 .entry-header {
-	&[class*="wp-container-"] * + * {
+	&[class*="wp-block-"] * + * {
 		margin-top: 0;
 	}
 
@@ -32,7 +35,7 @@
 	.page & {
 		margin-top: 8px;
 
-		@include break-mobile() {
+		@include mixins.break-mobile() {
 			margin-top: 32px;
 
 			.wp-block-post-date {
@@ -49,7 +52,7 @@
 			margin-top: 40px;
 			margin-bottom: 40px;
 
-			@include break-mobile() {
+			@include mixins.break-mobile() {
 				margin-top: 70px;
 				margin-bottom: 70px;
 			}
@@ -62,7 +65,7 @@
 
 	@extend %two-column-grid-container;
 
-	@include break-wide() {
+	@include mixins.break-wide() {
 		grid-template-areas: "entry-meta post-title";
 	}
 
@@ -74,11 +77,11 @@
 			font-size: inherit;
 		}
 
-		@include break-mobile() {
+		@include mixins.break-mobile() {
 			font-size: var(--wp--preset--font-size--small);
 		}
 
-		@include break-wide() {
+		@include mixins.break-wide() {
 			grid-area: entry-meta;
 			margin-bottom: 0;
 		}
@@ -88,7 +91,7 @@
 
 		@extend %two-column-grid-right-column;
 
-		@include break-wide() {
+		@include mixins.break-wide() {
 			grid-area: post-title;
 		}
 	}

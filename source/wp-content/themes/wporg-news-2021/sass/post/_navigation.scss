@@ -1,3 +1,7 @@
+@use "@wordpress/base-styles/breakpoints";
+@use "@wordpress/base-styles/mixins" as base-styles-mixins;
+@use "../base/mixins";
+
 .post-navigation {
 	padding-left: var(--wp--custom--alignment--edge-spacing);
 	padding-right: var(--wp--custom--alignment--edge-spacing);
@@ -11,7 +15,7 @@
 			display: flex;
 			flex-direction: column;
 
-			@include break-large() {
+			@include base-styles-mixins.break-large() {
 				gap: 3ch;
 				flex-direction: row;
 				align-items: center;
@@ -20,7 +24,7 @@
 			.post-navigation-link__label {
 				position: relative;
 
-				@include break-large() {
+				@include base-styles-mixins.break-large() {
 					&::after {
 						display: block;
 						content: "";
@@ -40,7 +44,7 @@
 
 		&.post-navigation-link-previous {
 
-			@include break-large() {
+			@include base-styles-mixins.break-large() {
 				.post-navigation-link__label::after {
 					right: calc(-1.5ch - 1px);
 				}
@@ -50,7 +54,7 @@
 		&.post-navigation-link-next {
 			text-align: end;
 
-			@include break-large() {
+			@include base-styles-mixins.break-large() {
 				a {
 					flex-direction: row-reverse;
 				}
@@ -64,9 +68,9 @@
 
 	.post-navigation-link__title {
 
-		@media (max-width: #{ ($break-medium - 1) }) {
+		@media (max-width: #{ (breakpoints.$break-medium - 1) }) {
 
-			@include hide-accessibly;
+			@include mixins.hide-accessibly;
 		}
 	}
 }

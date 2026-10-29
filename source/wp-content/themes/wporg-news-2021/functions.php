@@ -16,20 +16,24 @@ require_once __DIR__ . '/blocks/post-type-name/index.php';
 /**
  * Actions and filters.
  */
+add_action( 'init', __NAMESPACE__ . '\disable_jetpack_sharing' );
 add_action( 'after_setup_theme', __NAMESPACE__ . '\theme_support', 9 );
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_assets' );
-add_filter( 'get_the_archive_title_prefix', __NAMESPACE__ . '\modify_archive_title_prefix' );
 add_action( 'pre_get_posts', __NAMESPACE__ . '\override_category_query_args' );
 add_filter( 'body_class', __NAMESPACE__ . '\clarify_body_classes' );
 add_filter( 'post_class', __NAMESPACE__ . '\specify_post_classes', 10, 3 );
 add_filter( 'render_block_data', __NAMESPACE__ . '\custom_query_block_attributes' );
-add_filter( 'template_redirect', __NAMESPACE__ . '\jetpack_likes_workaround' );
+add_action( 'tag_template_hierarchy', __NAMESPACE__ . '\override_tag_template' );
 add_action( 'ssp_album_art_cover', __NAMESPACE__ . '\custom_default_album_art_cover', 10, 2 );
 add_filter( 'wp_list_categories', __NAMESPACE__ . '\add_links_to_categories_list', 10, 2 );
 add_filter( 'author_link', __NAMESPACE__ . '\use_wporg_profile_for_author_link', 10, 3 );
 add_action( 'wp_print_footer_scripts', __NAMESPACE__ . '\print_events_category_archive_script' );
 add_action( 'after_setup_theme', __NAMESPACE__ . '\add_block_styles' );
-add_action( 'parse_query', __NAMESPACE__ . '\compat_workaround_core_55100' );
+add_filter( 'render_block_core/query-title', __NAMESPACE__ . '\modify_query_title', 10, 2 );
+add_filter( 'render_block_data', __NAMESPACE__ . '\update_header_template_part_class' );
+add_filter( 'wporg_block_navigation_menus', __NAMESPACE__ . '\add_site_navigation_menus' );
+add_filter( 'get_the_archive_title', __NAMESPACE__ . '\update_archive_title' );
+add_filter( 'render_block_core/site-title', __NAMESPACE__ . '\update_site_title' );
 
 /**
  * Register theme support.
@@ -58,10 +62,6 @@ function theme_support() {
 	// Experimental support for adding blocks inside nav menus
 	add_theme_support( 'block-nav-menus' );
 
-	// Remove the default margin-top added when the admin bar is used, this is
-	// handled by the theme, in `_site-header.scss`.
-	add_theme_support( 'admin-bar', array( 'callback' => '__return_false' ) );
-
 	// This theme has one menu location.
 	register_nav_menus(
 		array(
@@ -76,27 +76,10 @@ function theme_support() {
 function enqueue_assets() {
 	wp_enqueue_style(
 		'wporg-news-style',
-		get_stylesheet_uri(),
+		get_theme_file_uri( 'build/style.css' ),
 		array( 'wporg-global-fonts' ),
-		filemtime( __DIR__ . '/style.css' )
+		filemtime( __DIR__ . '/build/style.css' )
 	);
-}
-
-/**
- * Blank out the archive title prefix sometimes.
- *
- * We want the prefix when it's used in `query-title-banner`, but not in `local-header`.
- *
- * TODO This filter can be removed if/when this issue is resolved: https://github.com/WordPress/gutenberg/issues/30519
- *
- * @return string
- */
-function modify_archive_title_prefix( $prefix ) {
-	if ( is_category() || is_post_type_archive() ) {
-		$prefix = '';
-	}
-
-	return $prefix;
 }
 
 /**
@@ -112,7 +95,7 @@ function override_category_query_args( $query ) {
 		return;
 	}
 	if ( $query->is_category() ) {
-		if ( $query->is_category( 'community' ) ) {
+		if ( $query->is_category( array( 'community', 'interviews' ) ) ) {
 			$query->set( 'posts_per_page', 20 );
 		}
 		if ( $query->is_category( 'month-in-wordpress' ) ) {
@@ -148,11 +131,22 @@ function clarify_body_classes( $classes ) {
 		$classes[] = 'news-posts-index';
 	}
 
+	if ( is_search() && is_category() ) {
+		$classes = array_filter(
+			$classes,
+			function ( $class ) {
+				return ! str_starts_with( $class, 'category' );
+			}
+		);
+	}
+
 	return $classes;
 }
 
 /**
  * Add post classes to help make possible some design elements such as spacers between groups of posts.
+ * 
+ * @global WP_Query $wp_query WordPress Query object.
  *
  * @param array $classes
  *
@@ -160,7 +154,7 @@ function clarify_body_classes( $classes ) {
  */
 function specify_post_classes( $classes, $extra_classes, $post_id ) {
 	global $wp_query;
-	if ( ! is_object( $wp_query ) ) {
+	if ( ! is_object( $wp_query ) || ! isset( $wp_query->posts ) ) {
 		return $classes;
 	}
 
@@ -258,16 +252,20 @@ function custom_query_block_attributes( $parsed_block ) {
 }
 
 /**
- * A Workaround to make Jetpack Likes work with FSE themes.
+ * Force tag requests to use the Category template rather than the Podcast template.
  *
- * This is only needed until Jetpack Likes is updated to work properly with FSE themes,
- * or https://core.trac.wordpress.org/ticket/54529 is merged to Core.
+ * `SeriouslySimplePodcasting\Controllers\Frontend_Controller\add_all_post_types_for_tag_archive()` adds the
+ * `podcast` post type to `$wp_query->query_vars['post_type']`. That causes the template loader to choose
+ * `archive-podcast.html`, but we really want a standard content template instead.
  */
-function jetpack_likes_workaround() {
-	$jetpack_likes = class_exists( '\Jetpack_Likes' ) ? \Jetpack_Likes::init() : false;
-	if ( is_callable( [ $jetpack_likes, 'load_styles_register_scripts' ] ) ) {
-		$jetpack_likes->load_styles_register_scripts();
+function override_tag_template( array $templates ) : array {
+	if ( is_main_query() ) {
+		// This must use the Classic `.php` hierarchy extension. It will later be automatically converted to `.html`
+		// by Core.
+		$templates = array( 'category.php' );
 	}
+
+	return $templates;
 }
 
 /**
@@ -306,19 +304,19 @@ function add_links_to_categories_list( $html, $args ) {
 	$links = array_combine( $labels, $raw_links );
 
 	// All Posts
-	$links[ __( 'All Posts', 'wporg' ) ] = sprintf(
+	$links[ __( 'All posts', 'wporg' ) ] = sprintf(
 		'<li class="cat-item cat-item-0 %1$s"><a href="%2$s">%3$s</a></li>',
 		is_home() ? 'current-cat' : '',
-		site_url( '/all-posts/' ),
-		__( 'All Posts', 'wporg' )
+		esc_url( site_url( '/all-posts/' ) ),
+		esc_html__( 'All posts', 'wporg' )
 	);
 
 	// Podcast
 	$links[ __( 'Podcast', 'wporg' ) ] = sprintf(
 		'<li class="cat-item cat-item-0 %1$s"><a href="%2$s">%3$s</a></li>',
 		is_post_type_archive( 'podcast' ) ? 'current-cat' : '',
-		get_post_type_archive_link( 'podcast' ),
-		__( 'Podcast', 'wporg' )
+		esc_url( get_post_type_archive_link( 'podcast' ) ),
+		esc_html__( 'Podcast', 'wporg' )
 	);
 
 	ksort( $links );
@@ -352,9 +350,8 @@ function print_events_category_archive_script() {
 		return;
 	}
 
-	ob_start();
-	?>
-<script id="wporg-news-2021-events-archive-handler">
+	wp_print_inline_script_tag(
+		<<<'JS'
 	( () => {
 		const getPostYear = ( element ) => {
 			return Array.from( element.classList ).find( yearClass => yearClass.match( /^post-year-/ ) );
@@ -391,9 +388,9 @@ function print_events_category_archive_script() {
 			}
 		} );
 	} )();
-</script>
-	<?php
-	echo ob_get_clean();
+	JS,
+		array( 'id' => 'wporg-news-2021-events-archive-handler' )
+	);
 }
 
 /**
@@ -423,18 +420,118 @@ function add_block_styles() {
 }
 
 /**
- * Ensure that WP_Query::get_queried_object() works for /author/xxx requests.
+ * Turns off Jetpack Social feature auto-share for posts.
  *
- * @see https://core.trac.wordpress.org/ticket/55100
- *
- * @param \WP_Query $query The WP_Query instance.
+ * See: https://jetpack.com/support/jetpack-social/social-sharing-new-posts/
  */
-function compat_workaround_core_55100( $query ) {
-	$author_name = $query->get( 'author_name' );
-	if ( $author_name ) {
-		$author = get_user_by( 'slug', $author_name );
-		if ( $author ) {
-			$query->set( 'author', $author->ID );
+function disable_jetpack_sharing() {
+	remove_post_type_support( 'post', 'publicize' );
+}
+
+/**
+ * Prevent the archive query title on search+category views.
+ *
+ * These pages use a template with a large search heading, so the local-nav
+ * archive heading is not necessary.
+ *
+ * @param string $block_content The block content.
+ * @param array  $block         The full block, including name and attributes.
+ *
+ * @return string
+ */
+function modify_query_title( $block_content, $block ) {
+	if ( is_search() && is_category() && 'archive' === ( $block['attrs']['type'] ?? '' ) ) {
+		return '';
+	}
+	return $block_content;
+}
+
+/**
+ * Add the has-display-contents class to the header template so that the fixed local nav bar works.
+ *
+ * @param array $block The parsed block data.
+ *
+ * @return array
+ */
+function update_header_template_part_class( $block ) {
+	if ( ! empty( $block['blockName'] ) && 'core/template-part' === $block['blockName'] ) {
+		if ( str_starts_with( $block['attrs']['slug'], 'header' ) ) {
+			if ( isset( $block['attrs']['className'] ) ) {
+				$block['attrs']['className'] .= ' has-display-contents';
+			} else {
+				$block['attrs']['className'] = 'has-display-contents';
+			}
 		}
 	}
+	return $block;
+}
+
+/**
+ * Provide a list of local navigation menus.
+ */
+function add_site_navigation_menus( $menus ) {
+	$term_list = get_terms(
+		array(
+			'taxonomy' => 'category',
+			'parent' => 0,
+			'orderby' => 'name',
+		)
+	);
+
+	$categories = array_map(
+		function( $item ) {
+			return array(
+				'label' => $item->name,
+				'url' => get_term_link( $item ),
+				'className' => is_category( $item->term_id ) ? 'current-menu-item' : '',
+			);
+		},
+		$term_list
+	);
+
+	// All Posts
+	$categories[] = array(
+		'label' => __( 'All posts', 'wporg' ),
+		'url' => site_url( '/all-posts/' ),
+		'className' => is_home() ? 'current-menu-item' : '',
+	);
+
+	usort(
+		$categories,
+		function( $a, $b ) {
+			return strcmp( $a['label'], $b['label'] );
+		}
+	);
+
+	return array(
+		'categories' => array(
+			array(
+				'label' => __( 'Categories', 'wporg' ),
+				'submenu' => $categories,
+			),
+		),
+	);
+}
+
+/**
+ * Update the archive title on the Podcast archive.
+ */
+function update_archive_title( $title ) {
+	if ( is_post_type_archive( 'podcast' ) ) {
+		$title = __( 'WP Briefing Podcast', 'wporg' );
+	}
+	return $title;
+}
+
+/**
+ * Update the archive title for all filter views.
+ *
+ * @param string $block_content The block content.
+ */
+function update_site_title( $block_content ) {
+	return str_replace(
+		get_bloginfo( 'name' ),
+		__( 'News', 'wporg' ),
+		$block_content
+	);
 }

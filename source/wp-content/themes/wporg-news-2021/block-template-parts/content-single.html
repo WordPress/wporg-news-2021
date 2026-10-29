@@ -21,6 +21,37 @@
 	<!-- wp:group {"tagName":"section","align":"full"} -->
 	<section class="wp-block-group alignfull">
 		<!-- wp:post-content {"layout":{"inherit":true}} /-->
+
+		<!-- wp:group {"className":"wporg-news-sharing","layout":{"type":"constrained"},"hideFromFeed":true} -->
+		<div class="wp-block-group wporg-news-sharing">
+			<!-- wp:group {"style":{"spacing":{"blockGap":"10px"}},"layout":{"type":"flex","orientation":"vertical"},"hideFromFeed":true} -->
+			<div class="wp-block-group">
+				<!-- wp:paragraph {"style":{"typography":{"fontStyle":"normal","fontWeight":"700"}},"fontSize":"small"} -->
+				<p class="has-small-font-size" style="font-style:normal;font-weight:700">Share this:</p>
+				<!-- /wp:paragraph -->
+
+				<!-- wp:jetpack/sharing-buttons {"styleType":"icon","iconColor":"blue-1","iconColorValue":"#3e58e1","customIconBackgroundColor":"#ffffff00","iconBackgroundColorValue":"#ffffff00","style":{"spacing":{"blockGap":{"left":"0px"}}}} -->
+				<ul class="wp-block-jetpack-sharing-buttons has-normal-icon-size jetpack-sharing-buttons__services-list" id="jetpack-sharing-serivces-list">
+					<!-- wp:jetpack/sharing-button {"service":"threads","label":"Threads"} /-->
+
+					<!-- wp:jetpack/sharing-button {"service":"mastodon","label":"Mastodon"} /-->
+
+					<!-- wp:jetpack/sharing-button {"service":"bluesky","label":"Bluesky"} /-->
+
+					<!-- wp:jetpack/sharing-button {"service":"x","label":"X"} /-->
+
+					<!-- wp:jetpack/sharing-button {"service":"facebook","label":"Facebook"} /-->
+
+					<!-- wp:jetpack/sharing-button {"service":"linkedin","label":"LinkedIn"} /-->
+
+					<!-- wp:jetpack/sharing-button {"service":"share","label":"Share"} /-->
+				</ul>
+				<!-- /wp:jetpack/sharing-buttons -->
+			</div>
+			<!-- /wp:group -->
+		</div>
+		<!-- /wp:group -->
+
 	</section>
 	<!-- /wp:group -->
 </article>

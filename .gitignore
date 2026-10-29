@@ -30,5 +30,5 @@ README-svn.txt
 !/source/wp-content/themes
 !/source/wp-content/themes/wporg-news-2021
 
-# Ignore built files in source directories.
-/source/wp-content/themes/wporg-news-2021/style.css
+# The theme's build output is committed, so it can be deployed without a build step.
+!/source/wp-content/themes/wporg-news-2021/build

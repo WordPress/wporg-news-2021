@@ -5,27 +5,27 @@
 	"author": "WordPress.org",
 	"license": "GPL-2.0-or-later",
 	"private": true,
-	"dependencies": {},
 	"devDependencies": {
-		"@wordpress/env": "^4.5.0",
-		"browser-sync": "^2.27.9"
+		"@wordpress/env": "^12.0.0",
+		"browser-sync": "^3.0.4"
 	},
 	"scripts": {
-		"initial-setup": "composer install && yarn && yarn run update-configs",
+		"initial-setup": "composer install && npm install && npm install --prefix source/wp-content/themes/wporg-news-2021 && npm run setup:mu-plugins && npm run update-configs",
+		"setup:mu-plugins": "npm install --prefix source/wp-content/mu-plugins/wporg-mu-plugins && npm run build --prefix source/wp-content/mu-plugins/wporg-mu-plugins",
 		"update-configs": "TEXTDOMAIN=wporg composer exec update-configs",
 		"wp-env": "wp-env",
 		"env": "wp-env start",
 		"env:stop": "wp-env stop",
 		"env:cli": "wp-env run cli",
-		"env:setup": "wp-env start --update && yarn run env:reset && yarn run env:import && yarn run env:misc",
-		"env:reset": "wp-env clean all && wp-env run cli \"wp site empty --yes\"",
-		"env:import": "wp-env run cli \"bash env/import.sh\"",
-		"env:misc": "wp-env run cli \"bash env/misc.sh\"",
+		"env:setup": "wp-env start --update && npm run env:reset && npm run env:import && npm run env:misc",
+		"env:reset": "wp-env clean all && wp-env run cli wp site empty --yes",
+		"env:import": "wp-env run cli bash env/import.sh",
+		"env:misc": "wp-env run cli bash env/misc.sh",
 		"sync": "browser-sync start --config bs-config.js",
-		"start:all": "yarn workspaces run start & npm run sync & (cd source/wp-content/mu-plugins/wporg-mu-plugins/ && npm run start)"
-	},
-	"workspaces": [
-		"source/wp-content/themes/wporg-news-2021",
-		"source/wp-content/mu-plugins/wporg-mu-plugins"
-	]
+		"build": "npm run build --prefix source/wp-content/themes/wporg-news-2021",
+		"start": "npm run start --prefix source/wp-content/themes/wporg-news-2021",
+		"start:all": "npm run start & npm run sync & npm run start --prefix source/wp-content/mu-plugins/wporg-mu-plugins",
+		"lint:css": "npm run lint:css --prefix source/wp-content/themes/wporg-news-2021",
+		"lint:js": "npm run lint:js --prefix source/wp-content/themes/wporg-news-2021"
+	}
 }

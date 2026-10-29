@@ -30,16 +30,19 @@ function render_block( $attributes, $content, $block ) {
 		return sprintf(
 			'<a %1$s href="%2$s">%3$s</a>',
 			$wrapper_attributes,
-			get_post_type_archive_link( $post_type ),
-			$post_type_obj->label,
+			esc_url( get_post_type_archive_link( $post_type ) ),
+			esc_html( $post_type_obj->label ),
 		);
 	}
 
+	$allowed_tags = array( 'span', 'div', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' );
+	$tag_name     = in_array( $attributes['tagName'] ?? '', $allowed_tags, true ) ? $attributes['tagName'] : 'span';
+
 	return sprintf(
 		'<%1$s %2$s>%3$s</%1$s>',
-		$attributes['tagName'],
+		$tag_name,
 		$wrapper_attributes,
-		$post_type_obj->label
+		esc_html( $post_type_obj->label )
 	);
 }
 

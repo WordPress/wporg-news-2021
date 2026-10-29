@@ -1,9 +1,12 @@
+@use "@wordpress/base-styles/mixins";
+@use "../base/layout";
+
 .wp-block-post {
 	.blog &,
-	.category:not(.category-community):not(.category-events):not(.category-releases) & {
+	.category:not(.category-community):not(.category-interviews):not(.category-events):not(.category-releases) & {
 		padding-bottom: 20px;
 
-		@include break-mobile() {
+		@include mixins.break-mobile() {
 			margin-bottom: 40px;
 		}
 	}
@@ -17,7 +20,7 @@
 		margin-top: 40px;
 		margin-bottom: 16px;
 
-		@include break-mobile() {
+		@include mixins.break-mobile() {
 			margin-top: 70px;
 			margin-bottom: 46px;
 		}
@@ -46,7 +49,8 @@ body.archive .site-content-container,
 body.search .site-content-container,
 body.single:not(.single-podcast) .site-content-container .wp-block-post-content,
 body.single-podcast .site-content-container .podcast-wrapper,
-body.page .site-content-container .wp-block-post-content {
+body.page .site-content-container .wp-block-post-content,
+body.single .wporg-news-sharing {
 
 	@extend %two-column-grid-container-dynamic-rows;
 }

@@ -1,4 +1,4 @@
-@import "categories";
-@import "front-page";
-@import "all-posts";
-@import "404";
+@use "categories";
+@use "front-page";
+@use "all-posts";
+@use "404" as page-404;

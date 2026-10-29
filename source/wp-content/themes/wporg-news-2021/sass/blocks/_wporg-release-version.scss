@@ -1,10 +1,12 @@
+@use "@wordpress/base-styles/mixins";
+
 .wp-block-wporg-release-version {
 	font-family: var(--wp--preset--font-family--inter);
 	font-size: min(35vw, 140px);
 	font-weight: 200;
 	line-height: 1;
 
-	@include break-medium() {
+	@include mixins.break-medium() {
 		white-space: nowrap;
 	}
 }

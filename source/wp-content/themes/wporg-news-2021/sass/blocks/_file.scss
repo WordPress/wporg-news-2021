@@ -1,9 +1,9 @@
-@import "button-mixins";
+@use "button-mixins";
 
 // TODO: Remove when https://github.com/WordPress/gutenberg/issues/27760 is fixed
 .wp-block-file .wp-block-file__button {
 
-	@include button-main-styles;
-	@include button-color-styles;
+	@include button-mixins.button-main-styles;
+	@include button-mixins.button-color-styles;
 	display: inline-block;
 }

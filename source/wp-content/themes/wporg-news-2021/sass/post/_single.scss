@@ -2,10 +2,15 @@ body.single:not(.single-podcast),
 body.page {
 	.site-content-container {
 		.entry-header,
-		.wp-block-post-content {
+		.wp-block-post-content,
+		.wporg-news-sharing {
 			padding-left: var(--wp--custom--alignment--edge-spacing);
 			padding-right: var(--wp--custom--alignment--edge-spacing);
 
 		}
 	}
+}
+
+body.single .jetpack-sharing-button__button.style-icon {
+	margin: unset;
 }
