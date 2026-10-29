@@ -1,7 +1,11 @@
 @use "@wordpress/base-styles/mixins";
+@use "../../base/selection";
 
 // The "Latest Release" section which displays the latest post in the releases category.
 body.news-front-page .front__latest-release {
+
+	@include selection.on-dark;
+
 	color: var(--wp--preset--color--white);
 	font-size: var(--wp--preset--font-size--small);
 	background-color: var(--wp--preset--color--dark-grey);

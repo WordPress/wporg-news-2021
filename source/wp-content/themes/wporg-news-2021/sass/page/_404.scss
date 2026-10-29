@@ -1,7 +1,10 @@
 @use "@wordpress/base-styles/mixins";
+@use "../base/selection";
 
 body.error404 {
 	--oops-font-size: 47vw; // "Magic number" ala https://css-tricks.com/fitting-text-to-a-container/
+
+	@include selection.on-dark;
 
 	background-color: var(--wp--preset--color--dark-grey);
 
@@ -80,6 +83,9 @@ body.error404 {
 	}
 
 	.site-content-container .wp-block-search.wp-block-search__button-inside {
+
+		@include selection.on-white;
+
 		width: 100%;
 		margin-top: 40px;
 		background-color: var(--wp--preset--color--white);

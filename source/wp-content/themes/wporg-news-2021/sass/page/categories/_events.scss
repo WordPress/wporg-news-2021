@@ -1,5 +1,6 @@
 @use "@wordpress/base-styles/mixins";
 @use "misc";
+@use "../../base/selection";
 
 body.category-events {
 
@@ -7,9 +8,14 @@ body.category-events {
 
 	--row-padding-vertical: clamp(24px, calc(100vw / 26), 50px);
 
+	@include selection.on-pale;
+
 	background-color: var(--wp--preset--color--off-white);
 
 	.wp-block-wporg-local-navigation-bar {
+
+		@include selection.on-white;
+
 		--bar-background-color: var(--wp--preset--color--white);
 		--bar-text-color: var(--wp--preset--color--darker-grey);
 		--bar-link-color: var(--wp--preset--color--blue-1);

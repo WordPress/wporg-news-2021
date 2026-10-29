@@ -1,3 +1,5 @@
+@use "../../base/selection";
+
 :root {
 	--local-header-height: 60px;
 }
@@ -28,6 +30,9 @@ body:not(.search) .wp-block-wporg-local-navigation-bar .local-header__title-sear
 }
 
 .wp-block-wporg-local-navigation-bar {
+
+	@include selection.on-dark;
+
 	--bar-text-color: var(--wp--preset--color--white);
 	--bar-link-color: var(--wp--preset--color--white);
 	--bar-link-hover-color: var(--wp--preset--color--off-white-2);
