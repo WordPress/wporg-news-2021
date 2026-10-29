@@ -34,6 +34,7 @@ add_filter( 'render_block_data', __NAMESPACE__ . '\update_header_template_part_c
 add_filter( 'wporg_block_navigation_menus', __NAMESPACE__ . '\add_site_navigation_menus' );
 add_filter( 'get_the_archive_title', __NAMESPACE__ . '\update_archive_title' );
 add_filter( 'render_block_core/site-title', __NAMESPACE__ . '\update_site_title' );
+add_filter( 'jetpack_open_graph_tags', __NAMESPACE__ . '\use_default_social_image', 15 ); // After Jetpack's Twitter Cards on 11.
 
 /**
  * Register theme support.
@@ -535,4 +536,28 @@ function update_site_title( $block_content ) {
 		__( 'News', 'wporg' ),
 		$block_content
 	);
+}
+
+/**
+ * Use the default image in link previews of posts and pages without a featured image.
+ *
+ * Jetpack otherwise lists every image in the content, and each platform picks its own.
+ *
+ * @param array $tags Open Graph and Twitter Card tags.
+ *
+ * @return array
+ */
+function use_default_social_image( $tags ) {
+	if ( ! is_singular() || has_post_thumbnail() ) {
+		return $tags;
+	}
+
+	// Jetpack's filter for its fallback image, which wordpress.org sets to the same image.
+	$image = apply_filters( 'jetpack_open_graph_image_default', 'https://s.w.org/images/home/wordpress-default-ogimage.png' );
+
+	$tags['og:image']      = $image;
+	$tags['twitter:image'] = $image;
+	unset( $tags['og:image:secure_url'], $tags['og:image:width'], $tags['og:image:height'], $tags['og:image:alt'] );
+
+	return $tags;
 }
