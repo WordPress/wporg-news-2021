@@ -52,6 +52,7 @@ function theme_support() {
 	// Add support for editor styles.
 	add_theme_support( 'editor-styles' );
 	add_editor_style( get_font_stylesheet_url() );
+	add_editor_style( 'build/editor.css' );
 
 	// Add support for post thumbnails.
 	add_theme_support( 'post-thumbnails' );

@@ -1,0 +1,27 @@
+// Content styles for the post and page editor, so blocks look the same as on the front end.
+@use "@wordpress/base-styles/mixins";
+@use "base/layout";
+@use "base/normalize";
+@use "base/alignment";
+@use "base/elements";
+@use "blocks";
+@use "post/content";
+
+// The post editor's canvas root, not the Site Editor's template root.
+.wp-block-post-content.is-root-container {
+	// Matches the post content's padding on the front end, which full-width blocks like the pullquote stop at.
+	padding-left: var(--wp--custom--alignment--edge-spacing);
+	padding-right: var(--wp--custom--alignment--edge-spacing);
+
+	// The front end's grid keeps block margins from collapsing, so they add up between blocks.
+	@include mixins.break-wide() {
+		display: flex;
+		flex-direction: column;
+	}
+
+	// On the front end, the two-column grid gives each block the full content width.
+	> :not(.alignfull):not(.alignwide) {
+
+		@extend %two-column-grid-right-column;
+	}
+}
