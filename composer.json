@@ -49,7 +49,7 @@
 		"wporg/wporg-mu-plugins": "dev-trunk"
 	},
 	"scripts": {
-		"format": "phpcbf -p",
-		"lint": "phpcs"
+		"format": "phpcbf -p source/wp-content/themes/wporg-news-2021 env",
+		"lint": "phpcs source/wp-content/themes/wporg-news-2021 env"
 	}
 }
