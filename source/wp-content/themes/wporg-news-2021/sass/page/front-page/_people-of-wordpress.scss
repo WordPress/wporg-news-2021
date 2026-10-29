@@ -1,6 +1,10 @@
 @use "@wordpress/base-styles/mixins";
+@use "../../base/selection";
 
 body.news-front-page .front__people-of-wordpress {
+
+	@include selection.on-pale;
+
 	background-color: var(--wp--preset--color--off-white);
 	position: relative;
 
@@ -40,6 +44,9 @@ body.news-front-page .front__people-of-wordpress {
 			}
 
 			.wp-block-post-title {
+
+				@include selection.on-dark;
+
 				font-size: var(--wp--preset--font-size--extra-large);
 				line-height: 1.3;
 

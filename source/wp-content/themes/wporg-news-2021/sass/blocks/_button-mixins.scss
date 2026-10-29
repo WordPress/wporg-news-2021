@@ -1,3 +1,5 @@
+@use "../base/selection";
+
 // NOTE: These remain for the styling of buttons that are NOT blocks and is used elsewhere.  This can be removed when those no longer exist.
 @mixin button-main-styles {
 
@@ -8,6 +10,9 @@
 }
 
 @mixin button-color-styles {
+
+	@include selection.on-dark;
+
 	opacity: 1;
 	color: var(--wp--custom--button--color--text);
 	background-color: var(--wp--custom--button--color--background);
@@ -18,18 +23,27 @@
 	}
 
 	&:hover {
+
+		@include selection.on-dark;
+
 		color: var(--wp--custom--button--hover--color--text);
 		background-color: var(--wp--custom--button--hover--color--background);
 		border-color: var(--wp--custom--button--hover--border--color);
 	}
 
 	&:active {
+
+		@include selection.on-dark;
+
 		color: var(--wp--custom--button--active--color--text);
 		background-color: var(--wp--custom--button--active--color--background);
 		border-color: var(--wp--custom--button--active--border--color);
 	}
 
 	&:focus {
+
+		@include selection.on-dark;
+
 		color: var(--wp--custom--button--focus--color--text);
 		background-color: var(--wp--custom--button--focus--color--background);
 		border-color: var(--wp--custom--button--focus--border--color);

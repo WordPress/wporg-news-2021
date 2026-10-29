@@ -1,3 +1,5 @@
+@use "../base/selection";
+
 @mixin minimal-player {
 	--local--focus-color: var(--wp--preset--color--white);
 
@@ -13,6 +15,9 @@
 	}
 
 	.player {
+
+		@include selection.on-dark;
+
 		height: auto;
 		background-color: var(--wp--preset--color--blue-2);
 	}
@@ -113,6 +118,9 @@
 	--local--focus-color: var(--wp--preset--color--blue-2);
 
 	.player {
+
+		@include selection.on-pale;
+
 		background-color: var(--wp--preset--color--off-white-2);
 	}
 
@@ -143,6 +151,9 @@
 
 	&.dark-mode {
 		.player {
+
+			@include selection.on-pale;
+
 			background: var(--wp--preset--color--off-white-2);
 		}
 

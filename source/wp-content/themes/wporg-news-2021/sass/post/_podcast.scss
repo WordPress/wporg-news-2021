@@ -1,5 +1,6 @@
 @use "@wordpress/base-styles/mixins";
 @use "../base/layout";
+@use "../base/selection";
 
 body.single-podcast,
 body.post-type-archive-podcast {
@@ -15,6 +16,9 @@ body.post-type-archive-podcast {
 	}
 
 	.query-title-banner-podcast {
+
+		@include selection.on-dark;
+
 		margin-top: calc(var(--wp--custom--margin--baseline) * -4);
 		position: relative;
 		padding-top: 80px;

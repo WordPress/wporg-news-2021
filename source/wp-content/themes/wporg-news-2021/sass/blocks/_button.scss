@@ -25,6 +25,9 @@
 
 			@include button-mixins.button-border-styles;
 			@include button-mixins.button-color-styles;
+
+			// No background of its own until hovered or focused, so it keeps the selection color of what is behind it.
+			--selection-background-color: inherit;
 		}
 	}
 }

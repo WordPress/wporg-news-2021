@@ -1,10 +1,17 @@
 @use "@wordpress/base-styles/mixins";
+@use "../../base/selection";
 
 body.category-community,
 body.category-interviews {
+
+	@include selection.on-pale;
+
 	background-color: var(--wp--preset--color--off-white);
 
 	.wp-block-wporg-local-navigation-bar {
+
+		@include selection.on-white;
+
 		--bar-background-color: var(--wp--preset--color--white);
 		--bar-text-color: var(--wp--preset--color--darker-grey);
 		--bar-link-color: var(--wp--preset--color--blue-1);
@@ -112,6 +119,9 @@ body.category-interviews {
 				}
 
 				.entry-meta {
+
+					@include selection.on-dark;
+
 					opacity: 0;
 					color: var(--wp--preset--color--white);
 					position: absolute;
@@ -124,6 +134,9 @@ body.category-interviews {
 		}
 
 		&:not(.has-post-thumbnail) {
+
+			@include selection.on-dark;
+
 			min-height: 25vh;
 			display: flex;
 			align-items: flex-end;

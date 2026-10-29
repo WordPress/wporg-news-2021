@@ -1,5 +1,6 @@
 @use "@wordpress/base-styles/mixins";
 @use "misc";
+@use "../../base/selection";
 @use "../../components/bottom-banner/bottom-banner";
 @use "../../components/bottom-banner/subscribe-wp-news";
 
@@ -8,6 +9,8 @@ body.category-releases {
 	@extend %releases-events-fonts;
 
 	--row-padding-vertical: clamp(24px, calc(100vw / 26), 50px);
+
+	@include selection.on-dark;
 
 	background-color: var(--wp--preset--color--blue-1);
 
