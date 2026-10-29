@@ -16,9 +16,14 @@
 	.wp-site-blocks {
 		display: block;
 
-		> .site-content-container {
+		> .site-content-container,
+		> .site-main > .site-content-container {
 			margin-top: unset;
 		}
+	}
+
+	.site-main {
+		display: block;
 	}
 
 	:root body[class] {

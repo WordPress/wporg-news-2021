@@ -3,6 +3,11 @@
 
 body.single-podcast,
 body.post-type-archive-podcast {
+	// The banner inside sets its own offset from the header.
+	.site-main {
+		margin-top: 0;
+	}
+
 	.site-content-container {
 		margin-top: 0;
 		padding-left: var(--wp--custom--alignment--edge-spacing);
