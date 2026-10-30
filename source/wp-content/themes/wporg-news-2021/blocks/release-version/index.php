@@ -1,4 +1,9 @@
 <?php
+/**
+ * Registers and renders the `wporg/release-version` block.
+ *
+ * @package WordPressdotorg\Theme\News_2021
+ */
 
 namespace WordPressdotorg\Theme\News_2021\Blocks\Release_Version;
 
@@ -26,7 +31,7 @@ function render_block( $attributes, $content, $block ) {
 	$show_major_version = $attributes['showMajorVersion'];
 
 	$version = '';
-	$title = get_the_title( $post_ID );
+	$title   = get_the_title( $post_ID );
 
 	if ( preg_match( '/WordPress (\d{0,3}(?:\.\d{1,3})+)\s*(?|Release Candidate\s*(\d+)|RC\s*(\d+))?(?|Beta\s*(\d+))?/', $title, $matches ) ) {
 		$version = $matches[1];

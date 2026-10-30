@@ -1,0 +1,66 @@
+name: Static Analysis (PHP)
+
+on:
+  pull_request:
+    paths:
+    - '**.php'
+    - composer.json
+    - composer.lock
+    - .github/workflows/php-lint.yml
+  push:
+    branches: [trunk]
+    paths:
+    - '**.php'
+    - composer.json
+    - composer.lock
+    - .github/workflows/php-lint.yml
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  phpcs:
+    name: PHPCS
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        persist-credentials: false
+
+    - name: Set up PHP
+      uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
+      with:
+        php-version: '8.4'
+        coverage: none
+        tools: composer
+
+    - name: Get the Composer cache directory
+      id: composer-cache
+      run: echo "dir=$( composer config cache-files-dir )" >> "$GITHUB_OUTPUT"
+
+    - name: Cache Composer downloads
+      uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+      with:
+        path: ${{ steps.composer-cache.outputs.dir }}
+        key: composer-${{ runner.os }}-${{ hashFiles( 'composer.lock' ) }}
+        restore-keys: composer-${{ runner.os }}-
+
+    - name: Install dependencies
+      run: composer install --no-interaction --no-progress
+      env:
+        COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ github.token }}"}}'
+
+    # `phpcs.xml.dist` is generated from wporg-repo-tools rather than tracked.
+    - name: Generate the PHPCS config
+      run: composer exec update-configs
+      env:
+        TEXTDOMAIN: wporg
+
+    - name: Lint PHP
+      run: composer lint

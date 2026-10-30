@@ -1,8 +1,12 @@
 <?php
+/**
+ * Required by WP even though it's never used.
+ *
+ * Don't put anything here, everything should go in the block templates.
+ *
+ * @package WordPressdotorg\Theme\News_2021
+ */
 
 namespace WordPressdotorg\Theme\News_2021;
 
 defined( 'WPINC' ) || die();
-
-// WP will complain if this file doesn't exist, even though it's never used.
-// Don't put anything here, everything should do in the block templates.

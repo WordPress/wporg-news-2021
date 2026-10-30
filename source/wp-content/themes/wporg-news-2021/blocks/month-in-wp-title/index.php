@@ -1,4 +1,9 @@
 <?php
+/**
+ * Registers and renders the `wporg/month-in-wp-title` block.
+ *
+ * @package WordPressdotorg\Theme\News_2021
+ */
 
 namespace WordPressdotorg\Theme\News_2021\Blocks\Month_In_WordPress;
 
@@ -32,8 +37,8 @@ function render_block( $attributes, $content, $block ) {
 	$date = date_create_from_format( 'Y-m-d H:i:s', get_the_date( 'Y-m-00 00:00:00', $post_id ) );
 
 	$short_month = $date->format( 'M' );
-	$long_month = $date->format( 'F' );
-	$year = $date->format( 'Y' );
+	$long_month  = $date->format( 'F' );
+	$year        = $date->format( 'Y' );
 
 	$wrapper_attributes = get_block_wrapper_attributes();
 

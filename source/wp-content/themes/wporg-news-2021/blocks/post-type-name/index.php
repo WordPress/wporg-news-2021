@@ -1,4 +1,9 @@
 <?php
+/**
+ * Registers and renders the `wporg/post-type-name` block.
+ *
+ * @package WordPressdotorg\Theme\News_2021
+ */
 
 namespace WordPressdotorg\Theme\News_2021\Blocks\PostTypeName;
 

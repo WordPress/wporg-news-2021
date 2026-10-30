@@ -3,12 +3,14 @@
 	"description": "",
 	"homepage": "https://wordpress.org",
 	"license": "GPL-2.0-or-later",
+	"minimum-stability": "alpha",
+	"prefer-stable": true,
 	"support": {
 		"issues": "https://github.com/WordPress/wporg-news-2021/issues"
 	},
 	"config": {
 		"platform": {
-			"php": "7.4"
+			"php": "8.4"
 		},
 		"allow-plugins": {
 			"composer/installers": true,
@@ -37,22 +39,17 @@
 		}
 	],
 	"require-dev": {
-		"composer/installers": "~1.0",
+		"composer/installers": "^2.0",
 		"wpackagist-plugin/gutenberg": "*",
 		"wpackagist-plugin/jetpack": "*",
 		"wpackagist-plugin/seriously-simple-podcasting": "*",
 		"wpackagist-plugin/code-syntax-block": "*",
 		"wpackagist-plugin/wordpress-importer": "*",
 		"wporg/wporg-repo-tools": "dev-trunk",
-		"wporg/wporg-mu-plugins": "dev-trunk",
-		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
-		"wp-coding-standards/wpcs": "^3.4.1",
-		"phpcompatibility/phpcompatibility-wp": "*",
-		"wp-phpunit/wp-phpunit": "^5.4",
-		"phpunit/phpunit": "^7.5.20"
+		"wporg/wporg-mu-plugins": "dev-trunk"
 	},
 	"scripts": {
-		"format": "phpcbf -p",
-		"lint": "phpcs"
+		"format": "phpcbf -p source/wp-content/themes/wporg-news-2021 env",
+		"lint": "phpcs source/wp-content/themes/wporg-news-2021 env"
 	}
 }
